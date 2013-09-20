@@ -78,12 +78,10 @@ body.page-node{
     width: 100%;
 }
 .footer{
-    border: none;
+    border-top: 1px solid #888;
     margin: 0;
     padding: 0;
-    position: fixed;
-    z-index: 999;
-    bottom: 0;
+    background: #444444;
 }
 .view-display-id-block_1 .view-header.expanded{
     /*right: 125px;*/
@@ -97,7 +95,7 @@ body.page-node{
 }
 .view-display-id-block_1{
     position: fixed;
-    z-index: 9999;
+    z-index: 80;
     height: 100%;
     right: 0;
     width: 41px;

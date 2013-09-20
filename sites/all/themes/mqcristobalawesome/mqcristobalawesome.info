@@ -54,6 +54,7 @@ stylesheets[all][] = css/views.css
 
 ; scripts[] = 'bootstrap/js/bootstrap.min.js'
 scripts[] = 'js/mqcristobalawesome.js'
+scripts[] = 'js/mqcristobalawesome.node-photo.js'
 ; scripts[] = 'js/jquery.parallax.js'
 scripts[] = 'js/Placeholders.min.js'
 scripts[] = 'js/jquery.anchor.js'
