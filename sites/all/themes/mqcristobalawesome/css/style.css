@@ -140,7 +140,7 @@ body.page-node{
 .view-display-id-block_1 .view-content{
     margin-bottom: 0;
     cursor: pointer;
-    background: rgba(127, 126, 131, 0.7);
+    background: rgba(127, 126, 131, 0.3);
     border-left: 1px solid rgba(255,255,255,.4);
     box-shadow: 0 0 1px rgba(255,255,255,.4);
     -webkit-box-shadow: 0 0 1px rgba(0,0,0,.4);

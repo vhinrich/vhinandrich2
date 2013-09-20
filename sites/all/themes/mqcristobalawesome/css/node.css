@@ -14,9 +14,9 @@ body.page-node.node-type-webform .page-header{
 body.page-node.node-type-webform{
     background: url('../images/grey_wash_wall.png') repeat #888;
 }
-article.node-webform{
+body.page-node.node-type-webform .main-container.container{
     width: 80%;
-    margin: 0 auto;
+    margin: 40px auto;
     padding-top: 20px;
 }
 article.node-webform form.webform-client-form .form-submit{

@@ -16,6 +16,10 @@
            }
         });
     });
+    $(window).load(function(){
+        //init fancybox
+        $(".fancybox").fancybox();
+    });
     $(document).ready(function(){
         $('.view-display-id-default .views-row').css('min-height', $(window).height());
         $('article.node-page').css('min-height', $(window).height());
