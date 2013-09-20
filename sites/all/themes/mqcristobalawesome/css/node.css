@@ -14,10 +14,6 @@ article.node-photo{
     text-align: center;
     height: 100%;
 }
-article.node-photo{
-    position: relative;
-    height: auto;
-}
 article.node-page header{
     padding-top: 3%;
 }
@@ -65,27 +61,23 @@ article.node-photo header h2{
     text-transform: uppercase;
     font-family: 'Playfair Display', serif;
 }
-article.node-photo header h2{
-    font-size: 50px;
-    font-family: 'Playfair Display', serif;
-    font-weight: 200;
-}
 article.node-page .field-name-body{
     margin-bottom: 90px;
 }
 article.node-photo{
-    background: url('../images/black_lozenge.png') repeat #333;
-    overflow: hidden;
-}
-article.node-photo header{
     position: absolute;
+    height: auto;
     z-index: 2;
     width: 100%;
 }
-article.node-photo .field-name-field-photo-video .field-items{
+.field-name-field-photo-video{
+    background: url('../images/black_lozenge.png') repeat #333;
+    overflow: hidden;
+}
+.field-name-field-photo-video .field-items{
     margin: 0 auto;
 }
-article.node-photo .field-name-field-photo-video .field-items .field-item{
+.field-name-field-photo-video .field-items .field-item{
     background: #000;
     -webkit-transition: all 500ms ease;
     -moz-transition: all 500ms ease;
@@ -93,11 +85,11 @@ article.node-photo .field-name-field-photo-video .field-items .field-item{
     -o-transition: all 500ms ease;
     transition: all 500ms ease;
 }
-article.node-photo .field-name-field-photo-video .field-items .field-item:hover{
+.field-name-field-photo-video .field-items .field-item:hover{
     box-shadow: 0 0 10px #000;
     z-index: 999;
 }
-article.node-photo .field-name-field-photo-video .field-items .field-item img{
+.field-name-field-photo-video .field-items .field-item img{
     display: block;
     width: 100%;
     opacity: 0.3;
@@ -109,7 +101,7 @@ article.node-photo .field-name-field-photo-video .field-items .field-item img{
     -o-transition: all 500ms ease;
     transition: all 500ms ease;
 }
-article.node-photo .field-name-field-photo-video .field-items .field-item img:hover{
+.field-name-field-photo-video .field-items .field-item img:hover{
     opacity: 1;
     zoom:1;
     filter: alpha(filter=100);
