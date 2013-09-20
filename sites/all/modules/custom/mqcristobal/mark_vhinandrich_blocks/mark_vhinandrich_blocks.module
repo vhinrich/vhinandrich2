@@ -1,0 +1,77 @@
+<?php
+
+/*
+ * Implements hook_theme().
+ */
+function mark_vhinandrich_blocks_theme() {
+  $theme = array(
+    'mvrb_js_menu' => array(
+      'template' => 'templates/mvrb-js-menu', // define xxx-xxx.tpl.php inside module
+      'arguments' => array(), //define $xxx so it will available in your xxx-xxx.tpl.php
+    ),
+  );
+  
+  return $theme;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function mark_vhinandrich_blocks_block_info() {
+  $blocks = array();
+  $blocks['mvrb_js_menu'] = array(
+    'info' => t('Vhin and Rich JS Menu'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function mark_vhinandrich_blocks_block_view($delta='') {
+  $block = array();
+ 
+  switch($delta) {
+    case 'mvrb_js_menu' :
+      $block['content'] = _mvrb_js_menu();
+      break;
+  }
+ 
+  return $block;
+}
+
+function _mvrb_js_menu(){
+  $module_path = drupal_get_path('module', 'mark_vhinandrich_blocks');
+  
+  
+  
+  $timeline_list[] = array(
+    'data' => $data,
+    'id' => 'timeline-list-item-' . $record['tid'],
+    'class' => array('timeline-list-item'),
+    'data-group' => $record['tid'],
+  );
+  
+  $timeline_menu = theme_item_list(array('items' => $timeline_list, 'title' => '', 'type' => 'ul', 'attributes' => array('class' => array('js-menu'))));
+  
+  $content = theme('mvrb_js_menu', array('args' => null));
+  // Block output in HTML with div wrapper
+  $block = array(
+    'message' => array(
+      '#type' => 'markup',
+      '#markup' => $content,
+      '#attached' => array(
+        'js' => array(
+          $module_path . '/js/mvrb_js_menu.js' => array (
+            'type' => 'file',
+          ),
+        ),
+        'css' => array(
+          $module_path . '/css/mvrb_js_menu.css',
+        ),
+      ),
+    ),
+  );
+  
+  return $block;
+}

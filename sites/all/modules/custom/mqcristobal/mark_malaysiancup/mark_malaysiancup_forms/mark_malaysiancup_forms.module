@@ -1,0 +1,78 @@
+<?php
+
+/*
+ *implements hook_node_presave($node)
+ */
+function mark_malaysiancup_forms_node_presave($node){
+  if(in_array($node->type, _getNodeTypeAffected('change_title'))){
+    //change title
+    $node->title = $node->field_timeline_title[LANGUAGE_NONE][0]['value'];
+  }
+}
+
+/*
+ *implements hook_form_alter(&$form, &$form_state, $form_id)
+*/
+function mark_malaysiancup_forms_form_alter(&$form, &$form_state, $form_id){
+  $modulePath = drupal_get_path('module', 'mark_malaysiancup_forms');
+  $form['#attached']['css'][] = $modulePath . '/css/mmc_forms.css';
+  $form['#attached']['js'][$modulePath . '/js/mmc_forms.js'] = array(
+    'type' => 'file',
+  );
+  
+  //set default time only for new contents
+  if(isset($form_state['build_info']['args'][0]->nid)){
+  }else{
+    $form['field_time'][LANGUAGE_NONE][0]['value']['#default_value'] = date('g:iA',strtotime('now'));
+  }
+  
+  if(isset($form['type']) && isset($form['type']['#value']) && in_array($form['type']['#value'], _getNodeTypeAffected('change_title'))){
+    $form['title']['#default_value'] = 'tmp' . (rand(1, 1000));
+  }
+  
+  if($form_id=='video_node_form' ||
+     $form_id=='story_node_form' ||
+     $form_id=='block_quote_node_form' ||
+     $form_id=='live_blog_node_form' ||
+     $form_id=='photo_node_form' ||
+     $form_id=='infographic_node_form'){
+    
+    $form['field_timeline'][LANGUAGE_NONE]['#title_display'] = 'invisible';
+    $form['field_timeline'][LANGUAGE_NONE]['#options']['_none'] = '- Select date -';
+    //fix dates sorting
+    $tmpTimeline = array();
+    foreach($form['field_timeline'][LANGUAGE_NONE]['#options'] as $key => $timeline){
+      if($key!=='_none'){
+        $tmpTerm = taxonomy_term_load($key);
+        $tmpTimeline[$tmpTerm->field_date_time[LANGUAGE_NONE][0]['value']] = $tmpTerm;
+      }
+    }
+    uksort($tmpTimeline, "_mark_malaysiancup_forms_sort_timeline");
+    $newTimeline = array();
+    $newTimeline['_none'] = '- select date -';
+    foreach($tmpTimeline as $key => $timeline){
+      $newTimeline[$timeline->tid] = $timeline->name;
+    }
+    $form['field_timeline'][LANGUAGE_NONE]['#options'] = $newTimeline;
+    
+    if($form['options']['status']['#default_value']==1){
+      $form['actions']['submit']['#value'] = 'Save and publish';
+    }
+  }
+}
+
+function _mark_malaysiancup_forms_sort_timeline($a, $b){
+  return $a<$b;
+}
+
+function _getNodeTypeAffected($type){
+  switch($type){
+    case 'change_title':
+      return array(
+        'block_quote',
+      );
+      break;
+    
+  }
+  return array();
+}

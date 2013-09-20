@@ -1,0 +1,153 @@
+<?php
+
+function mark_tweets_menu() {
+  $items['mark_tweets/get-tweets'] = array(
+    'title' => 'Get Tweets',
+    'page callback' => '_mark_tweets_get_tweets',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  //LOL like what i thought
+  $items['tdysports/get-tweets'] = array(
+    'title' => 'Get Tweets',
+    'page callback' => '_mark_tweets_get_tweets',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+function mark_tweets_theme(){
+  $themes = array (
+    'mtw_tweet_item' => array(
+        'template' => 'templates/mtw-tweet-item', 
+        'variables' => array('args' => NULL),
+    ),
+  );
+  return $themes;
+}
+
+function _mark_tweets_get_tweets(){
+  if(!isset($_GET['from'])){
+    $from = '@tdysports';
+  }else{
+    $from = $_GET['from'];
+  }
+  
+  $tweets = _mark_tweets_retrive_tweets($from);
+  $filteredTweets = array();
+  
+  //filter by date
+  foreach($tweets as $key => $tweet){
+    if(isset($_GET['start_date'])){
+      $startDate = $_GET['start_date'];
+      
+      if($tweet->timestamp >= $startDate){
+        if(isset($_GET['end_date'])){
+          $endDate = $_GET['end_date'];
+          if($tweet->timestamp <= $endDate){
+            $tweet->type = 'tweet';
+            $tweet->rendered = theme('mtw_tweet_item', array('args' => array('item' => $tweet)));
+            $filteredTweets[] = $tweet;
+          }
+        }else{
+          $tweet->type = 'tweet';
+          $tweet->rendered = theme('mtw_tweet_item', array('args' => array('item' => $tweet)));
+          $filteredTweets[] = $tweet;
+        }
+      }
+    }else{
+      if(isset($_GET['end_date'])){
+        $endDate = $_GET['end_date'];
+        if($tweet->timestamp <= $endDate){
+          $tweet->type = 'tweet';
+          $tweet->rendered = theme('mtw_tweet_item', array('args' => array('item' => $tweet)));
+          $filteredTweets[] = $tweet;
+        }
+      }else{
+        $tweet->type = 'tweet';
+        $tweet->rendered = theme('mtw_tweet_item', array('args' => array('item' => $tweet)));
+        $filteredTweets[] = $tweet;
+      }
+    }
+  }
+  if(isset($_GET['dsm'])){
+    dsm($filteredTweets);
+    dsm($tweets);
+    return 'dsm';
+  }
+  echo drupal_json_encode( $filteredTweets );
+}
+
+function _mark_tweets_retrive_tweets($from){
+  //$lionsxii = _mark_tweets_tw_pull_retrieve('#lionsxii from:@tdysports', 200);
+  $searchString = '#lionsxii from:' . $from;
+  $lionsxii = _mark_tweets_tw_pull_retrieve($searchString, 200);
+  return $lionsxii;
+}
+
+
+
+/**
+ * Retrieves tweets by username, hashkey or search term.
+ *
+ * @param $twitkey
+ *     Twitter key, which can be a username (prepended with @), hashtag
+ *     (prepended with #), or a search term.
+ * @param $num_items
+ *     Number of tweets to retrieve from Twitter. Can't be more than 200.
+ * @param $rts
+ *     If you want to retweets to be included in the results. Defaults to TRUE.
+ * @param $exclude_replies
+ *     If you want to exclude replies.
+ */
+function _mark_tweets_tw_pull_retrieve($twitkey, $num_items = NULL, $rts = NULL, $exclude_replies = NULL) {
+  global $is_https;
+
+  // If $num_items is not set, use the default value.
+  // This value is checked more rigorously in twitter_puller->check_arguments().
+  $num_items = (intval($num_items) > 0) ? intval($num_items) : twitter_pull_num_items();
+
+  // Cached value is specific to the Twitter key and number of tweets retrieved.
+  $cache_key = $twitkey . '::' . $num_items;
+  $cache = cache_get($cache_key, TWITTER_PULL_CACHE_TABLE);
+
+
+  $tweets = array();
+  if (!empty($cache) && !empty($cache->data) && (time() < $cache->expire)) {
+    $tweets =  $cache->data;
+  }
+  else {
+    try {
+      $puller = new mark_tweets_twitter_puller($twitkey, $num_items);
+      $puller->rts = $rts;
+      $puller->exclude_replies = $exclude_replies;
+      $puller->get_items();
+      $tweets = $puller->tweets;
+    }
+    catch (Exception $e) {
+      watchdog('Twitter Pull', $e->getMessage(), array(), WATCHDOG_WARNING);
+      if (!empty($cache) && !empty($cache->data)) {
+        return $cache->data;
+      }
+      else {
+        return twitter_pull_empty_message();
+      }
+    }
+
+    if (!empty($tweets) && is_array($tweets)) {
+      $cache_length = twitter_pull_cache_length() * 3; //-- in the settings we indicate length in minutes, here we need seconds.
+      cache_set($cache_key, $tweets, TWITTER_PULL_CACHE_TABLE, REQUEST_TIME + $cache_length);
+    }
+  }
+
+  // If we have tweets and are viewing a secure site, we want to set the url
+  // to the userphoto to use the secure image to avoid insecure errors.
+  if (!empty($tweets) && is_array($tweets) && $is_https) {
+    foreach ($tweets as $i => $tweet) {
+      $tweets[$i]->userphoto = $tweet->userphoto_https;
+    }
+  }
+
+  return $tweets;
+}

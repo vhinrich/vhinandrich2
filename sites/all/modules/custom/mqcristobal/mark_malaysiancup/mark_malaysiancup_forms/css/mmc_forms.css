@@ -1,0 +1,7 @@
+/*hidden titles*/
+/*add classes here*/
+body.page-node-add-block-quote .form-item.form-item-title,
+body.page-node-edit.node-type-block-quote .form-item.form-item-title{
+    visibility: hidden;
+    height: 0;
+}

@@ -1,0 +1,135 @@
+<?php
+
+/**
+* Implements hook_permission().
+*/
+function mark_termform_permission() {
+  return array(
+    'administer mark termform' => array(
+      'title' => t('Administer Mark Term Form'),
+    ),
+    'administer mark termform settings' => array(
+      'title' => t('Administer Mark Term Form Settings'),
+    ),
+  );
+}
+
+/**
+* Implements hook__menu().
+*/
+function mark_termform_menu(){
+  $items['admin/structure/mark-termform'] = array(
+    'page callback' => 'drupal_get_form',
+    'title' => t('Mark Term Form Settings'),
+    'page arguments' => array('_mark_termform_settings'),
+    'access arguments' => array('administer mark termform settings')
+  );
+  
+  $items['admin/content/termform/add'] = array(
+    'page callback' => '_mark_termform_add',
+    'title' => t('Add Term'),
+    'access arguments' => array('administer mark termform')
+  );
+  
+  $vocabs = taxonomy_get_vocabularies();
+  $vocabs_options = array();
+  foreach($vocabs as $key => $vocab){
+    $vocabs_options[$vocab->vid] = $vocab->name;
+  }
+  $vocabs_selected = variable_get('mtf_vocabularies', array());
+  foreach($vocabs_selected as $key => $vocab_id){
+    $items['admin/content/termform/add/' . $vocab_id] = array(
+      'page callback' => '_mark_termform',
+      'title' => t('Create ' . $vocabs_options[$vocab_id]),
+      'page arguments' => array($vocab_id),
+      'access arguments' => array('administer mark termform'),
+      'type' => MENU_LOCAL_TASK,
+    );
+  }
+  
+  return $items;
+}
+
+
+function mark_termform_taxonomy_term_presave($term){
+  if($term->vocabulary_machine_name=='test'){
+    $dateTimeVal = $term->field_date_time[LANGUAGE_NONE][0]['value'];
+    $tmpName = date('M j', $dateTimeVal);
+    $tmpName = strtoupper($tmpName);
+    $tmpDescription = date('F j', $dateTimeVal);
+    $term->name = $tmpName;
+    $term->description = $tmpDescription;
+    
+    $tmpTerm = taxonomy_get_term_by_name($tmpName, 'test');
+  }
+}
+
+function _mark_termform_taxonomy_term_validate($form, &$form_state){
+  $dateTimeVal = $form_state['values']['field_date_time'][LANGUAGE_NONE][0]['value'];
+  $tmpName = date('M j', $dateTimeVal);
+  $tmpName = strtoupper($tmpName);
+  $tmpTerm = taxonomy_get_term_by_name($tmpName, 'test');
+  if(sizeof($tmpTerm) > 0){  
+    form_set_error('field_date_time', t('Date is already used.'));
+  }
+}
+
+function mark_termform_form_alter(&$form, &$form_state, $form_id){
+  if($form_id == 'taxonomy_form_term'){
+    
+    $form['#attached']['js'][] = drupal_get_path('module', 'mark_termform') . '/js/mark_termform.js';
+    $form['#attached']['css'][] = drupal_get_path('module', 'mark_termform') . '/css/mark_termform.css';
+    $form['#validate'][] = '_mark_termform_taxonomy_term_validate';
+    
+    $form['field_date_time'][LANGUAGE_NONE][0]['#title'] = 'Create Date';
+  }
+}
+
+function _mark_termform_add(){
+  $vocabs = taxonomy_get_vocabularies();
+  $vocabs_options = array();
+  foreach($vocabs as $key => $vocab){
+    $vocabs_options[$vocab->vid] = $vocab->name;
+  }
+  $vocabs_selected = variable_get('mtf_vocabularies', array());
+  $vocabs_item = array();
+  foreach($vocabs_selected as $key => $vocab_id){
+    $vocabs_item[] = array(
+      'data'=>'<span class="label">' . l($vocabs_options[$vocab_id], 'admin/content/termform/add/' . $vocab_id) . '</a></span>
+      <div class="description">Create new <em>' . $vocabs_options[$vocab_id] . '</em> term.</div>',
+    );
+  }
+  return theme_item_list(array('items' => $vocabs_item, 'title' => '', 'type' => 'ul', 'attributes' => array('class'=>'admin-list')));
+}
+
+function _mark_termform($vid){
+  $vocabulary = taxonomy_vocabulary_load($vid, FALSE);
+  module_load_include('inc', 'taxonomy', 'taxonomy.admin');
+  $form = drupal_get_form('taxonomy_form_term', $vocabulary);
+  $form['name']['#default_value'] = '';
+  $form['name']['#value'] = '';
+  $form['description']['#default_value'] = '';
+  $form['description']['value']['#default_value'] = '';
+  $form['description']['value']['#value'] = '';
+  return $form;
+}
+
+function _mark_termform_settings(){
+  $form = null;
+  
+  $vocabs = taxonomy_get_vocabularies();
+  $vocabs_options = array();
+  foreach($vocabs as $key => $vocab){
+    $vocabs_options[$vocab->vid] = $vocab->name;
+  }
+  
+  $form['mtf_vocabularies'] = array(
+    '#type' => 'select',
+    '#title' => 'Select Vocabularies',
+    '#options' => $vocabs_options,
+    '#multiple' => true,
+    '#default_value' => variable_get('mtf_vocabularies', array()),
+  );
+  
+  return system_settings_form($form);
+}

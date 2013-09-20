@@ -1,0 +1,86 @@
+<?php
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function onix_share_preprocess_node(&$vars) {
+
+  module_load_include( 'inc', 'onix_share', 'onix_share.link' );
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function onix_share_page_alter(&$page) {
+
+  $page['footer']['socialjs'] = array(
+    '#type' => 'markup',
+    '#markup' => '<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script><script type="text/javascript" src="http://platform.tumblr.com/v1/share.js"></script>'
+    );
+}
+
+/**
+ * Implements custom function to get the number of tweets.
+ */
+function onix_share_get_tweets($url) {
+
+  $json_string = file_get_contents('http://urls.api.twitter.com/1/urls/count.json?url=' . $url);
+  $json = json_decode($json_string, TRUE);
+
+  return intval( $json['count'] );
+}
+
+/**
+ * Implements custom function to get the number of facebook likes.
+ */
+function onix_share_get_facebook($url) {
+
+  $query = 'select%20like_count,comment_count,commentsbox_count%20from%20link_stat%20where%20url="' . $url . '"&format=json';
+  $json_string = file_get_contents('https://api.facebook.com/method/fql.query?query=' . $query);
+  $json = json_decode($json_string, TRUE);
+
+  if (isset($json[0]['like_count'])) {
+    return array(0 => intval( $json[0]['like_count'] ), 1 => intval( $json[0]['commentsbox_count'] ));
+  }
+  else {
+    return array( 0 => 0, 1 => 0);
+  }
+}
+
+/**
+ * Implements custom function to get the number google + likes.
+ */
+function onix_share_get_plusones($url) {
+
+  $curl = curl_init();
+  curl_setopt($curl, CURLOPT_URL, "https://clients6.google.com/rpc");
+  curl_setopt($curl, CURLOPT_POST, 1);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, '[{"method":"pos.plusones.get","id":"p","params":{"nolog":TRUE,"id":"' . $url . '","source":"widget","userId":"@viewer","groupId":"@self"},"jsonrpc":"2.0","key":"p","apiVersion":"v1"}]');
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+  curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+  $curl_results = curl_exec($curl);
+  curl_close($curl);
+
+  $json = json_decode($curl_results, TRUE);
+
+   if (isset($json[0]))
+     return intval( $json[0]['result']['metadata']['globalCounts']['count'] );
+   else
+     return 0;
+}
+
+/**
+ * Implements custom function to get the total sharing count.
+ */
+function onix_share_get_shares($url) {
+
+  return onix_share_get_plusones($url) + onix_share_get_facebook($url) + onix_share_get_tweets($url);
+}
+
+/**
+ * Implements hook_menu().
+ */
+function onix_share_menu() {
+
+  
+}

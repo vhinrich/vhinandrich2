@@ -1,0 +1,38 @@
+/**
+ * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
+ * remove this comment and start adding your styles to this file.
+ */
+
+#navbar .view-id-node_pages{
+    max-width: 98%;
+    margin: 0;
+}
+#navbar .view-id-node_pages ul{
+    list-style: none;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    float: left;
+    text-shadow: none;
+}
+#navbar .view-id-node_pages ul li{
+    /*float: left;*/
+}
+#navbar .view-id-node_pages ul li a{
+    color: #fff;
+    text-shadow: 1px 1px 0px rgba(0,0,0,.3);
+    font-weight: 400;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+#navbar .view-id-node_pages ul li a:hover,
+#navbar .view-id-node_pages ul li a:active,
+#navbar .view-id-node_pages ul li a:focus{
+    text-decoration: none;
+    color: #878884;
+}

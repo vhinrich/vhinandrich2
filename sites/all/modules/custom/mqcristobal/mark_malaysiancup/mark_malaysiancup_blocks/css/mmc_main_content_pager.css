@@ -1,0 +1,52 @@
+.mmc-block-content-pager{
+    position: fixed;
+    width: 100%;
+    height: 1000px;
+    overflow: hidden;
+    z-index: 888;
+}
+.mmc-block-content-pager ul.main-content-pager{
+    list-style: none;
+    margin: 0;
+    position: relative;
+    top: 40px;
+}
+.mmc-block-content-pager ul.main-content-pager li.main-content-pager a{
+    width: 153px;
+    height: 336px;
+    background: url('images/prevnextbutton.png') no-repeat;
+    position: relative;
+    z-index: 800;
+    display: block;
+    zoom: 1;
+    filter: alpha(opacity=10);
+    opacity: 0.1;
+    -webkit-transition: opacity 500ms ease-in-out;
+    -moz-transition: opacity 500ms ease-in-out;
+    -ms-transition: opacity 500ms ease-in-out;
+    -o-transition: opacity 500ms ease-in-out;
+    transition: opacity 500ms ease-in-out;
+}
+.mmc-block-content-pager ul.main-content-pager li.main-content-pager-next a{
+    background-position: -307px 0;
+}
+.mmc-block-content-pager ul.main-content-pager li.main-content-pager-prev  a{
+    background-position: 0 0;
+}
+.mmc-block-content-pager ul.main-content-pager li.main-content-pager a:hover{
+    zoom: 1;
+    filter: alpha(opacity=70);
+    opacity: .7;
+}
+.mmc-block-content-pager ul.main-content-pager li#main-content-pager-prev{
+    float: left;
+}
+.mmc-block-content-pager ul.main-content-pager li#main-content-pager-next{
+    float: right
+}
+
+@media(max-width:767px){
+    .mmc-block-content-pager{
+        display: none;
+    }
+}

@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * Custom function to get the required omniture tag names
+ */
+function mark_omniture_get_tags() {
+
+  $omniture = array();
+
+  // vars to omniture mobile app's
+    $channel = "today";
+    $Prop1 = "sg";
+    $Prop2 = "tdy";
+
+  if(drupal_is_front_page()){
+    $node = node_load(arg(1));
+    
+    $omniture['omniture_web_hier1'] = "|online|mycup";
+    $omniture['omniture_web_pageName'] = ":online:mycup";
+  }
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+
+    $node = node_load(arg(1));
+    
+    $node->title = urlencode($node->title);
+    
+    $omniture['omniture_web_hier1'] = "|online|mycup|" . $node->title;
+    $omniture['omniture_web_pageName'] = ":online:mycup:" .$node->title;
+
+  }// end node
+
+  return $omniture;
+}

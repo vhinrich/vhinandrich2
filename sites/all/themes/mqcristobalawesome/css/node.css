@@ -1,0 +1,166 @@
+/**
+ * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
+ * remove this comment and start adding your styles to this file.
+ */
+
+/*
+ *node
+ */
+
+article.node-page,
+article.node-photo{
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    height: 100%;
+}
+article.node-photo{
+    position: relative;
+    height: auto;
+}
+article.node-page header{
+    padding-top: 3%;
+}
+article.node-photo header{
+    margin-top: 3%;
+}
+.views-row.views-row-1 article.node-page header{
+    padding-top: 15%;
+}
+.views-row.views-row-1 article.node-page header h2{
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+    font-size: 100px;
+    line-height: 107px;
+    font-style: normal;
+    letter-spacing: 14px;
+    margin-bottom: -10px;
+}
+article.node-page header,
+article.node-page .field-name-body{
+    max-width: 98%;
+    margin: 0 auto;
+}
+article.node-page .social-buttons,
+article.node-photo .social-buttons{
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 9;
+}
+article.node-page .social-buttons ul,
+article.node-photo .social-buttons ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+article.node-page .social-buttons ul li,
+article.node-photo .social-buttons ul li{
+    float: left;
+    margin-right: 8px;
+}
+article.node-page header h2,
+article.node-photo header h2{
+    font-size: 100px;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+}
+article.node-photo header h2{
+    font-size: 50px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 200;
+}
+article.node-page .field-name-body{
+    margin-bottom: 90px;
+}
+article.node-photo{
+    background: url('../images/black_lozenge.png') repeat #333;
+    overflow: hidden;
+}
+article.node-photo header{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+}
+article.node-photo .field-name-field-photo-video .field-items{
+    margin: 0 auto;
+}
+article.node-photo .field-name-field-photo-video .field-items .field-item{
+    background: #000;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+article.node-photo .field-name-field-photo-video .field-items .field-item:hover{
+    box-shadow: 0 0 10px #000;
+    z-index: 999;
+}
+article.node-photo .field-name-field-photo-video .field-items .field-item img{
+    display: block;
+    width: 100%;
+    opacity: 0.3;
+    zoom:1;
+    filter: alpha(filter=30);
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+article.node-photo .field-name-field-photo-video .field-items .field-item img:hover{
+    opacity: 1;
+    zoom:1;
+    filter: alpha(filter=100);
+}
+.node-next-button:hover{
+    text-decoration: none;
+}
+.node-next-button{
+    text-decoration: none;
+    opacity: 0.8;
+    zoom:1;
+    filter: alpha(filter=80);
+    display: block;
+    height: 36px;
+    width: 70px;
+    background-image: url('../images/arrowdownthin.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    content: ' ';
+    bottom: 30px;
+    content: " ";
+    left: 50%;
+    margin-left: -35px;
+    position: absolute;
+    z-index: 999;
+}
+.background-media{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.background-media.photo{
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.background-overlay {
+    background: #2D2B2E;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    zoom: 1;
+    filter: alpha(opacity=75);
+    opacity: 0.75;
+    top: 0;
+    z-index: 0;
+}
+article *{
+    position: relative;
+    z-index: 1;
+}

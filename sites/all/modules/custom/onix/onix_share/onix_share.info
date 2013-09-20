@@ -1,0 +1,6 @@
+; $Id.
+core = "7.x"
+description = "Count the number of shares of the very last articles"
+name = "Onix Share-Count"
+package = "OnixMedia"
+dependencies[] = onix_facebook
