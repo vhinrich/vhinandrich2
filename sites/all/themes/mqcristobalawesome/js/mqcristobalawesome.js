@@ -6,11 +6,13 @@
             $('.view-display-id-block_1 .view-content').removeClass('expanded');
             $('.view-display-id-block_1 .view-header').removeClass('expanded');
             $('.main-container.container').removeClass('expanded');
+            $('.footer.container').removeClass('expanded');
            }else{
             $('.view-display-id-block_1').addClass('expanded');
             $('.view-display-id-block_1 .view-content').addClass('expanded');
             $('.view-display-id-block_1 .view-header').addClass('expanded');
             $('.main-container.container').addClass('expanded');
+            $('.footer.container').addClass('expanded');
            }
         });
     });

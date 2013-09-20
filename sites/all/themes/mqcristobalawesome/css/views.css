@@ -19,6 +19,7 @@
 }
 #navbar .view-id-node_pages ul li{
     /*float: left;*/
+    padding: 5px 0;
 }
 #navbar .view-id-node_pages ul li a{
     color: #fff;
