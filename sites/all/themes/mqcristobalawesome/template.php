@@ -62,7 +62,7 @@ function mqcristobalawesome_preprocess_page(&$variables){
     $variables['form_desc'] = $infographicCT->description;
   }
   if(arg(0)=='node' && is_numeric(arg(1))){
-    if(isset($variables['node']->field_photo_vide[LANGUAGE_NONE][0])){
+    if(isset($variables['node']->field_photo_video[LANGUAGE_NONE][0])){
       $image_url = image_style_url('large_square_thumbnail', $variables['node']->field_photo_video[LANGUAGE_NONE][0]['uri']);
     }else{
       $image_url = url(drupal_get_path('theme', 'mqcristobalawesome') . '/images/default_fb.png', array('absolute'=>true));
