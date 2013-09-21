@@ -65,7 +65,7 @@ function mqcristobalawesome_preprocess_page(&$variables){
     if(isset($variables['node']->field_photo_vide[LANGUAGE_NONE][0])){
       $image_url = image_style_url('large_square_thumbnail', $variables['node']->field_photo_video[LANGUAGE_NONE][0]['uri']);
     }else{
-      $image_url = 'http://www.todayonline.com/sites/all/themes/today/FacebookPantalla.png';
+      $image_url = url(drupal_get_path('theme', 'mqcristobalawesome') . '/default_fb.png', array('absolute'=>true));
     }
     $data = array(
       '#tag' => 'meta',
