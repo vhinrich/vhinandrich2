@@ -82,7 +82,7 @@
                     //    {scrollTop: $('.background-media.video').offset().top}
                     //);
                     //$('.videoBG video').play();
-                    console.log('3');
+                    //console.log('3');
                 }else{
                     //$('.background-media.video').css('display', 'none');
                     //$('.background-media.photo').css('display', 'block');
@@ -90,7 +90,7 @@
                     //    {scrollTop: $('.background-media.photo').offset().top}
                     //);
                     //$('.videoBG video').pause();
-                    console.log('4');
+                    //console.log('4');
                 }
             }
         });

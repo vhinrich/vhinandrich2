@@ -24,6 +24,7 @@ stylesheets[all][] = css/style.responsive.css
 stylesheets[all][] = css/user.css
 stylesheets[all][] = css/navs.css
 stylesheets[all][] = css/node.css
+stylesheets[all][] = css/node.responsive.css
 stylesheets[all][] = css/node.form.css
 stylesheets[all][] = js/fancybox/source/jquery.fancybox.css
 stylesheets[all][] = css/views.css

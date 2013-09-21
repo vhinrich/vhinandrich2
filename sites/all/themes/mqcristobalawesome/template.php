@@ -94,16 +94,25 @@ function _generate_background_media($background_media, $style = null){
   if(strstr($background_media[0]['filemime'], 'video')){
     $return = '<script>
       (function($){
-        $(window).load(function(){
-          $(".background-media.video").videoBG({
-            mp4: "' . file_create_url($background_media[0]['uri']) .'",
-            ogv: "' . file_create_url($background_media[1]['uri']) .'",
-            webm: "' . file_create_url($background_media[2]['uri']) .'",
-            poster: "' . image_style_url($style, $background_media[3]['uri']) .'",
-            position: "scroll",
-            zIndex: -1,
-            opacity: 1
-          });
+        $(".background-media.video").ready(function(){
+          if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            $(".background-media.video").videoBG({
+              poster: "' . image_style_url($style, $background_media[3]['uri']) .'",
+              position: "scroll",
+              zIndex: -1,
+              opacity: 1
+            });
+          }else{
+            $(".background-media.video").videoBG({
+              mp4: "' . file_create_url($background_media[0]['uri']) .'",
+              ogv: "' . file_create_url($background_media[1]['uri']) .'",
+              webm: "' . file_create_url($background_media[2]['uri']) .'",
+              poster: "' . image_style_url($style, $background_media[3]['uri']) .'",
+              position: "scroll",
+              zIndex: -1,
+              opacity: 1
+            });
+          }
         });
       })(jQuery);
     </script>';
