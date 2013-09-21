@@ -33,5 +33,5 @@
 
   <?php print render($content['comments']); ?>
   
-  <a href="#" class="node-next-button">&nbsp;</a>
+  <!--<a href="#" class="node-next-button">&nbsp;</a>-->
 </article> <!-- /.node -->

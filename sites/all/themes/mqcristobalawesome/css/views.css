@@ -37,3 +37,7 @@
     text-decoration: none;
     color: #878884;
 }
+
+.view-id-node_pages.view-display-id-default .views-row{
+    background: #111;
+}

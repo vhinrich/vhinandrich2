@@ -24,8 +24,16 @@ article.node-webform form.webform-client-form .form-submit{
     margin: 20px 0;
 }
 
-article.node-page,
-article.node-photo{
+/*video*/
+article.node-video .field-name-body,
+article.node-video header{
+    display: none;
+}
+article.node-video{
+    padding: 5px 0;
+}
+
+article{
     position: relative;
     z-index: 1;
     text-align: center;
@@ -37,10 +45,10 @@ article.node-page header{
 article.node-photo header{
     margin-top: 3%;
 }
-.views-row.views-row-1 article.node-page header{
+.views-row.views-row-1 article header{
     padding-top: 15%;
 }
-.views-row.views-row-1 article.node-page header h2{
+.views-row.views-row-1 article header h2{
     text-transform: uppercase;
     font-family: 'Playfair Display', serif;
     font-size: 100px;
@@ -49,31 +57,27 @@ article.node-photo header{
     letter-spacing: 14px;
     margin-bottom: -10px;
 }
-article.node-page header,
-article.node-page .field-name-body{
+article header,
+article .field-name-body{
     max-width: 98%;
     margin: 0 auto;
 }
-article.node-page .social-buttons,
-article.node-photo .social-buttons{
+article .social-buttons{
     position: absolute;
     top: 8px;
     left: 8px;
     z-index: 9;
 }
-article.node-page .social-buttons ul,
-article.node-photo .social-buttons ul{
+article .social-buttons ul{
     list-style: none;
     margin: 0;
     padding: 0;
 }
-article.node-page .social-buttons ul li,
-article.node-photo .social-buttons ul li{
+article .social-buttons ul li{
     float: left;
     margin-right: 8px;
 }
-article.node-page header h2,
-article.node-photo header h2{
+article header h2{
     font-size: 100px;
     text-transform: uppercase;
     font-family: 'Playfair Display', serif;
