@@ -1,4 +1,5 @@
 <?php
+/*theme by mark*/
 
 /**
  * @file template.php
