@@ -5,6 +5,11 @@
         hyphens: auto;
     }
     .views-row.views-row-1 article header h2{
-        word-spacing: 99999px;
+        font-size: 50px;
+        line-height: 57px;
+    }
+    article header h2{
+        font-size: 50px;
+        line-height: 57px;
     }
 }

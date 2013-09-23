@@ -25,7 +25,7 @@
            $('body').append('<div class="preloader"></div>');
            $(window).load(function(){
             $('body .preloader').stop().animate(
-                {opacity:0},'fast', function(){
+                {opacity:0},1000, function(){
                     $(this).css('display','none');
                 }
             )
