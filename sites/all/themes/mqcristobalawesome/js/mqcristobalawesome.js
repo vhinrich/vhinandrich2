@@ -21,6 +21,17 @@
         $(".fancybox").fancybox();
     });
     $(document).ready(function(){
+        $('body').ready(function(){
+           $('body').append('<div class="preloader"></div>');
+           $(window).load(function(){
+            $('body .preloader').stop().animate(
+                {opacity:0},'fast', function(){
+                    $(this).css('display','none');
+                }
+            )
+           });
+        });
+        
         $('.view-display-id-default .views-row').css('min-height', $(window).height());
         $('article.node-page').css('min-height', $(window).height());
         

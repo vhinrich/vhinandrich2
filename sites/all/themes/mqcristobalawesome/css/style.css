@@ -50,6 +50,15 @@ body{
     background: url('../images/grey_wash_wall.png') repeat #888;
     background-attachment: fixed;
 }
+body .preloader{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    background: url('../images/ajax-preloader.gif') no-repeat center #32333C;
+}
 body.page-home h1.page-header{
     display: none;
 }
