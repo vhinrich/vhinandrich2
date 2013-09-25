@@ -144,6 +144,7 @@ function mqcristobalawesome_preprocess_node(&$vars) {
     $vmfunc($vars, $hook);
   
   if($vars['type']=='page'){
+    $vars['background_media'] = '';
     if(isset($vars['field_background_media'][LANGUAGE_NONE])){
       $vars['background_media'] = _generate_background_media($vars['field_background_media'][LANGUAGE_NONE], 'extra_large');
     }
