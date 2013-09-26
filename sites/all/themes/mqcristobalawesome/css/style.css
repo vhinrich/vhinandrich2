@@ -90,9 +90,9 @@ body.page-node{
     width: 100%;
 }
 .footer{
-    border-top: 6px solid #87758F;
+    border-top: 6px solid #A266BD;
     margin: 0;
-    padding: 0;
+    padding: 8px 0 200px;
     background: #444444;
 }
 .main-container.container,
