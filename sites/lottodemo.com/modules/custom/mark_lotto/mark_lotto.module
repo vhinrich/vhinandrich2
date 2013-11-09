@@ -21,8 +21,18 @@ function mark_lotto_menu(){
     'page arguments' => array('_mark_lotto_settings'),
     'access arguments' => array('administer mark lotto settings')
   );
+  $items['mark-termform/random-numbers-json'] = array(
+    'page callback' => '_mark_lotto_random_numbers_json',
+    'title' => t('Mark Lotto Settings'),
+    'access arguments' => array('access content'),
+  );
   
   return $items;
+}
+
+function _mark_lotto_random_numbers_json(){
+  $numbers = _mark_lotto_draw_numbers();
+  echo drupal_json_encode($numbers);
 }
 
 function _mark_lotto_settings(){
@@ -82,26 +92,29 @@ function mark_lotto_form_alter(&$form, &$form_state, $form_id){
       );
     }
     
+    if(!isset($form['#node']->nid)){
+      $form['field_bet_id'][LANGUAGE_NONE][0]['value']['#default_value'] = strtotime('now');
+      
+      $form['field_number_pool'][LANGUAGE_NONE][0]['random_numbers'] = array(
+        '#type' => 'button',
+        '#value' => t('Lucky pick'),
+        '#weight' => 2,
+        '#prefix' => '<div id="random-button">',
+        '#suffix' => '</div>',
+        '#attached' => array(
+          'js' => array(
+            drupal_get_path('module', 'mark_lotto') . '/js/random-number.js',
+          ),
+        ),
+      );
+    }
+    
+    
     $form['#validate'][] = '_mark_lotto_form_validate_numbers';
   }
 }
 
 function mark_lotto_cron(){
-  _mark_lotto_draw();
-}
-
-function _mark_lotto_form_validate_numbers($form, $form_state){
-    $form_numbers = array();
-    foreach($form_state['values']['field_number_pool'][LANGUAGE_NONE][0]['field_number'][LANGUAGE_NONE] as $key => $number){
-      if(in_array($number['value'], $form_numbers)){
-        form_error($form, t('Duplicate number in number pool is not allowed'));
-        break;
-      }
-      $form_numbers[] = $number['value'];
-    }
-}
-
-function _mark_lotto_draw_winner(){
   $draw_time = variable_get('mark_lotto_draw_time', null);
   $draw_time = strtotime('now' . $draw_time);
   if(strtotime('now') >= $draw_time && strtotime('now') <= ($draw_time + 3600)){
@@ -109,9 +122,36 @@ function _mark_lotto_draw_winner(){
   }
 }
 
+function _mark_lotto_form_validate_numbers($form, $form_state){
+    switch($form_state['triggering_element']['#value']){
+      case 'Delete':
+        break;
+      default:
+        $form_numbers = array();
+        foreach($form_state['values']['field_number_pool'][LANGUAGE_NONE][0]['field_number'][LANGUAGE_NONE] as $key => $number){
+          if(in_array($number['value'], $form_numbers)){
+            form_error($form, t('Duplicate number in number pool is not allowed'));
+            break;
+          }
+          $form_numbers[] = $number['value'];
+        }
+        break;
+    }
+}
+
+function _mark_lotto_draw_winner(){
+  _mark_lotto_draw();
+}
+
 function _mark_lotto_draw(){
+  $cutoff_start = variable_get('mark_lotto_cutoff_start', null);
+  $cutoff_end = variable_get('mark_lotto_cutoff_end', null);
+  
+  $cutoff_start = strtotime('now ' . $cutoff_start);
+  $cutoff_end = strtotime('now ' . $cutoff_end);
+  
   $numbers = _mark_lotto_draw_numbers(); //get random numbers
-  $nodes = _get_possible_nodes($numbers); //get possible winners means the numbers drawn are present in their bets
+  $nodes = _get_possible_nodes($numbers, $cutoff_start, $cutoff_end); //get possible winners means the numbers drawn are present in their bets
   $winner_nodes = _get_real_winner_nodes($nodes,$numbers); //get the winner nodes from the array nodes of possible winners
   
   $draw_items = array(
@@ -137,12 +177,14 @@ function _mark_lotto_draw_numbers(){
   return $numbers;
 }
 
-function _get_possible_nodes($numbers){
+function _get_possible_nodes($numbers, $start_time, $end_time){
   $query = db_select('field_data_field_number', 'n');
   $query->join('field_data_field_number_pool', 'p', 'n.entity_id=p.field_number_pool_value');
+  $query->join('node', 'd', 'p.entity_id=d.nid');
   $query->fields('p', array('entity_id'))
   ->distinct()
-  ->condition('n.field_number_value', $numbers, 'IN');
+  ->condition('n.field_number_value', $numbers, 'IN')
+  ->condition('created', array($start_time, $end_time), 'BETWEEN');
   $result = $query->execute();
   $nodes = array();
   while($record = $result->fetchAssoc()) {
