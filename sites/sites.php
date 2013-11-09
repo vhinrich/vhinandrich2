@@ -59,4 +59,4 @@
  $sites['mqcristobal.vhinandrich.com'] = 'mqcristobal.com';
  
  $sites['localhost.lottodemo'] = 'lottodemo.com';
- $sites['lottodemo.vhinandrich.com'] = 'lottodemo.com';
+ $sites['vhinandrich.com.lottodemo'] = 'lottodemo.com';
