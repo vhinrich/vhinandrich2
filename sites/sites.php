@@ -55,4 +55,8 @@
  */
 
  // URL: http://localhost/example
+ $sites['localhost.mqcristobal'] = 'mqcristobal.com';
  $sites['mqcristobal.vhinandrich.com'] = 'mqcristobal.com';
+ 
+ $sites['localhost.lottodemo'] = 'lottodemo.com';
+ $sites['lottodemo.vhinandrich.com'] = 'lottodemo.com';
