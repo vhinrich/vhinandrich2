@@ -13,6 +13,7 @@ background: #ffe5eb;
 a{
     outline: none !important;
 }
+.col-sm-12{padding: 0}
 .navbar-inner-mqcristobal{
     /*box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.3);
@@ -22,6 +23,11 @@ a{
     max-height: 75px;*/
     /*overflow: hidden;*/
     display: none;
+}
+.navbar.container{
+    margin: 0;
+    min-height: 0;
+    border: none;
 }
 .navbar .logo{
     /*overflow: hidden;*/
@@ -103,6 +109,7 @@ body.page-node{
     -ms-transition: all 100ms ease;
     -o-transition: all 100ms ease;
     transition: all 100ms ease;
+    padding: 0;
 }
 .main-container.container.expanded,
 .footer.container.expanded{
@@ -112,7 +119,7 @@ body.page-node{
     /*right: 125px;*/
 }
 .view-display-id-block_1 .view-content.expanded{
-    width: 150px;
+    width: 211px;
     padding: 0 30px;
 }
 .view-display-id-block_1.expanded{

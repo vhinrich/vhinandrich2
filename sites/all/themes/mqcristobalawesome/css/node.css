@@ -113,6 +113,7 @@ article.node-photo{
 .field-name-field-photo-video .field-items .field-item img{
     display: block;
     width: 100%;
+    height: auto;
     opacity: 0.3;
     zoom:1;
     filter: alpha(filter=30);

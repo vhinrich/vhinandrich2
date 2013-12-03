@@ -121,13 +121,13 @@ function _generate_background_media($background_media, $style = null){
     $return .= '</div>';
   }else{
     $return = '';
-    $return .= '<div class="background-media photo" style="background-image: url(' . file_create_url($background_media[0]['uri']) . ')">';
+    $return .= '<div class="background-media photo" style="background-image: url(' . image_style_url('extra_large', $background_media[0]['uri']) . ')">';
     $return .= '</div>';
   }
   return $return;
 }
 
-function mqcristobalawesome_preprocess_node(&$vars) {
+function mqcristobalawesome_preprocess_node(&$vars, $hook) {
   $function = __FUNCTION__ . '_' . $vars['node']->type;
   // for content type in general
   if (function_exists($function))

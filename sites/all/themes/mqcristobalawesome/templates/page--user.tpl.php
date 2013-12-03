@@ -42,20 +42,20 @@
 </header>
 */
 ?>
-<header id="navbar" role="banner" class="navbar">
+<header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
   <div class="navbar-inner-mqcristobal">
     <div class="container">
       <div class="header-website-logo">
         <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><img src="<?php print url(drupal_get_path('theme', 'mqcristobalawesome'), array('absolute'=>true)); ?>/images/logo.png" /></a>
       </div>
       <h1 id="site-name">
-        <?php if (!empty($logo)): ?>
-          <a class="logo pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-            <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-          </a>
+        <?php if ($logo): ?>
+        <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
+          <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+        </a>
         <?php endif; ?>
         <?php if (!empty($site_name)): ?>
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="brand"><?php print $site_name; ?></a>
+        <a class="name navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
         <?php endif; ?>
       </h1>
       <!--<div class="header-main-social-icons">
@@ -96,7 +96,7 @@
       </aside>  <!-- /#sidebar-first -->
     <?php endif; ?>  
 
-    <section class="<?php print _bootstrap_content_span($columns); ?>">  
+    <section<?php print $content_column_class; ?>>
       <?php if (!empty($page['highlighted'])): ?>
         <div class="highlighted hero-unit"><?php print render($page['highlighted']); ?></div>
       <?php endif; ?>
