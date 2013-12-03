@@ -22,14 +22,14 @@
     });
     $(document).ready(function(){
         $('body').ready(function(){
-           $('body').append('<div class="preloader"></div>');
-           $(window).load(function(){
-            $('body .preloader').stop().animate(
-                {opacity:0},1000, function(){
-                    $(this).css('display','none');
-                }
-            )
-           });
+           //$('body').append('<div class="preloader"></div>');
+           //$(window).load(function(){
+           // $('body .preloader').stop().animate(
+           //     {opacity:0},1000, function(){
+           //         $(this).css('display','none');
+           //     }
+           // )
+           //});
         });
         
         $('.view-display-id-default .views-row').css('min-height', $(window).height());
