@@ -81,7 +81,7 @@ Drupal.jsAC.prototype.found = function (matches) {
     display: 'block',
     right: 0
   });
-  for (var key in matches) {
+  for (key in matches) {
     $('<li></li>')
       .html($('<a href="#"></a>').html(matches[key]).click(function (e) { e.preventDefault(); }))
       .mousedown(function () { ac.select(this); })

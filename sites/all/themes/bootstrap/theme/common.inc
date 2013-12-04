@@ -123,20 +123,15 @@ function bootstrap_include($theme, $path) {
  *   The icon HTML markup.
  */
 function _bootstrap_icon($name) {
-  $output = '';
-  // Attempt to use the Icon API module, if enabled and it generates output.
   if (module_exists('icon')) {
-    $output = theme('icon', array('bundle' => 'bootstrap', 'icon' => 'glyphicon-' . $name));
+    return theme('icon', array('bundle' => 'bootstrap', 'icon' => 'glyphicon-' . $name));
   }
-  if (empty($output)) {
-    // Mimic the Icon API markup.
-    $attributes = array(
-      'class' => array('icon', 'glyphicon', 'glyphicon-' . $name),
-      'aria-hidden' => 'true',
-    );
-    $output = '<i' . drupal_attributes($attributes) . '></i>';
-  }
-  return $output;
+  // Mimic the Icon API markup.
+  $attributes = array(
+    'class' => array('icon', 'glyphicon', 'glyphicon-' . $name),
+    'aria-hidden' => 'true',
+  );
+  return '<i' . drupal_attributes($attributes) . '></i>';
 }
 
 /**
@@ -175,7 +170,6 @@ function _bootstrap_colorize_button($text) {
     'btn-success' => array(
       t('Add'),
       t('Create'),
-      t('Write'),
     ),
     'btn-warning' => array(
       t('Export'),
@@ -243,7 +237,6 @@ function _bootstrap_iconize_button($text) {
     ),
     'plus' => array(
       t('Add'),
-      t('Write'),
     ),
     'trash' => array(
       t('Delete'),

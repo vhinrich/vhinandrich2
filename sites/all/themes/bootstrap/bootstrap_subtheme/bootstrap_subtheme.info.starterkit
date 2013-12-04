@@ -3,11 +3,7 @@ description = A Bootstrap Sub-theme.
 core = 7.x
 base theme = bootstrap
 
-
-;;;;;;;;;;;;;;;;;;;;;
-;; Regions
-;;;;;;;;;;;;;;;;;;;;;
-
+; Regions
 regions[navigation]     = 'Navigation'
 regions[header]         = 'Top Bar'
 regions[highlighted]    = 'Highlighted'
@@ -16,28 +12,15 @@ regions[content]        = 'Content'
 regions[sidebar_first]  = 'Primary'
 regions[sidebar_second] = 'Secondary'
 regions[footer]         = 'Footer'
-regions[page_top]       = 'Page top'
-regions[page_bottom]    = 'Page bottom'
 
-
-;;;;;;;;;;;;;;;;;;;;;
-;; Stylesheets
-;;;;;;;;;;;;;;;;;;;;;
-
+; Stylesheets
 stylesheets[all][] = css/style.css
 
-
-; For information on choosing the desired method, please read the Drupal
-; Bootstrap sub-theme "how-to" documentation:
-; https://drupal.org/node/1978010
-
-; ;----------------------------------
-; ; METHOD 1: Bootstrap Source Files
-; ;----------------------------------
+;**********************************
+; METHOD 1: Bootstrap Source Files
+;**********************************
 ; 
-; ;;;;;;;;;;;;;;;;;;;;;
-; ;; Scripts
-; ;;;;;;;;;;;;;;;;;;;;;
+; ; Scripts
 ; 
 ; scripts[] = 'bootstrap/js/affix.js'
 ; scripts[] = 'bootstrap/js/alert.js'
@@ -51,15 +34,19 @@ stylesheets[all][] = css/style.css
 ; scripts[] = 'bootstrap/js/scrollspy.js'
 ; scripts[] = 'bootstrap/js/tab.js'
 ; scripts[] = 'bootstrap/js/transition.js'
-;
-; ; Disable BootstrapCDN if using Bootstrap source files in your sub-theme.
+; ; Settings inherited by base theme, uncomment to override.
+; ;settings[toggle_name] = 0
+; ;settings[toggle_search] = 1
+; ; Disable the CDN as we are using our own source files.
 ; settings[bootstrap_cdn] = ''
 
 
-; ;-------------------------
-; ; METHOD 2: Bootstrap CDN
-; ;-------------------------
-;
-; Method 2 uses BootstrapCDN, the only thing you might need to provide here
-; is overrides to Bootstrap theme settings. Copy them here from the base theme
-; to override.
+;*************************
+; METHOD 2: Bootstrap CDN
+;*************************
+; 
+; ; Settings inherited by base theme, uncomment to override.
+; ;settings[toggle_name] = 0
+; ;settings[toggle_search] = 1
+; ;settings[cdn_bootstrap] = 1
+; ;settings[bootstrap_cdn] = 3.0.0
