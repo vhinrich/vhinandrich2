@@ -94,6 +94,7 @@ body.page-node{
 .page-home .container, .page-home .navbar-static-top .container, .page-home .navbar-fixed-top .container, .page-home .navbar-fixed-bottom .container,
 .page-node .container, .page-node .navbar-static-top .container, .page-node .navbar-fixed-top .container, .page-node .navbar-fixed-bottom .container{
     width: 100%;
+    max-width: none;
 }
 .footer{
     border-top: 6px solid #A266BD;
