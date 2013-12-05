@@ -1,0 +1,13 @@
+name = Mark Nodequeue Loader
+description = Mark Nodequeue Loader
+package = MQ Cristobal
+core = 7.x
+
+files[] = mark_nodequeue_loader.module
+dependencies[] = nodequeue
+; Information added by drupal.org packaging script on 2012-02-10
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "mark_nodequeue_loader"
+datestamp = "1328832859"
+

@@ -1,0 +1,136 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function mark_nodequeue_loader_menu(){
+  $items['admin/structure/mark-nodequeue-loader'] = array(
+    'page callback' => 'drupal_get_form',
+    'title' => t('Mark Nodequeue Loader Config'),
+    'description' => t('Configure Mark Nodequeue Loader.'),
+    'page arguments' => array('mark_nodequeue_loader_config_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+  
+  $items['mark-nodequeue-nodes'] = array(
+    'page callback' => '_mnql_get_nodequeue_nodes',
+    'title' => t('Mark Nodequeue Loader get nodes'),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['node/%/mark-nodeueue-node-render'] = array(
+    'page callback' => '_mnql_node_render',
+    'page arguments' => array(1),
+    'title' => t('Mark Nodequeue Loader render node'),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'delivery callback' => '_mnql_node_render_callback',  // Magic goes here
+  );
+  
+  return $items;
+}
+
+function _mnql_node_render($nid){
+  $node = node_load($nid);
+  return node_view($node, variable_get('mnql_display', null));
+}
+function _mnql_node_render_callback($page_callback_result){
+  // Only render content
+  print drupal_render($page_callback_result);
+  // Perform end-of-request tasks.
+  drupal_page_footer();
+}
+
+function mark_nodequeue_loader_config_form(){
+  $form = null;
+  
+  $queues = array();
+  $qids = nodequeue_get_all_qids();
+  foreach($qids as $key => $qid){
+    $queue = nodequeue_load($qid);
+    $queues[$qid] = $queue->title;
+  }
+  
+  $form['mnql_nodequeue'] = array(
+    '#type' => 'select',
+    '#options' => $queues,
+    '#default_value' => variable_get('mnql_nodequeue', null),
+    '#title' => t('Nodequeue'),
+    '#description' => t('Select nodequeue.')
+  );
+  
+  $entity_info = entity_get_info('node');
+  $displays = array();
+  foreach($entity_info['view modes'] as $key => $display){
+    $displays[$key] =$display['label'];
+  }
+  $form['mnql_display'] = array(
+    '#type' => 'select',
+    '#options' => $displays,
+    '#default_value' => variable_get('mnql_display', null),
+    '#title' => t('Display'),
+    '#description' => t('Select display.')
+  );
+  
+  return system_settings_form($form);
+}
+
+function _mnql_get_nodequeue_nodes(){
+  $qid = variable_get('mnql_nodequeue', null);
+  $subqueue = nodequeue_nids_visible($qid);
+  
+  if(isset($_GET['callback']))
+    echo $_GET['callback'] . '(' . drupal_json_encode($subqueue) . ')';
+  else
+    echo drupal_json_encode($subqueue);
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function mark_nodequeue_loader_block_info() {
+  $blocks = array();
+  $blocks['mnql_nodes'] = array(
+    'info' => t('Mark nodequeue loader nodes'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function mark_nodequeue_loader_block_view($delta='') {
+  $block = array();
+ 
+  switch($delta) {
+    case 'mnql_nodes' :
+      $block['content'] = _mnql_nodes();
+      break;
+  }
+  
+  return $block;
+}
+
+function _mnql_nodes(){
+  $content = '<script>
+  jQuery(document).ready(function(){
+    jQuery.ajax(
+      {
+        url: "mark-nodequeue-nodes",
+        dataType: "jsonp",
+        success: function(data){
+          console.log(data);
+          jQuery.each(data, function(i,item){
+            jQuery("#nodequeue-nodes").load("node/" + item + "/mark-nodeueue-node-render");
+          });
+        }
+      }
+    );
+});
+</script>
+<div id="nodequeue-nodes">&nbsp;</div>';
+
+
+
+  return $content;
+}

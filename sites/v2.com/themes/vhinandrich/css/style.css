@@ -1,0 +1,51 @@
+/**
+ * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
+ * remove this comment and start adding your styles to this file.
+ */
+
+.container{width: 100%;max-width: none;padding: 0}
+.row{margin: 0;}
+
+.navbar.container{max-width: none;width: 100%;margin: 0;border-radius: 0;min-height: 0;position: fixed;top: 0}
+.nav>li>a{padding: 8px 15px;text-transform: uppercase;font-family: "Source Code Pro", sans-serif}
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover{
+    color: #555;
+    background-color: transparent;
+}
+.navbar-default .navbar-nav>a,
+.navbar-default .navbar-nav>a:focus{
+    background: transparent;  
+}
+.navbar-default .navbar-nav>li>a:hover{
+    background-color: #e7e7e7;
+    -webkit-transition: .4s ease;
+    -moz-transition: .4s ease;
+    -o-transition: .4s ease;
+    -ms-transition: .4s ease;
+    transition: .4s ease;
+}
+.navbar-default .navbar-nav>li{
+    position: relative;
+    margin-top: -3px;
+    top: 3px;
+}
+.navbar-default .navbar-nav>.active:after{
+    background-color: transparent;
+    border-bottom: 3px solid #FF4194;
+    content: ' ';
+    display: block;
+    -webkit-transition: 1s ease;
+    -moz-transition: 1s ease;
+    -o-transition: 1s ease;
+    -ms-transition: 1s ease;
+    transition: 1s ease;
+    position: relative;
+    top: -3px;
+}
+
+article{
+    max-width: 1170px;
+    margin: 0 auto;
+}
