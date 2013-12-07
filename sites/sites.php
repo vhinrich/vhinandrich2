@@ -62,5 +62,9 @@
  $sites['vhinandrich.com.lottodemo'] = 'lottodemo.com';
  
  $sites['localhost.v2'] = 'v2.com';
+ $sites['localhost.v2.back'] = 'v2.com';
  $sites['127.0.0.1.v2'] = 'v2.com';
  $sites['vhinandrich.com.v2'] = 'v2.com';
+ $sites['localhost.v2.back'] = 'v2.com';
+ $sites['127.0.0.1.v2.back'] = 'v2.com';
+ $sites['vhinandrich.com.v2.back'] = 'v2.com';
