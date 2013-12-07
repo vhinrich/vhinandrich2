@@ -3,14 +3,21 @@
  * remove this comment and start adding your styles to this file.
  */
 
+
+body{font-size: 16px}
+h1, h2, h3{margin: 20px 0;text-align: center}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{font-weight: normal;font-family: "Source Code Pro", sans-serif;text-transform: uppercase}
+
 .container{width: 100%;max-width: none;padding: 0}
 .row{margin: 0;}
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12{
+    padding: 0;
+}
 
-.navbar.container{max-width: none;width: 100%;margin: 0;border-radius: 0;min-height: 0;position: fixed;top: 0}
-.nav>li>a{padding: 8px 15px;text-transform: uppercase;font-family: "Source Code Pro", sans-serif}
+
+.nav>li>a{padding: 15px;text-transform: uppercase;font-family: "Source Code Pro", sans-serif}
 .navbar-default .navbar-nav>.active>a,
-.navbar-default .navbar-nav>.active>a:focus,
-.navbar-default .navbar-nav>.active>a:hover{
+.navbar-default .navbar-nav>.active>a:focus{
     color: #555;
     background-color: transparent;
 }
@@ -18,7 +25,8 @@
 .navbar-default .navbar-nav>a:focus{
     background: transparent;  
 }
-.navbar-default .navbar-nav>li>a:hover{
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>.active>a:hover{
     background-color: #e7e7e7;
     -webkit-transition: .4s ease;
     -moz-transition: .4s ease;
@@ -33,7 +41,7 @@
 }
 .navbar-default .navbar-nav>.active:after{
     background-color: transparent;
-    border-bottom: 3px solid #FF4194;
+    border-bottom: 3px solid #9b59b6;
     content: ' ';
     display: block;
     -webkit-transition: 1s ease;
@@ -42,10 +50,11 @@
     -ms-transition: 1s ease;
     transition: 1s ease;
     position: relative;
-    top: -3px;
+    top: -2px;
 }
 
 article{
     max-width: 1170px;
     margin: 0 auto;
+    padding: 3em 0 5em;
 }

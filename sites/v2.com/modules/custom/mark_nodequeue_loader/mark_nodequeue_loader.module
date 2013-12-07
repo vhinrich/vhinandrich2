@@ -78,11 +78,15 @@ function mark_nodequeue_loader_config_form(){
 function _mnql_get_nodequeue_nodes(){
   $qid = variable_get('mnql_nodequeue', null);
   $subqueue = nodequeue_nids_visible($qid);
+  $queue = array();
+  foreach($subqueue as $key => $item){
+    $queue[] = $item; 
+  }
   
   if(isset($_GET['callback']))
-    echo $_GET['callback'] . '(' . drupal_json_encode($subqueue) . ')';
+    echo $_GET['callback'] . '(' . drupal_json_encode($queue) . ')';
   else
-    echo drupal_json_encode($subqueue);
+    echo drupal_json_encode($queue);
 }
 
 /**
@@ -114,21 +118,42 @@ function mark_nodequeue_loader_block_view($delta='') {
 function _mnql_nodes(){
   $content = '<script>
   jQuery(document).ready(function(){
+    
+    
+    
+    var processArr = [];
+    var nodeItems = [];
+    function generateNodequeueNode(nid){
+      return jQuery.ajax({url: "node/" + nid + "/mark-nodeueue-node-render"});
+    }
+    
+    function showData(){
+      jQuery.each(processArr, function(i, item){
+        item.success(function(){
+          jQuery("#nodequeue-nodes").append(item.responseText);
+        });
+      });
+    }
+  
     jQuery.ajax(
       {
         url: "mark-nodequeue-nodes",
+        cache: false,
         dataType: "jsonp",
+        data: "_=" + new Date(),
         success: function(data){
-          console.log(data);
           jQuery.each(data, function(i,item){
-            jQuery("#nodequeue-nodes").load("node/" + item + "/mark-nodeueue-node-render");
+            processArr.push(
+              generateNodequeueNode(item)
+            );
           });
+          jQuery.when(processArr).then(showData);
         }
       }
     );
 });
 </script>
-<div id="nodequeue-nodes">&nbsp;</div>';
+<div id="nodequeue-nodes"></div>';
 
 
 

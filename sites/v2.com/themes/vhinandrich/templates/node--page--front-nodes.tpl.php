@@ -1,6 +1,9 @@
+<div class="<?php print $id; ?>-wrapper">
 <article id="<?php print $id; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
-
+  <?php print $content_css; ?>
+  <?php print $content_js; ?>
+  
   <header>
     <?php print render($title_prefix); ?>
     <?php if (!$page && $title): ?>
@@ -34,3 +37,4 @@
   <?php print render($content['comments']); ?>
 
 </article> <!-- /.node -->
+</div>

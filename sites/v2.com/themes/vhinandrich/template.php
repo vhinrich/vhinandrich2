@@ -4,7 +4,29 @@
  * @file template.php
  */
 
- 
+function vhinandrich_js_alter(&$javascript){
+  global $user;
+  
+  $path = $_GET['q'];
+  if(strpos(strtolower($path),'admin')>-1 || $user->uid > 0){
+      //$jquery_module_path = drupal_get_path('module', 'jquery_update');
+      //$jquery_path_old = $jquery_module_path . '/replace/jquery/1.5/jquery.min.js'; //depends on the jquery version set
+      //$jquery_path_new = $jquery_module_path . '/replace/jquery/1.7/jquery.min.js'; //depends on the jquery version set
+      //$javascript[$jquery_path_old]['data'] = $jquery_path_new;
+  }else{
+    // Replace with current version.
+    if(module_exists('jquery_update')){
+      $jquery_module_path = drupal_get_path('module', 'jquery_update');
+      $jquery_path_old = $jquery_module_path . '/replace/jquery/1.5/jquery.min.js'; //depends on the jquery version set
+      $jquery_path_new = $jquery_module_path . '/replace/jquery/1.7/jquery.min.js'; //depends on the jquery version set
+      $javascript[$jquery_path_old]['data'] = $jquery_path_new;
+    }else{
+      $jQuery_version = '1.8.3'; //jquery 1.10 got some issues with the msie object
+      $javascript['misc/jquery.js']['data'] = drupal_get_path('theme', 'bootstrap_subtheme').'/js/jquery-' . $jQuery_version . '.min.js';
+      $javascript['misc/jquery.js']['version'] = $jQuery_version;
+    }
+  }
+}
 
 function vhinandrich_preprocess_node(&$vars, $hook) {
     $function = __FUNCTION__ . '_' . $vars['node']->type;
@@ -24,6 +46,17 @@ function vhinandrich_preprocess_node(&$vars, $hook) {
         
     $vars['classes_array'][] = $vars['view_mode'];
     
+    if($field_settings = $vars['field_settings']){
+        $entityFieldSettings = entity_load('field_collection_item', array($field_settings[LANGUAGE_NONE][0]['value']));
+        $entityFieldSettings = reset($entityFieldSettings);
+        if($entityFieldSettings->field_css_code && isset($entityFieldSettings->field_css_code[LANGUAGE_NONE][0])){
+            $vars['content_css'] = '<style>' . $entityFieldSettings->field_css_code[LANGUAGE_NONE][0]['value'] . '</style>';
+        }
+        if($entityFieldSettings->field_js_code && isset($entityFieldSettings->field_js_code[LANGUAGE_NONE][0])){
+            $vars['content_js'] = '<script>' . $entityFieldSettings->field_js_code[LANGUAGE_NONE][0]['value'] . '</script>';
+        }
+    }
+    
     //
     // Template suggestions
     //
@@ -34,4 +67,14 @@ function vhinandrich_preprocess_node(&$vars, $hook) {
 function vhinandrich_preprocess_node_page__main_front(&$vars){
     $node = node_load($vars['nid']);
     $vars['title'] = $node->title;
+    
+    $url = url('node/' . $vars['nid']);
+    $urls = explode('/', $url);
+    $vars['id'] = end($urls);
+}
+
+function vhinandrich_preprocess_node_page__front_nodes(&$vars){
+    $url = url('node/' . $vars['nid']);
+    $urls = explode('/', $url);
+    $vars['id'] = end($urls);
 }
