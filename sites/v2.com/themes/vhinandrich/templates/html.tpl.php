@@ -52,7 +52,7 @@
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <!-- google fonts -->
-  <link href='http://fonts.googleapis.com/css?family=Arvo:400,700|Cinzel:400|Source+Code+Pro:200,300,400,500,600|Josefin+Slab:100,300,400,600,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700|Cinzel:400|Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700|Josefin+Slab:100,300,400,600,700' rel='stylesheet' type='text/css'>
   <!-- font awesome -->
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <?php print $styles; ?>
