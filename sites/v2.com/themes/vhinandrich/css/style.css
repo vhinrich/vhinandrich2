@@ -6,7 +6,7 @@
 
 body{font-size: 16px}
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{font-weight: normal;font-family: "Source Code Pro", sans-serif;text-transform: uppercase}
-h1, h2, h3{margin: 20px 0;text-align: center;font-family: "Arvo", serif}
+h1, h2, h3{margin: 20px 0;text-align: center;font-family: "Arvo", "Cinzel", serif}
 h1{font-size: 3em}
 
 .container{width: 100%;max-width: none;padding: 0}
