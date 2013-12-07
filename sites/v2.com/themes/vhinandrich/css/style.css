@@ -43,7 +43,7 @@ strong{font-weight: 600}
 }
 .navbar-default .navbar-nav>.active:after{
     background-color: transparent;
-    border-bottom: 3px solid #9b59b6;
+    border-bottom: 3px solid #f17288;
     content: ' ';
     display: block;
     -webkit-transition: 1s ease;
