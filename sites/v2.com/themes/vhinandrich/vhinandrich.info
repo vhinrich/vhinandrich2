@@ -52,6 +52,8 @@ stylesheets[all][] = css/page.main-front.css
 ; scripts[] = 'bootstrap/js/scrollspy.js'
 ; scripts[] = 'bootstrap/js/tab.js'
 ; scripts[] = 'bootstrap/js/transition.js'
+scripts[] = 'js/vhinandrich.js'
+scripts[] = 'js/waypoints.min.js'
 ;
 ; ; Disable BootstrapCDN if using Bootstrap source files in your sub-theme.
 ; settings[bootstrap_cdn] = ''
