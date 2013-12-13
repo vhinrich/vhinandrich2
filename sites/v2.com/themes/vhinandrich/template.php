@@ -49,9 +49,11 @@ function vhinandrich_preprocess_node(&$vars, $hook) {
     if($field_settings = $vars['field_settings']){
         $entityFieldSettings = entity_load('field_collection_item', array($field_settings[LANGUAGE_NONE][0]['value']));
         $entityFieldSettings = reset($entityFieldSettings);
+        $vars['content_css'] = '';
         if($entityFieldSettings->field_css_code && isset($entityFieldSettings->field_css_code[LANGUAGE_NONE][0])){
             $vars['content_css'] = '<style>' . $entityFieldSettings->field_css_code[LANGUAGE_NONE][0]['value'] . '</style>';
         }
+        $vars['content_js'] = '';
         if($entityFieldSettings->field_js_code && isset($entityFieldSettings->field_js_code[LANGUAGE_NONE][0])){
             $vars['content_js'] = '<script>' . $entityFieldSettings->field_js_code[LANGUAGE_NONE][0]['value'] . '</script>';
         }
