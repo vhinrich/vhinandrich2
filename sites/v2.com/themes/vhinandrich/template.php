@@ -91,7 +91,6 @@ function vhinandrich_preprocess_node_video__front_nodes(&$vars){
 
 function vhinandrich_preprocess_field(&$vars){
     if($vars['element']['#view_mode'] == 'front_nodes' && $vars['element']['#bundle'] == 'video'){
-        dpm($vars);
         if($vars['element']['#field_name']=='field_video'){
             $vars['classes_array'][] = 'col-md-7';
         }
