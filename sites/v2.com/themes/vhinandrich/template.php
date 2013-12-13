@@ -78,3 +78,25 @@ function vhinandrich_preprocess_node_page__front_nodes(&$vars){
     $urls = explode('/', $url);
     $vars['id'] = end($urls);
 }
+
+function vhinandrich_preprocess_node_video__front_nodes(&$vars){
+    $node = node_load($vars['nid']);
+    $vars['title'] = $node->title;
+    
+    $url = url('node/' . $vars['nid']);
+    $url = url('node/' . $vars['nid']);
+    $urls = explode('/', $url);
+    $vars['id'] = end($urls);
+}
+
+function vhinandrich_preprocess_field(&$vars){
+    if($vars['element']['#view_mode'] == 'front_nodes' && $vars['element']['#bundle'] == 'video'){
+        dpm($vars);
+        if($vars['element']['#field_name']=='field_video'){
+            $vars['classes_array'][] = 'col-md-7';
+        }
+        if($vars['element']['#field_name']=='body'){
+            $vars['classes_array'][] = 'col-md-5';
+        }
+    }
+}

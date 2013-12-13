@@ -1,0 +1,36 @@
+/**
+ * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
+ * remove this comment and start adding your styles to this file.
+ */
+
+article.node.node-video.front_nodes .field-name-field-video{
+    /*max-width: 640px;
+    margin: 0 auto;
+    width: 93%;*/
+}
+article.node.node-video.front_nodes .field-name-field-video .field-items{
+    width: 97%;
+    margin: 0 auto;
+}
+article.node.node-video.front_nodes .field-name-body .field-items{
+    width: 97%;
+    margin: 0 auto;
+}
+article.node.node-video.front_nodes .field-name-body .field-items .field-item{
+    margin: 0 2em;
+}
+article.node.node-video.front_nodes .media-youtube-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+article.node.node-video.front_nodes .media-youtube-video object,
+article.node.node-video.front_nodes .media-youtube-video embed,
+article.node.node-video.front_nodes .media-youtube-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

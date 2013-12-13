@@ -118,44 +118,116 @@ function mark_nodequeue_loader_block_view($delta='') {
 function _mnql_nodes(){
   $content = '<script>
   Drupal.behaviors.markNodeQueueLoader = {
+  pages: [],
+  nodeIds: [],
+  addNodeIds: function(ids){
+    Drupal.behaviors.markNodeQueueLoader.nodeIds.push(ids);
+  },
+  addPage: function(page){
+    Drupal.behaviors.markNodeQueueLoader.pages.push(page);
+  },
   attach: function (context, settings) {
     var processArr = [];
     var nodeItems = [];
     function generateNodequeueNode(nid){
-      return jQuery.ajax({url: "node/" + nid + "/mark-nodeueue-node-render"});
+      return jQuery.ajax({url: "node/" + nid + "/mark-nodeueue-node-render", async: true, success: function(data){
+        Drupal.behaviors.markNodeQueueLoader.addPage(data);
+      }});
     }
     
     function showData(){
-      jQuery.each(processArr, function(i, item){
-        item.success(function(){
-          jQuery("#nodequeue-nodes").append(item.responseText);
-          Drupal.behaviors.menuNavbar.reloadWaypoints();
-        });
-      });
+      //jQuery.each(processArr, function(i, item){
+      //  item.success(function(){
+      //    jQuery("#nodequeue-nodes").append(item.responseText);
+      //    Drupal.behaviors.menuNavbar.reloadWaypoints();
+      //  });
+      //});
       //console.log(Drupal);
+      jQuery.each(Drupal.behaviors.markNodeQueueLoader.pages, function(i, item){
+        jQuery("#nodequeue-nodes").append(item);
+      });
+      Drupal.behaviors.menuNavbar.reloadWaypoints();
+    }
+    
+    function getPages(){
+      jQuery.when(processArr).then(showData);
     }
   
-    jQuery.ajax(
-      {
-        url: "mark-nodequeue-nodes",
-        cache: false,
-        dataType: "jsonp",
-        data: "_=" + new Date(),
-        success: function(data){
-          jQuery.each(data, function(i,item){
-            processArr.push(
-              generateNodequeueNode(item)
-            );
-          });
-          jQuery.when(processArr).then(showData);
+    function getNodeIds(){
+      return jQuery.ajax(
+        {
+          url: "mark-nodequeue-nodes",
+          cache: false,
+          dataType: "jsonp",
+          async: true,
+          data: "_=" + new Date(),
+          success: function(data){
+            //Drupal.behaviors.markNodeQueueLoader.addNodeIds(data);
+            jQuery.each(data, function(i,item){
+              processArr.push(
+                generateNodequeueNode(item)
+              );
+              
+            });
+          }
         }
-      }
-    );
+      );
+    }
+    
+    jQuery.when(getNodeIds).then(getPages);
 }
 };
 </script>
 <div id="nodequeue-nodes"></div>';
 
+$content = '<script>
+(function($){
+$(document).ready(function(){
+  Drupal.markNodeQueueLoader = {
+    nodeIds: [],
+    generateNodes: [],
+    pages: []
+  };
+  
+  function generateNodequeueNode(nid){
+    return jQuery.ajax({url: "node/" + nid + "/mark-nodeueue-node-render", cache: false, async: true, success: function(data){
+      Drupal.markNodeQueueLoader.pages.push(data);
+    }});
+  }
+  
+  function showData(){
+    jQuery.each(Drupal.markNodeQueueLoader.pages, function(i, item){
+      jQuery("#nodequeue-nodes").append(item);
+    });
+    Drupal.behaviors.menuNavbar.reloadWaypoints();
+  }
+  
+  function getPages(){
+    $.each(Drupal.markNodeQueueLoader.nodeIds, function(i, item){
+      Drupal.markNodeQueueLoader.generateNodes.push(
+        generateNodequeueNode(item)
+      );
+    });
+    
+    $.when.apply($, Drupal.markNodeQueueLoader.generateNodes).then(showData);
+  }
+  
+  jQuery.when($.ajax(
+      {
+        url: "mark-nodequeue-nodes",
+        cache: false,
+        dataType: "jsonp",
+        async: true,
+        data: "_=" + new Date(),
+        success: function(data){
+          Drupal.markNodeQueueLoader.nodeIds = data;
+        }
+      }
+    )).then(getPages);
+});
+})(jQuery);
+</script>
+<div id="nodequeue-nodes"></div>';
 
 
   return $content;
