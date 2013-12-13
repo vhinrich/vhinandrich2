@@ -12,6 +12,10 @@ article.node.node-video.front_nodes .field-name-field-video .field-items{
     width: 97%;
     margin: 0 auto;
 }
+article.node.node-video.front_nodes .field-name-field-video .field-items .field-item:first-of-type{margin: 0}
+article.node.node-video.front_nodes .field-name-field-video .field-items .field-item{
+    margin: 1em 0;
+}
 article.node.node-video.front_nodes .field-name-body .field-items{
     width: 97%;
     margin: 0 auto;

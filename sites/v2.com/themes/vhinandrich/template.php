@@ -50,11 +50,11 @@ function vhinandrich_preprocess_node(&$vars, $hook) {
         $entityFieldSettings = entity_load('field_collection_item', array($field_settings[LANGUAGE_NONE][0]['value']));
         $entityFieldSettings = reset($entityFieldSettings);
         $vars['content_css'] = '';
-        if($entityFieldSettings->field_css_code && isset($entityFieldSettings->field_css_code[LANGUAGE_NONE][0])){
+        if(isset($entityFieldSettings->field_css_code) && isset($entityFieldSettings->field_css_code[LANGUAGE_NONE][0])){
             $vars['content_css'] = '<style>' . $entityFieldSettings->field_css_code[LANGUAGE_NONE][0]['value'] . '</style>';
         }
         $vars['content_js'] = '';
-        if($entityFieldSettings->field_js_code && isset($entityFieldSettings->field_js_code[LANGUAGE_NONE][0])){
+        if(isset($entityFieldSettings->field_js_code) && isset($entityFieldSettings->field_js_code[LANGUAGE_NONE][0])){
             $vars['content_js'] = '<script>' . $entityFieldSettings->field_js_code[LANGUAGE_NONE][0]['value'] . '</script>';
         }
     }
@@ -95,6 +95,14 @@ function vhinandrich_preprocess_field(&$vars){
     if($vars['element']['#view_mode'] == 'front_nodes' && $vars['element']['#bundle'] == 'video'){
         if($vars['element']['#field_name']=='field_video'){
             $vars['classes_array'][] = 'col-md-7';
+            //foreach($vars['element']['#items'] as $key => $item){
+            //    if($key>0){
+            //        $entity = file_load($item['fid']);
+            //        $entity_view = file_view($entity, 'media_preview');
+            //        $vars['element'][$key] = $entity_view;
+            //        $vars['items'][$key] = $entity_view;
+            //    }
+            //}
         }
         if($vars['element']['#field_name']=='body'){
             $vars['classes_array'][] = 'col-md-5';
