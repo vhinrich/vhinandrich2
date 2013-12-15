@@ -30,6 +30,7 @@ article.node.node-video.front_nodes .media-vimeo-outer-wrapper{
     padding-top: 25px;
     height: 0 !important;
     width: auto !important;
+    z-index: 99;
 }
 article.node.node-video.front_nodes .media-youtube-video object,
 article.node.node-video.front_nodes .media-youtube-video embed,
