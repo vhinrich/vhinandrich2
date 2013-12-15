@@ -79,8 +79,10 @@ function _mnql_get_nodequeue_nodes(){
   $qid = variable_get('mnql_nodequeue', null);
   $subqueue = nodequeue_nids_visible($qid);
   $queue = array();
+  $index = 0;
   foreach($subqueue as $key => $item){
-    $queue[] = $item; 
+    $queue[] = array('item' => $item, 'index' => $index);
+    $index++;
   }
   
   if(isset($_GET['callback']))
@@ -189,17 +191,27 @@ $(document).ready(function(){
     pages: []
   };
   
-  function generateNodequeueNode(nid){
+  function generateNodequeueNode(item){
+    var nid = item.item;
     return jQuery.ajax({url: "node/" + nid + "/mark-nodeueue-node-render", cache: false, async: true, success: function(data){
-      Drupal.markNodeQueueLoader.pages.push(data);
+      Drupal.markNodeQueueLoader.pages.push({data: data, index: item.index});
     }});
   }
   
   function showData(){
+    Drupal.markNodeQueueLoader.pages.sort(sortPages);
     jQuery.each(Drupal.markNodeQueueLoader.pages, function(i, item){
-      jQuery("#nodequeue-nodes").append(item);
+      jQuery("#nodequeue-nodes").append(item.data);
     });
     Drupal.behaviors.menuNavbar.reloadWaypoints();
+  }
+  
+  function sortPages(a,b) {
+    if (a.index < b.index)
+       return -1;
+    if (a.index > b.index)
+      return 1;
+    return 0;
   }
   
   function getPages(){
