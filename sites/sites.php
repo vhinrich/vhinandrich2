@@ -69,3 +69,8 @@
  $sites['127.0.0.1.v2.back'] = 'v2.com';
  $sites['vhinandrich.com.v2.back'] = 'v2.com';
  $sites['v2.vhinandrich.com'] = 'v2.com';
+ 
+ $sites['localhost.teamie'] = 'teamie';
+ $sites['127.0.0.1.teamie'] = 'teamie';
+ $sites['vhinandrich.com.teamie'] = 'teamie';
+ $sites['teamie.vhinandrich.com'] = 'teamie';
