@@ -15,6 +15,10 @@ class views_challenge_field_handler extends views_handler_field {
    */
   function construct() {
     parent::construct();
+    //$this->additional_fields['count'] = array(
+    //  'table' => 'users_roles',
+    //  'field' => '1',
+    //);
   }
   
   /**
@@ -23,6 +27,24 @@ class views_challenge_field_handler extends views_handler_field {
   function query() {
     $this->ensure_my_table();
     $this->add_additional_fields();
+    
+    
+    $rids = array();
+    foreach($this->options['allowed_roles'] as $key => $role){
+        $rids[] = $role;
+    }
+    $subquery = 'select count(1) total_lesser_count from (
+        select sum(role.weight) sum, users_roles.uid from {users_roles} users_roles join
+        {role} role on role.rid=users_roles.rid 
+        where users_roles.rid IN (' . implode(',', $rids) . ') group by users_roles.uid
+        ) user_count_1 join 
+        (
+        select sum(role.weight) sum, users_roles.uid from {users_roles} users_roles join
+        {role} role on role.rid=users_roles.rid
+        where users_roles.rid IN (' . implode(',', $rids) . ') group by users_roles.uid 
+        ) user_count_2 where user_count_1.sum < user_count_2.sum and user_count_1.uid <> users.uid and user_count_2.uid = users.uid';
+
+    $this->query->add_field(null, '(' . $subquery . ')', 'mycount');
   }
  
   /**
@@ -63,31 +85,6 @@ class views_challenge_field_handler extends views_handler_field {
    * Renders the field handler.
    */
   function render($values) {
-    $rids = array();
-    foreach($this->options['allowed_roles'] as $key => $role){
-        $rids[] = $role;
-    }
-    $strQuery = 'select count(1) total_lesser_count from (
-        select sum(role.weight) sum, users_roles.uid from {users_roles} users_roles join
-        {role} role on role.rid=users_roles.rid 
-        where users_roles.uid <> :uid AND users_roles.rid IN (' . implode(',', $rids) . ') group by users_roles.uid
-        ) a join 
-        (
-        select sum(role.weight) sum, users_roles.uid from {users_roles} users_roles join
-        {role} role on role.rid=users_roles.rid
-        where users_roles.uid = :uid AND users_roles.rid IN (' . implode(',', $rids) . ') group by users_roles.uid 
-        ) b where a.sum < b.sum';
-    
-    //dpm(array($strQuery, array(':uid' => $values->uid, ':rids' => implode(',', $rids))));
-    $result = db_query($strQuery, array(':uid' => $values->uid));
-    
-    foreach ($result as $record) {
-        // Perform operations on $record->title, etc. here.
-        // in this example the available data would be mapped to object properties:
-        // $record->nid, $record->title, $record->created
-        return $record->total_lesser_count;
-      }
-
-    return null;
+    return $values->mycount;
   }
 }
