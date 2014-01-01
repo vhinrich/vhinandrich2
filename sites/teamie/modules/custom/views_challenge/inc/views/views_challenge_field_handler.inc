@@ -37,7 +37,7 @@ class views_challenge_field_handler extends views_handler_field {
         select sum(role.weight) sum, users_roles.uid from {users_roles} users_roles join
         {role} role on role.rid=users_roles.rid 
         where users_roles.rid IN (' . implode(',', $rids) . ') group by users_roles.uid
-        ) user_count_1 join 
+        ) user_count_1 cross join 
         (
         select sum(role.weight) sum, users_roles.uid from {users_roles} users_roles join
         {role} role on role.rid=users_roles.rid
