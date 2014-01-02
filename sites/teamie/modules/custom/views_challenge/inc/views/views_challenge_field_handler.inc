@@ -34,15 +34,15 @@ class views_challenge_field_handler extends views_handler_field {
         $rids[] = $role;
     }
     $subquery = 'select count(1) total_lesser_count from (
-        select sum(role.weight) sum, users_roles.uid from {users_roles} users_roles join
+        select role.weight, users_roles.uid from {users_roles} users_roles join
         {role} role on role.rid=users_roles.rid 
         where users_roles.rid IN (' . implode(',', $rids) . ') group by users_roles.uid
         ) user_count_1 cross join 
         (
-        select sum(role.weight) sum, users_roles.uid from {users_roles} users_roles join
+        select role.weight, users_roles.uid from {users_roles} users_roles join
         {role} role on role.rid=users_roles.rid
         where users_roles.rid IN (' . implode(',', $rids) . ') group by users_roles.uid 
-        ) user_count_2 where user_count_1.sum < user_count_2.sum and user_count_1.uid <> users.uid and user_count_2.uid = users.uid';
+        ) user_count_2 where user_count_1.weight < user_count_2.weight and user_count_1.uid <> users.uid and user_count_2.uid = users.uid';
 
     $this->query->add_field(null, '(' . $subquery . ')', 'mycount');
   }
