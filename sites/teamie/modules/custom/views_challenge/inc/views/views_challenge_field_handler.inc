@@ -33,20 +33,29 @@ class views_challenge_field_handler extends views_handler_field {
     foreach($this->options['allowed_roles'] as $key => $role){
         $rids[] = $role;
     }
-    $subquery = 'select count(1) total_lesser_count from (
-        select ifnull(role.weight, if(users.uid=0, (select weight from role where rid=1), (select weight from role where rid=2))) weight, users.uid from
-        {users} users left join 
-        {users_roles} users_roles on users.uid=users_roles.uid left join
-        {role} role on role.rid=users_roles.rid 
-        where users_roles.rid IN (' . implode(',', $rids) . ') OR users_roles.rid IS NULL
-        ) user_count_1 cross join 
-        (
-        select ifnull(role.weight, if(users.uid=0, (select weight from role where rid=1), (select weight from role where rid=2))) weight, users.uid from
-        {users} users left join
-        {users_roles} users_roles on users.uid=users_roles.uid left join
-        {role} role on role.rid=users_roles.rid
-        where users_roles.rid IN (' . implode(',', $rids) . ') OR users_roles.rid IS NULL group by users.uid
-        ) user_count_2 where user_count_1.weight < user_count_2.weight and user_count_1.uid <> users.uid and user_count_2.uid = users.uid';
+    $subquery = 'select count(1) from 
+              {users} users2 join (
+              select * from (
+              select distinct user_i_1, user_i_2 from (
+                      select ifnull(role.weight, if(users.uid=0, (select weight from role where rid=1), (select weight from role where rid=2))) user_w_1, 
+              users.uid user_i_1 from
+                      {users} users left join 
+                      {users_roles} users_roles on users.uid=users_roles.uid left join
+                      {role} role on role.rid=users_roles.rid 
+                      where users_roles.rid IN (' . implode(',', $rids) . ') OR users_roles.rid IS NULL
+                      ) user_count_1 cross join 
+                      (
+                      select ifnull(role.weight, if(users.uid=0, (select weight from role where rid=1), (select weight from role where rid=2))) user_w_2, 
+              users.uid user_i_2 from
+                      {users} users left join
+                      {users_roles} users_roles on users.uid=users_roles.uid left join
+                      {role} role on role.rid=users_roles.rid
+                      where users_roles.rid IN (' . implode(',', $rids) . ') OR users_roles.rid IS NULL
+                      ) user_count_2 where user_w_1 < user_w_2) AS mycount
+              ) as test
+              
+              on users2.uid=test.user_i_2 and users2.uid<>test.user_i_1
+              where users2.uid=users.uid';
 
     $this->query->add_field(null, '(' . $subquery . ')', 'mycount');
   }
