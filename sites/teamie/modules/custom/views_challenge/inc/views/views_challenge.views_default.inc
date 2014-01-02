@@ -55,7 +55,6 @@ function views_challenge_views_default_views() {
   $handler->display->display_options['fields']['rid']['id'] = 'rid';
   $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
   $handler->display->display_options['fields']['rid']['field'] = 'rid';
-  $handler->display->display_options['fields']['rid']['alter']['alter_text'] = TRUE;
   /* Field: User: Lesser count */
   $handler->display->display_options['fields']['lesser_count']['id'] = 'lesser_count';
   $handler->display->display_options['fields']['lesser_count']['table'] = 'users';
@@ -67,6 +66,7 @@ function views_challenge_views_default_views() {
     5 => '5',
     4 => '4',
     2 => '2',
+    1 => '1',
   );
   /* Filter criterion: User: Roles */
   $handler->display->display_options['filters']['rid']['id'] = 'rid';
@@ -80,6 +80,7 @@ function views_challenge_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'lesser-users';
+
 
 
   
