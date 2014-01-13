@@ -66,7 +66,7 @@ article.node.node-photo.front_nodes .photos-container .field-name-field-photo im
     width: 100%;
     height: auto;
 }
-article.node.node-photo.front_nodes.more-than-one .photos-container header{height: auto;margin-top: 1.8em}
+article.node.node-photo.front_nodes.more-than-one .photos-container header{height: auto;margin-top: 5.8em}
 article.node.node-photo.front_nodes.more-than-one .photos-container header h1,
 article.node.node-photo.front_nodes.more-than-one .photos-container header .field-name-body{display: inline;}
 article.node.node-photo.front_nodes.more-than-one .photos-container header{text-align: center;color: #fff;text-shadow: 1px 1px 0px #000}
