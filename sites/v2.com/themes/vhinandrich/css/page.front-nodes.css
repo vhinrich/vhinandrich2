@@ -70,7 +70,8 @@ article.node.node-photo.front_nodes.more-than-one .photos-container header{heigh
 article.node.node-photo.front_nodes.more-than-one .photos-container header h1,
 article.node.node-photo.front_nodes.more-than-one .photos-container header .field-name-body{display: inline;}
 article.node.node-photo.front_nodes.more-than-one .photos-container header{text-align: center;color: #fff;text-shadow: 1px 1px 0px #000}
-article.node.node-photo.front_nodes.more-than-one .photos-container header a{color: #000; text-shadow: 1px 1px 0px #fff;}
+article.node.node-photo.front_nodes.more-than-one .photos-container header a{color: #e74c3c; text-shadow: 1px 1px 0px #fff;}
+article.node.node-photo.front_nodes.more-than-one .photos-container header a:hover{text-decoration: none;color: #c0392b}
 article.node.node-photo.front_nodes.more-than-one .photos-container .field-name-field-photo .field-item{width: 25%;position: relative;float: left;cursor: pointer}
 article.node.node-photo.front_nodes.more-than-one .photos-container .field-name-field-photo .field-item:before {
     position: absolute;
