@@ -60,7 +60,7 @@ article.node.node-photo.front_nodes .photos-container header{
 article.node.node-photo.front_nodes .photos-container header .photo-wrapper-right{height: 100%;background: rgba(0,0,0,.4); color: #fff;overflow: hidden}
 article.node.node-photo.front_nodes .photos-container header .photo-wrapper-right .photo-wrapper-right-inner{width: 90%; margin: 0 auto;overflow: hidden}
 article.node.node-photo.front_nodes .photos-container header .photo-wrapper-right .photo-wrapper-right-inner h1{text-align: left;margin: 0;padding: 1.2em 0 0}
-article.node.node-photo.front_nodes .photos-container .scene{width: 120%;left: -10%;}
+article.node.node-photo.front_nodes .photos-container .scene{width: 200%;left: -20%;}
 article.node.node-photo.front_nodes .photos-container .field-name-field-photo{width: 100%;position: relative}
 article.node.node-photo.front_nodes .photos-container .field-name-field-photo img{
     width: 100%;
@@ -72,7 +72,7 @@ article.node.node-photo.front_nodes.more-than-one .photos-container header .fiel
 article.node.node-photo.front_nodes.more-than-one .photos-container header{text-align: center;color: #fff;text-shadow: 1px 1px 0px #000}
 article.node.node-photo.front_nodes.more-than-one .photos-container header a{color: #e74c3c; text-shadow: 1px 1px 0px #fff;}
 article.node.node-photo.front_nodes.more-than-one .photos-container header a:hover{text-decoration: none;color: #c0392b}
-article.node.node-photo.front_nodes.more-than-one .photos-container .field-name-field-photo .field-item{width: 25%;position: relative;float: left;cursor: pointer}
+article.node.node-photo.front_nodes.more-than-one .photos-container .field-name-field-photo .field-item{width: 15%;position: relative;float: left;cursor: pointer}
 article.node.node-photo.front_nodes.more-than-one .photos-container .field-name-field-photo .field-item:before {
     position: absolute;
     width: 100%;

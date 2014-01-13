@@ -156,6 +156,11 @@ function vhinandrich_preprocess_field(&$vars){
     }
     if($vars['element']['#view_mode'] == 'front_nodes' && $vars['element']['#bundle'] == 'photo'){
         if($vars['element']['#field_name'] == 'field_photo'){
+            $photoElements = element_children($vars['element']);
+            foreach($photoElements as $key){
+                $vars['element'][$key]['file']['#attributes']['data-test'] = 'test123';
+                dpm($vars['element'][$key]);
+            }
             $vars['attributes_array']['data-depth'] = '.8';
             $vars['classes_array'][] = 'layer';
         }
