@@ -54,6 +54,7 @@ stylesheets[all][] = css/page.front-nodes.css
 ; scripts[] = 'bootstrap/js/tab.js'
 ; scripts[] = 'bootstrap/js/transition.js'
 scripts[] = 'js/vhinandrich.js'
+scripts[] = 'js/jquery.parallax.min.js'
 scripts[] = 'js/waypoints.min.js'
 scripts[] = 'js/jquery.sticky-kit.min.js'
 ;
