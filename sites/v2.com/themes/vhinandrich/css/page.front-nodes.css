@@ -45,7 +45,7 @@ article.node.node-video.front_nodes .media-vimeo-outer-wrapper iframe{
     height: 100% !important;
 }
 
-article.node.node-photo.front_nodes{max-width: none;width: 100%;padding: 0;overflow: hidden}
+article.node.node-photo.front_nodes{max-width: none;width: 100%;padding: 0;overflow: hidden;position: relative}
 article.node.node-photo.front_nodes .prenuptial-photos-container{
     position: relative;
 }
