@@ -63,3 +63,7 @@ article{
     margin: 0 auto;
     padding: 3em 0 5em;
 }
+
+.navbar-default .navbar-toggle{margin-right: 1.5em}
+.navbar-default .navbar-collapse.in .navbar-nav>.active{color: #f17288}
+.navbar-default .navbar-collapse.in .navbar-nav>.active:after{border: none;}
