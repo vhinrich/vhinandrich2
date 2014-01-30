@@ -65,5 +65,6 @@ article{
 }
 
 .navbar-default .navbar-toggle{margin-right: 1.5em}
+.navbar-default .navbar-collapse.in .navbar-nav a{padding: 10px 1.5em}
 .navbar-default .navbar-collapse.in .navbar-nav>.active a{color: #f17288}
 .navbar-default .navbar-collapse.in .navbar-nav>.active:after{border: none;}
