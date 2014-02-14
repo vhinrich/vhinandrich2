@@ -20,8 +20,11 @@ article.node.node-article.timeline .field-name-field-media .field-items a.field-
 }
 article.node.node-article.timeline .field-name-field-media{position: relative}
 article.node.node-article.timeline .field-name-field-media.gallery.active{display: none}
+article.node.node-article.timeline .field-name-field-media.loading .field-items a.field-item-overlay-link,
+article.node.node-article.timeline .field-name-field-media.loading .field-items a.field-item-overlay-link:hover,
 article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link{color: #2c3e50}
 article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link:hover{color: #e74c3c}
+article.node.node-article.timeline .field-name-field-media.loading .field-items a.field-item-overlay-link .field-item-overlay,
 article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link:hover .field-item-overlay{zoom: 1;filter: alpha(opacity=50);opacity: 0.5}
 article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link .field-item-overlay > i{position: relative;top: 42%;font-size: 60pt}
 article.node.node-article.timeline .field-name-field-media.gallery-full .carousel-control .control-item{
