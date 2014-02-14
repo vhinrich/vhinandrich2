@@ -76,7 +76,7 @@
  $sites['localhost.v3'] = 'v3.com';
  $sites['localhost.v3.back'] = 'v3.com';
  $sites['127.0.0.1.v3'] = 'v3.com';
- $sites['vhinandrich.com.v3'] = 'v2.com';
+ $sites['vhinandrich.com.v3'] = 'v3.com';
  $sites['localhost.v3.back'] = 'v3.com';
  $sites['127.0.0.1.v3.back'] = 'v3.com';
  $sites['vhinandrich.com.v3.back'] = 'v3.com';
