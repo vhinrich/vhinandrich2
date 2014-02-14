@@ -2,6 +2,23 @@ article.node.node-article{padding: .5em 1em 1.5em}
 article.node.node-article .field-name-field-date{font-size: 11px;text-transform: uppercase;color: #7f8c8d}
 article.node.node-article .field-name-body{margin-top: 1.5em;text-align: left}
 article.node.node-article .field-name-field-media{margin: 1.5em auto}
+article.node.node-article img{width: 100%;height: auto}
 
 
 article.node.node-article.timeline .field-name-field-background-media{display: none}
+article.node.node-article.timeline .field-name-field-media .field-items {position: relative;}
+article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link .field-item-overlay{
+    position: absolute;width: 100%;height: 100%;left: 0;top: 0;background: #7f8c8d;
+    zoom: 1;
+    filter: alpha(opacity=20);
+    opacity: 0.2;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link{color: #2c3e50}
+article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link:hover{color: #e74c3c}
+article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link:hover .field-item-overlay{zoom: 1;filter: alpha(opacity=50);opacity: 0.5}
+article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link .field-item-overlay > i{position: relative;top: 42%;font-size: 60pt}
