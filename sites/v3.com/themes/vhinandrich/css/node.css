@@ -1,0 +1,7 @@
+article.node.node-article{padding: .5em 1em 1.5em}
+article.node.node-article .field-name-field-date{font-size: 11px;text-transform: uppercase;color: #7f8c8d}
+article.node.node-article .field-name-body{margin-top: 1.5em;text-align: left}
+article.node.node-article .field-name-field-media{margin: 1.5em auto}
+
+
+article.node.node-article.timeline .field-name-field-background-media{display: none}
