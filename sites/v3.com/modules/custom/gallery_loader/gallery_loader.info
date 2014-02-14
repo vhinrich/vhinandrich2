@@ -1,0 +1,12 @@
+name = Gallery Loader
+description = Loads multi file field to gallery
+package = MQ Cristobal
+core = 7.x
+
+files[] = gallery_loader.module
+; Information added by drupal.org packaging script on 2012-02-10
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "gallery_loader"
+datestamp = "1328832859"
+

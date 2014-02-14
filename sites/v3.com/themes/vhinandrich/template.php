@@ -50,6 +50,20 @@ function vhinandrich_preprocess_field_field_media__timeline(&$vars){
     if(count($vars['items'])>1){
         $vars['items'] = array(reset($vars['items']));
         $vars['classes_array'][] = 'gallery';
+        $vars['classes_array'][] = 'gallery-' . $vars['element']['#object']->nid;
+        $vars['attributes_array']['data-node-id'] = $vars['element']['#object']->nid;
         $vars['theme_hook_suggestions'][] = 'field__field_media__gallery__article__timeline';
+    }
+}
+
+function vhinandrich_preprocess_field_field_media__default(&$vars){
+    if(count($vars['items'])>1){
+        $vars['classes_array'][] = 'gallery-full';
+        $vars['classes_array'][] = 'gallery-full-' . $vars['element']['#object']->nid;
+        $vars['classes_array'][] = 'slide';
+        $vars['attributes_array']['data-node-id'] = $vars['element']['#object']->nid;
+        $vars['attributes_array']['data-ride'] = 'carousel';
+        $vars['attributes_array']['id'] = 'carousel-' . $vars['element']['#object']->nid;
+        $vars['theme_hook_suggestions'][] = 'field__field_media__gallery__article__full';
     }
 }

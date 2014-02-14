@@ -18,7 +18,16 @@ article.node.node-article.timeline .field-name-field-media .field-items a.field-
     -o-transition: all 500ms ease;
     transition: all 500ms ease;
 }
+article.node.node-article.timeline .field-name-field-media{position: relative}
+article.node.node-article.timeline .field-name-field-media.gallery.active{display: none}
 article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link{color: #2c3e50}
 article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link:hover{color: #e74c3c}
 article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link:hover .field-item-overlay{zoom: 1;filter: alpha(opacity=50);opacity: 0.5}
 article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link .field-item-overlay > i{position: relative;top: 42%;font-size: 60pt}
+article.node.node-article.timeline .field-name-field-media.gallery-full .carousel-control .control-item{
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block;
+    font-size: 30pt;
+}
