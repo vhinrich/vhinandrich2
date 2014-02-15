@@ -1,8 +1,12 @@
 (function($){
   Drupal.behaviors.gallery_loader = {
     attach: function(context, settings){
-      $('.gallery-full').remove();
-      $('.gallery').removeClass('active');
+      if($('body.page-node').length==0){
+        $('.gallery-full').remove();
+        $('.gallery').removeClass('active');
+      }else{
+        $('.gallery-full').carousel();
+      }
       
       $('a.field-item-overlay-link').click(function(e){
         e.preventDefault();
