@@ -28,6 +28,7 @@ stylesheets[all][] = css/style.css
 stylesheets[all][] = css/views.css
 stylesheets[all][] = css/blocks.css
 stylesheets[all][] = css/node.css
+stylesheets[all][] = css/easy-pie.style.css
 
 
 ; For information on choosing the desired method, please read the Drupal
@@ -61,6 +62,7 @@ stylesheets[all][] = css/node.css
 scripts[] = 'js/timeline.js'
 scripts[] = 'js/jquery.fittext.js'
 scripts[] = 'js/vhinandrich.js'
+scripts[] = 'js/jquery.easypiechart.min.js'
 ;
 ; ; Disable BootstrapCDN if using Bootstrap source files in your sub-theme.
 ; settings[bootstrap_cdn] = ''
