@@ -5,9 +5,9 @@
         $('.gallery-full').remove();
         $('.gallery').removeClass('active');
       }else{
-        $('.gallery-full .carousel-inner .item.active').ready(function(){
+        if($.isFunction($.fn.carousel)){
           $('.gallery-full').carousel();
-        });
+        }
       }
       
       $('a.field-item-overlay-link').click(function(e){
@@ -26,7 +26,9 @@
               $('.gallery').removeClass('loading');
               $('.field-item-overlay i', gallery).removeClass('fa-spin').removeClass('fa-spinner').addClass('fa-camera');
               $(gallery).addClass('active').after(data);
-              $('.gallery-full').carousel();
+              if($.isFunction($.fn.carousel)){
+                $('.gallery-full').carousel();
+              }
             }
           }
         );
