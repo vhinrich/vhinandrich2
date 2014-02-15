@@ -7,8 +7,9 @@ article.node.node-article img{width: 100%;height: auto}
 
 article.node.node-article.timeline .field-name-field-background-media{display: none}
 article.node.node-article.timeline .field-name-field-media .field-items {position: relative;}
+article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link{position: absolute;height: 100%;width: 100%;top: 0;left: 0}
 article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link .field-item-overlay{
-    position: absolute;width: 100%;height: 100%;left: 0;top: 0;background: #7f8c8d;
+    position: relative;width: 100%;height: 100%;left: 0;top: 0;background: #7f8c8d;
     zoom: 1;
     filter: alpha(opacity=20);
     opacity: 0.2;
