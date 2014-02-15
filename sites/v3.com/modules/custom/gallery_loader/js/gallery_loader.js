@@ -5,7 +5,7 @@
         $('.gallery-full').remove();
         $('.gallery').removeClass('active');
       }else{
-        $(window).load(function(){
+        $('.gallery-full .carousel-inner .item.active').ready(function(){
           $('.gallery-full').carousel();
         });
       }
