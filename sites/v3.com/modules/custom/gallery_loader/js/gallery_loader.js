@@ -5,7 +5,9 @@
         $('.gallery-full').remove();
         $('.gallery').removeClass('active');
       }else{
-        $('.gallery-full').carousel();
+        $('.gallery-full').ready(function(){
+          $('.gallery-full').carousel();
+        })
       }
       
       $('a.field-item-overlay-link').click(function(e){
