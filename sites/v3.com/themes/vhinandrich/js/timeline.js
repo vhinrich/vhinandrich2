@@ -18,24 +18,27 @@
             }
             
             var $things = $('article.node.node-article.timeline');
-        
-            $things.waypoint(function(direction) {
-              if (direction === 'down') {
-                Drupal.behaviors.timeline_waypoint.loadBg(this);
-              }
-            }, { offset: '50%' });
             
-            $things.waypoint(function(direction) {
-              if (direction === 'up') {
-                Drupal.behaviors.timeline_waypoint.loadBg(this);
-              }
-            }, {
-              offset: function() {
-                // This is the calculation that would give you
-                // "bottom of element hits middle of window"
-                return $.waypoints('viewportHeight') / 2 - $(this).outerHeight();
-              }
-            });
+            if ($things.length > 0) {
+                $things.waypoint(function(direction) {
+                    if (direction === 'down') {
+                        Drupal.behaviors.timeline_waypoint.loadBg(this);
+                    }
+                }, { offset: '50%' });
+                    
+                $things.waypoint(function(direction) {
+                    if (direction === 'up') {
+                        Drupal.behaviors.timeline_waypoint.loadBg(this);
+                      }
+                    }, {
+                    offset: function() {
+                      // This is the calculation that would give you
+                      // "bottom of element hits middle of window"
+                      return $.waypoints('viewportHeight') / 2 - $(this).outerHeight();
+                    }
+                });
+            }
+            
         }
     };
 })(jQuery);

@@ -35,3 +35,6 @@ article.node.node-article.timeline .field-name-field-media.gallery-full .carouse
     display: inline-block;
     font-size: 30pt;
 }
+
+article.node.node-article.full{background: #fff;}
+article.node.node-article.full .field-name-field-date{text-align: right}
