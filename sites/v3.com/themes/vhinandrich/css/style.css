@@ -8,7 +8,7 @@ a:hover, a:focus{color: #e74c3c;text-decoration: none}
 .navbar{border-radius: 0;margin-bottom: 0}
 .navbar.container{max-width: none;margin-top: 0;position: relative;z-index: 1}
 
-.footer{border-top: none}
+.footer{border-top: none;background: #f1c40f;color: #34495e;}
 
 .main-container.container{padding: 0}
 .main-container.container .row{max-width: 1280px;margin: 0 auto}
