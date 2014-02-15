@@ -19,7 +19,7 @@
         $('.field-item-overlay i', gallery).removeClass('fa-camera').addClass('fa-spinner').addClass('fa-spin');
         $.ajax(
           {
-            url: Drupal.settings.basePath + 'node/7/gallery',
+            url: Drupal.settings.basePath + 'node/' + nid + '/gallery',
             success: function(data){
               $('.gallery-full').remove();
               $('.gallery').removeClass('active');
