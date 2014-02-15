@@ -51,6 +51,21 @@
 
 .view.view-display-id-timeline_page_1 .timeline-pager{clear: both}
 
+
+
+
+.view.view-display-id-page{text-align: center}
+
+.view.view-display-id-page .view-content .views-row .views-field-nodefield{position: relative}
+.view.view-display-id-page .view-content .views-row .views-field-nodefield .field-content{position: relative;width: 100%;top: 0;margin: 0}
+.view.view-display-id-page .view-content .views-row .views-field-nodefield .field-content article{width: 93%; margin: 1.5em auto;position: relative;z-index: 2}
+.view.view-display-id-page .view-content .views-row:nth-of-type(even) .views-field-nodefield .field-content article{background: #fff;border-bottom: 10px solid}
+.view.view-display-id-page .view-content .views-row:nth-of-type(odd) .views-field-nodefield .field-content article{background: #ecf0f1;border-bottom: 10px solid}
+
+.view.view-display-id-page .timeline-pager{clear: both}
+
+
+
 @media(max-width: 767px){
     .view.view-display-id-timeline_page_1 .view-content > h3{top: 0}
     .view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(odd) .views-field.views-field-field-date-3 .field-content > a:after,
