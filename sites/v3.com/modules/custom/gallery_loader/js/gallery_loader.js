@@ -5,9 +5,9 @@
         $('.gallery-full').remove();
         $('.gallery').removeClass('active');
       }else{
-        $('.gallery-full').ready(function(){
+        $(window).load(function(){
           $('.gallery-full').carousel();
-        })
+        });
       }
       
       $('a.field-item-overlay-link').click(function(e){
