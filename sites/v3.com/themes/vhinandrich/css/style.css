@@ -44,7 +44,8 @@ a:hover, a:focus{color: #e74c3c;text-decoration: none}
 .timeline-bg-container .timeline-bg-wrapper img{width: 100%;height: auto;}
 .timeline-bg-container .timeline-bg-wrapper .timeline-bg-image{background-size: cover;background-repeat: no-repeat;background-position: center}
 
-.ui-btn-inner.ui-btn-corner-all{display: none} /*jquery mobile adds this element so i had to hide*/
+.ui-btn-inner.ui-btn-corner-all,
+.ui-loader.ui-corner-all.ui-body-a.ui-loader-default{display: none} /*jquery mobile adds these elements so i had to hide*/
 
 @media screen and (orientation:portrait) {
     .timeline-bg-container .timeline-bg-wrapper img{width: auto;height: 100%;}
