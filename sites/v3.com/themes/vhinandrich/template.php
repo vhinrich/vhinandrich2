@@ -79,3 +79,21 @@ function vhinandrich_preprocess_field_field_media__default(&$vars){
         $vars['theme_hook_suggestions'][] = 'field__field_media__gallery__article__full';
     }
 }
+
+/**
+* Implements hook_html_head_alter().
+*/
+function vhinandrich_html_head_alter(&$head_elements) {
+  if(arg(0)=='node' && is_numeric(arg(1))){
+    if(isset($head_elements['metatag_twitter:card'])){
+      $node = node_load(arg(1));
+      if(isset($node->field_media[LANGUAGE_NONE][0])){
+        if($node->field_media[LANGUAGE_NONE][0]['type']=='image'){}
+        else{
+            $head_elements['metatag_twitter:card']['#value'] = 'player';
+        }
+        
+      }
+    }
+  }
+}
