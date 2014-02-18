@@ -38,3 +38,9 @@ article.node.node-article .field-name-field-media.gallery-full .carousel-control
 
 article.node.node-article.full{background: #fff;max-width: 970px;margin: 0 auto}
 article.node.node-article.full .field-name-field-date{text-align: right}
+
+article.node.node-webform,
+body.page-node-done .webform-confirmation,
+body.page-node-done .links{background: #fff;max-width: 970px;margin: 0 auto;padding: 1.5em}
+article.node.node-webform .field-name-body{margin: 1em 0 3em}
+article.node.node-webform .webform-client-form .btn{margin-top: 2em;float: right}

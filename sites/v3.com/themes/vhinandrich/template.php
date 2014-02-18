@@ -33,6 +33,17 @@ function vhinandrich_preprocess_node(&$vars, $hook) {
     $vars['theme_hook_suggestions'][] = 'node____' . $vars['view_mode'];
 }
 
+function vhinandrich_form_alter(&$form){
+    if($form['#node']->type=='webform'){
+        $formChildren = element_children($form['submitted']);
+        foreach($formChildren as $key){
+            $child = $form['submitted'][$key];
+            if($child['#type']=='webform_email'){
+                $form['submitted'][$key]['#attributes']['class'][] = 'form-control';
+            }
+        }
+    }
+}
 
 function vhinandrich_preprocess_field(&$vars){
     $function = __FUNCTION__ . '_' . $vars['element']['#field_name'];
