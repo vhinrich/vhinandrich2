@@ -8,6 +8,10 @@ function vhinandrich_js_alter(&$javascript){
 
 }
 
+function vhinandrich_preprocess_page(&$vars){
+    
+}
+
 function vhinandrich_preprocess_node(&$vars, $hook) {
     $function = __FUNCTION__ . '_' . $vars['node']->type;
     // for content type in general

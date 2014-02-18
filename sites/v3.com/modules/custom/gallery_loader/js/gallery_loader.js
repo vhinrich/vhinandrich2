@@ -7,6 +7,12 @@
       }else{
         if($.isFunction($.fn.carousel)){
           $('.gallery-full').carousel();
+          $('.gallery-full').swiperight(function() {
+            $('.gallery-full').carousel('prev');
+          });
+          $('.gallery-full').swipeleft(function() {
+            $('.gallery-full').carousel('next');
+          });
         }
       }
       
@@ -28,6 +34,12 @@
               $(gallery).addClass('active').after(data);
               if($.isFunction($.fn.carousel)){
                 $('.gallery-full').carousel();
+                $('.gallery-full').swiperight(function() {
+                  $('.gallery-full').carousel('prev');
+                });
+                $('.gallery-full').swipeleft(function() {
+                  $('.gallery-full').carousel('next');
+                });
               }
             }
           }
