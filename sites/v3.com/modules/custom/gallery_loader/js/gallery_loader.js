@@ -7,11 +7,14 @@
       }else{
         if($.isFunction($.fn.carousel)){
           $('.gallery-full').carousel();
-          $('.gallery-full').swiperight(function() {
-            $('.gallery-full').carousel('prev');
-          });
-          $('.gallery-full').swipeleft(function() {
-            $('.gallery-full').carousel('next');
+          $('.gallery-full').swipe( {
+            swipeLeft: function() {
+              $(this).carousel('next');
+            },
+            swipeRight: function() {
+              $(this).carousel('prev');
+            },
+            allowPageScroll: 'vertical'
           });
         }
       }
@@ -34,11 +37,14 @@
               $(gallery).addClass('active').after(data);
               if($.isFunction($.fn.carousel)){
                 $('.gallery-full').carousel();
-                $('.gallery-full').swiperight(function() {
-                  $('.gallery-full').carousel('prev');
-                });
-                $('.gallery-full').swipeleft(function() {
-                  $('.gallery-full').carousel('next');
+                $('.gallery-full').swipe( {
+                  swipeLeft: function() {
+                    $(this).carousel('next');
+                  },
+                  swipeRight: function() {
+                    $(this).carousel('prev');
+                  },
+                  allowPageScroll: 'vertical'
                 });
               }
             }
