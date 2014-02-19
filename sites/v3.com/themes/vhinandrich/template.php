@@ -8,7 +8,6 @@ function vhinandrich_js_alter(&$scripts){
     if (variable_get('uglifyjs_skip_uglify', FALSE)) {
     return;
   }
-  $uglify = vhinandrich_uglifyjs_info($scripts);
 
   $uglify_map = array();
   if ($cache = cache_get('uglifyjs_map') && isset($cache) && count($cache->data)>0) {
