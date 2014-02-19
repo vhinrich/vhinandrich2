@@ -38,7 +38,8 @@ function vhinandrich_preprocess_node(&$vars, $hook) {
 }
 
 function vhinandrich_form_alter(&$form){
-    if($form['#node']->type=='webform'){
+    if(isset($form['#node']) && $form['#node']->type=='webform'){
+      if(isset($form['submitted'])){
         $formChildren = element_children($form['submitted']);
         foreach($formChildren as $key){
             $child = $form['submitted'][$key];
@@ -46,6 +47,7 @@ function vhinandrich_form_alter(&$form){
                 $form['submitted'][$key]['#attributes']['class'][] = 'form-control';
             }
         }
+      }
     }
 }
 
