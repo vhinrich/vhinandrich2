@@ -10,7 +10,7 @@
         },
         attach: function(context, settings){
             Drupal.behaviors.vhinandrich.initFitText();
-            
+            Drupal.behaviors.vhinandrich.ajaxGAPush();
         }
     };
 })(jQuery);
