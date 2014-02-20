@@ -34,6 +34,54 @@ function social_buttons_form_submit($form, $form_state){
   variable_set('sb_' . $form_state['values']['type'], $form_state['values']['display_social_buttons']);
 }
 
+function social_buttons_preprocess_html(&$vars){
+  $vars['classes_array'][] = 'row-offcanvas';
+  $vars['classes_array'][] = 'row-offcanvas-right';
+}
+
+function social_buttons_preprocess_page(&$vars){
+  //social icons headers
+  
+  $facebook_header = '<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=202989203205264";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, \'script\', \'facebook-jssdk\'));</script>';
+
+  $twitter_header = '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</script>';
+  
+  $google_plus_header = '<script type="text/javascript">
+  (function() {
+    var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
+    po.src = \'https://apis.google.com/js/platform.js\';
+    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>';
+
+  $pinterest_header = '<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>';
+  
+  
+  $vars['page']['header']['social_buttons_headers'] = array(
+    '#markup' => $facebook_header . $google_plus_header,
+  );
+  
+  $vars['page']['content']['social_buttons_inlines'] = array(
+    '#markup' => $twitter_header,
+  );
+  
+  //$vars['page']['page_bottom']['social_buttons_footers'] = array(
+  //  '#markup' => $twitter_header,
+  //);
+  
+  //render block
+  $social_buttons = block_load('social_buttons', 'social_buttons');
+  $social_buttons = _block_get_renderable_array(_block_render_blocks(array($social_buttons)));
+  array_push($vars['page']['header'], $social_buttons);
+}
+
 /**
  * Gets the auto node title setting associated with the given content type.
  */
@@ -61,17 +109,25 @@ function social_buttons_node_type_insert($info){
 function social_buttons_node_view($node, $view_mode, $langcode){
   $show_social = social_buttons_get_setting($node->type);
   if($show_social){
+    $icons = array('facebook', 'twitter', 'google-plus', 'pinterest'); //icons
+    $node_url = url('node/' . $node->nid, array('absolute' => true));
+    
+    drupal_add_css(drupal_get_path('module', 'social_buttons') . '/css/social_buttons.css');
+    drupal_add_js(drupal_get_path('module', 'social_buttons') . '/js/social_buttons.js');
+    //drupal_add_js(drupal_get_path('module', 'social_buttons') . '/js/sidr/jquery.sidr.min.js');
+    //drupal_add_css(drupal_get_path('module', 'social_buttons') . '/js/sidr/stylesheets/jquery.sidr.dark.css');
+    
     $node->content['social_buttons'] = array(
       '#theme' => 'field',
       '#view_mode' => $view_mode,
       '#field_name' => 'social_buttons',
-      '#weight' => 0,
+      '#weight' => -1,
       '#title' => 'social buttons',
       '#label_display' => 'hidden',
       '#field_type' => 'textfield',
       '#bundle' => $node->type,
+      '#node' => $node,
     );
-    $icons = array('facebook', 'twitter', 'google-plus', 'pinterest');
     foreach($icons as $key => $icon){
       $node->content['social_buttons']['#items'][] = array('value' => $icon);
       $node->content['social_buttons'][] = array(
@@ -83,14 +139,72 @@ function social_buttons_node_view($node, $view_mode, $langcode){
         '#label_display' => 'hidden',
         '#field_type' => 'textfield',
         '#bundle' => $node->type,
-        '#items' => array(array('value' => $icon)),
-        array('name' => $icon, '#markup' => $icon)
+        '#items' => array(array('value' => $icon, 'url' => $node_url)),
+        array('name' => $icon, '#markup' => social_buttons_generate_button($icon, $node_url, $node))
       );
     }
   }
+}
+
+function social_buttons_preprocess_field(&$vars){
+  if($vars['element']['#field_name']=='social_buttons'){
+    $vars['attributes_array']['data-title'] = $vars['element']['#node']->title;
+  }
+}
+
+function social_buttons_generate_button($icon, $url, $node){
+  $markup = '';
+  switch ($icon){
+    case 'facebook':
+      $markup = '<div class="fb-like" data-href="' . $url . '" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>';
+      break;
+    case 'twitter':
+      $markup = '<a href="https://twitter.com/share" class="twitter-share-button" data-url="' . $url . '" data-via="markquirvien">Tweet</a>';
+      break;
+    case 'google-plus':
+      $markup = '<div class="g-plusone" data-size="medium" data-href="' . $url . '"></div>';
+      break;
+    case 'pinterest':
+      //$url = urlencode($url);
+      $url = urlencode(token_replace('[node:node-image]', array('node' => $node)));
+      $description = urlencode($node->title);
+      $markup = '<a href="//www.pinterest.com/pin/create/button/?url=' . $url . '&description=' . $description . '" data-pin-do="buttonPin" data-pin-config="above"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>';
+      break;
+    default:
+      $markup = $icon;
+      break;
+  }
+  return $markup;
 }
 
 function social_buttons_render_button($icon){
   $classes = implode(' ', $icon['classes_array']);
   return '<div class="social-button ' . $classes . '">' . $icon['value'] . '</div>';
 }
+
+function social_buttons_block_info() {
+  // This example comes from node.module.
+  $blocks['social_buttons'] = array(
+    'info' => t('Social Buttons'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function social_buttons_block_view($delta = '') {
+  $block = array();
+
+
+  switch ($delta) {
+    case 'social_buttons':
+      $block['content'] = '<div id="social-buttons-container" class="social-buttons-container sidebar-offcanvas"><div class="social-buttons-inner"><div class="social-buttons-wrapper"></div></div></div>';
+      break;
+  }
+  
+  return $block;
+}
+

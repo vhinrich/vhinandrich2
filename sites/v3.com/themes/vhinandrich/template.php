@@ -97,13 +97,15 @@ function vhinandrich_preprocess_field_field_media__default(&$vars){
     }
 }
 
-function vhinandrich_preprocess_field_social_buttons__full(&$vars){  
+function vhinandrich_preprocess_field_social_buttons(&$vars){
+  $vars['classes_array'][] = 'fa';
+  $vars['classes_array'][] = 'fa-share';
 }
 
-function vhinandrich_preprocess_field_social_button__full(&$vars){
-  $vars['classes_array'][] = 'fa';
-  $item = reset($vars['items']);
-  $vars['classes_array'][] = 'fa-' . $item['name'];
+function vhinandrich_preprocess_field_social_button__timeline(&$vars){
+  //$vars['classes_array'][] = 'fa';
+  //$item = reset($vars['items']);
+  //$vars['classes_array'][] = 'fa-' . $item['name'];
 }
 
 /**

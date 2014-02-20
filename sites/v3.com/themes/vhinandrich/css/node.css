@@ -3,6 +3,13 @@ article.node.node-article .field-name-field-date{font-size: 11px;text-transform:
 article.node.node-article .field-name-body{margin-top: 1.5em;text-align: left}
 article.node.node-article .field-name-field-media{margin: 1.5em auto}
 article.node.node-article img{width: 100%;height: auto}
+article.node.node-article .field-name-social-buttons{clear: both;position: absolute;top: 5px;right: 5px;cursor: pointer}
+article.node.node-article .field-name-social-buttons:after{content: 'share';display: none;position: absolute;right: 0}
+article.node.node-article .field-name-social-buttons:hover:after{display: block}
+article.node.node-article .field-name-social-buttons .field-items .field-item{float: left;margin: 0 .3em;display: none}
+article.node.node-article .field-name-social-buttons .field-items .field-item:first-of-type{margin-left: 0;clear: left}
+article.node.node-article .field-name-social-buttons .field-items .field-item:last-of-type{margin-right: 0;clear: right}
+article.node.node-article .field-name-social-buttons .field-name-social-button .field-item{display: none}
 
 
 article.node.node-article.timeline .field-name-field-background-media{display: none}
@@ -36,8 +43,8 @@ article.node.node-article .field-name-field-media.gallery-full .carousel-control
     font-size: 30pt;
 }
 
-article.node.node-article.full{background: #fff;max-width: 970px;margin: 0 auto}
-article.node.node-article.full .field-name-field-date{text-align: right}
+article.node.node-article.full{background: #fff;max-width: 970px;margin: 0 auto;position: relative}
+article.node.node-article.full .field-name-field-date{text-align: right;margin-top: 3em}
 
 article.node.node-webform,
 body.page-node-done .webform-confirmation,
