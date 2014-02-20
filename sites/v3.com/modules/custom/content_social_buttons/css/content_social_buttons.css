@@ -16,6 +16,11 @@
      -moz-transition: all .25s ease-out;
           transition: all .25s ease-out;
 }
+.row-offcanvas .navbar-fixed-top{
+  -webkit-transition: all .25s ease-out;
+     -moz-transition: all .25s ease-out;
+          transition: all .25s ease-out;
+}
 
 .row-offcanvas-right {
   right: 0;
