@@ -1,12 +1,12 @@
-name = Social Buttons
-description = Social buttons
+name = Content Social Buttons
+description = Content Social buttons
 package = MQ Cristobal
 core = 7.x
 
-files[] = social_buttons.module
+files[] = content_social_buttons.module
 ; Information added by drupal.org packaging script on 2012-02-10
 version = "7.x-1.x-dev"
 core = "7.x"
-project = "social_buttons"
+project = "content_social_buttons"
 datestamp = "1328832859"
 

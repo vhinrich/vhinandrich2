@@ -154,12 +154,12 @@ function vhinandrich_preprocess_field_field_media__default(&$vars){
     }
 }
 
-function vhinandrich_preprocess_field_social_buttons(&$vars){
+function vhinandrich_preprocess_field_content_social_buttons(&$vars){
   $vars['classes_array'][] = 'fa';
   $vars['classes_array'][] = 'fa-share';
 }
 
-function vhinandrich_preprocess_field_social_button__timeline(&$vars){
+function vhinandrich_preprocess_field_content_social_button__timeline(&$vars){
   //$vars['classes_array'][] = 'fa';
   //$item = reset($vars['items']);
   //$vars['classes_array'][] = 'fa-' . $item['name'];

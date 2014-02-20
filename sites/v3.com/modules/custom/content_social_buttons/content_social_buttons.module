@@ -1,22 +1,22 @@
 <?php
 
-define('SOCIAL_BUTTONS_DISABLED', 0);
-define('SOCIAL_BUTTONS_ENABLED', 1);
+define('CONTENT_SOCIAL_BUTTONS_DISABLED', 0);
+define('CONTENT_SOCIAL_BUTTONS_ENABLED', 1);
 
 /**
  * Implements hook_menu().
  */
-function social_buttons_menu(){  
+function content_social_buttons_menu(){  
   $items = array();
   return $items;
 }
 
-function social_buttons_form_node_form_alter(&$form, $form_state){
+function content_social_buttons_form_node_form_alter(&$form, $form_state){
   
 }
 
-function social_buttons_form_node_type_form_alter(&$form, &$form_state) {
-  $default_value = social_buttons_get_setting($form['#node_type']->type);
+function content_social_buttons_form_node_type_form_alter(&$form, &$form_state) {
+  $default_value = content_social_buttons_get_setting($form['#node_type']->type);
   $form['social_buttons'] = array(
     '#type' => 'fieldset',
     '#group' => 'additional_settings',
@@ -27,19 +27,19 @@ function social_buttons_form_node_type_form_alter(&$form, &$form_state) {
     '#title' => t('Display social buttons'),
     '#default_value' => $default_value,
   );
-  $form['#submit'][] = 'social_buttons_form_submit';
+  $form['#submit'][] = 'content_social_buttons_form_submit';
 }
 
-function social_buttons_form_submit($form, $form_state){
+function content_social_buttons_form_submit($form, $form_state){
   variable_set('sb_' . $form_state['values']['type'], $form_state['values']['display_social_buttons']);
 }
 
-function social_buttons_preprocess_html(&$vars){
+function content_social_buttons_preprocess_html(&$vars){
   $vars['classes_array'][] = 'row-offcanvas';
   $vars['classes_array'][] = 'row-offcanvas-right';
 }
 
-function social_buttons_preprocess_page(&$vars){
+function content_social_buttons_preprocess_page(&$vars){
   //social icons headers
   
   $facebook_header = '<div id="fb-root"></div>
@@ -77,7 +77,7 @@ function social_buttons_preprocess_page(&$vars){
   //);
   
   //render block
-  $social_buttons = block_load('social_buttons', 'social_buttons');
+  $social_buttons = block_load('content_social_buttons', 'content_social_buttons');
   $social_buttons = _block_get_renderable_array(_block_render_blocks(array($social_buttons)));
   array_push($vars['page']['header'], $social_buttons);
 }
@@ -85,42 +85,40 @@ function social_buttons_preprocess_page(&$vars){
 /**
  * Gets the auto node title setting associated with the given content type.
  */
-function social_buttons_get_setting($type) {
-  return variable_get('sb_' . $type, SOCIAL_BUTTONS_DISABLED);
+function content_social_buttons_get_setting($type) {
+  return variable_get('sb_' . $type, CONTENT_SOCIAL_BUTTONS_DISABLED);
 }
 
-function social_buttons_node_type_update($info) {
+function content_social_buttons_node_type_update($info) {
   if (!empty($info->old_type) && $info->old_type != $info->type) {
-    variable_set('sb_' . $info->type, social_buttons_get_setting($info->old_type));
-    variable_del('sb_' . $info->old_type);
+    variable_set('csb_' . $info->type, content_social_buttons_get_setting($info->old_type));
+    variable_del('csb_' . $info->old_type);
   }else{
-    variable_set('sb_' . $info->type, social_buttons_get_setting($info->type));
+    variable_set('csb_' . $info->type, content_social_buttons_get_setting($info->type));
   }
 }
 
-function social_buttons_node_type_delete($info){
-  variable_del('sb_' . $info->type);
+function content_social_buttons_node_type_delete($info){
+  variable_del('csb_' . $info->type);
 }
 
-function social_buttons_node_type_insert($info){
-  variable_set('sb_' . $info->type, social_buttons_get_setting($info->old_type));
+function content_social_buttons_node_type_insert($info){
+  variable_set('csb_' . $info->type, content_social_buttons_get_setting($info->old_type));
 }
 
-function social_buttons_node_view($node, $view_mode, $langcode){
-  $show_social = social_buttons_get_setting($node->type);
+function content_social_buttons_node_view($node, $view_mode, $langcode){
+  $show_social = content_social_buttons_get_setting($node->type);
   if($show_social){
     $icons = array('facebook', 'twitter', 'google-plus', 'pinterest'); //icons
     $node_url = url('node/' . $node->nid, array('absolute' => true));
     
-    drupal_add_css(drupal_get_path('module', 'social_buttons') . '/css/social_buttons.css');
-    drupal_add_js(drupal_get_path('module', 'social_buttons') . '/js/social_buttons.js');
-    //drupal_add_js(drupal_get_path('module', 'social_buttons') . '/js/sidr/jquery.sidr.min.js');
-    //drupal_add_css(drupal_get_path('module', 'social_buttons') . '/js/sidr/stylesheets/jquery.sidr.dark.css');
+    drupal_add_css(drupal_get_path('module', 'content_social_buttons') . '/css/content_social_buttons.css');
+    drupal_add_js(drupal_get_path('module', 'content_social_buttons') . '/js/content_social_buttons.js');
     
-    $node->content['social_buttons'] = array(
+    $node->content['content_social_buttons'] = array(
       '#theme' => 'field',
       '#view_mode' => $view_mode,
-      '#field_name' => 'social_buttons',
+      '#field_name' => 'content_social_buttons',
       '#weight' => -1,
       '#title' => 'social buttons',
       '#label_display' => 'hidden',
@@ -129,30 +127,30 @@ function social_buttons_node_view($node, $view_mode, $langcode){
       '#node' => $node,
     );
     foreach($icons as $key => $icon){
-      $node->content['social_buttons']['#items'][] = array('value' => $icon);
-      $node->content['social_buttons'][] = array(
+      $node->content['content_social_buttons']['#items'][] = array('value' => $icon);
+      $node->content['content_social_buttons'][] = array(
         '#theme' => 'field',
         '#view_mode' => $view_mode,
-        '#field_name' => 'social_button',
+        '#field_name' => 'content_social_button',
         '#weight' => 0,
         '#title' => 'social buttons',
         '#label_display' => 'hidden',
         '#field_type' => 'textfield',
         '#bundle' => $node->type,
         '#items' => array(array('value' => $icon, 'url' => $node_url)),
-        array('name' => $icon, '#markup' => social_buttons_generate_button($icon, $node_url, $node))
+        array('name' => $icon, '#markup' => content_social_buttons_generate_button($icon, $node_url, $node))
       );
     }
   }
 }
 
-function social_buttons_preprocess_field(&$vars){
-  if($vars['element']['#field_name']=='social_buttons'){
+function content_social_buttons_preprocess_field(&$vars){
+  if($vars['element']['#field_name']=='content_social_buttons'){
     $vars['attributes_array']['data-title'] = $vars['element']['#node']->title;
   }
 }
 
-function social_buttons_generate_button($icon, $url, $node){
+function content_social_buttons_generate_button($icon, $url, $node){
   $markup = '';
   switch ($icon){
     case 'facebook':
@@ -177,14 +175,9 @@ function social_buttons_generate_button($icon, $url, $node){
   return $markup;
 }
 
-function social_buttons_render_button($icon){
-  $classes = implode(' ', $icon['classes_array']);
-  return '<div class="social-button ' . $classes . '">' . $icon['value'] . '</div>';
-}
-
-function social_buttons_block_info() {
+function content_social_buttons_block_info() {
   // This example comes from node.module.
-  $blocks['social_buttons'] = array(
+  $blocks['content_social_buttons'] = array(
     'info' => t('Social Buttons'),
     'cache' => DRUPAL_NO_CACHE,
   );
@@ -195,13 +188,13 @@ function social_buttons_block_info() {
 /**
  * Implements hook_block_view().
  */
-function social_buttons_block_view($delta = '') {
+function content_social_buttons_block_view($delta = '') {
   $block = array();
 
 
   switch ($delta) {
-    case 'social_buttons':
-      $block['content'] = '<div id="social-buttons-container" class="social-buttons-container sidebar-offcanvas"><div class="social-buttons-inner"><div class="social-buttons-wrapper"></div></div></div>';
+    case 'content_social_buttons':
+      $block['content'] = '<div id="content-social-buttons-container" class="content-social-buttons-container sidebar-offcanvas"><div class="content-social-buttons-inner"><div class="content-social-buttons-wrapper"></div></div></div>';
       break;
   }
   
