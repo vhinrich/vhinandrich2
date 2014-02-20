@@ -1,13 +1,14 @@
-/*.social-buttons-wrapper > div{width: 90%;margin: 1em auto}
-.social-buttons-wrapper .field-item .field-name-social-button{margin-top: .3em}
-.social-buttons-container.sidr{background: #ecf0f1;box-shadow: inset 0 0 40px 0px #bdc3c7;-webkit-box-shadow: inset 0 0 40px 0px #bdc3c7;-moz-box-shadow: inset 0 0 40px 0px #bdc3c7;}
-.social-buttons-container.sidr h1, .social-buttons-container.sidr h2, .social-buttons-container.sidr h3,
-.social-buttons-container.sidr h4, .social-buttons-container.sidr h5, .social-buttons-container.sidr h6{}*/
-
-.content-social-buttons-container{background: #ecf0f1;height: 100%;top: 61px !important;box-shadow: inset 0 0 40px 0px #bdc3c7;-webkit-box-shadow: inset 0 0 40px 0px #bdc3c7;-moz-box-shadow: inset 0 0 40px 0px #bdc3c7;}
+.content-social-buttons-container{
+  background: #bdc3c7;
+  height: 100%;
+  box-shadow: inset 0 0 40px 0px #2c3e50;
+  -webkit-box-shadow: inset 0 0 40px 0px #2c3e50;
+  -moz-box-shadow: inset 0 0 40px 0px #2c3e50;
+  color: #7f8c8d
+}
 .content-social-buttons-container .content-social-buttons-inner{width: 90%;margin: 0 auto}
 .content-social-buttons-container .content-social-buttons-inner .field-item .field-name-content-social-button{margin-top: .3em}
-.content-social-buttons-container .content-social-buttons-inner h2 > span{font-weight: 700}
+.content-social-buttons-container .content-social-buttons-inner h2 > span{color: #ecf0f1}
 
 .row-offcanvas {
   position: relative;
@@ -36,6 +37,10 @@
 
 .row-offcanvas-right.active {
   right: 300px; /* 6 columns */
+}
+.row-offcanvas-right.active .navbar-fixed-top{
+  right: 300px;
+  left: -300px;
 }
 
 .row-offcanvas-left.active {

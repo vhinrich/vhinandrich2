@@ -163,10 +163,10 @@ function content_social_buttons_generate_button($icon, $url, $node){
       $markup = '<div class="g-plusone" data-size="medium" data-href="' . $url . '"></div>';
       break;
     case 'pinterest':
-      //$url = urlencode($url);
-      $url = urlencode(token_replace('[node:node-image]', array('node' => $node)));
+      $url = urlencode($url);
+      $media_url = urlencode(token_replace('[node:node-image]', array('node' => $node)));
       $description = urlencode($node->title);
-      $markup = '<a href="//www.pinterest.com/pin/create/button/?url=' . $url . '&description=' . $description . '" data-pin-do="buttonPin" data-pin-config="above"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>';
+      $markup = '<a href="//www.pinterest.com/pin/create/button/?url=' . $url . '&media=' . $media_url . '&description=' . $description . '" data-pin-do="buttonPin" data-pin-config="above"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>';
       break;
     default:
       $markup = $icon;
