@@ -32,24 +32,24 @@
 
 .row-offcanvas-right
 .sidebar-offcanvas {
-  right: -300px; /* 6 columns */
+  right: -250px; /* 6 columns */
 }
 
 .row-offcanvas-left
 .sidebar-offcanvas {
-  left: -300px; /* 6 columns */
+  left: -250px; /* 6 columns */
 }
 
 .row-offcanvas-right.active {
-  right: 300px; /* 6 columns */
+  right: 250px; /* 6 columns */
 }
 .row-offcanvas-right.active .navbar-fixed-top{
-  right: 300px;
-  left: -300px;
+  right: 250px;
+  left: -250px;
 }
 
 .row-offcanvas-left.active {
-  left: 300px; /* 6 columns */
+  left: 250px; /* 6 columns */
 }
 
 .row-offcanvas-right.active
@@ -60,7 +60,7 @@
 .sidebar-offcanvas {
   position: fixed;
   top: 0;
-  width: 300px; /* 6 columns */
+  width: 250px; /* 6 columns */
   -webkit-transition: all .25s ease-out;
      -moz-transition: all .25s ease-out;
           transition: all .25s ease-out;
