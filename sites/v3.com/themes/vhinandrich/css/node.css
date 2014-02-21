@@ -3,7 +3,20 @@ article.node.node-article .field-name-field-date{font-size: 11px;text-transform:
 article.node.node-article .field-name-body{margin-top: 1.5em;text-align: left}
 article.node.node-article .field-name-field-media{margin: 1.5em auto}
 article.node.node-article img{width: 100%;height: auto}
-article.node.node-article .field-name-content-social-buttons.btn{clear: both;position: absolute;top: 5px;right: 5px;cursor: pointer}
+article.node.node-article.timeline > *:hover .field-name-content-social-buttons.btn,
+article.node.node-article.timeline:hover .field-name-content-social-buttons.btn{display: block}
+article.node.node-article .field-name-content-social-buttons.btn{
+    display: none;
+    clear: both;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    background: #bdc3c7;
+    border-radius: 0;
+    color: #ecf0f1;
+}
+
 article.node.node-article .field-name-content-social-buttons.btn:hover{color: #7f8c8d}
 article.node.node-article .field-name-content-social-buttons .field-items .field-item img{width: auto;height: auto}
 article.node.node-article .field-name-content-social-buttons.btn .field-items .field-item{display: none}
