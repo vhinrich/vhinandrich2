@@ -179,19 +179,22 @@ function content_social_buttons_node_view($node, $view_mode, $langcode){
       '#node' => $node,
     );
     foreach($icons as $key => $icon){
-      $node->content['content_social_buttons']['#items'][] = array('value' => $icon);
-      $node->content['content_social_buttons'][] = array(
-        '#theme' => 'field',
-        '#view_mode' => $view_mode,
-        '#field_name' => 'content_social_button',
-        '#weight' => 0,
-        '#title' => 'social buttons',
-        '#label_display' => 'hidden',
-        '#field_type' => 'textfield',
-        '#bundle' => $node->type,
-        '#items' => array(array('value' => $icon, 'url' => $node_url)),
-        array('name' => $icon, '#markup' => content_social_buttons_generate_button($icon, $node_url, $node))
-      );
+      $show_icon = content_social_buttons_icon_get_setting($node->type, $icon);
+      if($show_icon){
+        $node->content['content_social_buttons']['#items'][] = array('value' => $icon);
+        $node->content['content_social_buttons'][] = array(
+          '#theme' => 'field',
+          '#view_mode' => $view_mode,
+          '#field_name' => 'content_social_button',
+          '#weight' => 0,
+          '#title' => 'social buttons',
+          '#label_display' => 'hidden',
+          '#field_type' => 'textfield',
+          '#bundle' => $node->type,
+          '#items' => array(array('value' => $icon, 'url' => $node_url)),
+          array('name' => $icon, '#markup' => content_social_buttons_generate_button($icon, $node_url, $node))
+        );
+      }
     }
   }
 }
