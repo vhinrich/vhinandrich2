@@ -3,7 +3,8 @@ article.node.node-article .field-name-field-date{font-size: 11px;text-transform:
 article.node.node-article .field-name-body{margin-top: 1.5em;text-align: left}
 article.node.node-article .field-name-field-media{margin: 1.5em auto}
 article.node.node-article img{width: 100%;height: auto}
-article.node.node-article.timeline header h2{margin-top: 55px}
+article.node.node-article.timeline header h2{margin-top: 50px}
+article.node.node-article.timeline:hover .field-name-content-social-buttons.btn,
 article.node.node-article.timeline > *:hover .field-name-content-social-buttons.btn,
 article.node.node-article.timeline:hover .field-name-content-social-buttons.btn{display: block}
 article.node.node-article .field-name-content-social-buttons.btn{
@@ -17,6 +18,7 @@ article.node.node-article .field-name-content-social-buttons.btn{
     border-radius: 0;
     color: #ecf0f1;
 }
+article.node.node-article.timeline{padding-bottom: 55px}
 
 article.node.node-article .field-name-content-social-buttons.btn:hover{color: #7f8c8d}
 article.node.node-article .field-name-content-social-buttons .field-items .field-item img{width: auto;height: auto}
