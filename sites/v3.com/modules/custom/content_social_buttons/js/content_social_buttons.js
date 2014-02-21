@@ -3,6 +3,10 @@
     toggleShare: function(obj, state){
       if (state) {
         $('.content-social-buttons-wrapper').html('<div class="content-social-buttons-close btn">X</div><h2>SHARE <span>' + $(obj).attr('data-title') + '</span></h2><div>' + $(obj).html() + '</div>');
+        $('.content-social-buttons-close.btn').click(function(e){
+          Drupal.behaviors.content_social_buttons.toggleShare($(this), false);
+          $('.row-offcanvas').removeClass('active');
+        });
       }else{
         $('.content-social-buttons-wrapper').html('');
       }
@@ -37,11 +41,6 @@
       $('.field-name-content-social-buttons.btn').click(function(e){
         Drupal.behaviors.content_social_buttons.toggleShare($(this), !$('.row-offcanvas').hasClass('active'));
         $('.row-offcanvas').toggleClass('active');
-        
-        $('.content-social-buttons-close.btn').click(function(e){
-          Drupal.behaviors.content_social_buttons.toggleShare($(this), false);
-          $('.row-offcanvas').removeClass('active');
-        });
       });
       
       
