@@ -3,6 +3,7 @@ article.node.node-article .field-name-field-date{font-size: 11px;text-transform:
 article.node.node-article .field-name-body{margin-top: 1.5em;text-align: left}
 article.node.node-article .field-name-field-media{margin: 1.5em auto}
 article.node.node-article img{width: 100%;height: auto}
+article.node.node-article.timeline header h2{margin-top: 55px}
 article.node.node-article.timeline > *:hover .field-name-content-social-buttons.btn,
 article.node.node-article.timeline:hover .field-name-content-social-buttons.btn{display: block}
 article.node.node-article .field-name-content-social-buttons.btn{
