@@ -39,7 +39,7 @@
 .view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(odd) .views-field.views-field-field-date-3{float: left;text-align: right}
 
 .view.view-display-id-timeline_page_1 .view-content .views-row .views-field-nodefield{position: relative}
-.view.view-display-id-timeline_page_1 .view-content .views-row .views-field-nodefield .field-content{position: relative;width: 50%;top: -38px;margin: 0}
+.view.view-display-id-timeline_page_1 .view-content .views-row .views-field-nodefield .field-content{position: relative;width: 50%;top: -38px;margin: 0;padding: 3em 0;}
 .view.view-display-id-timeline_page_1 .view-content .views-row .views-field-nodefield .field-content article{width: 93%; margin: 0 auto;position: relative;z-index: 2}
 .view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(even) .views-field-nodefield .field-content article{-moz-box-shadow: -10px 10px 0 0;-webkit-box-shadow: -10px 10px 0 0;box-shadow: -10px 10px 0 0;background: #fff}
 .view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(odd) .views-field-nodefield .field-content article{-moz-box-shadow: 10px 10px 0 0;-webkit-box-shadow: 10px 10px 0 0;box-shadow: 10px 10px 0 0;background: #ecf0f1}
