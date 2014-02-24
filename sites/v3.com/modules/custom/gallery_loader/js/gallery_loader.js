@@ -22,12 +22,12 @@
       $('.left.carousel-control').click(function(e){
         e.preventDefault();
         var carousel = $(this).parents('.gallery-full');
-        $(carousel).carousel('prev');
+        $(carousel).carousel('next');
       });
       $('.right.carousel-control').click(function(e){
         e.preventDefault();
         var carousel = $(this).parents('.gallery-full');
-        $(carousel).carousel('next');
+        $(carousel).carousel('prev');
       });
       
       $('a.field-item-overlay-link').click(function(e){
