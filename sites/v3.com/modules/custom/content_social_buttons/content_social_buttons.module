@@ -93,7 +93,7 @@ function content_social_buttons_preprocess_page(&$vars){
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, \'script\', \'facebook-jssdk\'));');
+}(document, \'script\', \'facebook-jssdk\'));','inline');
 
   $twitter_header = '';
   drupal_add_js('!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');', 'inline');
@@ -103,11 +103,11 @@ function content_social_buttons_preprocess_page(&$vars){
     var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
     po.src = \'https://apis.google.com/js/platform.js\';
     var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
-  })();');
+  })();', 'inline');
 
   $pinterest_header = '';
   //'<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>';
-  drupal_add_js('http://assets.pinterest.com/js/pinit.js');
+  drupal_add_js('http://assets.pinterest.com/js/pinit.js', 'inline');
   
   
   $vars['page']['header']['social_buttons_headers'] = array(
