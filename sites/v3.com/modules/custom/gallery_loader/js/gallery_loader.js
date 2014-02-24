@@ -19,6 +19,17 @@
         }
       }
       
+      $('.left.carousel-control').click(function(e){
+        e.preventDefault();
+        var carousel = $(this).parents('.gallery-full');
+        $(carousel).carousel('prev');
+      });
+      $('.right.carousel-control').click(function(e){
+        e.preventDefault();
+        var carousel = $(this).parents('.gallery-full');
+        $(carousel).carousel('next');
+      });
+      
       $('a.field-item-overlay-link').click(function(e){
         e.preventDefault();
         var gallery = $(this).parents('.gallery');
