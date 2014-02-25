@@ -38,14 +38,15 @@
       if (typeof gapi !== "undefined")
         gapi.plusone.go();
     },
+    socialButtonClick: function(){
+      Drupal.behaviors.content_social_buttons.toggleShare($(this), !$('.row-offcanvas').hasClass('active'));
+      $('.row-offcanvas').toggleClass('active');
+    },
     attach: function(context, settings){
       
       Drupal.behaviors.content_social_buttons.refreshSocialButtons();
-      $('.field-name-content-social-buttons.btn').click(function(e){
-        Drupal.behaviors.content_social_buttons.toggleShare($(this), !$('.row-offcanvas').hasClass('active'));
-        $('.row-offcanvas').toggleClass('active');
-      });
-      
+      $('.field-name-content-social-buttons.btn').unbind('click', Drupal.behaviors.content_social_buttons.socialButtonClick);
+      $('.field-name-content-social-buttons.btn').bind('click', Drupal.behaviors.content_social_buttons.socialButtonClick);
     }
   };
 })(jQuery);
