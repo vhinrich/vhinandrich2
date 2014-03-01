@@ -1,0 +1,10 @@
+.form-item.webform-component{
+    margin: 1.2em 0;
+}
+
+.form-item.webform-component.webform-component-textfield,
+.form-item.webform-component.webform-component-email{
+    width: 49%;
+    float: left;
+}
+.form-item.webform-component.webform-component-email{margin-left: 2%}
