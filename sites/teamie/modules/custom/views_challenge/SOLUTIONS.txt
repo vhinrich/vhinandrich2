@@ -1,1 +1,0 @@
-One solution other than using hook_views_query_alter, I think we can also use views PHP using the (N+1) select approach.

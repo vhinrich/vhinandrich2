@@ -61,9 +61,6 @@
  $sites['localhost'] = 'v3.com';
  $sites['vhinandrich.com'] = 'v3.com';
  
- $sites['localhost.lottodemo'] = 'lottodemo.com';
- $sites['vhinandrich.com.lottodemo'] = 'lottodemo.com';
- 
  $sites['localhost.v2'] = 'v2.com';
  $sites['localhost.v2.back'] = 'v2.com';
  $sites['127.0.0.1.v2'] = 'v2.com';
@@ -82,7 +79,3 @@
  $sites['vhinandrich.com.v3.back'] = 'v3.com';
  $sites['v3.vhinandrich.com'] = 'v3.com';
  
- $sites['localhost.teamie'] = 'teamie';
- $sites['127.0.0.1.teamie'] = 'teamie';
- $sites['vhinandrich.com.teamie'] = 'teamie';
- $sites['teamie.vhinandrich.com'] = 'teamie';
