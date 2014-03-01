@@ -54,9 +54,13 @@ body > *{
 .ui-loader.ui-corner-all.ui-body-a.ui-loader-default{display: none} /*jquery mobile adds these elements so i had to hide*/
 
 .navbar{border: none}
+.navbar-default{background: #e74c3c}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{background: #c0392b}
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus{color: #2c3e50}
+.navbar-default .navbar-toggle{background: #fff}
 
 .carousel-control.left,
-.carousel-control.right{background: none}
+.carousel-control.right{border-color: none}
 
 @media screen and (orientation:portrait) {
     .timeline-bg-container .timeline-bg-wrapper img{width: auto;height: 100%;}
