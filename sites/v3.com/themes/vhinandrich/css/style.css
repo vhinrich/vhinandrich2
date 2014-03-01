@@ -69,7 +69,7 @@ body > *{
 .navbar-default .navbar-collapse, .navbar-default .navbar-form{border-color: #e74c3c}
 
 .carousel-control.left,
-.carousel-control.right{border-color: none}
+.carousel-control.right{background: none}
 
 @media screen and (orientation:portrait) {
     .timeline-bg-container .timeline-bg-wrapper img{width: auto;height: 100%;}
