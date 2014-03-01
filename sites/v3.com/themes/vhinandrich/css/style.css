@@ -37,7 +37,7 @@ body > *{
     height: 100%;
 }
 
-.page-header{border-bottom: none;color: #f39c12;margin-top: 1em;text-align: center;font-size: 60pt;}
+.page-header{border-bottom: none;color: #34495e;margin-top: 1em;text-align: center;font-size: 60pt;}
 .pager li>a, .pager li>span{background-color: #e74c3c}
 .pager li>a:hover, .pager li>a:focus{background-color: #c0392b}
 
