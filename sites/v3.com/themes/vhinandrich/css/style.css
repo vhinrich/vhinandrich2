@@ -53,6 +53,9 @@ body > *{
 .ui-btn-inner.ui-btn-corner-all,
 .ui-loader.ui-corner-all.ui-body-a.ui-loader-default{display: none} /*jquery mobile adds these elements so i had to hide*/
 
+.carousel-control.left,
+.carousel-control.right{background: none}
+
 @media screen and (orientation:portrait) {
     .timeline-bg-container .timeline-bg-wrapper img{width: auto;height: 100%;}
 }
