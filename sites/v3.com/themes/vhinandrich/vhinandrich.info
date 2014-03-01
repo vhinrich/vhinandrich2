@@ -28,6 +28,7 @@ stylesheets[all][] = css/style.css
 stylesheets[all][] = css/views.css
 stylesheets[all][] = css/blocks.css
 stylesheets[all][] = css/node.css
+stylesheets[all][] = css/webform.css
 stylesheets[all][] = css/easy-pie.style.css
 
 
