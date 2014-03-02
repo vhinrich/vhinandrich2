@@ -21,7 +21,7 @@
         attach: function(context, settings){
             
             if ($('body .timeline-bg-container').length==0 ) {
-                $('body').append('<div class="timeline-bg-container"><div class="timeline-bg-wrapper"></div></div>');
+                $('body').prepend('<div class="timeline-bg-container"><div class="timeline-bg-wrapper"></div></div>');
             }
             
             var $things = $('article.node.node-article.timeline');
