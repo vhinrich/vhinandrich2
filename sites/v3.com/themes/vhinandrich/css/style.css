@@ -25,7 +25,7 @@ body.navbar-is-fixed-top{padding-top: 60px !important}
 
 .footer{border-top: none;background: #e74c3c;color: #fff;margin: 0}
 
-.main-container.container{padding: 0;min-height: 500px;background: #16a085;padding-bottom: 60px}
+.main-container.container{padding: 0;min-height: 500px;background: #2c3e50;padding-bottom: 60px}
 .main-container.container .row{max-width: 1280px;margin: 0 auto}
 
 .media-youtube-video {
@@ -63,7 +63,7 @@ body.navbar-is-fixed-top{padding-top: 60px !important}
 .navbar{border: none}
 .navbar-default{background: #e74c3c}
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{background: #c0392b}
-.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus{color: #2c3e50}
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus{color: #f1c40f}
 .navbar-default .navbar-toggle{border-color: #fff}
 .navbar-default .navbar-toggle .icon-bar{background: #fff}
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{background: #e74c3c}

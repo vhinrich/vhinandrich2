@@ -2,12 +2,12 @@
 
 .view.view-display-id-timeline_page_1 .view-content > h3:first-of-type{top: 0}
 .view.view-display-id-timeline_page_1 .view-content > h3{clear: both;position: relative;margin: 0;top: -38px;font-weight: normal;font-size: 16pt}
-.view.view-display-id-timeline_page_1 .view-content > h3 .year-group-header{border-radius: 50%;width: 70px;height: 70px;background: #2c3e50;color: #f1c40f;display: inline-block}
+.view.view-display-id-timeline_page_1 .view-content > h3 .year-group-header{border-radius: 50%;width: 70px;height: 70px;background: #e74c3c;color: #ecf0f1;display: inline-block}
 .view.view-display-id-timeline_page_1 .view-content > h3 .year-group-header .date-display-single{margin-top: 1.2em;display: block}
 
 .view.view-display-id-timeline_page_1 .view-content > h3:first-of-type + .views-row{margin-top: 38px}
 .view.view-display-id-timeline_page_1 .view-content .views-row .views-field.views-field-field-date-3{clear: both;width: 50%}
-.view.view-display-id-timeline_page_1 .view-content .views-row .views-field.views-field-field-date-3 .field-content > a{width: 14px;height: 14px;border-radius: 50%;background: #2c3e50;display: inline-block;margin-top: 1.2em;position: relative;z-index: 2}
+.view.view-display-id-timeline_page_1 .view-content .views-row .views-field.views-field-field-date-3 .field-content > a{width: 14px;height: 14px;border-radius: 50%;background: #e74c3c;display: inline-block;margin-top: 1.2em;position: relative;z-index: 2}
 .view.view-display-id-timeline_page_1 .view-content .views-row .views-field.views-field-field-date-3 .field-content > a:hover{background: #f1c40f}
 .view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(even) .views-field.views-field-field-date-3 .field-content > a{margin-left: -7px}
 .view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(odd) .views-field.views-field-field-date-3 .field-content > a{margin-right: -7px}
