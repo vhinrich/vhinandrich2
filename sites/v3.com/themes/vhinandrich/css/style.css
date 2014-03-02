@@ -1,12 +1,12 @@
 body{background: #e74c3c; color: #2c3e50}
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{font-family: "Josefin Slab", Georgia, "Times New Roman", Times, serif;text-transform: uppercase; font-weight: 600}
-a{color: #34495e;text-decoration: none;-webkit-transition: all 100ms ease;
+a{color: #e74c3c;text-decoration: none;-webkit-transition: all 100ms ease;
 -moz-transition: all 100ms ease;
 -ms-transition: all 100ms ease;
 -o-transition: all 100ms ease;
 transition: all 100ms ease;
 }
-a:hover, a:focus{color: #e74c3c;text-decoration: none}
+a:hover, a:focus{color: #f1c40f;text-decoration: none}
 
 body > *{
     -webkit-hyphens: auto;
