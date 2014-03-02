@@ -14,7 +14,7 @@ body > *{
     hyphens: auto;
 }
 
-body.navbar-is-fixed-top{padding-top: 60px}
+body.navbar-is-fixed-top{padding-top: 60px !important}
 
 
 .container{width: 100%}
@@ -25,7 +25,7 @@ body.navbar-is-fixed-top{padding-top: 60px}
 
 .footer{border-top: none;background: #e74c3c;color: #fff;margin: 0}
 
-.main-container.container{padding: 0;min-height: 500px;background: #16a085}
+.main-container.container{padding: 0;min-height: 500px;background: #16a085;padding-bottom: 60px}
 .main-container.container .row{max-width: 1280px;margin: 0 auto}
 
 .media-youtube-video {
