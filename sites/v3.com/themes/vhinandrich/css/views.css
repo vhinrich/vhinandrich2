@@ -42,7 +42,7 @@
 .view.view-display-id-timeline_page_1 .view-content .views-row .views-field-nodefield .field-content{position: relative;width: 50%;top: -38px;margin: 0;padding: 3em 0;}
 .view.view-display-id-timeline_page_1 .view-content .views-row .views-field-nodefield .field-content article{width: 93%; margin: 0 auto;position: relative;z-index: 2}
 .view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(even) .views-field-nodefield .field-content article{/*-moz-box-shadow: -10px 10px 0 0;-webkit-box-shadow: -10px 10px 0 0;box-shadow: -10px 10px 0 0;*/background: #fff}
-.view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(odd) .views-field-nodefield .field-content article{/*-moz-box-shadow: 10px 10px 0 0;-webkit-box-shadow: 10px 10px 0 0;box-shadow: 10px 10px 0 0;*/background: #ecf0f1}
+.view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(odd) .views-field-nodefield .field-content article{/*-moz-box-shadow: 10px 10px 0 0;-webkit-box-shadow: 10px 10px 0 0;box-shadow: 10px 10px 0 0;*/background: #fff}
 .view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(even) .views-field-nodefield .field-content{float: left}
 .view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(odd) .views-field-nodefield .field-content{float: right}
 .view.view-display-id-timeline_page_1 .view-content .views-row .views-field-nodefield .field-content:after{border-right: 2px solid #ecf0f1;content: ' ';position: absolute;height: 100%;top: 0}
@@ -81,5 +81,5 @@
     .view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(odd) .views-field-nodefield .field-content,
     .view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(even) .views-field-nodefield .field-content{float: none}
     .view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(odd) .views-field-nodefield .field-content article,
-    .view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(even) .views-field-nodefield .field-content article{-moz-box-shadow: 0;-webkit-box-shadow: none;box-shadow: none;border-bottom: 10px solid}
+    .view.view-display-id-timeline_page_1 .view-content .views-row:nth-of-type(even) .views-field-nodefield .field-content article{-moz-box-shadow: 0;-webkit-box-shadow: none;box-shadow: none;border-bottom: 10px solid;border-color: #ecf0f1}
 }
