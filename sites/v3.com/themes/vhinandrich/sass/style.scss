@@ -1,13 +1,16 @@
+@import "colors";
+
 $headersSerifFamily = "Josefin Slab", Georgia, "Times New Roman", Times, serif;
 $specialSerifFamily = "Cinzel", Georgia, "Times New Roman", Times, serif;
 
-$lightColor = #fff;
+/*$lightColor = #fff;
 $lightColorDark = #ecf0f1;
 $lightColorReverse = #f1c40f;
 $mainBGColor = #e74c3c;
 $mainBGColorDark = #c0392b;
 $mainTextColor = #34495e;
-$mainTextColorDark = #2c3e50;
+$mainTextColorDark = #2c3e50;*/
+
 
 
 @mixin transition($transition-property, $transition-time, $method) {
