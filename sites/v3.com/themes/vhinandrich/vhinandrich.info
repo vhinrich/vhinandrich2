@@ -24,12 +24,13 @@ regions[page_bottom]    = 'Page bottom'
 ;; Stylesheets
 ;;;;;;;;;;;;;;;;;;;;;
 
-stylesheets[all][] = css/style.css
+//stylesheets[all][] = css/style.css
 stylesheets[all][] = css/views.css
 stylesheets[all][] = css/blocks.css
 stylesheets[all][] = css/node.css
 stylesheets[all][] = css/webform.css
 stylesheets[all][] = css/easy-pie.style.css
+stylesheets[all][] = sass/style.scss
 
 
 ; For information on choosing the desired method, please read the Drupal
