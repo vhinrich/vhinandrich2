@@ -107,7 +107,13 @@ function content_social_buttons_preprocess_page(&$vars){
 
   $pinterest_header = '';
   //'<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>';
-  drupal_add_js('http://assets.pinterest.com/js/pinit.js', 'external');
+  //drupal_add_js('http://assets.pinterest.com/js/pinit.js', 'external');
+  drupal_add_js('(function() {
+    var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
+    po.src = \'http://assets.pinterest.com/js/pinit.js\';
+    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
+  })();' ,'inline');
+  
   
   
   $vars['page']['header']['social_buttons_headers'] = array(
