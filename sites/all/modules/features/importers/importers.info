@@ -13,4 +13,5 @@ features[feeds_tamper][] = instagram_import-blank_source_1-default_value
 features[feeds_tamper][] = instagram_import-jsonpath_parser_1-instagram_title
 features[feeds_tamper][] = instagram_import-jsonpath_parser_3-instagram_media
 features[feeds_tamper][] = instagram_import-jsonpath_parser_5-instagram_media
+features[feeds_tamper][] = instagram_import-jsonpath_parser_6-instagram_hashtags
 features[feeds_tamper][] = instagram_import-jsonpath_parser_7-instagram_body

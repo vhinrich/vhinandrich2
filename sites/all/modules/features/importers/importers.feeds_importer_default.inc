@@ -37,7 +37,7 @@ function importers_feeds_importer_default() {
           'jsonpath_parser:3' => 'images.standard_resolution.url',
           'jsonpath_parser:4' => 'created_time',
           'jsonpath_parser:5' => 'videos.standard_resolution.url',
-          'jsonpath_parser:6' => 'tags',
+          'jsonpath_parser:6' => 'tags.*',
           'jsonpath_parser:7' => 'caption',
         ),
         'debug' => array(
@@ -101,7 +101,8 @@ function importers_feeds_importer_default() {
           7 => array(
             'source' => 'jsonpath_parser:6',
             'target' => 'field_hashtags',
-            'unique' => FALSE,
+            'term_search' => '0',
+            'autocreate' => 1,
           ),
           8 => array(
             'source' => 'jsonpath_parser:7',
