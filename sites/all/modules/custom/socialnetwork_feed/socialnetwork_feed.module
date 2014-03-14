@@ -8,7 +8,40 @@ function socialnetwork_feed_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+  $items['socialnetwork-feed-ingest'] = array(
+    'page callback' => 'socialnetwork_feed_ingest',
+    'title' => 'Import tool',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK
+  );
   return $items;
+}
+
+function socialnetwork_feed_ingest(){
+  // Define the id (machine name) of the importer you want to use.
+  $importer_id = 'instagram_import';
+  
+  // Load the Feeds Source object.
+  $source = feeds_source($importer_id);
+  
+  // Given that we have a new file that is now managed by Drupal.
+  $file = file_load("http://www.vhinandrich.com/v3.back/socialnetwork-feed/instagram?search=@vhin0210+@richellerivamonte");
+  
+  // Load the source fetcher config.
+  $fetcher_config = $source->getConfigFor($source->importer->fetcher);
+  
+  // Add the new file object, and it's uri to the fetcher config.
+  $fetcher_config['source'] = $file->uri;
+  $fetcher_config['file'] = $file;
+  
+  // Set the source fetcher config.
+  $source->setConfigFor($source->importer->fetcher, $fetcher_config);
+  
+  // Save the source.
+  $source->save();
+  
+  // Execute the import.
+  $source->startImport();
 }
 
 function socialnetwork_feed_generate_json($type){
@@ -50,7 +83,8 @@ function socialnetwork_feed_ig_pull_retrieve($var){
       if($insta_user && isset($insta_user[0]))
         $feed = $instagram->user_recent($insta_user[0]->id);
     }
-    $feeds = array_merge($feeds, $feed);
+    if($feed)
+      $feeds = array_merge($feeds, $feed);
   }
   return $feeds;
 }
