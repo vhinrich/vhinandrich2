@@ -25,15 +25,15 @@ function socialnetwork_feed_ingest(){
   $source = feeds_source($importer_id);
   
   // Given that we have a new file that is now managed by Drupal.
-  $file = file_load("http://www.vhinandrich.com/v3.back/socialnetwork-feed/instagram?search=@vhin0210,@richellerivamonte");
-  print_r($file);
+  //$file = file_load("http://www.vhinandrich.com/v3.back/socialnetwork-feed/instagram?search=@vhin0210,@richellerivamonte");
+  $strSource = "http://www.vhinandrich.com/v3.back/socialnetwork-feed/instagram?search=@vhin0210,@richellerivamonte";
   
   // Load the source fetcher config.
   $fetcher_config = $source->getConfigFor($source->importer->fetcher);
   
   // Add the new file object, and it's uri to the fetcher config.
-  $fetcher_config['source'] = $file->uri;
-  $fetcher_config['file'] = $file;
+  $fetcher_config['source'] = $strSource;
+  //$fetcher_config['file'] = $file;
   
   // Set the source fetcher config.
   $source->setConfigFor($source->importer->fetcher, $fetcher_config);
