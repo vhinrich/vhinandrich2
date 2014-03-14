@@ -26,6 +26,7 @@ function socialnetwork_feed_ingest(){
   
   // Given that we have a new file that is now managed by Drupal.
   $file = file_load("http://www.vhinandrich.com/v3.back/socialnetwork-feed/instagram?search=@vhin0210,@richellerivamonte");
+  print_r($file);
   
   // Load the source fetcher config.
   $fetcher_config = $source->getConfigFor($source->importer->fetcher);
