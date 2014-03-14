@@ -1,0 +1,9 @@
+; $Id.
+core = "7.x"
+name = "Social Network Tamper"
+description = "Feeds Tamper plugins for Social Networks"
+package = "mqcristobal Custom Modules"
+
+files[] = socialnetwork_tamper.module
+
+dependencies[] = feeds_tamper

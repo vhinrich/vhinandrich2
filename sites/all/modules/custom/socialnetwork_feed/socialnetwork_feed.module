@@ -1,0 +1,56 @@
+<?php
+
+function socialnetwork_feed_menu() {
+  $items['socialnetwork-feed/%'] = array(
+    'title' => 'Instagram',
+    'page callback' => 'socialnetwork_feed_generate_json',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function socialnetwork_feed_generate_json($type){
+  $feed_array = array();
+  $var = $_GET;
+  switch ($type){
+    case "instagram":
+      $feed_array = socialnetwork_feed_ig_pull_retrieve($var);
+      break;
+  }
+  echo drupal_json_encode($feed_array);
+}
+
+function socialnetwork_feed_ig_pull_retrieve($var){
+  module_load_include('inc', 'drupagram');
+  
+  $search = '';
+  $searches = array();
+  if(isset($var['search'])){
+    $search = $var['search'];
+    $searches = explode(",", $search);
+  }
+  
+  $feeds = array();
+  foreach($searches as $searchItem){
+    if(strstr($searchItem,'#')){
+      $user = user_load(1);
+      $account = drupagram_account_load($user->drupagram_accounts[0]->id);
+      $instagram = drupagram_connect($account);
+      $searchItem = str_replace('#','',$searchItem);
+      $feed = $instagram->get_hashtag($searchItem);
+    }
+    if(strstr($searchItem, '@')){
+      $user = user_load(1);
+      $account = drupagram_account_load($user->drupagram_accounts[0]->id);
+      $instagram = drupagram_connect($account);
+      $searchItem = str_replace('@', '', $searchItem);
+      $insta_user = $instagram->user_info($searchItem);
+      if($insta_user && isset($insta_user[0]))
+        $feed = $instagram->user_recent($insta_user[0]->id);
+    }
+    $feeds = array_merge($feeds, $feed);
+  }
+  return $feeds;
+}
