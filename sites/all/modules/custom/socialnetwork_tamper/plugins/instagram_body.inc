@@ -9,10 +9,10 @@
  * Defines a new plugin.
  */
 $plugin = array(
-  'form' => 'socialnetwork_tamper_instagram_title_form',
+  'form' => 'socialnetwork_tamper_instagram_body_form',
   // Optional validation callback.
-  'callback' => 'socialnetwork_tamper_instagram_title_callback',
-  'name' => 'Instagram Title',
+  'callback' => 'socialnetwork_tamper_instagram_body_callback',
+  'name' => 'Instagram Body',
   'multi' => 'direct',
   'category' => 'Social Networks',
 );
@@ -20,9 +20,9 @@ $plugin = array(
 /**
  * Implements onix_xml_tamper_abstract_form().
  */
-function socialnetwork_tamper_instagram_title_form($importer, $element_key, $settings) {
+function socialnetwork_tamper_instagram_body_form($importer, $element_key, $settings) {
   $form = array();
-  $form['help']['#value'] = t('Get Instagram Title.');
+  $form['help']['#value'] = t('Get Instagram Body.');
   //
   // Other formy stuff here.
   //
@@ -32,13 +32,13 @@ function socialnetwork_tamper_instagram_title_form($importer, $element_key, $set
 /**
  * Implements callback function onix_xml_tamper_abstract_callback().
  */
-function socialnetwork_tamper_instagram_title_callback($source, $item_key, $element_key, &$field, $settings) {
+function socialnetwork_tamper_instagram_body_callback($source, $item_key, $element_key, &$field, $settings) {
   if(!empty($field) && isset($field['text'])){
     $field = $field['text'];
   }else{
-    $field = 'Instagram item';
+    $field = '';
   }
   $field = preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)\:\#\@%&-]/s', '', $field);
-  $field = truncate_utf8($field, 80, TRUE, TRUE);
+  //$field = truncate_utf8($field, 80, TRUE, TRUE);
 }
 
