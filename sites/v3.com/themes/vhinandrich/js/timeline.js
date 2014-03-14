@@ -14,7 +14,11 @@
         reanimateChart: function(obj){
             
             $('.chart', obj).each(function(i,o){
-                $(o).data('easyPieChart').update(0).update($(this).attr('data-percent'));
+                try{
+                    $(o).data('easyPieChart').update(0).update($(this).attr('data-percent'));
+                }catch(e){
+                    console.log(e);
+                }
             });
             
         },
@@ -30,14 +34,22 @@
                 $things.waypoint(function(direction) {
                     if (direction === 'down') {
                         Drupal.behaviors.timeline_waypoint.loadBg(this);
-                        Drupal.behaviors.timeline_waypoint.reanimateChart(this);
+                        try{
+                            Drupal.behaviors.timeline_waypoint.reanimateChart(this);
+                        }catch(e){
+                            console.log(e);
+                        }
                     }
                 }, { offset: '50%' });
                     
                 $things.waypoint(function(direction) {
                     if (direction === 'up') {
                         Drupal.behaviors.timeline_waypoint.loadBg(this);
-                        Drupal.behaviors.timeline_waypoint.reanimateChart(this);
+                        try{
+                            Drupal.behaviors.timeline_waypoint.reanimateChart(this);
+                        }catch(e){
+                            console.log(e);
+                        }
                       }
                     }, {
                     offset: function() {
