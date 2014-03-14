@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Importers feature.
+ */
+
+include_once 'importers.features.inc';
