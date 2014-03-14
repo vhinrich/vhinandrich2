@@ -10,3 +10,5 @@ features[ctools][] = feeds_tamper:feeds_tamper_default:2
 features[features_api][] = api:2
 features[feeds_importer][] = instagram_import
 features[feeds_tamper][] = instagram_import-jsonpath_parser_1-instagram_title
+features[feeds_tamper][] = instagram_import-jsonpath_parser_3-instagram_media
+features[feeds_tamper][] = instagram_import-jsonpath_parser_5-instagram_media
