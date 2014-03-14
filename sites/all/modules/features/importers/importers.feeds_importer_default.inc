@@ -37,6 +37,8 @@ function importers_feeds_importer_default() {
           'jsonpath_parser:3' => 'images.standard_resolution.url',
           'jsonpath_parser:4' => 'created_time',
           'jsonpath_parser:5' => 'videos.standard_resolution.url',
+          'jsonpath_parser:6' => 'tags',
+          'jsonpath_parser:7' => 'caption',
         ),
         'debug' => array(
           'options' => array(
@@ -47,6 +49,8 @@ function importers_feeds_importer_default() {
             'jsonpath_parser:3' => 0,
             'jsonpath_parser:4' => 0,
             'jsonpath_parser:5' => 0,
+            'jsonpath_parser:6' => 0,
+            'jsonpath_parser:7' => 0,
           ),
         ),
       ),
@@ -87,6 +91,21 @@ function importers_feeds_importer_default() {
           5 => array(
             'source' => 'jsonpath_parser:5',
             'target' => 'field_media',
+            'unique' => FALSE,
+          ),
+          6 => array(
+            'source' => 'Blank source 1',
+            'target' => 'field_social_network',
+            'unique' => FALSE,
+          ),
+          7 => array(
+            'source' => 'jsonpath_parser:6',
+            'target' => 'field_hashtags',
+            'unique' => FALSE,
+          ),
+          8 => array(
+            'source' => 'jsonpath_parser:7',
+            'target' => 'body',
             'unique' => FALSE,
           ),
         ),
