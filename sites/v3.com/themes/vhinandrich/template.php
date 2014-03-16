@@ -80,6 +80,7 @@ function vhinandrich_preprocess_node_article__timeline(&$vars){
     //instagram
     if(isset($vars['field_social_network'][LANGUAGE_NONE]) && isset($vars['field_social_network'][LANGUAGE_NONE][0]) && $vars['field_social_network'][LANGUAGE_NONE][0]['tid']==59){
         //unset($vars['title']);
+        $vars['title'] = '';
         $vars['classes_array'][] = 'social-networ-instagram';
         $vars['content']['social-network-icon'] = array(
             '#markup' => '<div class="social-network-icon instagram"><i class="fa fa-instagram"></i></div>',
