@@ -54,6 +54,11 @@ body.navbar-is-fixed-top{padding-top: 60px !important}
     padding-bottom: 56.25%;
     padding-top: 30px; height: 0; overflow: hidden;
 }
+
+.field-name-field-media .field-items .field-item video{
+    width: 100% !important;
+    margin: 0 auto !important;
+}
  
 .media-youtube-video iframe,
 .media-youtube-video object,
