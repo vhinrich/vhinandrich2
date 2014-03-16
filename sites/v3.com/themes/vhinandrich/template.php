@@ -78,7 +78,7 @@ function vhinandrich_preprocess_node_article__timeline(&$vars){
     //dpm($vars);
     
     //instagram
-    if($vars['field_social_network'][LANGUAGE_NONE][0]['tid']==59){
+    if(isset($vars['field_social_network'][LANGUAGE_NONE]) && isset($vars['field_social_network'][LANGUAGE_NONE][0]) && $vars['field_social_network'][LANGUAGE_NONE][0]['tid']==59){
         //unset($vars['title']);
         $vars['classes_array'][] = 'social-networ-instagram';
         $vars['content']['social-network-icon'] = array(
