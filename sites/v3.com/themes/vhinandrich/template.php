@@ -74,6 +74,25 @@ function vhinandrich_preprocess_node(&$vars, $hook) {
     $vars['theme_hook_suggestions'][] = 'node____' . $vars['view_mode'];
 }
 
+function vhinandrich_preprocess_node_article__timeline(&$vars){
+    //dpm($vars);
+    
+    //instagram
+    if($vars['field_social_network'][LANGUAGE_NONE][0]['tid']==59){
+        //unset($vars['title']);
+        $vars['classes_array'][] = 'social-networ-instagram';
+        $vars['content']['social-network-icon'] = array(
+            '#markup' => '<div class="social-network-icon instagram"><i class="fa fa-instagram"></i></div>',
+            '#weight' => -1,
+        );
+        //$vars['body'] = preg_replace("/@(\w+)/i", "<a href=\"/hashtags/$1\">$0</a>", $vars['body']);
+        if(isset($vars['content']['body']) && isset($vars['content']['body'][0])){
+            $vars['content']['body'][0]['#markup'] = preg_replace("/@(\w+)/i", "<a href=\"/tags/$1\">$0</a>", $vars['content']['body'][0]['#markup']);
+            $vars['content']['body'][0]['#markup'] = preg_replace("/#(\w+)/i", "<a href=\"/hashtags/$1\">$0</a>", $vars['content']['body'][0]['#markup']);
+        }
+    }
+}
+
 function vhinandrich_form_alter(&$form){
     if(isset($form['#node']) && $form['#node']->type=='webform'){
       if(isset($form['submitted'])){

@@ -10,7 +10,7 @@
 function content_types_taxonomy_default_vocabularies() {
   return array(
     'hastags' => array(
-      'name' => 'Hastags',
+      'name' => 'Hashtags',
       'machine_name' => 'hastags',
       'description' => 'Hashtags',
       'hierarchy' => 0,
