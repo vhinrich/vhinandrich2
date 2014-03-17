@@ -88,7 +88,7 @@ function vhinandrich_preprocess_node_article__timeline(&$vars){
         );
         //$vars['body'] = preg_replace("/@(\w+)/i", "<a href=\"/hashtags/$1\">$0</a>", $vars['body']);
         if(isset($vars['content']['body']) && isset($vars['content']['body'][0])){
-            $vars['content']['body'][0]['#markup'] = preg_replace("/@(\w+)/i", "<a href=\"http://instagram.com/$1\">$0</a>", $vars['content']['body'][0]['#markup']);
+            $vars['content']['body'][0]['#markup'] = preg_replace("/@(\w+)/i", "<a href=\"http://instagram.com/$1\" target=\"_blank\">$0</a>", $vars['content']['body'][0]['#markup']);
             $vars['content']['body'][0]['#markup'] = preg_replace("/#(\w+)/i", "<a href=\"/hashtags/$1\">$0</a>", $vars['content']['body'][0]['#markup']);
         }
     }
