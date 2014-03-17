@@ -43,6 +43,8 @@ function socialnetwork_feed_ingest(){
   
   // Execute the import.
   $source->startImport();
+  
+  drupal_flush_all_caches();
 }
 
 function socialnetwork_feed_generate_json($type){
