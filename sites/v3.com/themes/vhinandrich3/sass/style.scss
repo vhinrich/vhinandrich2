@@ -1,0 +1,18 @@
+@import "colors";
+@import "fonts";
+
+
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+
+body{font-family: $fontBodyText;background: $colorBackgroundBody;font-weight: 300}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{font-family: $fontHeadlineText;text-transform: uppercase;font-weight: 600;color: $colorHeadlineText}
+
+.navbar-default{background: $colorBackgroundMainNavbar}
+.navbar>.container .navbar-brand{font-size: 26px;color: #e74c3c}
+.navbar-nav>li>a{text-transform: uppercase;font-size: 18px}

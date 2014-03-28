@@ -1,0 +1,25 @@
+#block-block-1 h1{font-family: "Cinzel", Georgia, "Times New Roman", Times, serif;; font-size: 60pt;font-weight: normal}
+#block-block-1{color: #ecf0f1}
+
+
+#block-views-timeline-timeline-nav{text-align: center;color: #1abc9c}
+#block-views-timeline-timeline-nav .view .view-content h3{border-radius: 50%;height: 50px;width: 50px;background: #2c3e50;display: block;margin: 10px auto;font-size: 10pt;position: relative}
+#block-views-timeline-timeline-nav .view .view-content h3 span.date-display-single{position: relative; top: 33%;}
+#block-views-timeline-timeline-nav .view .view-content .views-row .views-field-field-date-3 .field-content > a{border-radius: 50%;height: 10px;width: 10px;background: #2c3e50;display: block;margin: 10px auto;position: relative}
+#block-views-timeline-timeline-nav .view .view-content .views-row .views-field-field-date-3 .field-content > a:before,
+#block-views-timeline-timeline-nav .view .view-content .views-row .views-field-field-date-3 .field-content > a:after{
+    content: ' ';
+    position: absolute;
+    border-left: 1px solid #2c3e50;
+    width: 1px;
+    height: 10px;
+    display: block;
+    left: 50%;
+    margin-left: -1px;
+}
+#block-views-timeline-timeline-nav .view .view-content .views-row .views-field-field-date-3 .field-content > a:before{top: -10px}
+#block-views-timeline-timeline-nav .view .view-content .views-row .views-field-field-date-3 .field-content > a:after{bottom: -10px}
+#block-views-timeline-timeline-nav .view .view-content .views-row .views-field-field-date-3 .field-content > a:hover{text-decoration: none}
+#block-views-timeline-timeline-nav .view .view-content .views-row .views-field-field-date-3 .field-content > .date-display-single{display: none;}
+
+#block-block-2{text-align: center}

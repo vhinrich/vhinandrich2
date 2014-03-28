@@ -1,0 +1,71 @@
+article.node.node-article{padding: .5em 1em 1.5em}
+article.node.node-article .field-name-field-date{font-size: 11px;text-transform: uppercase;color: #7f8c8d}
+article.node.node-article .field-name-body{margin-top: 1.5em;text-align: left}
+article.node.node-article .field-name-field-media{margin: 1.5em auto}
+article.node.node-article img{width: 100%;height: auto}
+article.node.node-article.timeline header h2{margin-top: 50px}
+article.node.node-article.timeline:hover .field-name-content-social-buttons.btn,
+article.node.node-article.timeline > *:hover .field-name-content-social-buttons.btn,
+article.node.node-article.timeline:hover .field-name-content-social-buttons.btn{display: block}
+article.node.node-article .field-name-content-social-buttons.btn{
+    display: none;
+    clear: both;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    background: #bdc3c7;
+    border-radius: 0;
+    color: #ecf0f1;
+}
+article.node.node-article.timeline{padding-bottom: 55px}
+
+article.node.node-article .field-name-content-social-buttons.btn:hover{color: #7f8c8d}
+article.node.node-article .field-name-content-social-buttons .field-items .field-item img{width: auto;height: auto}
+article.node.node-article .field-name-content-social-buttons.btn .field-items .field-item{display: none}
+article.node.node-article .field-name-content-social-buttons .field-items .field-item{float: left;margin: 0 .3em}
+article.node.node-article .field-name-content-social-buttons .field-items .field-item:first-of-type{margin-left: 0;clear: left}
+article.node.node-article .field-name-content-social-buttons .field-items .field-item:last-of-type{margin-right: 0;clear: right}
+article.node.node-article .field-name-content-social-buttons.btn .field-name-content-social-button .field-item{display: none}
+
+
+article.node.node-article.timeline .field-name-field-background-media{display: none}
+article.node.node-article.timeline .field-name-field-media .field-items {position: relative;}
+article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link{position: absolute;height: 100%;width: 100%;top: 0;left: 0}
+article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link .field-item-overlay{
+    position: relative;width: 100%;height: 100%;left: 0;top: 0;background: #7f8c8d;
+    zoom: 1;
+    filter: alpha(opacity=20);
+    opacity: 0.2;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+article.node.node-article .field-name-field-media{position: relative}
+article.node.node-article.timeline .field-name-field-media.gallery.active{display: none}
+article.node.node-article.timeline .field-name-field-media.loading .field-items a.field-item-overlay-link,
+article.node.node-article.timeline .field-name-field-media.loading .field-items a.field-item-overlay-link:hover,
+article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link{color: #2c3e50}
+article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link:hover{color: #e74c3c}
+article.node.node-article.timeline .field-name-field-media.loading .field-items a.field-item-overlay-link .field-item-overlay,
+article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link:hover .field-item-overlay{zoom: 1;filter: alpha(opacity=50);opacity: 0.5}
+article.node.node-article.timeline .field-name-field-media .field-items a.field-item-overlay-link .field-item-overlay > i{position: relative;top: 42%;font-size: 60pt}
+article.node.node-article .field-name-field-media.gallery-full .carousel-control .control-item{
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block;
+    font-size: 30pt;
+}
+
+article.node.node-article.full{background: #fff;max-width: 970px;margin: 0 auto;position: relative}
+article.node.node-article.full .field-name-field-date{text-align: left;margin-top: 3em}
+article.node.node-article.full .field-name-content-social-buttons{float: right;margin-top: 2.1em}
+
+article.node.node-webform,
+body.page-node-done .webform-confirmation,
+body.page-node-done .links{background: #fff;max-width: 970px;margin: 0 auto;padding: 1.5em}
+article.node.node-webform .field-name-body{margin: 1em 0 3em}
+article.node.node-webform .webform-client-form .btn{margin-top: 2em;float: right}
