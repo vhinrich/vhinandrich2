@@ -8,9 +8,15 @@
             var d = document.location.pathname + document.location.search + document.location.hash;
             _gaq.push(['_trackPageview', d]);
         },
+        detailButtonClick: function(){
+            $(this).parents('article').toggleClass('detail-active');
+        },
         attach: function(context, settings){
             Drupal.behaviors.vhinandrich.initFitText();
             Drupal.behaviors.vhinandrich.ajaxGAPush();
+            
+            $('.detail-viewer-container a').unbind('click', Drupal.behaviors.vhinandrich.detailButtonClick);
+            $('.detail-viewer-container a').bind('click', Drupal.behaviors.vhinandrich.detailButtonClick);
         }
     };
 })(jQuery);

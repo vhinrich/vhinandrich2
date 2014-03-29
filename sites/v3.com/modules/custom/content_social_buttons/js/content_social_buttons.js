@@ -19,7 +19,7 @@
       if (typeof FB !== "undefined") {
         var socialElement = $('.field-name-content-social-buttons .field-items .field-item');
         $.each(socialElement, function(i, o){
-          if ($(o).hasClass('fb-rendered')) {
+          if ($('.fb-like', o).length == 0 || $(o).hasClass('fb-rendered')) {
             //code
           }else{
             $(o).addClass('fb-rendered');
@@ -45,8 +45,8 @@
     attach: function(context, settings){
       
       Drupal.behaviors.content_social_buttons.refreshSocialButtons();
-      $('.field-name-content-social-buttons.btn').unbind('click', Drupal.behaviors.content_social_buttons.socialButtonClick);
-      $('.field-name-content-social-buttons.btn').bind('click', Drupal.behaviors.content_social_buttons.socialButtonClick);
+      //$('.field-name-content-social-buttons.btn').unbind('click', Drupal.behaviors.content_social_buttons.socialButtonClick);
+      //$('.field-name-content-social-buttons.btn').bind('click', Drupal.behaviors.content_social_buttons.socialButtonClick);
     }
   };
 })(jQuery);

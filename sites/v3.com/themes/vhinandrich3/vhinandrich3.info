@@ -34,6 +34,7 @@ stylesheets[all][] = sass/colors.scss
 stylesheets[all][] = sass/fonts.scss
 stylesheets[all][] = sass/style.scss
 stylesheets[all][] = sass/overrides.scss
+stylesheets[all][] = sass/views.scss
 //stylesheets[all][] = sass/views.scss
 
 

@@ -91,11 +91,17 @@ function vhinandrich3_preprocess_node(&$vars, $hook) {
 
 function vhinandrich3_preprocess_node_article__timeline(&$vars){
     //dpm($vars);
+    $vars['content']['content_social_buttons']['#weight'] = 99;
     
     //instagram
-    if(isset($vars['field_social_network'][LANGUAGE_NONE]) && isset($vars['field_social_network'][LANGUAGE_NONE][0]) && $vars['field_social_network'][LANGUAGE_NONE][0]['tid']==59){
-        //unset($vars['title']);
-        $vars['title'] = '';
+    //$vars['title'] = '';
+    //if(isset($vars['field_social_network'][LANGUAGE_NONE]) && isset($vars['field_social_network'][LANGUAGE_NONE][0]) && $vars['field_social_network'][LANGUAGE_NONE][0]['tid']==59){
+    //    //unset($vars['title']);
+    //    $vars['title'] = '';
+    //}
+    if(isset($vars['content']['body'])){
+      $vars['content']['body'][0]['#markup'] = truncate_utf8($vars['content']['body'][0]['#markup'], 99999, TRUE, TRUE);
+      $vars['content']['detail_viewer']['#markup'] = '<div class="detail-viewer-container"><a href="#node-' . $vars['nid'] . '"><i class="fa fa-align-left"></i></a></div>';
     }
 }
 
@@ -108,6 +114,20 @@ function vhinandrich3_form_alter(&$form){
             if($child['#type']=='webform_email'){
                 $form['submitted'][$key]['#attributes']['class'][] = 'form-control';
             }
+        }
+      }
+    }
+    
+    if(isset($form['#node']) && strtolower($form['#node']->title) == 'contact us'){
+      $form['#attributes']['class'][] = 'row';
+      $elements = element_children($form['submitted']);
+      foreach($elements as $key){
+        if($form['submitted'][$key]['#type'] !== 'textarea'){
+          $form['submitted'][$key]['#prefix'] = '<div class="col-sm-6">';
+          $form['submitted'][$key]['#suffix'] = '</div>';
+        }else{
+          $form['submitted'][$key]['#prefix'] = '<div class="col-sm-12" style="clear:both">';
+          $form['submitted'][$key]['#suffix'] = '</div>';
         }
       }
     }
