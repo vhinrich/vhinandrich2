@@ -101,6 +101,7 @@ function vhinandrich3_preprocess_node_article__timeline(&$vars){
     //}
     if(isset($vars['content']['body'])){
       $vars['content']['body'][0]['#markup'] = truncate_utf8($vars['content']['body'][0]['#markup'], 99999, TRUE, TRUE);
+      $vars['content']['detail_viewer']['#weight'] = -1;
       $vars['content']['detail_viewer']['#markup'] = '<div class="detail-viewer-container"><a href="#node-' . $vars['nid'] . '"><i class="fa fa-align-left"></i></a></div>';
     }
 }
