@@ -115,7 +115,7 @@ function minify_clear_js_cache($form, &$form_state) {
  * Helper function to process minify call
  */
 function _minify_process_minify($script, &$cache_data) {
-  $js_code = urlencode(trim(file_get_contents(file_create_url($script))));
+  $js_code = urlencode(trim(file_get_contents(drupal_realpath($script))));
   $post_data = _minify_get_post_fields($js_code);
   $response = _minify_send_request($post_data);
   if (isset($response['response'])) {
