@@ -7,32 +7,32 @@
 function vhinandrich3_js_alter(&$scripts){
   
   //uglifyjs module
-  if(module_exists('uglifyjs')){
-    if (variable_get('uglifyjs_skip_uglify', FALSE)) {
-      return;
-    }
-  
-    $uglify_map = array();
-    if ($cache = cache_get('uglifyjs_map') && isset($cache) && count($cache->data)>0) {
-      $uglify_map = $cache->data;
-    }
-    else {
-      $uglify = vhinandrich3_uglifyjs_info($scripts);
-  
-      foreach ($uglify as $script) {
-        $uglify_map[$script] = array('data' => $script);
-      }
-      uglifyjs_uglify($uglify_map);
-      cache_set('uglifyjs_map', $uglify_map, 'cache', CACHE_TEMPORARY);
-    }
-  
-    foreach ($uglify_map as $script) {
-      // If there was a problem minifying the script we won't make any changes.
-      if (isset($script['uglified_data']) && isset($scripts[$script['data']])) {
-        $scripts[$script['data']]['data'] = $script['uglified_data'];
-      }
-    }
-  }
+  //if(module_exists('uglifyjs')){
+  //  if (variable_get('uglifyjs_skip_uglify', FALSE)) {
+  //    return;
+  //  }
+  //
+  //  $uglify_map = array();
+  //  if ($cache = cache_get('uglifyjs_map') && isset($cache) && count($cache->data)>0) {
+  //    $uglify_map = $cache->data;
+  //  }
+  //  else {
+  //    $uglify = vhinandrich3_uglifyjs_info($scripts);
+  //
+  //    foreach ($uglify as $script) {
+  //      $uglify_map[$script] = array('data' => $script);
+  //    }
+  //    uglifyjs_uglify($uglify_map);
+  //    cache_set('uglifyjs_map', $uglify_map, 'cache', CACHE_TEMPORARY);
+  //  }
+  //
+  //  foreach ($uglify_map as $script) {
+  //    // If there was a problem minifying the script we won't make any changes.
+  //    if (isset($script['uglified_data']) && isset($scripts[$script['data']])) {
+  //      $scripts[$script['data']]['data'] = $script['uglified_data'];
+  //    }
+  //  }
+  //}
 }
 
 function vhinandrich3_preprocess_page(&$vars){
