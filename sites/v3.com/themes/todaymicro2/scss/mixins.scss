@@ -1,0 +1,17 @@
+@mixin transition($transition-property: all, $transition-time: 0s, $method: ease, $transition-time2: 0s) {
+    -webkit-transition: $transition-property $transition-time $method $transition-time2;
+    -moz-transition: $transition-property $transition-time $method $transition-time2;
+    -ms-transition: $transition-property $transition-time $method $transition-time2;
+    -o-transition: $transition-property $transition-time $method $transition-time2;
+    transition: $transition-property $transition-time $method $transition-time2;
+}
+@mixin opacity($value){
+    zoom: 1;
+    filter: alpha(opacity=($value*1));
+    opacity: ($value * .01);
+}
+@mixin transform($value){
+    transform: $value;
+    -webkit-transform: $value;
+    -moz-transform: $value;
+}

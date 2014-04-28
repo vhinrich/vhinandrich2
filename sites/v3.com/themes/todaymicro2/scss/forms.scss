@@ -1,0 +1,53 @@
+/**
+ * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
+ * remove this comment and start adding your styles to this file.
+ */
+
+@import "colors";
+@import "fonts";
+
+.filter-wrapper{
+    display: none;
+}
+.nav-tabs{
+    border: none;
+    margin: 0;
+}
+.nav-tabs>li>a{
+    border-radius: 0;
+}
+form{
+    padding: 3em 0;
+}
+
+.table tr td{
+    background: #222;
+}
+.table>thead>tr>td.active, .table>tbody>tr>td.active, .table>tfoot>tr>td.active, .table>thead>tr>th.active, .table>tbody>tr>th.active, .table>tfoot>tr>th.active, .table>thead>tr.active>td, .table>tbody>tr.active>td, .table>tfoot>tr.active>td, .table>thead>tr.active>th, .table>tbody>tr.active>th, .table>tfoot>tr.active>th{
+    background: #555;
+}
+.table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th{
+    background: $colorFooterContainerBackground;
+}
+
+.container-inline div, .container-inline label{
+    display: inline-block;
+}
+
+.btn{
+    text-transform: uppercase;
+}
+.field-name-field-photo-category{
+    display: block;
+    label{
+        clear: both;
+        width: 100%;
+    }
+    .form-checkboxes{
+        display: inline;
+        .form-item.checkbox{
+            display: inline-block;
+            margin: 0 .2em;
+        }
+    }
+}

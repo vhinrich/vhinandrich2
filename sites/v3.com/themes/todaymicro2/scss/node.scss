@@ -1,0 +1,316 @@
+/**
+ * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
+ * remove this comment and start adding your styles to this file.
+ */
+
+@import "colors";
+@import "fonts";
+@import "mixins";
+
+$colorNodeEntryHeaderLink = #ddd;
+$colorNodeEntryHeaderLinkHover = #E64343;
+$colorNodeEntryOverlayHover = rgba(204,0,0,.5);
+$colorSocialButtonsBackground = rgba(100,100,100,.6);
+$colorHeaderBackground = rgba(35,31,32,.9);
+
+
+article.node.entry_list,
+article.node.entry_winner_list{
+    position: relative;
+    overflow: hidden;
+}
+
+article.node.entry_list:not(.node-article){
+    header{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        /*height: 100%;*/
+        width: 100%;
+        background: $colorHeaderBackground;
+        padding: 20px 17px;
+        z-index: 1;
+    }
+    header h2{
+        margin: 0;
+        font-size: 13px;
+        display: none;
+    }
+    
+    .field-name-body{
+        display: none;
+    }
+    
+    a{
+        color: $colorNodeEntryHeaderLink;
+        @include transition(all, .2s, ease-in);
+    }
+    a:hover,
+    a:hover +  a header{
+        color: $colorNodeEntryHeaderLinkHover;
+    }
+    a.node-entry-list-link{
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: url('../images/6-9-clear.png') repeat transparent;
+    }
+    a.node-entry-list-link:hover{
+        color: $colorNodeEntryHeaderLinkHover;
+    }
+    a.node-entry-list-link .node-entry-list-overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include transition(all, .2s, ease-in);
+        display: none;
+    }
+    a.node-entry-list-link:hover .node-entry-list-overlay{
+        background: $colorNodeEntryOverlayHover;
+    }
+    
+}
+
+article.node.entry_winner_list:not(.node-article){
+    header{
+        position: absolute;
+        bottom: -500px;
+        left: 20px;
+        /*height: 100%;*/
+        max-width: 50%;
+        background: $colorHeaderBackground;
+        padding: 20px 40px;
+        z-index: 1;
+        @include transition(all, .2s, ease-in);
+    }
+    header h2{
+        margin: 0;
+        font-size: 13px;
+        display: none;
+    }
+    
+    a{
+        color: $colorNodeEntryHeaderLink;
+        @include transition(all, .2s, ease-in);
+    }
+    a:hover,
+    a:hover +  a header{
+        color: $colorNodeEntryHeaderLinkHover;
+    }
+    a.node-entry-list-link{
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    a.node-entry-list-link:hover{
+        color: $colorNodeEntryHeaderLinkHover;
+    }
+    a.node-entry-list-link .node-entry-list-overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include transition(all, .2s, ease-in);
+        display: none;
+    }
+    a.node-entry-list-link:hover .node-entry-list-overlay{
+        background: $colorNodeEntryOverlayHover;
+    }
+    a.node-entry-list-link:hover ~ header,
+    header:hover{
+        bottom: 25px;
+    }
+    
+    .field-name-body{
+        font-size: 35px;
+        line-height: 1em;
+    }
+    .field-name-field-full-name,
+    .field-name-field-photo-category{
+        margin: .5em 0;
+    }
+}
+
+article.node.node-article.entry_list,
+article.node.node-article.entry_winner_list{
+    position: relative;
+    background: $colorCanonRed;
+    padding: 20px 17px;
+    overflow: hidden;
+    &.node-article{
+        padding: 30px 17px;
+        header{
+            h2{
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+
+article.node.entry_list:not(.node-article) a.node-entry-list-link:hover ~ .field-name-content-social-buttons,
+article.node.entry_list:not(.node-article) a:hover ~ .field-name-content-social-buttons,
+article.node.entry_list .field-name-content-social-buttons:hover,
+article.node.entry_list:not(.node-article) a.node-entry-list-link:hover ~ .field-name-content-social-buttons-js,
+article.node.entry_list:not(.node-article) a:hover ~ .field-name-content-social-buttons-js,
+article.node.entry_list .field-name-content-social-buttons-js:hover,
+article.node.entry_winner_list:not(.node-article) a.node-entry-list-link:hover ~ .field-name-content-social-buttons,
+article.node.entry_winner_list:not(.node-article) a:hover ~ .field-name-content-social-buttons,
+article.node.entry_winner_list .field-name-content-social-buttons:hover,
+article.node.entry_winner_list:not(.node-article) a.node-entry-list-link:hover ~ .field-name-content-social-buttons-js,
+article.node.entry_winner_list:not(.node-article) a:hover ~ .field-name-content-social-buttons-js,
+article.node.entry_winner_list .field-name-content-social-buttons-js:hover{
+    top: 0;
+}
+
+article.node.entry_list .field-name-content-social-buttons,
+article.node.entry_list .field-name-content-social-buttons-js,
+article.node.entry_winner_list .field-name-content-social-buttons,
+article.node.entry_winner_list .field-name-content-social-buttons-js{
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    top: -100px;
+    padding: 10px;
+    @include transition(all, .2s, ease-in);
+}
+article.node.entry_list .field-name-content-social-buttons-js,
+article.node.entry_winner_list .field-name-content-social-buttons-js{
+    left: 0;
+    top: 0;
+    padding: 6px 14px;
+}
+.field-name-content-social-buttons > .field-items > .field-item,
+.field-name-content-social-buttons-js > .field-items > .field-item{
+    float: left;
+    /*margin: 0 0.1em;*/
+    border: 2px solid transparent;
+}
+.field-name-content-social-buttons > .field-items > .field-item:first-of-type,
+.field-name-content-social-buttons-js > .field-items > .field-item:first-of-type{
+    margin-left: 0;
+}
+.field-name-content-social-buttons > .field-items > .field-item:last-of-type,
+.field-name-content-social-buttons-js > .field-items > .field-item:last-of-type{
+    margin-right: 0;
+}
+.field-name-content-social-buttons > .field-items > .field-item > .field,
+.field-name-content-social-buttons-js > .field-items > .field-item > .field{
+    font-size: 20px;
+    padding: 5px;
+    background: $colorSocialButtonsBackground;
+}
+.field-name-content-social-buttons-js > .field-items > .field-item > .field{
+    background: transparent;
+    padding: 5px 0;
+}
+.field-name-content-social-buttons > .field-items > .field-item > .field a,
+.field-name-content-social-buttons > .field-items > .field-item > .field a:hover,
+.field-name-content-social-buttons > .field-items > .field-item > .field a:focus{
+    color: #fff;
+}
+.field-name-content-social-buttons > .field-items > .field-item > .field.field-name-facebook:hover{
+    background: $colorsSocialIconsLinkHoverFacebook;
+}
+.field-name-content-social-buttons > .field-items > .field-item > .field.field-name-twitter:hover{
+    background: $colorsSocialIconsLinkHoverTwitter;
+}
+.field-name-content-social-buttons > .field-items > .field-item > .field.field-name-pinterest:hover{
+    background: $colorsSocialIconsLinkHoverPinterest;
+}
+.field-name-content-social-buttons > .field-items > .field-item > .field.field-name-google-plus:hover{
+    background: $colorsSocialIconsLinkHoverGoogle;
+}
+
+
+body.page-node.node-type-page article.node.node-page{
+    margin-bottom: 3em;
+}
+
+$colorNodeEntryFullBackground = #111;
+$colorNodeEntryFullFullName = #aaa;
+body.page-node.node-type-entry{
+    .page-header{display: none}
+    article.node.node-entry{
+        header{
+            padding: 35px 20px!important;
+        }
+        header.entry-header.affix{
+            right: 20px;
+        }
+        @media(max-width: 767px){
+            header.entry-header.affix{
+                position: static;
+                width: auto;
+                top: 0;
+            }
+        }
+        .field-name-body{
+            font-size: 23px;
+        }
+        .field-name-field-full-name{
+            color: $colorNodeEntryFullFullName;
+        }
+        .field-name-field-full-name{
+            font-weight: 600;
+            text-transform: uppercase;
+            margin: .6em 0;
+        }
+        .field-name-field-photo-category{
+            text-transform: uppercase;
+            margin: .6em 0;
+        }
+        .field-name-field-photo-category{
+            .field-items{
+                .field-item{
+                    float: left;
+                    margin-right: .2em;
+                }
+            }
+        }
+        
+        &.fitHeight{
+            .field-name-field-photo,
+            .field-name-field-photo *{
+                height: 100%;
+            }
+            .field-name-field-photo img{
+                height: 100%;
+                width: auto;
+            }
+        }
+        
+        
+        .field .field-label{
+            font-weight: 300;
+        }
+        
+        background: $colorNodeEntryFullBackground;
+        width: 100%;
+        overflow: hidden;
+    }
+}
+
+@media(max-width: 768px){
+    body.page-node.node-type-entry article.node.node-entry.fitHeight .field-name-field-photo,
+    body.page-node.node-type-entry article.node.node-entry.fitHeight .field-name-field-photo *{
+        height: auto;
+        width: auto;
+    }
+    body.page-node.node-type-entry article.node.node-entry.fitHeight .field-name-field-photo img{
+        height: auto;
+        width: 100%;
+    }
+ 
+}
