@@ -16,7 +16,7 @@ function content_social_buttons_form_node_form_alter(&$form, $form_state){
 }
 
 function content_social_buttons_icons(){
-  return array('facebook', 'twitter', 'google-plus', 'pinterest');
+  return array('facebook-like', 'facebook', 'twitter', 'google-plus', 'pinterest');
 }
 
 function content_social_buttons_form_node_type_form_alter(&$form, &$form_state) {
@@ -79,59 +79,59 @@ function content_social_buttons_form_submit($form, $form_state){
 }
 
 function content_social_buttons_preprocess_html(&$vars){
-  $vars['classes_array'][] = 'row-offcanvas';
-  $vars['classes_array'][] = 'row-offcanvas-right';
+  //$vars['classes_array'][] = 'row-offcanvas';
+  //$vars['classes_array'][] = 'row-offcanvas-right';
 }
 
 function content_social_buttons_preprocess_page(&$vars){
-  //social icons headers
-  
+//  //social icons headers
+//  
   $facebook_header = '<div id="fb-root"></div>';
   drupal_add_js('(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=";
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, \'script\', \'facebook-jssdk\'));','inline');
-
+//
   $twitter_header = '';
-  drupal_add_js('!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');', 'inline');
-  
+//  drupal_add_js('!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');', 'inline');
+//  
   $google_plus_header = '';
-  drupal_add_js('(function() {
-    var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
-    po.src = \'https://apis.google.com/js/platform.js\';
-    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
-  })();', 'inline');
-
+//  drupal_add_js('(function() {
+//    var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
+//    po.src = \'https://apis.google.com/js/platform.js\';
+//    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
+//  })();', 'inline');
+//
   $pinterest_header = '';
-  //'<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>';
-  //drupal_add_js('http://assets.pinterest.com/js/pinit.js', 'external');
-  drupal_add_js('(function() {
-    var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
-    po.src = \'http://assets.pinterest.com/js/pinit.js\';
-    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
-  })();' ,'inline');
-  
-  
-  
+//  //'<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>';
+//  //drupal_add_js('http://assets.pinterest.com/js/pinit.js', 'external');
+//  drupal_add_js('(function() {
+//    var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
+//    po.src = \'http://assets.pinterest.com/js/pinit.js\';
+//    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
+//  })();' ,'inline');
+//  
+//  
+//  
   $vars['page']['header']['social_buttons_headers'] = array(
     '#markup' => $facebook_header . $google_plus_header . $pinterest_header,
   );
-  
-  $vars['page']['content']['social_buttons_inlines'] = array(
-    '#markup' => $twitter_header,
-  );
-  
-  //$vars['page']['page_bottom']['social_buttons_footers'] = array(
-  //  '#markup' => $twitter_header,
-  //);
-  
-  //render block
-  $social_buttons = block_load('content_social_buttons', 'content_social_buttons');
-  $social_buttons = _block_get_renderable_array(_block_render_blocks(array($social_buttons)));
-  array_push($vars['page']['header'], $social_buttons);
+//  
+//  $vars['page']['content']['social_buttons_inlines'] = array(
+//    '#markup' => $twitter_header,
+//  );
+//  
+//  //$vars['page']['page_bottom']['social_buttons_footers'] = array(
+//  //  '#markup' => $twitter_header,
+//  //);
+//  
+//  //render block
+//  $social_buttons = block_load('content_social_buttons', 'content_social_buttons');
+//  $social_buttons = _block_get_renderable_array(_block_render_blocks(array($social_buttons)));
+//  array_push($vars['page']['header'], $social_buttons);
 }
 
 /**
@@ -186,52 +186,85 @@ function content_social_buttons_node_view($node, $view_mode, $langcode){
       '#bundle' => $node->type,
       '#node' => $node,
     );
+    $node->content['content_social_buttons_js'] = array(
+      '#theme' => 'field',
+      '#view_mode' => $view_mode,
+      '#field_name' => 'content_social_buttons_js',
+      '#weight' => -1,
+      '#title' => 'social buttons',
+      '#label_display' => 'hidden',
+      '#field_type' => 'textfield',
+      '#bundle' => $node->type,
+      '#node' => $node,
+    );
     foreach($icons as $key => $icon){
       $show_icon = content_social_buttons_icon_get_setting($node->type, $icon);
       if($show_icon){
-        $node->content['content_social_buttons']['#items'][] = array('value' => $icon);
-        $node->content['content_social_buttons'][] = array(
-          '#theme' => 'field',
-          '#view_mode' => $view_mode,
-          '#field_name' => 'content_social_button',
-          '#weight' => 0,
-          '#title' => 'social buttons',
-          '#label_display' => 'hidden',
-          '#field_type' => 'textfield',
-          '#bundle' => $node->type,
-          '#items' => array(array('value' => $icon, 'url' => $node_url)),
-          array('name' => $icon, '#markup' => content_social_buttons_generate_button($icon, $node_url, $node))
-        );
+        if($icon=='facebook-like'){
+          $node->content['content_social_buttons_js']['#items'][] = array('value' => $icon);
+          $node->content['content_social_buttons_js'][] = array(
+            '#theme' => 'field',
+            '#view_mode' => $view_mode,
+            '#field_name' => $icon,
+            '#weight' => 0,
+            '#title' => 'social buttons',
+            '#label_display' => 'hidden',
+            '#field_type' => 'textfield',
+            '#bundle' => $node->type,
+            '#items' => array(array('value' => $icon, 'url' => $node_url)),
+            array('name' => $icon, '#markup' => content_social_buttons_generate_button($icon, $node_url, $node))
+          );
+        }else{
+          $node->content['content_social_buttons']['#items'][] = array('value' => $icon);
+          $node->content['content_social_buttons'][] = array(
+            '#theme' => 'field',
+            '#view_mode' => $view_mode,
+            '#field_name' => $icon,
+            '#weight' => 0,
+            '#title' => 'social buttons',
+            '#label_display' => 'hidden',
+            '#field_type' => 'textfield',
+            '#bundle' => $node->type,
+            '#items' => array(array('value' => $icon, 'url' => $node_url)),
+            array('name' => $icon, '#markup' => content_social_buttons_generate_button($icon, $node_url, $node))
+          );
+        }
       }
     }
   }
 }
 
 function content_social_buttons_preprocess_field(&$vars){
-  if($vars['element']['#field_name']=='content_social_buttons'){
+  if($vars['element']['#field_name']=='content_social_buttons' || $vars['element']['#field_name']=='content_social_buttons_js'){
     $vars['attributes_array']['data-title'] = $vars['element']['#node']->title;
-    $vars['classes_array'][] = 'btn';
+    $vars['classes_array'][] = 'clearfix';
   }
 }
 
 function content_social_buttons_generate_button($icon, $url, $node){
   $markup = '';
+  if(isset($node->body[$node->language]) && isset($node->body[$node->language][0])){
+    $tmpBody = truncate_utf8(strip_tags($node->body[$node->language][0]['value']), 120, true, true);
+  }
   switch ($icon){
+    case 'facebook-like':
+      $markup = '<div class="fb-like" data-href="' . $url . '" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>';
+      break;
     case 'facebook':
-      $markup = '<div class="fb-like" data-href="' . $url . '" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>';
+      $markup = '<a href="https://www.facebook.com/sharer/sharer.php?u=' . $url . '&t=' . $tmpBody .'"><i class="fa fa-facebook fa-fw"></i></a>';
       break;
     case 'twitter':
-      $markup = '<a href="https://twitter.com/share" class="twitter-share-button" data-url="' . $url . '" data-count="none">Tweet</a>';
+      $markup = '<a href="https://twitter.com/intent/tweet?original_referer=' . $url . '&text=' . $tmpBody . '&tw_p=tweetbutton&url=' . $url .'"><i class="fa fa-twitter fa-fw"></i></a>';
       break;
     case 'google-plus':
-      $markup = '<div class="g-plusone" data-size="medium" data-href="' . $url . '" data-annotation="none"></div>';
+      $markup = '<a href="https://plus.google.com/share?url=' . $url . '"><i class="fa fa-google-plus fa-fw"></i></a>';
       break;
     case 'pinterest':
       $url = urlencode($url);
       $token = content_social_buttons_icon_token_get_setting($node->type, $icon);
       $media_url = urlencode(token_replace($token, array('node' => $node)));
-      $description = urlencode($node->title);
-      $markup = '<a href="//www.pinterest.com/pin/create/button/?url=' . $url . '&media=' . $media_url . '&description=' . $description . '" data-pin-do="buttonPin" data-pin-config="none"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>';
+      $description = urlencode($tmpBody);
+      $markup = '<a href="//www.pinterest.com/pin/create/button/?url=' . $url . '&media=' . $media_url . '&description=' . $description . '" data-pin-do="buttonPin" data-pin-config="none"><i class="fa fa-pinterest fa-fw"></i></a>';
       break;
     default:
       $markup = $icon;
