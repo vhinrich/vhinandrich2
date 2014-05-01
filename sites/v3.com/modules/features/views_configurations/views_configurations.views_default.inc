@@ -93,12 +93,12 @@ window.location = \'/search/\' + $(\'.search-form #edit-keys\').attr(\'value\');
   );
   $handler->display->display_options['fields']['field_media']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_media']['delta_offset'] = '0';
-  /* Sort criterion: Search: Score */
+  /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['score']['id'] = 'score';
   $handler->display->display_options['sorts']['score']['table'] = 'search_index';
   $handler->display->display_options['sorts']['score']['field'] = 'score';
   $handler->display->display_options['sorts']['score']['order'] = 'DESC';
-  /* Contextual filter: Search: Search Terms */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['keys']['id'] = 'keys';
   $handler->display->display_options['arguments']['keys']['table'] = 'search_index';
   $handler->display->display_options['arguments']['keys']['field'] = 'keys';
@@ -153,7 +153,7 @@ window.location = \'/search/\' + $(\'.search-form #edit-keys\').attr(\'value\');
   $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'load_more';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '3';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '6';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';

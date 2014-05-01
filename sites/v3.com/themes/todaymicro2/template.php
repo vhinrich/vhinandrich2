@@ -206,20 +206,20 @@ function todaymicro2_field_widget_form_alter(&$element, &$form_state, $context){
   //}
 }
 
-function todaymicro2_menu_link__main_menu($variables){
-  $element = $variables['element'];
-  $sub_menu = '';
-
-  if ($element['#below']) {
-    $sub_menu = drupal_render($element['#below']);
-  }
-  //$output =  l('<div class="front">' . $element['#title'] . '</div>' . '<div class="back">' . $element['#title'] . '</div>', $element['#href'], $element['#localized_options']);
-  //$output =  '<a href="' . $element['#href'] . '"><span class="front">' . $element['#title'] . '</span>' . '<span class="back">' . $element['#title'] . '</span></a>';
-  $output = '';
-  $output .=  '<div class="front">' . l($element['#title'], $element['#href'], $element['#localized_options']) . '</div>';
-  $output .=  '<div class="back">' . l($element['#title'], $element['#href'], $element['#localized_options']) . '</div>';
-  return '<li' . drupal_attributes($element['#attributes']) . '><div class="roll">' . $output . '</div>' . $sub_menu . "</li>\n";
-}
+//function todaymicro2_menu_link__main_menu($variables){
+//  $element = $variables['element'];
+//  $sub_menu = '';
+//
+//  if ($element['#below']) {
+//    $sub_menu = drupal_render($element['#below']);
+//  }
+//  //$output =  l('<div class="front">' . $element['#title'] . '</div>' . '<div class="back">' . $element['#title'] . '</div>', $element['#href'], $element['#localized_options']);
+//  //$output =  '<a href="' . $element['#href'] . '"><span class="front">' . $element['#title'] . '</span>' . '<span class="back">' . $element['#title'] . '</span></a>';
+//  $output = '';
+//  $output .=  '<div class="front">' . l($element['#title'], $element['#href'], $element['#localized_options']) . '</div>';
+//  $output .=  '<div class="back">' . l($element['#title'], $element['#href'], $element['#localized_options']) . '</div>';
+//  return '<li' . drupal_attributes($element['#attributes']) . '><div class="roll">' . $output . '</div>' . $sub_menu . "</li>\n";
+//}
 
 function todaymicro2_views_load_more_pager($vars) {
   global $pager_page_array, $pager_total;

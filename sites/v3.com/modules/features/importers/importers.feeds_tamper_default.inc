@@ -31,7 +31,7 @@ function importers_feeds_tamper_default() {
   $feeds_tamper->importer = 'instagram_import';
   $feeds_tamper->source = 'jsonpath_parser:3';
   $feeds_tamper->plugin_id = 'instagram_media';
-  $feeds_tamper->settings = '';
+  $feeds_tamper->settings = array();
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Instagram Media';
   $export['instagram_import-jsonpath_parser_3-instagram_media'] = $feeds_tamper;
@@ -43,7 +43,7 @@ function importers_feeds_tamper_default() {
   $feeds_tamper->importer = 'instagram_import';
   $feeds_tamper->source = 'jsonpath_parser:5';
   $feeds_tamper->plugin_id = 'instagram_media';
-  $feeds_tamper->settings = '';
+  $feeds_tamper->settings = array();
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Instagram Media';
   $export['instagram_import-jsonpath_parser_5-instagram_media'] = $feeds_tamper;
@@ -55,7 +55,7 @@ function importers_feeds_tamper_default() {
   $feeds_tamper->importer = 'instagram_import';
   $feeds_tamper->source = 'jsonpath_parser:7';
   $feeds_tamper->plugin_id = 'instagram_body';
-  $feeds_tamper->settings = '';
+  $feeds_tamper->settings = array();
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Instagram Body';
   $export['instagram_import-jsonpath_parser_7-instagram_body'] = $feeds_tamper;
