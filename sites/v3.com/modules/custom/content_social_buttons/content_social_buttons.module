@@ -254,7 +254,7 @@ function content_social_buttons_generate_button($icon, $url, $node){
       $markup = '<a href="https://www.facebook.com/sharer/sharer.php?u=' . $url . '&t=' . $tmpBody .'"><i class="fa fa-facebook fa-fw"></i></a>';
       break;
     case 'twitter':
-      $markup = '<a href="https://twitter.com/intent/tweet?original_referer=' . $url . '&text=' . $tmpBody . '&tw_p=tweetbutton&url=' . $url .'"><i class="fa fa-twitter fa-fw"></i></a>';
+      $markup = '<a href="https://twitter.com/intent/tweet?original_referer=' . $url . '&text=' . urlencode($tmpBody) . '&tw_p=tweetbutton&url=' . $url .'"><i class="fa fa-twitter fa-fw"></i></a>';
       break;
     case 'google-plus':
       $markup = '<a href="https://plus.google.com/share?url=' . $url . '"><i class="fa fa-google-plus fa-fw"></i></a>';
