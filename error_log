@@ -130,3 +130,6 @@ These options need to match
 [02-Apr-2014 19:57:18] PHP Fatal error:  Call to undefined function  httprl_drupal_get_private_key() in /home6/vhinandr/public_html/sites/all/modules/contrib/httprl/httprl.async.inc on line 25
 [02-Apr-2014 19:57:20] PHP Fatal error:  Call to undefined function  httprl_drupal_get_private_key() in /home6/vhinandr/public_html/sites/all/modules/contrib/httprl/httprl.async.inc on line 25
 [02-Apr-2014 19:57:20] PHP Fatal error:  Call to undefined function  httprl_drupal_get_private_key() in /home6/vhinandr/public_html/sites/all/modules/contrib/httprl/httprl.async.inc on line 25
+[01-May-2014 22:08:29] PHP Fatal error:  Class 'ViewsUiNodeViewsWizard' not found in /home6/vhinandr/public_html/sites/all/modules/contrib/views/views_ui.module on line 647
+[01-May-2014 22:12:11] PHP Fatal error:  Class 'ViewsUiNodeViewsWizard' not found in /home6/vhinandr/public_html/sites/all/modules/contrib/views/views_ui.module on line 647
+[01-May-2014 22:13:30] PHP Fatal error:  Class 'ViewsUiNodeViewsWizard' not found in /home6/vhinandr/public_html/sites/all/modules/contrib/views/views_ui.module on line 647
