@@ -594,6 +594,7 @@ class Compass implements ExtensionInterface
         if ($only_path) {
             return new SassString($path);
         }
+        $path = str_replace(DIRECTORY_SEPARATOR, "/", $path);
 
         return new SassString("url('$path')");
     }
