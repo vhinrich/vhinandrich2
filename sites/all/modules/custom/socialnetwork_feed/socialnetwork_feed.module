@@ -47,12 +47,17 @@ function socialnetwork_feed_ingest(){
   drupal_flush_all_caches();
 }
 
+function socialnetwork_feed_generate_compare($a, $b) {
+  return $b->created_time - $a->created_time;
+}
+
 function socialnetwork_feed_generate_json($type){
   $feed_array = array();
   $var = $_GET;
   switch ($type){
     case "instagram":
       $feed_array = socialnetwork_feed_ig_pull_retrieve($var);
+      usort($feed_array, 'socialnetwork_feed_generate_compare');
       $feed_array = array_slice($feed_array, 0, 10); //latest 10 items
       break;
   }
