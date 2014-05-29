@@ -1,0 +1,134 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function mqcristobal_gse_menu(){  
+  $items = array();
+  $items['admin/config/search/mqc-google-search-engine'] = array(
+    'page callback' => 'drupal_get_form',
+    'title' => t('MQCristobal Google Search Engine'),
+    'page arguments' => array('mqcristobal_gse_config_form'),
+    'description' => 'Configure MQC GSE.',
+    'access arguments' => array('administer site configuration'),
+  );
+
+  //$items['search'] = array(
+  //  'title' => t('Search'),
+  //  'type' => MENU_NORMAL_ITEM,
+  //  'page callback' => array('today_gse_search_page'),
+  //  'description' => 'Configure Canon Blocks.',
+  //  'access arguments' => array('access content'),
+  //);
+
+  //$items['admin/structure/canon_blocks/tab2'] = array(
+  //  'title' => 'Tab 2',
+  //  'type' => MENU_LOCAL_TASK,
+  //  'page callback' => 'some_callback',
+  //  'access arguments' => array('some permission')
+  //);
+
+  return $items;
+}
+
+function mqcristobal_gse_config_form(){
+  $form = null;
+  $form['mqcristobal_gse_search_engine_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Google Search Engine ID'),
+    '#default_value' => variable_get('mqcristobal_gse_search_engine_id', 0),
+  );
+  $form['mqcristobal_gse_search_result_page_link'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Google Search Result URL'),
+    '#default_value' => variable_get('mqcristobal_gse_search_result_page_link', null),
+  );
+  $form['mqcristobal_gse_search_query_param'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Google Search Query Param Name'),
+    '#default_value' => variable_get('mqcristobal_gse_search_query_param', 'query'),
+  );
+  
+  return system_settings_form($form);
+}
+
+function mqcristobal_gse_block_info() {
+  // This example comes from node.module.
+  $blocks['mqcristobal_gse_search_box_block'] = array(
+    'info' => t('MQC GSE Search Box'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['mqcristobal_gse_search_results_block'] = array(
+    'info' => t('MQC GSE Search Results'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+function mqcristobal_gse_search_form(){
+  $form = null;
+  if(isset($_GET[variable_get('mqcristobal_gse_search_query_param', 'query')])){
+    $searchQuery = check_plain($_GET[variable_get('mqcristobal_gse_search_query_param', 'query')]);
+  }
+  $form['search'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Search'),
+    '#title_display' => 'invisible',
+    '#default_value' => $searchQuery,
+    '#attributes' => array('placeholder' => array(t('Search'))),
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => '<i class="glyphicon glyphicon-search"></i>',
+  );
+  return $form;
+}
+function mqcristobal_gse_search_form_submit($form, $form_state){
+  drupal_goto(url(variable_get('mqcristobal_gse_search_result_page_link', null), array('absolute' => true)), array('query' => array(variable_get('mqcristobal_gse_search_query_param', 'query') => $form_state['values']['search'])));
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function mqcristobal_gse_block_view($delta = '') {
+  $block = array();
+  
+
+  switch ($delta) {
+    case 'mqcristobal_gse_search_box_block':
+      $block['content'] = array(
+        //'#markup' => '<gcse:searchbox-only  linktarget="' . url(variable_get('today_gse_search_result_page_link', null), array('absolute' => true)) . '" queryParameterName="' . variable_get('today_gse_search_query_param', 'query') . '"></gcse:searchbox-only>',
+        '#markup' => render(drupal_get_form('mqcristobal_gse_search_form'))
+        //'#attached' => array(
+        //  'js' => array(
+        //    drupal_get_path('module', 'canon_blocks') . '/js/canon_blocks.submission_timer.js',
+        //  ),
+        //),
+      );
+      break;
+    case 'mqcristobal_gse_search_results_block':
+      drupal_add_js("(function() {
+        var cx = '" . variable_get('mqcristobal_gse_search_engine_id', 0) . "';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+            '//www.google.com/cse/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();", array('type' => 'inline', 'scope' => 'footer', 'weight' => 5));
+  
+      $block['content'] = array(
+        '#markup' => '<gcse:searchresults-only linktarget="_parent" queryParameterName="' . variable_get('mqcristobal_gse_search_query_param', 'query') . '"></gcse:searchresults-only>',
+        //'#attached' => array(
+        //  'js' => array(
+        //    drupal_get_path('module', 'canon_blocks') . '/js/canon_blocks.submission_timer.js',
+        //  ),
+        //),
+      );
+      break;
+  }
+  
+  return $block;
+}
