@@ -349,7 +349,7 @@ Drupal.behaviors.timeline_nav = {
       'rendered_strip' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['row_class'] = 'col-sm-6 col-lg-4';
+  $handler->display->display_options['style_options']['row_class'] = 'col-sm-6 col-sm-4';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';

@@ -54,11 +54,11 @@ function mqcristobal_gse_config_form(){
 
 function mqcristobal_gse_block_info() {
   // This example comes from node.module.
-  $blocks['mqcristobal_gse_search_box_block'] = array(
+  $blocks['mqc_gse_search_box_block'] = array(
     'info' => t('MQC GSE Search Box'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
-  $blocks['mqcristobal_gse_search_results_block'] = array(
+  $blocks['mqc_gse_search_results_block'] = array(
     'info' => t('MQC GSE Search Results'),
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
@@ -96,7 +96,7 @@ function mqcristobal_gse_block_view($delta = '') {
   
 
   switch ($delta) {
-    case 'mqcristobal_gse_search_box_block':
+    case 'mqc_gse_search_box_block':
       $block['content'] = array(
         //'#markup' => '<gcse:searchbox-only  linktarget="' . url(variable_get('today_gse_search_result_page_link', null), array('absolute' => true)) . '" queryParameterName="' . variable_get('today_gse_search_query_param', 'query') . '"></gcse:searchbox-only>',
         '#markup' => render(drupal_get_form('mqcristobal_gse_search_form'))
@@ -107,7 +107,7 @@ function mqcristobal_gse_block_view($delta = '') {
         //),
       );
       break;
-    case 'mqcristobal_gse_search_results_block':
+    case 'mqc_gse_search_results_block':
       drupal_add_js("(function() {
         var cx = '" . variable_get('mqcristobal_gse_search_engine_id', 0) . "';
         var gcse = document.createElement('script');
