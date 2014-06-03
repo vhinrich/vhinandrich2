@@ -131,6 +131,10 @@ function vhinandrich3_form_alter(&$form){
           $form['submitted'][$key]['#suffix'] = '</div>';
         }
       }
+      $form['actions']['submit']['#value'] = '<i class="button-icon glyphicon glyphicon-send"></i><span class="button-caption">Send</span>';
+      $form['actions']['submit']['#attributes'] = array('class' => array('btn-lg', 'btn-primary'));
+      $form['actions']['submit']['#prefix'] = '<div class="col-sm-12" style="clear:both">';
+      $form['actions']['submit']['#suffix'] = '</div>';
     }
 }
 

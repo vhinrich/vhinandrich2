@@ -17,9 +17,24 @@ a:hover,
 a:focus,
 a:active{color: $colorInvertHightlightText}
 
-.navbar-default{background: $colorBackgroundMainNavbar}
+.navbar-default{
+    background: $colorBackgroundMainNavbar;
+    .navbar-toggle{
+	border: none;
+	margin-top: 16px;
+	.icon-bar{background: $colorHightlightText}
+	&:hover, &:focus{
+	    background: none;
+	    .icon-bar{background: $colorInvertHightlightText}
+	}
+    }
+}
 .navbar>.container .navbar-brand{font-size: 26px;color: #e74c3c}
-.navbar-nav>li>a{text-transform: uppercase;font-size: 18px;padding: 20px 15px}
+.navbar-nav{
+    position: relative;
+    z-index: 5;
+    > li>a{text-transform: uppercase;font-size: 18px;padding: 20px 15px}
+}
 .navbar-brand{padding: 20px 15px}
 
 .carousel-control.left,
@@ -44,3 +59,39 @@ video {
 	height: 100%;
 }
 form .form-item{margin: 1em 0}
+
+.btn{border-radius: 0;-moz-border-radius: 0; -webkit-border-radius: 0;text-transform: uppercase}
+.form-control{border-radius: 0;-moz-border-radius: 0; -webkit-border-radius: 0}
+.button-icon{margin-right: 15px}
+
+
+.pace .pace-progress {
+    position: fixed;
+    z-index: 2000;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 12rem;
+    width: 12rem !important;
+    line-height: 12rem;
+    font-size: 4rem;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background: $colorHightlightText;
+    color: #fff;
+    font-family: "Helvetica Neue", sans-serif;
+    font-weight: 100;
+    text-align: center;
+    -webkit-animation: none;
+    -moz-animation: none;
+    -ms-animation: none;
+    -o-animation: none;
+    animation: none;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
