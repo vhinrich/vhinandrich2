@@ -133,3 +133,29 @@ These options need to match
 [01-May-2014 22:08:29] PHP Fatal error:  Class 'ViewsUiNodeViewsWizard' not found in /home6/vhinandr/public_html/sites/all/modules/contrib/views/views_ui.module on line 647
 [01-May-2014 22:12:11] PHP Fatal error:  Class 'ViewsUiNodeViewsWizard' not found in /home6/vhinandr/public_html/sites/all/modules/contrib/views/views_ui.module on line 647
 [01-May-2014 22:13:30] PHP Fatal error:  Class 'ViewsUiNodeViewsWizard' not found in /home6/vhinandr/public_html/sites/all/modules/contrib/views/views_ui.module on line 647
+[12-May-2014 21:47:48] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 39274 bytes) in /home6/vhinandr/public_html/sites/all/modules/contrib/advagg/advagg_js_compress/jsminplus.inc on line 1953
+[12-May-2014 21:49:39] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 202919 bytes) in /home6/vhinandr/public_html/includes/cache.inc on line 450
+[13-May-2014 11:54:53] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 24 bytes) in /home6/vhinandr/public_html/sites/all/modules/contrib/features/features.export.inc on line 971
+[16-May-2014 12:32:54] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 30720 bytes) in /home6/vhinandr/public_html/sites/all/modules/contrib/entity/includes/entity.controller.inc on line 348
+[17-May-2014 12:33:03] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 71 bytes) in /home6/vhinandr/public_html/modules/field/field.info.class.inc on line 530
+[18-May-2014 13:02:51] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 122880 bytes) in /home6/vhinandr/public_html/sites/all/modules/contrib/feeds/views/feeds.views.inc on line 235
+[21-May-2014 13:32:47] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 29923 bytes) in /home6/vhinandr/public_html/includes/database/database.inc on line 2171
+[26-May-2014 14:32:43] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 491520 bytes) in /home6/vhinandr/public_html/sites/v3.com/modules/features/views_configurations/views_configurations.views_default.inc on line 274
+[29-May-2014 20:29:58 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:30:02 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:30:03 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:30:09 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:30:20 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:30:31 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:30:34 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:30:35 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:30:41 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:34:33 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:34:36 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:34:43 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:34:54 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:35:05 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:35:11 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:35:16 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:35:36 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
+[29-May-2014 20:36:00 America/Denver] PHP Parse error:  syntax error, unexpected ',', expecting ')' in /home6/vhinandr/public_html/sites/v3.com/settings.php on line 228
