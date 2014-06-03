@@ -1,0 +1,15 @@
+name = Vhin and Rich Views Custom Handlers
+description = Views custom handlers for Vhin and Rich
+package = MQ Cristobal
+core = 7.x
+
+dependencies[] = views
+files[] = handlers/vhinandrich_vch1_year_date.inc
+files[] = vhinandrich_vch1.views.inc
+
+; Information added by drupal.org packaging script on 2012-02-10
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "vhinandrich_vch1"
+datestamp = "1392949874"
+
