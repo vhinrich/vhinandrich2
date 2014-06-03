@@ -1,0 +1,95 @@
+<?php
+
+/**
+* Implements hook_permission().
+*/
+function today_security_login_permission() {
+  return array(
+    'administer security login' => array(
+      'title' => t('Administer Security Login'),
+    )
+  );
+}
+
+/** hook_menu **/
+function today_security_login_menu(){
+  $items['admin/config/security-login'] = array(
+    'page callback' => 'drupal_get_form',
+    'title' => t('Security Login Config'),
+    'page arguments' => array('security_login_form'),
+    'description' => 'Configure Security Login.',
+    'access arguments' => array('administer security login'),
+  );
+  
+  return $items;
+}
+
+function today_security_login_form(){
+  $form['security_login_email_address'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Email Adresses'),
+    '#description' => t('Separate email with new line'),
+    '#default_value' => variable_get('security_login_email_address', null)
+  );
+  
+  return system_settings_form($form);
+}
+
+function security_login_form_alter(&$form, &$form_state, $form_id){
+  if($form_id=='user_login' || $form_id=='user_login_block'){
+    $form['#validate'][] = 'security_login_user_login_validate';
+  }
+}
+function security_login_user_login_validate($form, $form_state){
+  if(isset($form_state['flood_control_triggered'])){
+    $tmpEmail = variable_get('security_login_email_address', '');
+    $emails = explode("\r\n", $tmpEmail);
+    $logTime = time();
+    foreach($emails as $email){
+      if($email){
+        $module = 'today_security_login';
+        $key = 'notify';
+        $language = language_default();
+        $params = array();
+        $from = 'admin';
+        $send = FALSE;
+        $subject = 'Suspicious login attempt detected';
+        $identifier = explode('-', $form_state['flood_control_user_identifier']);
+        $tmpUser = user_load($identifier[0]);
+        if($form_state['flood_control_triggered']=='user'){
+          $body = array('A suspicious login attempt was detected. Please see details below.',
+            'userid-ip: ' . $form_state['flood_control_user_identifier'],
+            'username: ' . $tmpUser->name,
+            'ip: ' . $identifier[1],
+            'date/time: ' . date('M d Y h:i:s', $logTime),
+            'timestamp: ' . $logTime
+            );
+        }
+        if($form_state['flood_control_triggered']=='ip'){
+          $body = array('A suspicious login attempt was detected. Please see details below.',
+            'ip: ' . ip_address(),
+            'username: ' . $form_state['values']['name'],
+            'date/time: ' . date('M d Y h:i:s', $logTime),
+            'timestamp: ' . $logTime
+            );
+        }
+        
+        $message = drupal_mail($module, $key, $email, $language, $params, $from, $send);
+        $message['subject'] = $subject;
+        $message['body'] = $body;
+    
+    
+        // Retrieve the responsible implementation for this message.
+        $system = drupal_mail_system($module, $key);
+    
+    
+        // Format the message body.
+        $message = $system->format($message);
+    
+    
+        // Send e-mail.
+        $message['result'] = $system->mail($message);
+      }
+    }
+  }
+}

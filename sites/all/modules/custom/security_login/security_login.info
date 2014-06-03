@@ -1,0 +1,13 @@
+name = Security Login
+description = Security Login
+package = MQ Cristobal
+core = 7.x
+
+files[] = security_login.module
+configure = admin/config/security-login
+; Information added by drupal.org packaging script on 2012-02-10
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "security_login"
+datestamp = "1328832859"
+
