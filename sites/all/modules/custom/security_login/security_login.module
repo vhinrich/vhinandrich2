@@ -3,7 +3,7 @@
 /**
 * Implements hook_permission().
 */
-function today_security_login_permission() {
+function security_login_permission() {
   return array(
     'administer security login' => array(
       'title' => t('Administer Security Login'),
@@ -12,7 +12,7 @@ function today_security_login_permission() {
 }
 
 /** hook_menu **/
-function today_security_login_menu(){
+function security_login_menu(){
   $items['admin/config/security-login'] = array(
     'page callback' => 'drupal_get_form',
     'title' => t('Security Login Config'),
@@ -24,7 +24,7 @@ function today_security_login_menu(){
   return $items;
 }
 
-function today_security_login_form(){
+function security_login_form(){
   $form['security_login_email_address'] = array(
     '#type' => 'textarea',
     '#title' => t('Email Adresses'),
@@ -47,7 +47,7 @@ function security_login_user_login_validate($form, $form_state){
     $logTime = time();
     foreach($emails as $email){
       if($email){
-        $module = 'today_security_login';
+        $module = 'security_login';
         $key = 'notify';
         $language = language_default();
         $params = array();
