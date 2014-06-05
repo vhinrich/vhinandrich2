@@ -8,6 +8,9 @@ sites/*/files
 sites/*/private
 */.sass-cache/*
 *.DS_Store*
+php.ini.*
+php.ini
+.htaccess.*
 
 # Ignore default text files
 .htaccess
