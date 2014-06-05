@@ -65,33 +65,37 @@ form .form-item{margin: 1em 0}
 .button-icon{margin-right: 15px}
 
 
-.pace .pace-progress {
-    position: fixed;
-    z-index: 2000;
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
+.pace{
     height: 12rem;
-    width: 12rem !important;
-    line-height: 12rem;
-    font-size: 4rem;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    background: $colorHightlightText;
-    color: #fff;
-    font-family: "Helvetica Neue", sans-serif;
-    font-weight: 100;
-    text-align: center;
-    -webkit-animation: none;
-    -moz-animation: none;
-    -ms-animation: none;
-    -o-animation: none;
-    animation: none;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    -o-transform-style: preserve-3d;
-    transform-style: preserve-3d;
+    width: 12rem;
+    .pace-progress {
+        position: fixed;
+        z-index: 2000;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 12rem;
+        width: 12rem !important;
+        line-height: 12rem;
+        font-size: 4rem;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        background: $colorHightlightText;
+        color: #fff;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 100;
+        text-align: center;
+        -webkit-animation: none;
+        -moz-animation: none;
+        -ms-animation: none;
+        -o-animation: none;
+        animation: none;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        -o-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+    }
 }
