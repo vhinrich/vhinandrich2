@@ -99,3 +99,31 @@ form .form-item{margin: 1em 0}
         transform-style: preserve-3d;
     }
 }
+
+.block-mqcristobal-gse,
+.pane-mqcristobal-gse-mqc-gse-search-box-block{
+    fieldset{
+	position: relative;
+	.form-submit{
+	    position: absolute;
+	    right: 15px;
+	    top: 29px;
+	}
+    }
+}
+.page-search{
+    .gsc-control-cse .gsc-table-result{
+	font-family: $fontBodyText;
+    }
+    .gs-web-image-box, .gs-promotion-image-box{
+	width: 100px;
+	margin-right: 15px;
+    }
+    .gs-web-image-box img.gs-image, .gs-promotion-image-box img.gs-promotion-image{
+	max-width: 100px;
+	max-height: 100px;
+    }
+    .gsc-control-cse .gs-spelling, .gsc-control-cse .gs-result .gs-title, .gsc-control-cse .gs-result .gs-title *{
+	font-size: 20px;
+    }
+}

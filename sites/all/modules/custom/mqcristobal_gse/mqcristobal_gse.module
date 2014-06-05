@@ -33,6 +33,10 @@ function mqcristobal_gse_menu(){
 
 function mqcristobal_gse_config_form(){
   $form = null;
+  $form['form_markup'] = array(
+    '#type' => 'markup',
+    '#markup' => t('To get your search engine id, create an account in ') .  l('google cse', 'https://www.google.com/cse/'),
+  );
   $form['mqcristobal_gse_search_engine_id'] = array(
     '#type' => 'textfield',
     '#title' => t('Google Search Engine ID'),
@@ -52,8 +56,10 @@ function mqcristobal_gse_config_form(){
   return system_settings_form($form);
 }
 
+/**
+ * Implements hook_block_info().
+ */
 function mqcristobal_gse_block_info() {
-  // This example comes from node.module.
   $blocks['mqc_gse_search_box_block'] = array(
     'info' => t('MQC GSE Search Box'),
     'cache' => DRUPAL_CACHE_GLOBAL,
@@ -68,23 +74,28 @@ function mqcristobal_gse_block_info() {
 
 function mqcristobal_gse_search_form(){
   $form = null;
+  $searchQuery = null;
   if(isset($_GET[variable_get('mqcristobal_gse_search_query_param', 'query')])){
     $searchQuery = check_plain($_GET[variable_get('mqcristobal_gse_search_query_param', 'query')]);
   }
-  $form['search'] = array(
+  $form['search_box'] = array(
+    '#type' => 'fieldset',
+  );
+  $form['search_box']['search'] = array(
     '#type' => 'textfield',
     '#title' => t('Search'),
     '#title_display' => 'invisible',
     '#default_value' => $searchQuery,
     '#attributes' => array('placeholder' => array(t('Search'))),
   );
-  $form['submit'] = array(
+  $form['search_box']['submit'] = array(
     '#type' => 'submit',
     '#value' => '<i class="glyphicon glyphicon-search"></i>',
   );
   return $form;
 }
 function mqcristobal_gse_search_form_submit($form, $form_state){
+  //redirect to your search result page
   drupal_goto(url(variable_get('mqcristobal_gse_search_result_page_link', null), array('absolute' => true)), array('query' => array(variable_get('mqcristobal_gse_search_query_param', 'query') => $form_state['values']['search'])));
 }
 
@@ -108,6 +119,7 @@ function mqcristobal_gse_block_view($delta = '') {
       );
       break;
     case 'mqc_gse_search_results_block':
+      //add js from google cse
       drupal_add_js("(function() {
         var cx = '" . variable_get('mqcristobal_gse_search_engine_id', 0) . "';
         var gcse = document.createElement('script');
