@@ -74,11 +74,14 @@
     attach: function(context, settings){
       Drupal.behaviors.content_social_buttons.refreshSocialButtons();
       
-      $('.field-name-content-social-buttons > .field-items > .field-item > .field a').off('click').on('click', function(e){
-        e.preventDefault();
-        var url = $(this).attr('href');
-        window.open(url, 'share', 'width=600,height=400,scrollbars=yes');
-      });
+      if ($('.field-name-content-social-buttons > .field-items > .field-item > .field a').length > 0) {
+        $('.field-name-content-social-buttons > .field-items > .field-item > .field a').unbind('click').bind('click', function(e){
+          e.preventDefault();
+          var url = $(this).attr('href');
+          window.open(url, 'share', 'width=600,height=400,scrollbars=yes');
+        });
+      }
+      
     }
   };
 })(jQuery);

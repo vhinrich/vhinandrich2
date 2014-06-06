@@ -243,6 +243,7 @@ function content_social_buttons_preprocess_field(&$vars){
 
 function content_social_buttons_generate_button($icon, $url, $node){
   $markup = '';
+  $tmpBody  = '';
   if(isset($node->body[$node->language]) && isset($node->body[$node->language][0])){
     $tmpBody = truncate_utf8(strip_tags($node->body[$node->language][0]['value']), 120, true, true);
   }

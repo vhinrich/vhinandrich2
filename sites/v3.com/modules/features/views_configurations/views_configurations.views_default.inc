@@ -344,7 +344,7 @@ Drupal.behaviors.timeline_nav = {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
-      'field' => 'field_date',
+      'field' => 'field_date_1',
       'rendered' => 1,
       'rendered_strip' => 0,
     ),
@@ -385,26 +385,6 @@ Drupal.behaviors.timeline_nav = {
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  /* Field: Global: PHP */
-  $handler->display->display_options['fields']['php_1']['id'] = 'php_1';
-  $handler->display->display_options['fields']['php_1']['table'] = 'views';
-  $handler->display->display_options['fields']['php_1']['field'] = 'php';
-  $handler->display->display_options['fields']['php_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php_1']['php_output'] = '<?php echo date(\'Y\', $data->field_data_field_date_field_date_value); ?>';
-  $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
-  $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
-  /* Field: Global: PHP */
-  $handler->display->display_options['fields']['php']['id'] = 'php';
-  $handler->display->display_options['fields']['php']['table'] = 'views';
-  $handler->display->display_options['fields']['php']['field'] = 'php';
-  $handler->display->display_options['fields']['php']['label'] = '';
-  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php']['php_output'] = '<?php echo date(\'F j, Y\', $data->field_data_field_date_field_date_value); ?>';
-  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
-  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Field: Content: Date */
   $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
   $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
@@ -412,38 +392,11 @@ Drupal.behaviors.timeline_nav = {
   $handler->display->display_options['fields']['field_date']['label'] = '';
   $handler->display->display_options['fields']['field_date']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_date']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_date']['alter']['text'] = '<span class="year-group-header year-group-header-[php_1]">[field_date]</span>';
+  $handler->display->display_options['fields']['field_date']['alter']['text'] = '[field_date]';
+  $handler->display->display_options['fields']['field_date']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_date']['settings'] = array(
     'format_type' => 'year',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-  );
-  /* Field: Content: Date */
-  $handler->display->display_options['fields']['field_date_1']['id'] = 'field_date_1';
-  $handler->display->display_options['fields']['field_date_1']['table'] = 'field_data_field_date';
-  $handler->display->display_options['fields']['field_date_1']['field'] = 'field_date';
-  $handler->display->display_options['fields']['field_date_1']['label'] = '';
-  $handler->display->display_options['fields']['field_date_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_date_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_date_1']['settings'] = array(
-    'format_type' => 'month',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-  );
-  /* Field: Content: Date */
-  $handler->display->display_options['fields']['field_date_2']['id'] = 'field_date_2';
-  $handler->display->display_options['fields']['field_date_2']['table'] = 'field_data_field_date';
-  $handler->display->display_options['fields']['field_date_2']['field'] = 'field_date';
-  $handler->display->display_options['fields']['field_date_2']['label'] = '';
-  $handler->display->display_options['fields']['field_date_2']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_date_2']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_date_2']['settings'] = array(
-    'format_type' => 'day',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
@@ -455,7 +408,7 @@ Drupal.behaviors.timeline_nav = {
   $handler->display->display_options['fields']['field_date_3']['field'] = 'field_date';
   $handler->display->display_options['fields']['field_date_3']['label'] = '';
   $handler->display->display_options['fields']['field_date_3']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_date_3']['alter']['text'] = '<a href="#node-[nid]" data-toggle="popover" data-placement="bottom" data-content="[php]">&nbsp;</a>[field_date_3]';
+  $handler->display->display_options['fields']['field_date_3']['alter']['text'] = '<a href="#node-[nid]" data-toggle="popover" data-placement="bottom" data-content="[field_date]">&nbsp;</a>[field_date_3]';
   $handler->display->display_options['fields']['field_date_3']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_date_3']['settings'] = array(
     'format_type' => 'month_day',
@@ -473,6 +426,24 @@ Drupal.behaviors.timeline_nav = {
   $handler->display->display_options['fields']['nodefield']['build_mode'] = 'timeline';
   $handler->display->display_options['fields']['nodefield']['links'] = 0;
   $handler->display->display_options['fields']['nodefield']['comments'] = 0;
+  /* Field: Content: Date */
+  $handler->display->display_options['fields']['field_date_1']['id'] = 'field_date_1';
+  $handler->display->display_options['fields']['field_date_1']['table'] = 'field_data_field_date';
+  $handler->display->display_options['fields']['field_date_1']['field'] = 'field_date';
+  $handler->display->display_options['fields']['field_date_1']['label'] = '';
+  $handler->display->display_options['fields']['field_date_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_date_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_date_1']['alter']['text'] = '<div class="year-group-header year-group-header-[field_date]">[field_date_1]</div>';
+  $handler->display->display_options['fields']['field_date_1']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_date_1']['alter']['preserve_tags'] = '<div>';
+  $handler->display->display_options['fields']['field_date_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_date_1']['settings'] = array(
+    'format_type' => 'year',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
   $handler->display->display_options['path'] = 'timeline';
   $export['timeline'] = $view;
 
