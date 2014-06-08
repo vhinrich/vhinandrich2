@@ -36,7 +36,18 @@ function vhinandrich3_js_alter(&$scripts){
 }
 
 function vhinandrich3_preprocess_page(&$vars){
-    
+  $vars['title'] = 'test';
+  if(arg(0)=='taxonomy' && arg(1)=='term' && is_numeric(arg(2))){
+    $tid = arg(2);
+    $taxonomy = taxonomy_term_load($tid);
+    if($taxonomy->vocabulary_machine_name=='hastags'){
+      $vars['title'] = '#' . $taxonomy->name;
+    }
+  }
+}
+
+function vhinandrich3_preprocess_html(&$vars){
+
 }
 
 function vhinandrich3_uglifyjs_info($scripts){
