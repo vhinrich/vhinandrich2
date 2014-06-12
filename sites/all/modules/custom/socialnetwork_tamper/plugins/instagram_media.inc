@@ -36,9 +36,7 @@ function socialnetwork_tamper_instagram_media_callback($source, $item_key, $elem
   switch ($source->items[$item_key]['jsonpath_parser:2']){
     case 'image':
     case 'Photos':
-      //$field = $source->items[$item_key]['jsonpath_parser:3'];
-      $file = system_retrieve_file($source->items[$item_key]['jsonpath_parser:3'], 'public://', TRUE);
-      $field = $file->uri;
+      $field = $source->items[$item_key]['jsonpath_parser:3'];
       break;
     case 'video':
     case 'Videos':
