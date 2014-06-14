@@ -374,6 +374,7 @@ Drupal.behaviors.timeline_nav = {
    var yearHeader = \'.year-group-header-\' + o;
    $(yearHeader).parents().addClass(\'hide\');
    $(yearHeader).first().parents().removeClass(\'hide\');
+   $(yearHeader).first().addClass(\'col-sm-12\');
   });
  }
 };
