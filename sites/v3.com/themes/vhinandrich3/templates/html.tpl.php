@@ -54,7 +54,7 @@
   <!-- google fonts -->
   <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700|Cinzel:400|Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700|Josefin+Slab:100,300,400,600,700' rel='stylesheet' type='text/css'>
   <!-- font awesome -->
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <?php print $styles; ?>
   <!-- HTML5 element support for IE6-8 -->
   <!--[if lt IE 9]>
