@@ -1,2 +1,45 @@
 <?php
 
+function mqcristobal_blocks_block_info(){
+    $blocks['mqc_instagram_block'] = array(
+      'info' => t('Instagram Block')
+    );
+    
+    return $blocks;
+}
+
+function mqcristobal_blocks_block_view($delta = ''){
+    $block = array();
+    
+    switch($delta){
+        case 'mqc_instagram_block':
+            $block['content'] = mqc_blocks_instagram_block();
+            break;
+    }
+    return $block;
+}
+
+function mqc_blocks_instagram_block(){
+    $cached_result = cache_get('mqc_blocks_instagram_results');
+    if(empty($cached_result) || ($cached_result->created + $cached_result->expire <= time())){
+        $url = 'http://back.vhinandrich.com/socialnetwork-feed/instagram?search=@vhin0210';
+        $request = drupal_http_request($url);
+        cache_set('mqc_blocks_instagram_results', $request, 'cache', 2 * 60); //two minutes
+        $data = $request->data;
+    }else{
+        $data = $cached_result->data->data;
+    }
+    $data = drupal_json_decode($data);
+    
+    $items = array();
+    foreach($data as $key => $item){
+        $items[] = array(
+            'data' => '<img src="' . $item['images']['standard_resolution']['url'] . '" />',
+            'class' => array('instagram-item')
+        );
+    }
+    
+    $markup = theme('item_list', array('items' => $items));
+    
+    return array('#markup' => $markup);
+}
