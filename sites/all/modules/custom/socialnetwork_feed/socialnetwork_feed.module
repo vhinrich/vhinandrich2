@@ -59,7 +59,7 @@ function socialnetwork_feed_generate_json($type){
     case "instagram":
       $feed_array = socialnetwork_feed_ig_pull_retrieve($var);
       usort($feed_array, 'socialnetwork_feed_generate_compare');
-      $feed_array = array_slice($feed_array, 0, 10); //latest 10 items
+      $feed_array = array_slice($feed_array, 0, 12); //latest 12 items
       break;
   }
   echo drupal_json_encode($feed_array);
