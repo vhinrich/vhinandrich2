@@ -231,6 +231,9 @@ function content_social_buttons_node_view($node, $view_mode, $langcode){
         }
       }
     }
+    if(!isset($node->content['content_social_buttons_js']['#items']) || count($node->content['content_social_buttons_js']['#items']) <= 0){
+      unset($node->content['content_social_buttons_js']);
+    }
   }
 }
 
