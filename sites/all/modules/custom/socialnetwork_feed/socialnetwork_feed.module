@@ -57,18 +57,18 @@ function socialnetwork_feed_generate_json($type){
   $var = $_GET;
   switch ($type){
     case "instagram":
-    $cache_key = 'instagram_posts_' . urlencode($var);
-    $cached_result = cache_get($cache_key);
-    if(empty($cached_result) || ($cached_result->created + $cached_result->expire <= time())){
-        $feed_array = socialnetwork_feed_ig_pull_retrieve($var);
-        usort($feed_array, 'socialnetwork_feed_generate_compare');
-        $feed_array = array_slice($feed_array, 0, 12); //latest 12 items
-        $feed_array = drupal_json_encode($feed_array);
-        cache_set($cache_key, $feed_array, 'cache', 2 * 60); //two minutes
-    }else{
-        $feed_array = $cached_result->data;
-    }
-    break;
+      $cache_key = 'instagram_posts_' . urlencode($var);
+      $cached_result = cache_get($cache_key);
+      if(true || empty($cached_result) || ($cached_result->created + $cached_result->expire <= time())){
+          $feed_array = socialnetwork_feed_ig_pull_retrieve($var);
+          usort($feed_array, 'socialnetwork_feed_generate_compare');
+          $feed_array = array_slice($feed_array, 0, 12); //latest 12 items
+          $feed_array = drupal_json_encode($feed_array);
+          cache_set($cache_key, $feed_array, 'cache', 2 * 60); //two minutes
+      }else{
+          $feed_array = $cached_result->data;
+      }
+      break;
   }
   // echo drupal_json_encode($feed_array);
   echo $feed_array;
