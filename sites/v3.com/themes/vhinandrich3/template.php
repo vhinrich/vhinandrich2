@@ -100,7 +100,6 @@ function vhinandrich3_preprocess_node(&$vars, $hook) {
 }
 
 function vhinandrich3_preprocess_node__featured(&$vars, $hook) {
-  dpm($vars);
   $vars['classes_array'][] = 'row';
 }
 
