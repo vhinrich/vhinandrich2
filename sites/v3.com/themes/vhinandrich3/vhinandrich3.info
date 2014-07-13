@@ -35,6 +35,7 @@ stylesheets[all][] = sass/style.scss
 stylesheets[all][] = sass/overrides.scss
 stylesheets[all][] = sass/nodes.scss
 stylesheets[all][] = sass/views.scss
+stylesheets[all][] = sass/regions.scss
 stylesheets[all][] = sass/panels.scss
 stylesheets[all][] = sass/mixins.scss
 //stylesheets[all][] = sass/views.scss

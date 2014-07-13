@@ -15,6 +15,9 @@ a:active{color: $colorInvertHightlightText}
     &.navbar-default{
         background: $colorBackgroundMainNavbar;
         border: none;
+        .navbar-collapse{
+            position: relative;
+        }
         .navbar-toggle{
             border: none;
             margin-top: 6px;
