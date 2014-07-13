@@ -27,14 +27,16 @@ regions[page_bottom]    = 'Page bottom'
 //stylesheets[all][] = css/style.css
 //stylesheets[all][] = css/views.css
 //stylesheets[all][] = css/blocks.css
-/stylesheets[all][] = css/node.css
 //stylesheets[all][] = css/webform.css
 //stylesheets[all][] = css/easy-pie.style.css
 stylesheets[all][] = sass/colors.scss
 stylesheets[all][] = sass/fonts.scss
 stylesheets[all][] = sass/style.scss
 stylesheets[all][] = sass/overrides.scss
+stylesheets[all][] = sass/nodes.scss
 stylesheets[all][] = sass/views.scss
+stylesheets[all][] = sass/panels.scss
+stylesheets[all][] = sass/mixins.scss
 //stylesheets[all][] = sass/views.scss
 
 
@@ -45,11 +47,11 @@ stylesheets[all][] = sass/views.scss
 ; ;----------------------------------
 ; ; METHOD 1: Bootstrap Source Files
 ; ;----------------------------------
-; 
+;
 ; ;;;;;;;;;;;;;;;;;;;;;
 ; ;; Scripts
 ; ;;;;;;;;;;;;;;;;;;;;;
-; 
+;
 ; scripts[] = 'bootstrap/js/affix.js'
 ; scripts[] = 'bootstrap/js/alert.js'
 ; scripts[] = 'bootstrap/js/button.js'

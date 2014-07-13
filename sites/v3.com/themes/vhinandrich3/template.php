@@ -5,27 +5,27 @@
  */
 
 function vhinandrich3_js_alter(&$scripts){
-  
+
   //uglifyjs module
   if(module_exists('uglifyjs')){
     if (variable_get('uglifyjs_skip_uglify', FALSE)) {
       return;
     }
-  
+
     $uglify_map = array();
     if ($cache = cache_get('uglifyjs_map') && isset($cache) && count($cache->data)>0) {
       $uglify_map = $cache->data;
     }
     else {
       $uglify = vhinandrich3_uglifyjs_info($scripts);
-  
+
       foreach ($uglify as $script) {
         $uglify_map[$script] = array('data' => $script);
       }
       uglifyjs_uglify($uglify_map);
       cache_set('uglifyjs_map', $uglify_map, 'cache', CACHE_TEMPORARY);
     }
-  
+
     foreach ($uglify_map as $script) {
       // If there was a problem minifying the script we won't make any changes.
       if (isset($script['uglified_data']) && isset($scripts[$script['data']])) {
@@ -64,20 +64,20 @@ function vhinandrich3_preprocess_node(&$vars, $hook) {
     // for content type in general
     if (function_exists($function))
         $function($vars, $hook);
-    
+
     // view_mode version
     $teaserfunc = $function . '__' . $vars['view_mode'];
     if (function_exists($teaserfunc))
         $teaserfunc($vars, $hook);
-    
+
     // view mode function for all node types
     $vmfunc = __FUNCTION__ . '__' . $vars['view_mode'];
     if (function_exists($vmfunc))
         $vmfunc($vars, $hook);
-        
+
     $vars['classes_array'][] = $vars['view_mode'];
-    
-    
+
+
     //instagram
     if(isset($vars['field_social_network'][LANGUAGE_NONE]) && isset($vars['field_social_network'][LANGUAGE_NONE][0]) && $vars['field_social_network'][LANGUAGE_NONE][0]['tid']==59){
         $vars['classes_array'][] = 'social-networ-instagram';
@@ -91,7 +91,7 @@ function vhinandrich3_preprocess_node(&$vars, $hook) {
             $vars['content']['body'][0]['#markup'] = preg_replace("/#(\w+)/i", "<a href=\"/hashtags/$1\">$0</a>", $vars['content']['body'][0]['#markup']);
         }
     }
-        
+
     //
     // Template suggestions
     //
@@ -99,10 +99,15 @@ function vhinandrich3_preprocess_node(&$vars, $hook) {
     $vars['theme_hook_suggestions'][] = 'node____' . $vars['view_mode'];
 }
 
+function vhinandrich3_preprocess_node__featured(&$vars, $hook) {
+  dpm($vars);
+  $vars['classes_array'][] = 'row';
+}
+
 function vhinandrich3_preprocess_node_article__timeline(&$vars){
     //dpm($vars);
     $vars['content']['content_social_buttons']['#weight'] = 99;
-    
+
     //instagram
     //$vars['title'] = '';
     //if(isset($vars['field_social_network'][LANGUAGE_NONE]) && isset($vars['field_social_network'][LANGUAGE_NONE][0]) && $vars['field_social_network'][LANGUAGE_NONE][0]['tid']==59){
@@ -128,7 +133,7 @@ function vhinandrich3_form_alter(&$form){
         }
       }
     }
-    
+
     if(isset($form['#node']) && strtolower($form['#node']->title) == 'contact us'){
       $form['#attributes']['class'][] = 'row';
       $elements = element_children($form['submitted']);
@@ -153,7 +158,7 @@ function vhinandrich3_preprocess_field(&$vars){
     // for content type in general
     if (function_exists($function))
         $function($vars);
-    
+
     // view_mode version
     $teaserfunc = $function . '__' . $vars['element']['#view_mode'];
     if (function_exists($teaserfunc))
@@ -169,6 +174,14 @@ function vhinandrich3_preprocess_field_field_media__timeline(&$vars){
         $vars['theme_hook_suggestions'][] = 'field__field_media__gallery__article__timeline';
     }
 }
+
+function vhinandrich3_preprocess_field_field_media__featured(&$vars){
+  $vars['classes_array'][] = 'col-sm-9';
+  if(count($vars['items'])>1){
+      $vars['items'] = array(reset($vars['items']));
+  }
+}
+
 
 function vhinandrich3_preprocess_field_field_media__full(&$vars){
     if(count($vars['items'])>1){
@@ -203,7 +216,7 @@ function vhinandrich3_preprocess_field_content_social_buttons__full(&$vars){
   foreach($vars['classes_array'] as $key => $class){
     if($class=='btn')
       unset($vars['classes_array'][$key]);
-      
+
     if($class=='fa-share')
       unset($vars['classes_array'][$key]);
   }
@@ -227,7 +240,7 @@ function vhinandrich3_html_head_alter(&$head_elements) {
         else{
             $head_elements['metatag_twitter:card']['#value'] = 'player';
         }
-        
+
       }
     }
   }

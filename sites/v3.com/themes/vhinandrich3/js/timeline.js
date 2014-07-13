@@ -7,12 +7,12 @@
                 $('.timeline-bg-container .timeline-bg-image').css('background-image', 'url("' + src + '")');
             }else{
                 $('.timeline-bg-container .timeline-bg-wrapper').fadeOut('fast', function(){
-                   $(this).html(''); 
+                   $(this).html('');
                 });
             }
         },
         reanimateChart: function(obj){
-            
+
             $('.chart', obj).each(function(i,o){
                 try{
                     $(o).data('easyPieChart').update(0).update($(this).attr('data-percent'));
@@ -20,16 +20,16 @@
                     console.log(e);
                 }
             });
-            
+
         },
         attach: function(context, settings){
-            
+
             if ($('body .timeline-bg-container').length==0 ) {
                 $('body').prepend('<div class="timeline-bg-container"><div class="timeline-bg-wrapper"></div></div>');
             }
-            
+
             var $things = $('article.node.node-article.timeline');
-            
+
             if ($things.length > 0) {
                 $things.waypoint(function(direction) {
                     if (direction === 'down') {
@@ -41,7 +41,7 @@
                         }
                     }
                 }, { offset: '50%' });
-                    
+
                 $things.waypoint(function(direction) {
                     if (direction === 'up') {
                         Drupal.behaviors.timeline_waypoint.loadBg(this);
@@ -59,7 +59,7 @@
                     }
                 });
             }
-            
+
         }
     };
 })(jQuery);
