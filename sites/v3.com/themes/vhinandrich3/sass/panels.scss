@@ -3,18 +3,22 @@
 @import "mixins";
 
 
-.panels-flexible-region{
+.panels-flexible-region,
+.panels-flexible-region-new-center{
     width: 100%;
 }
 
-.panels-flexible-row{
-    &.top-row{
+.panels-flexible-new{
+    .panels-flexible-row{
+        &.top-row{
 
+        }
+        &.middle-row{
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
     }
-    &.middle-row{
-        padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
-    }
+
 }
