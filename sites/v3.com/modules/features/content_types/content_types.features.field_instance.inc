@@ -24,6 +24,13 @@ function content_types_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'featured' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 1,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -68,6 +75,12 @@ function content_types_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'featured' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -141,6 +154,19 @@ function content_types_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 0,
       ),
+      'featured' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'month_day_year',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -201,6 +227,12 @@ function content_types_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 6,
       ),
+      'featured' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -247,6 +279,15 @@ function content_types_field_default_field_instances() {
         ),
         'type' => 'file_rendered',
         'weight' => 1,
+      ),
+      'featured' => array(
+        'label' => 'hidden',
+        'module' => 'file_entity',
+        'settings' => array(
+          'file_view_mode' => 'featured',
+        ),
+        'type' => 'file_rendered',
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -311,6 +352,12 @@ function content_types_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 7,
       ),
+      'featured' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -347,6 +394,12 @@ function content_types_field_default_field_instances() {
     'description' => 'Enter a comma-separated list of words to describe your content.',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'featured' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -396,6 +449,12 @@ function content_types_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'featured' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

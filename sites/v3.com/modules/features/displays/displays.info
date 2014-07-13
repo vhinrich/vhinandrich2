@@ -1,0 +1,12 @@
+name = Displays
+core = 7.x
+package = VhinRich Features
+dependencies[] = ctools
+dependencies[] = ds
+dependencies[] = image
+features[ctools][] = ds:ds:1
+features[ds_view_modes][] = featured
+features[features_api][] = api:2
+features[image][] = extra_large
+features[image][] = featured
+features[image][] = timeline_background
