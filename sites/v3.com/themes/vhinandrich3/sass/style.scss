@@ -14,7 +14,8 @@ a:active{color: $colorInvertHightlightText}
     min-height: 40px;
     &.navbar-default{
         background: $colorBackgroundMainNavbar;
-            .navbar-toggle{
+        border: none;
+        .navbar-toggle{
             border: none;
             margin-top: 6px;
             .icon-bar{background: $colorHightlightText}
@@ -24,12 +25,12 @@ a:active{color: $colorInvertHightlightText}
             }
         }
     }
-    >.container .navbar-brand{font-size: 26px;color: #e74c3c}
+    >.container .navbar-brand{font-size: 20px;color: #e74c3c}
 }
 .navbar-nav{
     position: relative;
     z-index: 5;
-    > li>a{text-transform: uppercase;font-size: 18px;padding: 11px 15px}
+    > li>a{text-transform: uppercase;font-size: 14px;padding: 11px 15px}
 }
 .navbar-brand{padding: 11px 15px}
 
@@ -60,10 +61,12 @@ form .form-item{margin: 1em 0}
 .form-control{border-radius: 0;-moz-border-radius: 0; -webkit-border-radius: 0}
 .button-icon{margin-right: 15px}
 
-.main-container.container{
-    width: 100%;
-    padding-right: 0;
-    padding-left: 0;
+body.front{
+    .main-container.container{
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+    }
 }
 
 
