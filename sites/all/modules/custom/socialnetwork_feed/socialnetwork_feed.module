@@ -20,31 +20,31 @@ function socialnetwork_feed_menu() {
 function socialnetwork_feed_ingest(){
   // Define the id (machine name) of the importer you want to use.
   $importer_id = 'instagram_import';
-  
+
   // Load the Feeds Source object.
   $source = feeds_source($importer_id);
-  
+
   // Given that we have a new file that is now managed by Drupal.
   //$file = file_load("http://www.vhinandrich.com/v3.back/socialnetwork-feed/instagram?search=@vhin0210,@richellerivamonte");
   //$strSource = "http://www.vhinandrich.com/v3.back/socialnetwork-feed/instagram?search=@vhin0210,@richellerivamonte";
   $strSource = "http://back.vhinandrich.com/socialnetwork-feed/instagram?search=@vhin0210,@richellerivamonte";
-  
+
   // Load the source fetcher config.
   $fetcher_config = $source->getConfigFor($source->importer->fetcher);
-  
+
   // Add the new file object, and it's uri to the fetcher config.
   $fetcher_config['source'] = $strSource;
   //$fetcher_config['file'] = $file;
-  
+
   // Set the source fetcher config.
   $source->setConfigFor($source->importer->fetcher, $fetcher_config);
-  
+
   // Save the source.
   $source->save();
-  
+
   // Execute the import.
   $source->startImport();
-  
+
   drupal_flush_all_caches();
 }
 
@@ -76,14 +76,14 @@ function socialnetwork_feed_generate_json($type){
 
 function socialnetwork_feed_ig_pull_retrieve($var){
   module_load_include('inc', 'drupagram');
-  
+
   $search = '';
   $searches = array();
   if(isset($var['search'])){
     $search = $var['search'];
     $searches = explode(",", $search);
   }
-  
+
   $feeds = array();
   foreach($searches as $searchItem){
     $feed = null;
@@ -107,4 +107,27 @@ function socialnetwork_feed_ig_pull_retrieve($var){
       $feeds = array_merge($feeds, $feed);
   }
   return $feeds;
+}
+
+/**
+ * Implementation of hook_feeds_plugins().
+ */
+function socialnetwork_feed_feeds_plugins() {
+  $info = array();
+  $info['socialnetwork_feed_processor'] = array(
+    'name' => 'Feeds Node Processor for Social Network Feed',
+    'description' => 'Parses json data.',
+    'handler' => array(
+      'parent' => 'FeedsNodeProcessor', // A plugin needs to derive either directly or indirectly from FeedsFetcher, FeedsParser or FeedsProcessor.
+      'class' => 'SocialNetworkNodeProcessor',
+      'file' => 'SocialNetworkNodeProcessor.inc',
+      'path' => drupal_get_path('module', 'socialnetwork_feed'),
+    ),
+  );
+  return $info;
+}
+
+function socialnetwork_feed_enable() {
+  //clear the cache to display in Feeds as available plugin.
+  cache_clear_all('plugins:feeds:plugins', 'cache');
 }
