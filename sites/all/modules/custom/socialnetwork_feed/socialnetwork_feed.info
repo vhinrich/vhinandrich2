@@ -4,6 +4,7 @@ package = mqcristobal Custom Modules
 core = 7.x
 
 files[] = socialnetwork_feed.module
+dependencies[] = feeds
 ; Information added by drupal.org packaging script on 2012-02-10
 version = "7.x-1.x-dev"
 core = "7.x"
