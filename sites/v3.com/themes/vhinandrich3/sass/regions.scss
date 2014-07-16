@@ -2,48 +2,11 @@
 @import "fonts";
 @import "mixins";
 
-article{
-    .social-network-icon{display: none}
-    .view-display-id-timeline_page_1 .views-row .field-name-content-social-buttons.btn,
-    .field-name-content-social-buttons.btn{padding: 0}
-    .field-name-content-social-buttons.btn:before{content: ''}
-    .field-name-content-social-buttons{margin: 1em 0}
-    .field-name-content-social-buttons .field-items .field-item{float:left;margin-right: .5em}
-    .field-name-content-social-buttons .field-items .field-item:last-of-type{margin-right: 0}
 
-    &.featured{
-        header{
-            padding-left: 35px;
-            margin-bottom: 35px;
-            h2{
-                font-size: 30px;
-                font-weight: normal;
-                color: #f1c40f;
-                a{
-                    color: #f1c40f;
-                    &:hover,
-                    &:focus{
-                        color: #f39c12;
-                        text-decoration: none;
-                    }
-                }
-            }
-        }
-        .field-name-field-media{
-            img{width: 100%; height: auto}
-            margin-left: 0;
-            margin-right: 0;
-            padding-left: 0;
-            padding-right: 0;
-        }
-        a{
-            color: #34495e;
-            &:hover,
-            &:focus{
-                color: #2c3e50;
-            }
-        }
-        background: #16a085;
-        color: #f7f7f7;
+.region{
+    &.region-navigation{
+        position: absolute;
+        right: 0;
+        top: 0;
     }
 }
