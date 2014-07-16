@@ -6,7 +6,7 @@
         },
         ajaxGAPush: function(){
             var d = document.location.pathname + document.location.search + document.location.hash;
-            _gaq.push(['_trackPageview', d]);
+            // _gaq.push(['_trackPageview', d]); // removed because of the new google analytics api. this object is not available anymore.
         },
         detailButtonClick: function(){
             $(this).parents('article').toggleClass('detail-active');
