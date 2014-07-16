@@ -88,3 +88,22 @@
 .view-display-id-page .views-row .views-field-nodefield video{float: left}
 .view-display-id-timeline_page_1 .views-row .media-youtube-video,
 .view-display-id-page .views-row .media-youtube-video{padding-bottom: 92.5%}
+
+@media(max-width: 767px){
+    .view-display-id-panel_pane_1{
+        .views-row{
+            article{
+                position: relative;
+                header{
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    z-index: 2;
+                    background: rgba(6, 27, 23, 0.44);
+                    margin-bottom: 0;
+                    padding-bottom: 22px;
+                }
+            }
+        }
+    }
+}
