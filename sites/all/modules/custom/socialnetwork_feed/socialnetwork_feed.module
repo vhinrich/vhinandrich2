@@ -113,21 +113,21 @@ function socialnetwork_feed_ig_pull_retrieve($var){
  * Implementation of hook_feeds_plugins().
  */
 function socialnetwork_feed_feeds_plugins() {
-  $info = array();
-  $info['socialnetwork_feed_processor'] = array(
-    'name' => 'Feeds Node Processor for Social Network Feed',
-    'description' => 'Parses json data.',
-    'handler' => array(
-      'parent' => 'FeedsNodeProcessor', // A plugin needs to derive either directly or indirectly from FeedsFetcher, FeedsParser or FeedsProcessor.
-      'class' => 'SocialNetworkNodeProcessor',
-      'file' => 'SocialNetworkNodeProcessor.inc',
-      'path' => drupal_get_path('module', 'socialnetwork_feed'),
-    ),
-  );
-  return $info;
+  // $info = array();
+  // $info['socialnetwork_feed_processor'] = array(
+  //   'name' => 'Feeds Node Processor for Social Network Feed',
+  //   'description' => 'Parses json data.',
+  //   'handler' => array(
+  //     'parent' => 'FeedsNodeProcessor', // A plugin needs to derive either directly or indirectly from FeedsFetcher, FeedsParser or FeedsProcessor.
+  //     'class' => 'SocialNetworkNodeProcessor',
+  //     'file' => 'SocialNetworkNodeProcessor.inc',
+  //     'path' => drupal_get_path('module', 'socialnetwork_feed'),
+  //   ),
+  // );
+  // return $info;
 }
 
 function socialnetwork_feed_enable() {
   //clear the cache to display in Feeds as available plugin.
-  cache_clear_all('plugins:feeds:plugins', 'cache');
+  // cache_clear_all('plugins:feeds:plugins', 'cache');
 }
