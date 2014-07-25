@@ -73,6 +73,7 @@
  * @ingroup themeable
  */
 ?>
+<?php if($logo || !empty($site) || ((!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])))): ?>
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
   <div class="container">
     <div class="navbar-header">
@@ -112,6 +113,7 @@
     <?php endif; ?>
   </div>
 </header>
+<?php endif; ?>
 
 <div class="main-container container">
 

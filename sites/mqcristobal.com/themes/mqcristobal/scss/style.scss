@@ -6,15 +6,36 @@
 @import 'mixins';
 
 $defaultFontFamily = 'Open Sans', Helvetica, Arial, sans-serif;
-$defaultFontColor = #333;
+$defaultFontColor = #424242;
 $headsFontFamily = $defaultFontFamily;
-$headsFontColor = #111;
+$headsFontColor = #333;
 
-body{font-family: $defaultFontFamily;color:$defaultFontColor}
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{font-family: $headsFontFamily;color:$headsFontColor}
+body{font-family: $defaultFontFamily;color: $defaultFontColor;font-size: 18px}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{font-family: $headsFontFamily;color:$headsFontColor; margin: 8px 0}
 h1, h2, .h1, .h2{text-transform: uppercase}
 
-body > .container{max-width: none !important; width: 100%}
+body .container{
+  &.main-container,
+  &.navbar,
+  &.footer{
+    max-width: none; width: 100%; padding: 0;
+    > .row{
+      margin-left: 0;
+      margin-right: 0;
+
+      $columns : 12;
+      @for $i from 1 through $columns {
+        > .col-xs-#{$i}
+        > .col-sm-#{$i},
+        > .col-md-#{$i},
+        > .col-lg-#{$i},
+        > .col-xl-#{$i}{ padding-left: 0; padding-right: 0; }
+      }
+
+    }
+  }
+}
+
 
 .well{
     @include border-radius(0);
@@ -22,4 +43,5 @@ body > .container{max-width: none !important; width: 100%}
 }
 .navbar{
     @include border-radius(0);
+    margin-bottom: 0;
 }

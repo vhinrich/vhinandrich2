@@ -57,10 +57,11 @@
  // URL: http://localhost/example
  $sites['localhost.mqcristobal'] = 'mqcristobal.com';
  $sites['mqcristobal.vhinandrich.com'] = 'mqcristobal.com';
- 
+ $sites['127.0.0.1.mqcristobal'] = 'mqcristobal.com';
+
  $sites['localhost'] = 'v3.com';
  $sites['vhinandrich.com'] = 'v3.com';
- 
+
  $sites['localhost.v2'] = 'v2.com';
  $sites['localhost.v2.back'] = 'v2.com';
  $sites['127.0.0.1.v2'] = 'v2.com';
@@ -69,7 +70,7 @@
  $sites['127.0.0.1.v2.back'] = 'v2.com';
  $sites['vhinandrich.com.v2.back'] = 'v2.com';
  $sites['v2.vhinandrich.com'] = 'v2.com';
- 
+
  $sites['localhost.v3'] = 'v3.com';
  $sites['localhost.v3.back'] = 'v3.com';
  $sites['127.0.0.1.v3'] = 'v3.com';
@@ -79,4 +80,4 @@
  $sites['vhinandrich.com.v3.back'] = 'v3.com';
  $sites['v3.vhinandrich.com'] = 'v3.com';
  $sites['back.vhinandrich.com'] = 'v3.com';
- 
+

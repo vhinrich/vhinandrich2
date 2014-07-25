@@ -29,7 +29,9 @@ stylesheets[all][] = scss/fonts.scss
 stylesheets[all][] = scss/colors.scss
 stylesheets[all][] = scss/mixins.scss
 stylesheets[all][] = scss/style.scss
-stylesheets[all][] = scss/node.scss
+stylesheets[all][] = scss/panels.scss
+stylesheets[all][] = scss/nodes.scss
+stylesheets[all][] = scss/taxonomy_terms.scss
 
 
 ; For information on choosing the desired method, please read the Drupal
@@ -39,11 +41,11 @@ stylesheets[all][] = scss/node.scss
 ; ;----------------------------------
 ; ; METHOD 1: Bootstrap Source Files
 ; ;----------------------------------
-; 
+;
 ; ;;;;;;;;;;;;;;;;;;;;;
 ; ;; Scripts
 ; ;;;;;;;;;;;;;;;;;;;;;
-; 
+;
 ; scripts[] = 'bootstrap/js/affix.js'
 ; scripts[] = 'bootstrap/js/alert.js'
 ; scripts[] = 'bootstrap/js/button.js'
@@ -59,6 +61,15 @@ stylesheets[all][] = scss/node.scss
 ;
 ; ; Disable BootstrapCDN if using Bootstrap source files in your sub-theme.
 ; settings[bootstrap_cdn] = ''
+
+; ScrollMagic
+scripts[] = 'js/ScrollMagic/js/_dependent/greensock/TweenMax.min.js'
+scripts[] = 'js/ScrollMagic/js/_examples/modernizr.custom.min.js'
+scripts[] = 'js/ScrollMagic/js/jquery.scrollmagic.js'
+scripts[] = 'js/ScrollMagic/js/jquery.scrollmagic.debug.js'
+
+scripts[] = 'js/mqcristobal.node.homepage_teaser.js'
+
 
 
 ; ;-------------------------
