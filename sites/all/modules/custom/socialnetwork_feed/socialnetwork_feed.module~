@@ -1,0 +1,110 @@
+<?php
+
+function socialnetwork_feed_menu() {
+  $items['socialnetwork-feed/%'] = array(
+    'title' => 'Instagram',
+    'page callback' => 'socialnetwork_feed_generate_json',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['socialnetwork-feed-ingest'] = array(
+    'page callback' => 'socialnetwork_feed_ingest',
+    'title' => 'Import tool',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK
+  );
+  return $items;
+}
+
+function socialnetwork_feed_ingest(){
+  // Define the id (machine name) of the importer you want to use.
+  $importer_id = 'instagram_import';
+  
+  // Load the Feeds Source object.
+  $source = feeds_source($importer_id);
+  
+  // Given that we have a new file that is now managed by Drupal.
+  //$file = file_load("http://www.vhinandrich.com/v3.back/socialnetwork-feed/instagram?search=@vhin0210,@richellerivamonte");
+  //$strSource = "http://www.vhinandrich.com/v3.back/socialnetwork-feed/instagram?search=@vhin0210,@richellerivamonte";
+  $strSource = "http://back.vhinandrich.com/socialnetwork-feed/instagram?search=@vhin0210,@richellerivamonte";
+  
+  // Load the source fetcher config.
+  $fetcher_config = $source->getConfigFor($source->importer->fetcher);
+  
+  // Add the new file object, and it's uri to the fetcher config.
+  $fetcher_config['source'] = $strSource;
+  //$fetcher_config['file'] = $file;
+  
+  // Set the source fetcher config.
+  $source->setConfigFor($source->importer->fetcher, $fetcher_config);
+  
+  // Save the source.
+  $source->save();
+  
+  // Execute the import.
+  $source->startImport();
+  
+  drupal_flush_all_caches();
+}
+
+function socialnetwork_feed_generate_compare($a, $b) {
+  return $b->created_time - $a->created_time;
+}
+
+function socialnetwork_feed_generate_json($type){
+  $feed_array = array();
+  $var = $_GET;
+  switch ($type){
+    case "instagram":
+    $cache_key = 'instagram_posts_' . urlencode($var);
+    $cached_result = cache_get($cache_key);
+    if(empty($cached_result) || ($cached_result->created + $cached_result->expire <= time())){
+        $feed_array = socialnetwork_feed_ig_pull_retrieve($var);
+        usort($feed_array, 'socialnetwork_feed_generate_compare');
+        $feed_array = array_slice($feed_array, 0, 12); //latest 12 items
+        $feed_array = drupal_json_encode($feed_array);
+        cache_set($cache_key, $feed_array, 'cache', 2 * 60); //two minutes
+    }else{
+        $feed_array = $cached_result->data;
+    }
+    break;
+  }
+  // echo drupal_json_encode($feed_array);
+  echo $feed_array;
+}
+
+function socialnetwork_feed_ig_pull_retrieve($var){
+  module_load_include('inc', 'drupagram');
+  
+  $search = '';
+  $searches = array();
+  if(isset($var['search'])){
+    $search = $var['search'];
+    $searches = explode(",", $search);
+  }
+  
+  $feeds = array();
+  foreach($searches as $searchItem){
+    $feed = null;
+    if(strstr($searchItem,'#')){
+      $user = user_load(1);
+      $account = drupagram_account_load($user->drupagram_accounts[0]->id);
+      $instagram = drupagram_connect($account);
+      $searchItem = str_replace('#','',$searchItem);
+      $feed = $instagram->get_hashtag($searchItem);
+    }
+    if(strstr($searchItem, '@')){
+      $user = user_load(1);
+      $account = drupagram_account_load($user->drupagram_accounts[0]->id);
+      $instagram = drupagram_connect($account);
+      $searchItem = str_replace('@', '', $searchItem);
+      $insta_user = $instagram->user_info($searchItem);
+      if($insta_user && isset($insta_user[0]))
+        $feed = $instagram->user_recent($insta_user[0]->id);
+    }
+    if(!empty($feed))
+      $feeds = array_merge($feeds, $feed);
+  }
+  return $feeds;
+}
