@@ -68,7 +68,19 @@ function mqcristobal_preprocess_field__field_background_media(&$vars, $hook){
 }
 
 function mqcristobal_preprocess_node__homepage_teaser_1(&$vars){
-
+    if(empty($vars['field_background_media'])){
+        $vars['content']['field_background_media'] = array('#markup' => '<div class="field field-name-field-background-media field-type-file field-label-hidden"><div class="field-items"><div class="field-item even"><div class="background-media-empty">&nbsp;</div></div></div></div>');
+    }
+}
+function mqcristobal_preprocess_node__homepage_teaser_2(&$vars){
+    if(empty($vars['field_background_media'])){
+        $vars['content']['field_background_media'] = array('#markup' => '<div class="field field-name-field-background-media field-type-file field-label-hidden"><div class="field-items"><div class="field-item even"><div class="background-media-empty">&nbsp;</div></div></div></div>');
+    }
+}
+function mqcristobal_preprocess_node__homepage_teaser_3(&$vars){
+    if(empty($vars['field_background_media'])){
+        $vars['content']['field_background_media'] = array('#markup' => '<div class="field field-name-field-background-media field-type-file field-label-hidden"><div class="field-items"><div class="field-item even"><div class="background-media-empty">&nbsp;</div></div></div></div>');
+    }
 }
 
 function mqcristobal_preprocess_taxonomy_term(&$vars){
@@ -95,7 +107,17 @@ function mqcristobal_preprocess_taxonomy_term(&$vars){
     $vars['theme_hook_suggestions'][] = 'taxonomy_term____' . $vars['view_mode'];
 }
 
+function mqcristobal_preprocess_taxonomy_term__homepage_teaser_1(&$vars){
+    if(empty($vars['field_background_media'])){
+        $vars['content']['field_background_media'] = array('#markup' => '<div class="field field-name-field-background-media field-type-file field-label-hidden"><div class="field-items"><div class="field-item even"><div class="background-media-empty">&nbsp;</div></div></div></div>');
+    }
+}
 function mqcristobal_preprocess_taxonomy_term__homepage_teaser_2(&$vars){
+    if(empty($vars['field_background_media'])){
+        $vars['content']['field_background_media'] = array('#markup' => '<div class="field field-name-field-background-media field-type-file field-label-hidden"><div class="field-items"><div class="field-item even"><div class="background-media-empty">&nbsp;</div></div></div></div>');
+    }
+}
+function mqcristobal_preprocess_taxonomy_term__homepage_teaser_3(&$vars){
     if(empty($vars['field_background_media'])){
         $vars['content']['field_background_media'] = array('#markup' => '<div class="field field-name-field-background-media field-type-file field-label-hidden"><div class="field-items"><div class="field-item even"><div class="background-media-empty">&nbsp;</div></div></div></div>');
     }
@@ -116,5 +138,5 @@ function mqcristobal_preprocess_views_view(&$vars){
 
 function mqcristobal_preprocess_views_view_taxonomy_term__panel_pane_1(&$vars){
     $term = taxonomy_term_load($vars['view']->args[0]);
-    $vars['view_content'] = taxonomy_term_view($term, 'homepage_teaser_2');
+    $vars['view_content'] = taxonomy_term_view($term, 'homepage_teaser_3');
 }

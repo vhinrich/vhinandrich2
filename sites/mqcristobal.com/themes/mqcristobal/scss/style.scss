@@ -19,13 +19,13 @@ body .container{
   &.navbar,
   &.footer{
     max-width: none; width: 100%; padding: 0;
-    > .row{
+    .row{
       margin-left: 0;
       margin-right: 0;
 
       $columns : 12;
       @for $i from 1 through $columns {
-        > .col-xs-#{$i}
+        > .col-xs-#{$i},
         > .col-sm-#{$i},
         > .col-md-#{$i},
         > .col-lg-#{$i},
@@ -44,4 +44,10 @@ body .container{
 .navbar{
     @include border-radius(0);
     margin-bottom: 0;
+}
+
+footer{
+  &.footer{
+    border: none;
+  }
 }

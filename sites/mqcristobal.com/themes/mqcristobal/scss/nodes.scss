@@ -5,9 +5,12 @@
 
 @import 'mixins';
 
-article{
+article,
+div{
   &.node{
-    &.homepage_teaser_1{
+    &.homepage_teaser_1,
+    &.homepage_teaser_2,
+    &.homepage_teaser_3{
       position: relative;
       padding: 0;
       .article-slide{
@@ -34,6 +37,7 @@ article{
         z-index: -1;
         width: 100%;
         height: 100%;
+        @include transition(all, 0.5s, ease);
         .field-items, .field-item{
           height: 100%;
         }
@@ -52,8 +56,61 @@ article{
           background-size: cover;
         }
       }
+      .field-name-body{
+        margin: 15px;
+      }
       header{
 
+      }
+    }
+    &.portfolio{
+      img{
+        width: 100%;
+        height: auto;
+      }
+    }
+    &.portfolio{
+      position: relative;
+      > a{
+        position: absolute;
+        top: 0;
+        left; 0;
+        width: 100%;
+        height: 100%;
+        z-index: 101;
+        @include transition(all, 0.5s, ease);
+        &:hover,
+        &:focus,
+        &:active{
+          background: rgba(0,0,0,0.3);
+          header{
+            @include opacity(1);
+            background: rgba(0,0,0,0.3);
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      &:hover{
+        header{
+          @include opacity(1);
+          background: rgba(0,0,0,0.3);
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .field-name-body{display: none}
+      .field-name-field-media{position: relative; z-index: 100}
+      header{
+        position: absolute;
+        top: 0;
+        left: 0;
+        // width: 100%;
+        // height: 100%;
+        // background: rgba(255, 255, 255,0.5);
+        @include transition(all, 0.5s, ease);
+        @include opacity(0);
+        z-index: 101;
       }
     }
   }
@@ -70,4 +127,8 @@ article{
       background: #2980b9;
     }
   }
+}
+
+.animate{
+  @include transition(all, 0.5s, ease);
 }
