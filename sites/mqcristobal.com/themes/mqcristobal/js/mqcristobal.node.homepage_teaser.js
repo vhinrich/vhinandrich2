@@ -15,7 +15,7 @@
                       .setPin(pinObject)
                       .addTo(Drupal.behaviors.mqcristobal_node_homepage_teaser.animation_controller);
         // show indicators (requires debug extension)
-        scene.addIndicators();
+        // scene.addIndicators();
       });
 
       $('.animate-trigger').each(function(i, o){
@@ -31,7 +31,7 @@
                   .setTween(tween)
                   .addTo(Drupal.behaviors.mqcristobal_node_homepage_teaser.animation_controller);
 
-          scene.addIndicators();
+          // scene.addIndicators();
         });
       });
     }
