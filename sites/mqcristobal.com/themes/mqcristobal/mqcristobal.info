@@ -33,6 +33,7 @@ stylesheets[all][] = scss/panels.scss
 stylesheets[all][] = scss/nodes.scss
 stylesheets[all][] = scss/taxonomy_terms.scss
 stylesheets[all][] = scss/views.scss
+stylesheets[all][] = scss/pace.scss
 
 
 ; For information on choosing the desired method, please read the Drupal
