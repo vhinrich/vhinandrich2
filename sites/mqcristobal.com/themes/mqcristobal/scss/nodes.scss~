@@ -168,7 +168,6 @@ div{
     &.homepage_teaser_3{
       padding: 20% 0;
       text-align: center;
-      background: #f7f7f7;
       .form-item{
         width: 100%;
         max-width: 500px;
