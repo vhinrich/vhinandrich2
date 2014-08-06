@@ -31,7 +31,9 @@
                   .setTween(tween)
                   .addTo(Drupal.behaviors.mqcristobal_node_homepage_teaser.animation_controller);
 
-          scene.addIndicators();
+                  if(location.hostname=='localhost' || location.hostname=='127.0.0.1'){
+                    scene.addIndicators();
+                  }
         });
       });
     }
