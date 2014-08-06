@@ -31,7 +31,7 @@
                   .setTween(tween)
                   .addTo(Drupal.behaviors.mqcristobal_node_homepage_teaser.animation_controller);
 
-          // scene.addIndicators();
+          scene.addIndicators();
         });
       });
     }
