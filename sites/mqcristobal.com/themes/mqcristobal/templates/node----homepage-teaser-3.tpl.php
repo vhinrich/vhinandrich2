@@ -8,15 +8,9 @@
       hide($content['comments']);
       hide($content['links']);
       hide($content['field_tags']);
+      hide($content['field_footer_body']);
       print render($content);
     ?>
-
-    <?php if (!empty($content['field_tags']) || !empty($content['links'])): ?>
-      <footer>
-        <?php print render($content['field_tags']); ?>
-        <?php print render($content['links']); ?>
-      </footer>
-    <?php endif; ?>
 
     <?php print render($content['comments']); ?>
 
@@ -34,5 +28,12 @@
     <?php endif; ?>
   </header>
 
+  <?php if (!empty($content['field_tags']) || !empty($content['links']) || !empty($content['field_footer_body'])): ?>
+    <footer class="col-sm-12">
+      <?php print render($content['field_tags']); ?>
+      <?php print render($content['links']); ?>
+      <?php print render($content['field_footer_body']); ?>
+    </footer>
+  <?php endif; ?>
 
 </article> <!-- /.node -->
