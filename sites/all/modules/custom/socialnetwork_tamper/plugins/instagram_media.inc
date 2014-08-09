@@ -43,5 +43,12 @@ function socialnetwork_tamper_instagram_media_callback($source, $item_key, $elem
       $field = $source->items[$item_key]['jsonpath_parser:5'];
       break;
   }
+  $file_url = $field;
+  if (!file_exists(file_default_scheme().'://'.basename($file_url))){
+    $file = system_retrieve_file($file_url, file_default_scheme().'://'.basename($file_url), TRUE);
+    if($file){
+      $field = $file->uri;
+    }
+  }
 }
 
