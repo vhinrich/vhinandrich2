@@ -197,11 +197,13 @@ div{
             margin: 0 3px;
             font-size: 11px;
             text-transform: uppercase;
+            color: #f7f7f7;
             @include transition(all, 0.5s, ease);
             &:hover,
             &:focus,
             &:active{
               background: #2980b9;
+              text-decoration: none;
             }
           }
           *{
