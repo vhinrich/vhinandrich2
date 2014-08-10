@@ -24,10 +24,20 @@
         )
     );
     drupal_add_html_head($fontawesome, 'fontawesome');
-
-
  }
 
+function mqcristobal_preprocess_page(&$vars){
+    if(isset($vars['node'])){
+        $node = $vars['node'];
+        if(isset($node->field_source[LANGUAGE_NONE])){
+            foreach($node->field_source[LANGUAGE_NONE] as $source_index => $source){
+                if(strtolower($source['taxonomy_term']->name)=='portfolio'){
+                    $vars['title'] = '';
+                }
+            }
+        }
+    }
+}
 
 function mqcristobal_preprocess_node(&$vars){
     $function = __FUNCTION__ . '_' . $vars['node']->type;
@@ -46,6 +56,10 @@ function mqcristobal_preprocess_node(&$vars){
         $vmfunc($vars, $hook);
 
     $vars['classes_array'][] = $vars['view_mode'];
+    // $vars['classes_array'][] = $vars['']
+    foreach($vars['field_source'] as $source_index => $source){
+        $vars['classes_array'][] = 'source-' . strtolower($source['taxonomy_term']->name);
+    }
 
     //
     // Template suggestions
@@ -64,6 +78,12 @@ function mqcristobal_preprocess_field__field_background_media(&$vars, $hook){
     foreach($vars['items'] as $key => $item){
         $img_url = image_style_url($item['file']['#style_name'], $item['file']['#path']);
         $vars['items'][$key]['image_url'] = $img_url;
+    }
+}
+
+function mqcristobal_preprocess_node__full(&$vars){
+    if(isset($vars['field_source']) && count($vars['field_source'])>0){
+        $vars['page_special'] = TRUE;
     }
 }
 
