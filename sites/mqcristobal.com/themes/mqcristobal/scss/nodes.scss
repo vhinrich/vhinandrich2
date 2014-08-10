@@ -153,29 +153,6 @@ div{
             text-decoration: none;
           }
         }
-        .field-name-field-site-features{
-          .field-items{
-            .field-item{
-              display: inline;
-              a{
-                background: #3498db;
-                padding: 2px 5px;
-                margin: 0 3px;
-                font-size: 11px;
-                text-transform: uppercase;
-                @include transition(all, 0.5s, ease);
-                &:hover,
-                &:focus,
-                &:active{
-                  background: #2980b9;
-                }
-              }
-              *{
-                display: inline-block;
-              }
-            }
-          }
-        }
       }
     }
     &.homepage_teaser_3{
@@ -206,6 +183,29 @@ div{
           }
           .main-contents{
             padding: 0 20px;
+          }
+        }
+      }
+    }
+    .field-name-field-site-features{
+      .field-items{
+        .field-item{
+          display: inline;
+          a{
+            background: #3498db;
+            padding: 2px 5px;
+            margin: 0 3px;
+            font-size: 11px;
+            text-transform: uppercase;
+            @include transition(all, 0.5s, ease);
+            &:hover,
+            &:focus,
+            &:active{
+              background: #2980b9;
+            }
+          }
+          *{
+            display: inline-block;
           }
         }
       }
