@@ -7,7 +7,7 @@
 
 $defaultFontFamily = 'Open Sans', Helvetica, Arial, sans-serif;
 $defaultFontColor = #424242;
-$headsFontFamily = $defaultFontFamily;
+$headsFontFamily = Oswald, Helvetica, Arial, sans-serif;
 $headsFontColor = #333;
 
 body{font-family: $defaultFontFamily;color: $defaultFontColor;font-size: 18px}
@@ -70,4 +70,12 @@ footer{
   box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
   -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+@media(max-width: 767px){
+  .affix {
+    position: static;
+    width: auto;
+    top: 0;
+  }
 }

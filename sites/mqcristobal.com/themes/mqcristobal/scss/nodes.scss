@@ -8,6 +8,10 @@
 article,
 div{
   &.node{
+    h1,h2,h3{
+      font-family: Oswald, Helvetica, Arial, sans-serif;
+      margin-top: 0;
+    }
     &.homepage_teaser_1,
     &.homepage_teaser_2,
     &.homepage_teaser_3{
@@ -16,10 +20,6 @@ div{
       .article-slide{
         height: 100%;
         padding: 0 0 100%;
-      }
-      h1,h2,h3{
-        font-family: Oswald, Helvetica, Arial, sans-serif;
-        margin-top: 0;
       }
       h1{
         font-size: 70px;
@@ -172,17 +172,23 @@ div{
     &.full{
       &.node-article{
         &.source-portfolio{
-          background: #292828;
-          color: #f7f7f7;
+          background: #ecf0f1;
+          color: #34495e;
           h2{
-            color: #f7f7f7;
+            color: #2c3e50;
+            font-size: 55px;
           }
           img{
             width: 100%;
             height: auto;
           }
           .main-contents{
-            padding: 0 20px;
+            .main-contents-wrapper{
+              margin: 15px 20px;
+            }
+          }
+          a{
+            color: #16a085;
           }
         }
       }
@@ -191,8 +197,18 @@ div{
       .field-items{
         .field-item{
           display: inline;
+          &:first-child{
+            a{
+              margin-left: 0;
+            }
+          }
+          &:last-child{
+            a{
+              margin-right: 0;
+            }
+          }
           a{
-            background: #3498db;
+            background: #1abc9c;
             padding: 2px 5px;
             margin: 0 3px;
             font-size: 11px;
@@ -202,7 +218,7 @@ div{
             &:hover,
             &:focus,
             &:active{
-              background: #2980b9;
+              background: #34495e;
               text-decoration: none;
             }
           }
