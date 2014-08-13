@@ -114,7 +114,7 @@ function prepro_admin_form($form, &$form_state, $buttons = TRUE) {
     '#type' => 'checkbox',
     '#title' => t('Show the "files are being recompiled on every page load" warning?'),
     '#description' => t('This warning is there for a reason - compilation can be a heavy process and will cause slowdown on production servers.'),
-    '#value' => $settings['show_warnings'],
+    '#default_value' => $settings['show_warnings'],
   );
 
   if ($buttons) {
