@@ -45,6 +45,12 @@ Configure which Webforms utilize Webform Hints at
 Configuration > Content Authoring > Webform hints
 or at admin/config/content/webform-hints
 
+Multilingual support
+--------------------
+The module's "Required indicator" option can be translated to multiple languages
+using the i18n_variable module within i18n. See:
+https://www.drupal.org/node/2287509#comment-8904559
+
 Development
 -----------
 Webform Hints was developed and is maintained by CHROMATIC, LLC.

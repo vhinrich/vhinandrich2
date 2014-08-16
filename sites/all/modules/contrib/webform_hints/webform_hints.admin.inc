@@ -43,7 +43,7 @@ function webform_hints_admin_settings($form, &$form_state) {
     '#type' => 'textfield',
     '#size' => 20,
     '#title' => t('Required indicator'),
-    '#default_value' => variable_get('webform_hints_required', ' (required)'),
+    '#default_value' => variable_get('webform_hints_required', WEBFORM_HINTS_DEFAULT_REQUIRED_INDICATOR),
     '#description' => t('This is appended to the hint of a required label. It can be left blank. The element can also be themed using the .required class (see <a href="http://www.w3.org/TR/WCAG/#visual-audio-contrast">WCAG</a>).'),
   );
 
@@ -52,6 +52,13 @@ function webform_hints_admin_settings($form, &$form_state) {
     '#title' => t('Legacy Browser Support'),
     '#default_value' => variable_get('webform_hints_legacy_support', ''),
     '#description' => t('Webform hints uses the HTML5 "placeholder" attribute for setting default/placeholder values on webform inputs. This module includes support for legacy browsers (like IE 9 and below) by enabling this option. This requires downloading and installing the Form Defaults jQuery plugin by Jason Palmer. See README.txt for installation instructions.'),
+  );
+
+  $form['webform_hints_use_description'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Use description instead of label'),
+    '#default_value' => variable_get('webform_hints_use_description', FALSE),
+    '#description' => t('Selecting this option will use each component\'s description value as the hint rather than the label. The description will otherwise be hidden while the label will remain visible to end users. The required indicator (setting above) will not be attached to this hint, as the label will contain a required marker.'),
   );
 
   $form = system_settings_form($form);

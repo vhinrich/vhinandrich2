@@ -6,9 +6,9 @@ dependencies[] = webform
 dependencies[] = libraries (>=2.x)
 configure = admin/config/content/webform-hints
 
-; Information added by Drupal.org packaging script on 2014-05-08
-version = "7.x-1.4"
+; Information added by Drupal.org packaging script on 2014-08-13
+version = "7.x-1.5"
 core = "7.x"
 project = "webform_hints"
-datestamp = "1399566228"
+datestamp = "1407952128"
 

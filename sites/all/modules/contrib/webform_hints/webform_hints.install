@@ -20,4 +20,5 @@ function webform_hints_uninstall() {
   variable_del('webform_hints_forms');
   variable_del('webform_hints_required');
   variable_del('webform_hints_legacy_support');
+  variable_del('webform_hints_use_description');
 }
