@@ -60,13 +60,10 @@
                 });
             }
 
-            _V_("vid_player").ready(function(){
-
-              var myPlayer = this;
-
-              // EXAMPLE: Start playing the video.
-              myPlayer.play();
-
+            $('.video-js:not(.vjs-controls-enabled)').each(function(i,o){
+                _V_($(o).attr('id')).ready(function(){
+                    console.log('test');
+                });
             });
 
         }

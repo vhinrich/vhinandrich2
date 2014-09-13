@@ -170,3 +170,6 @@ body.front{
         text-shadow: .05em .05em 0 #333;
     }
 }
+.vjs-default-skin:hover .vjs-big-play-button, .vjs-default-skin .vjs-big-play-button:focus{
+    background: none;
+}
