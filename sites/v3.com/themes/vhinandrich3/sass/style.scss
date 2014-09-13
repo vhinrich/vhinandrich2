@@ -171,5 +171,8 @@ body.front{
     }
 }
 .vjs-default-skin:hover .vjs-big-play-button, .vjs-default-skin .vjs-big-play-button:focus{
-    background: none;
+    background: none !important;
+}
+.vjs-default-skin:hover .vjs-big-play-button, .vjs-default-skin .vjs-big-play-button:focus{
+    background: none !important;
 }
