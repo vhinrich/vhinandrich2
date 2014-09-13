@@ -24,7 +24,7 @@
         },
         attach: function(context, settings){
 
-            if ($('body .timeline-bg-container').length==0 ) {
+            if ($('body .timeline-bg-container').length===0 ) {
                 $('body').prepend('<div class="timeline-bg-container"><div class="timeline-bg-wrapper"></div></div>');
             }
 
@@ -59,6 +59,15 @@
                     }
                 });
             }
+
+            _V_("vid_player").ready(function(){
+
+              var myPlayer = this;
+
+              // EXAMPLE: Start playing the video.
+              myPlayer.play();
+
+            });
 
         }
     };
