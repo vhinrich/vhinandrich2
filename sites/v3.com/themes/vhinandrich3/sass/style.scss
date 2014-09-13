@@ -145,7 +145,7 @@ body.front{
 }
 
 
-* {max-width: 100%} /* the usual RWD shebang */
+// * {max-width: 100%} the usual RWD shebang
 .video-js {
     width: auto !important; /* override the plugin's inline dims to let vids scale fluidly */
     height: auto !important;
