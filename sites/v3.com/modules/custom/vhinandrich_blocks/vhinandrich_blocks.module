@@ -3,7 +3,7 @@
 function vhinandrich_blocks_block_info(){
   $blocks['vr_header_video'] = array(
     'info' => t('Vhin and Rich Header Video'),
-    'cache' => DRUPAL_NO_CACHE,
+    // 'cache' => DRUPAL_NO_CACHE,
   );
   $blocks['vr_header'] = array(
     'info' => t('Vhin and Rich Header'),
@@ -50,6 +50,7 @@ function vhinandrich_blocks_block_view_vr_footer(){
 
 function vhinandrich_blocks_block_view_vr_header(){
   $enter_site = NULL;
+  $subtitle = NULL;
   if(drupal_is_front_page()){
     $enter_site = '<div><a href="#navbar">Enter site</a></div>';
   }else{
@@ -79,6 +80,7 @@ function vhinandrich_blocks_block_view_vr_header_video(){
       'items' => array(array('uri' => 'public://vhinandrich.mp4', 'filemime' => 'video/mp4')),
       'attributes' => array('width' => '480','height' => '320'),
       'autoplay' => TRUE,
+      'data_setup' => NULL,
     );
     $block['content'] = theme('vhinrich_videoheader', $args);
   }else{
