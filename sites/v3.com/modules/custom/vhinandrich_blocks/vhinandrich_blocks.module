@@ -102,6 +102,8 @@ function vhinandrich_blocks_theme(){
 }
 
 function vhinandrich_blocks_preprocess_vhinrich_videoheader(&$vars){
-  videojs_preprocess_videojs($vars);
+  if(function_exists('videojs_preprocess_videojs')){
+    videojs_preprocess_videojs($vars);
+  }
   $vars['autoplay'] = TRUE;
 }
