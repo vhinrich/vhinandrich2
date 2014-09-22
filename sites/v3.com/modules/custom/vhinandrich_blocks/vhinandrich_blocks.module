@@ -6,6 +6,7 @@ function vhinandrich_blocks_block_info(){
   );
   $blocks['vr_header'] = array(
     'info' => t('Vhin and Rich Header'),
+    'cache' => DRUPAL_NO_CACHE,
   );
   $blocks['vr_footer'] = array(
     'info' => t('Vhin and Rich Footer'),
