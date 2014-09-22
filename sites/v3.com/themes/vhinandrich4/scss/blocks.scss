@@ -55,13 +55,16 @@
     overflow: hidden;
   }
 }
-.front,
-.node-type-article{
+.front{
   .block{
     &#block-vhinandrich-blocks-vr-header,
     &#block-vhinandrich-blocks-vr-header-video{
       max-height: none;
     }
+  }
+}
+.node-type-article{
+  .block{
     &#block-vhinandrich-blocks-vr-header-video{
       .video-js{padding-top: 0;padding-bottom: 0}
     }
