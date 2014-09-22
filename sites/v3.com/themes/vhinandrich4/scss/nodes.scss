@@ -66,4 +66,9 @@
       }
     }
   }
+  form{
+    &.webform-client-form{
+      max-width: none;
+    }
+  }
 }
