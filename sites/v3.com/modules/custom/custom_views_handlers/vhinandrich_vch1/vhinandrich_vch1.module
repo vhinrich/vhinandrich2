@@ -1,7 +1,0 @@
-<?php
-function vhinandrich_vch1_views_api() {
-  return array(
-    'api' => 3,
-    'path' => drupal_get_path('module', 'vhinandrich_vch1'),
-  );
-}

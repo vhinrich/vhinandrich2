@@ -24,6 +24,7 @@ function content_types_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'field_background_media',
+      1 => 'field_location',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

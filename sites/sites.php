@@ -61,6 +61,7 @@
  $sites['127.0.0.1.mqcristobal'] = 'mqcristobal.com';
 
  $sites['localhost'] = 'v3.com';
+ $sites['127.0.0.1'] = 'v3.com';
  $sites['vhinandrich.com'] = 'v3.com';
 
  $sites['localhost.v2'] = 'v2.com';

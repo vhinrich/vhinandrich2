@@ -1,0 +1,42 @@
+@import 'css3-mixins.scss';
+
+.panel-flexible{
+  &#homepage{
+    .panel-separator{display: none;}
+    .panels-flexible-region{
+      float: none;
+      width: 100%;
+    }
+  }
+  .panels-flexible-region{
+    @for $i from 1 through 12 {
+        &.col-xs-#{$i},
+        &.col-sm-#{$i},
+        &.col-md-#{$i},
+        &.col-lg-#{$i}{
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+    }
+  }
+  @media (max-width: 767px){
+    .panels-flexible-region-main_footer_3_column_layout-left_region,
+    .panels-flexible-region-main_footer_3_column_layout-center_region,
+    .panels-flexible-region-main_footer_3_column_layout-center,
+    .panels-flexible-region-main_footer_3_column_layout-right_region,
+    .panels-flexible-region{
+      width: 100%;
+      float: none;
+    }
+  }
+}
+
+.page-node{
+  &.node-type-article{
+    .panel-flexible{
+      max-width: 1120px;
+      float: none;
+      margin: 0 auto;
+    }
+  }
+}

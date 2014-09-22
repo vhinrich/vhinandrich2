@@ -1,0 +1,148 @@
+@import 'css3-mixins.scss';
+
+.view{
+  &.view-articles,
+  &.view-id-taxonomy_term{
+    &.view-display-id-default,
+    &.view-display-id-photos_block,
+    &.view-display-id-videos_block,
+    &.view-display-id-page{
+      background: #F2F1EF;
+      .view-header{
+        text-align: center;
+        h2{
+          font-size: 52px;
+          font-weight: 100;
+          margin: .8em 0;
+        }
+      }
+      .view-content{
+        max-width: 1120px;
+        margin: 3% auto;
+        &:before,
+        &:after{
+          display: table;
+          content: " ";
+        }
+        &:after{
+          content: ".";
+          display: block;
+          height: 0;
+          clear: both;
+          visibility: hidden;
+        }
+      }
+      img{
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .views-row{
+        margin-top: 1.2%;
+        margin-bottom: 1.2%;
+        .node-article{
+          position: relative;
+          overflow: hidden;
+          hyphens: auto;
+          >header > h2{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            font-weight: 100;
+            font-size: 30px;
+            a{
+              display: block;
+              height: 100%;
+              width: 100%;
+              padding: 10px;
+              color: #ECECEC;
+              padding-top: 100%;
+              @include box-rgba(4, 147, 114, .8);
+              @include transition(all, .3s);
+              @include opacity(0);
+              &:hover,
+              &:focus,
+              &:active{
+                padding-top: 10px;
+                @include opacity(1);
+              }
+            }
+          }
+          > .content{
+            .field-name-content-social-buttons-js,
+            .field-name-content-social-buttons,
+            .field-name-field-date,
+            .social-network-icon,
+            .detail-viewer-container{
+              position: absolute;
+              display: none;
+            }
+            .field-name-body{
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    &.view-id-taxonomy_term{
+      &.view-display-id-page{
+        .video-js,
+        .media-youtube-video{
+          padding-bottom: 56.25%; /* 16:9 */
+          padding-top: 43.60%;
+        }
+      }
+    }
+    &.view-display-id-videos_block{
+      background: #049372;
+      color: #F2F1EF;
+      .views-row{
+        .node-article{
+          > header > h2{
+            position: relative;
+            a{
+              display: block;
+              height: 100%;
+              width: 100%;
+              padding: 10px 0;
+              color: #eee;
+              font-weight: 200;
+              background: none;
+              @include transition(all, .3s);
+              @include opacity(1);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.view-latest-instagram,
+  &.view-more-posts{
+    &.view-id-latest_instagram,
+    &.view-id-more_posts{
+      .view-header{
+        font-size: 28px;
+      }
+      .views-row{
+        margin: 8px 0;
+        .views-field{
+          &.views-field-field-media{
+            .field-content{
+              img{
+                width: 100%;
+                max-width: 32px;
+                margin-right: 5px;
+                height: auto;
+                ~ a{
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

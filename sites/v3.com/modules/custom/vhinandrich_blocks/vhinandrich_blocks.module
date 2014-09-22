@@ -1,0 +1,103 @@
+<?php
+
+function vhinandrich_blocks_block_info(){
+  $blocks['vr_header_video'] = array(
+    'info' => t('Vhin and Rich Header Video'),
+  );
+  $blocks['vr_header'] = array(
+    'info' => t('Vhin and Rich Header'),
+  );
+  $blocks['vr_footer'] = array(
+    'info' => t('Vhin and Rich Footer'),
+  );
+  $blocks['vr_map'] = array(
+    'info' => t('Vhin and Rich Map'),
+  );
+  return $blocks;
+}
+
+function vhinandrich_blocks_block_view($delta){
+  $function = __FUNCTION__ . '_' . $delta;
+  if(function_exists($function)){
+    return $function();
+  }
+}
+
+function vhinandrich_blocks_block_view_vr_map(){
+  $map_div = '<div style="overflow:hidden;height:500px;width:100%;"><div id="gmap_canvas" style="height:500px;width:100%;"></div><a class="google-map-code" href="http://www.trivoo.net" id="get-map-data">diese shop-navigation</a></div>';;
+
+  $block['content'] = array(
+    '#markup' => $map_div,
+    '#attached' => array(
+      'css' => array(
+        drupal_get_path('module', 'vhinandrich_blocks') . '/css/vhinandrich_blocks_map.css'
+      ),
+      'js' => array(
+        'http://maps.google.com/maps/api/js?sensor=false',
+        drupal_get_path('module', 'vhinandrich_blocks') . '/js/vhinandrich_blocks_map.js'
+      )
+    )
+  );
+  return $block;
+}
+
+function vhinandrich_blocks_block_view_vr_footer(){
+  $block['content'] = t('Copyright © 2012-@year <strong>VHIN + RICH</strong>. All rights reserved.', array('@year' => date('Y', time())));
+  return $block;
+}
+
+function vhinandrich_blocks_block_view_vr_header(){
+  $enter_site = NULL;
+  if(drupal_is_front_page()){
+    $enter_site = '<div><a href="#navbar">Enter site</a></div>';
+  }else{
+    $subtitle = drupal_get_title();
+    if(arg(0)=='taxonomy' && arg(1)=='term' && is_numeric(arg(2))){
+      $tid = arg(2);
+      $taxonomy = taxonomy_term_load($tid);
+      if($taxonomy->vocabulary_machine_name=='hastags'){
+        $subtitle = '#' . $subtitle;
+      }
+    }
+    $subtitle = truncate_utf8($subtitle, 13, FALSE, TRUE);
+  }
+  $args = array(
+    'title' => 'VHIN <span class="highlight">+</span> RICH',
+    'subtitle' => $subtitle,
+    'caption' => '<p>Mark Quirvien and Richelle Rivamonte Cristobal</p>' . $enter_site
+  );
+  $block['content'] = theme('vhinrich_header', $args);
+  return $block;
+}
+
+function vhinandrich_blocks_block_view_vr_header_video(){
+  if(module_exists('videojs')){
+    $args = array(
+      'player_id' => 'vr-header',
+      'items' => array(array('uri' => 'public://vhinandrich.mp4', 'filemime' => 'video/mp4')),
+      'attributes' => array('width' => '480','height' => '320'),
+      'autoplay' => TRUE,
+    );
+    $block['content'] = theme('vhinrich_videoheader', $args);
+  }else{
+    $block['content'] = '<div class="alert error">Video JS module must be installed.</div>';
+  }
+  return $block;
+}
+
+function vhinandrich_blocks_theme(){
+  $themes['vhinrich_videoheader'] = array(
+    'variables' => array('items' => NULL, 'player_id' => NULL, 'attributes' => NULL, 'entity' => NULL, 'entity_type' => NULL, 'posterimage_style' => NULL),
+    'template' => 'themes/vhinrich-videoheader',
+  );
+  $themes['vhinrich_header'] = array(
+    'variables' => array('title' => NULL, 'caption' => NULL),
+    'template' => 'themes/vhinrich-header',
+  );
+  return $themes;
+}
+
+function vhinandrich_blocks_preprocess_vhinrich_videoheader(&$vars){
+  videojs_preprocess_videojs($vars);
+  $vars['autoplay'] = TRUE;
+}

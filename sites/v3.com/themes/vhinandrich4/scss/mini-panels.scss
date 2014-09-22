@@ -1,0 +1,21 @@
+@import 'css3-mixins.scss';
+
+#block-panels-mini-main-footer{
+  h2{
+    font-weight: 100;
+    font-size: 36px;
+  }
+  .nav{
+    >li{
+      >a{
+        border-bottom: 1px solid #34495E;
+        @include transition(all, .2s);
+        &:hover,
+        &:focus,
+        &:active{
+          background: #34495E;
+        }
+      }
+    }
+  }
+}

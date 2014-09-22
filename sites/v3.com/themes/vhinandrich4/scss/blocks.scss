@@ -1,0 +1,66 @@
+@import 'css3-mixins.scss';
+
+.block{
+  &#block-vhinandrich-blocks-vr-header{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #ECECEC;
+    text-transform: uppercase;
+    @include box-rgba(5, 1, 0, .7, #6C7A89);
+    >div{
+      display: table;
+      height: 100%;
+      >article{
+        display: table-cell;
+        vertical-align: middle;
+        font-weight: 100;
+        // @include opacity(.6);
+        header{
+          padding: 20px 0 0;
+          margin-top: -12%;
+          h1,
+          h2{
+            font-size: 92px;
+            font-weight: 900;
+            letter-spacing: 5px;
+            margin: 0;
+            color: #f7f7f7;
+            .highlight{
+              color: #f7ca18;
+              // font-weight: 400;
+            }
+          }
+          h2{
+            font-size: 30px;
+            font-weight: 200;
+          }
+        }
+        .body{
+          padding: 0 0 20px;
+        }
+      }
+    }
+  }
+  &#block-vhinandrich-blocks-vr-header-video{
+    .video-js {padding-top: 0;padding-bottom: 56.25%;width: 100% !important; height: auto !important}
+  }
+  &#block-vhinandrich-blocks-vr-header,
+  &#block-vhinandrich-blocks-vr-header-video{
+    max-height: 400px;
+    overflow: hidden;
+  }
+}
+.front,
+.node-type-article{
+  .block{
+    &#block-vhinandrich-blocks-vr-header,
+    &#block-vhinandrich-blocks-vr-header-video{
+      max-height: none;
+    }
+  }
+}

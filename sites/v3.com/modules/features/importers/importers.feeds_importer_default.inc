@@ -39,6 +39,8 @@ function importers_feeds_importer_default() {
           'jsonpath_parser:5' => 'videos.standard_resolution.url',
           'jsonpath_parser:6' => 'tags.*',
           'jsonpath_parser:7' => 'caption',
+          'jsonpath_parser:8' => 'location.latitude',
+          'jsonpath_parser:9' => 'location.longitude',
         ),
         'debug' => array(
           'options' => array(
@@ -51,6 +53,8 @@ function importers_feeds_importer_default() {
             'jsonpath_parser:5' => 0,
             'jsonpath_parser:6' => 0,
             'jsonpath_parser:7' => 0,
+            'jsonpath_parser:8' => 0,
+            'jsonpath_parser:9' => 0,
           ),
         ),
       ),
@@ -109,6 +113,16 @@ function importers_feeds_importer_default() {
             'target' => 'body',
             'unique' => FALSE,
           ),
+          9 => array(
+            'source' => 'jsonpath_parser:8',
+            'target' => 'field_location:lat',
+            'unique' => FALSE,
+          ),
+          10 => array(
+            'source' => 'jsonpath_parser:9',
+            'target' => 'field_location:lng',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '0',
         'input_format' => 'full_html',
@@ -118,7 +132,7 @@ function importers_feeds_importer_default() {
     ),
     'content_type' => '',
     'update' => 0,
-    'import_period' => '0',
+    'import_period' => '-1',
     'expire_period' => 3600,
     'import_on_create' => 1,
     'process_in_background' => 1,

@@ -1,5 +1,5 @@
 # Use PHP54CGI as default
-AddHandler fcgid54-script .php
+# AddHandler fcgid54-script .php
 #
 # Apache/PHP/Drupal settings:
 #

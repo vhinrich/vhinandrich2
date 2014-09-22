@@ -94,11 +94,8 @@ function content_types_field_default_field_instances() {
       ),
       'timeline' => array(
         'label' => 'hidden',
-        'module' => 'file_entity',
-        'settings' => array(
-          'file_view_mode' => 'timeline_background',
-        ),
-        'type' => 'file_rendered',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 3,
       ),
     ),
@@ -131,7 +128,7 @@ function content_types_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 15,
+      'weight' => 17,
     ),
   );
 
@@ -152,7 +149,7 @@ function content_types_field_default_field_instances() {
           'multiple_to' => '',
         ),
         'type' => 'date_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'featured' => array(
         'label' => 'hidden',
@@ -265,6 +262,54 @@ function content_types_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-article-field_location'
+  $field_instances['node-article-field_location'] = array(
+    'bundle' => 'article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'featured' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'timeline' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_location',
+    'label' => 'Location',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'geolocation',
+      'settings' => array(),
+      'type' => 'geolocation_text',
+      'weight' => 16,
+    ),
+  );
+
   // Exported field_instance: 'node-article-field_media'
   $field_instances['node-article-field_media'] = array(
     'bundle' => 'article',
@@ -278,7 +323,7 @@ function content_types_field_default_field_instances() {
           'file_view_mode' => 'timeline',
         ),
         'type' => 'file_rendered',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'featured' => array(
         'label' => 'hidden',
@@ -584,6 +629,7 @@ function content_types_field_default_field_instances() {
   t('Date');
   t('Enter a comma-separated list of words to describe your content.');
   t('Hashtags');
+  t('Location');
   t('Media');
   t('Social Network');
   t('Tags');

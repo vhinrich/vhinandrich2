@@ -9,12 +9,14 @@ base theme = bootstrap
 ;;;;;;;;;;;;;;;;;;;;;
 
 regions[navigation]     = 'Navigation'
+regions[site_header]    = 'Site Header'
 regions[header]         = 'Top Bar'
 regions[highlighted]    = 'Highlighted'
 regions[help]           = 'Help'
 regions[content]        = 'Content'
 regions[sidebar_first]  = 'Primary'
 regions[sidebar_second] = 'Secondary'
+regions[above_footer]   = 'Above Footer'
 regions[footer]         = 'Footer'
 regions[page_top]       = 'Page top'
 regions[page_bottom]    = 'Page bottom'
@@ -25,6 +27,17 @@ regions[page_bottom]    = 'Page bottom'
 ;;;;;;;;;;;;;;;;;;;;;
 
 ; stylesheets[all][] = css/style.css
+stylesheets[all][] = css/fonts/lato/font.css
+stylesheets[all][] = css/fonts/opensans/font.css
+stylesheets[all][] = scss/css3-mixins.scss
+stylesheets[all][] = scss/style.scss
+stylesheets[all][] = scss/regions.scss
+stylesheets[all][] = scss/blocks.scss
+stylesheets[all][] = scss/views.scss
+stylesheets[all][] = scss/panels.scss
+stylesheets[all][] = scss/mini-panels.scss
+stylesheets[all][] = scss/nodes.scss
+
 
 
 ; For information on choosing the desired method, please read the Drupal
@@ -34,11 +47,11 @@ regions[page_bottom]    = 'Page bottom'
 ; ;----------------------------------
 ; ; METHOD 1: Bootstrap Source Files
 ; ;----------------------------------
-; 
+;
 ; ;;;;;;;;;;;;;;;;;;;;;
 ; ;; Scripts
 ; ;;;;;;;;;;;;;;;;;;;;;
-; 
+;
 ; scripts[] = 'bootstrap/js/affix.js'
 ; scripts[] = 'bootstrap/js/alert.js'
 ; scripts[] = 'bootstrap/js/button.js'
@@ -55,6 +68,14 @@ regions[page_bottom]    = 'Page bottom'
 ; ; Disable BootstrapCDN if using Bootstrap source files in your sub-theme.
 ; settings[bootstrap_cdn] = ''
 
+scripts[] = 'js/vhinandrich4.js'
+
+;;;;;;;;;;;;;;;;;;
+;; Plugins
+;;;;;;;;;;;;;;;;;;
+
+; flowtype
+scripts[] = 'plugins/FlowType.JS-1.1.0/flowtype.js'
 
 ; ;-------------------------
 ; ; METHOD 2: Bootstrap CDN

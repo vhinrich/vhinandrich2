@@ -1,8 +1,0 @@
-; $Id$
-name = "Onix Facebook"
-description = "Enable facebook features"
-core = "7.x"
-version = "7.x"
-package = "OnixMedia"
-configure = admin/config/content/facebook
-; Information added by drupal.org packaging script on 2012-03-26
