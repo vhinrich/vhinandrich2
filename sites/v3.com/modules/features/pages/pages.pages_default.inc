@@ -198,8 +198,8 @@ function pages_default_page_manager_handlers() {
       'url' => '',
       'display' => 'block',
       'context' => array(
-        0 => '',
-        1 => 'argument_entity_id:node_1.nid',
+        0 => 'argument_entity_id:node_1.nid',
+        1 => '',
       ),
       'override_title' => 1,
       'override_title_text' => '',
