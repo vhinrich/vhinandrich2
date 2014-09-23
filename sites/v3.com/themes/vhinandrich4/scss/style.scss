@@ -92,6 +92,32 @@ a{
         &:active{
           background: #1E8BC3;
         }
+        .icon-bar{
+          @include transition(all, .3s);
+          @include opacity(0);
+        }
+        > span{
+          &:nth-of-type(2){
+            position: relative;
+            top: 5px;
+            @include opacity(1);
+            @include rotate(45);
+          }
+          &:nth-of-type(4){
+            position: relative;
+            top: -7px;
+            @include opacity(1);
+            @include rotate(-45);
+          }
+        }
+        &.collapsed{
+          .icon-bar{
+            position: static;
+            top: auto;
+            @include opacity(1);
+            @include rotate(0,0,0,0,0);
+          }
+        }
       }
       .navbar-collapse{
         border: none;

@@ -172,7 +172,8 @@ function init_map(){
     }
   ];
   var myOptions = {
-    zoom:14,
+    zoom:15,
+    draggable: false,
     center:new google.maps.LatLng(1.3917592,103.75239529999999),
     panControl: false,
     zoomControl: false,
