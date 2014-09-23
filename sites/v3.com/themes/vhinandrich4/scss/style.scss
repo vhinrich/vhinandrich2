@@ -75,6 +75,25 @@ a{
           }
         }
       }
+      .navbar-toggle{
+        border: none;
+        padding: 18px 15px;
+        margin: 0;
+        position: absolute;
+        right: 0;
+        background: #2574A9;
+        @include transition(all, .3s);
+        @include border-radius(0);
+        &:hover,
+        &:focus,
+        &:active{
+          background: #1E8BC3;
+        }
+      }
+      .navbar-collapse{
+        border: none;
+        @include box-shadow(0,0,0);
+      }
     }
   }
 }
