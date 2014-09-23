@@ -65,6 +65,9 @@
         }
       }
     }
+    &.timeline{
+      .field-item-overlay-link{display: none}
+    }
   }
   form{
     &.webform-client-form{
