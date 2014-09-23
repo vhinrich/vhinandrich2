@@ -49,6 +49,11 @@
   &#block-vhinandrich-blocks-vr-header-video{
     .video-js {padding-top: 0;padding-bottom: 56.25%;width: 100% !important; height: auto !important}
   }
+  @media(max-width: 767px){
+    &#block-vhinandrich-blocks-vr-header-video{
+      display: none;
+    }
+  }
   &#block-vhinandrich-blocks-vr-header,
   &#block-vhinandrich-blocks-vr-header-video{
     max-height: 400px;

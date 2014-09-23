@@ -74,6 +74,9 @@ a{
             content: ' ';
           }
         }
+        ~ div{
+          margin-top: 50px;
+        }
       }
       .navbar-toggle{
         border: none;
@@ -94,6 +97,32 @@ a{
         border: none;
         @include box-shadow(0,0,0);
       }
+      @media(max-width: 767px){
+        .navbar-collapse{
+          background: #2574A9;
+          margin: 0 -15px;
+          .navbar-nav{
+            >li{
+              a{
+                border-top: 5px solid transparent;
+                border-bottom: 5px solid transparent;
+                &:hover,
+                &:focus,
+                &:active{
+                  border-top: 5px solid transparent;
+                  color: #F89406;
+                }
+              }
+              &.active>a,
+              &.active>a:hover,
+              &.active>a:focus{
+                color: #f7ca18;
+                border-top: 5px solid transparent;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -102,6 +131,9 @@ a{
   @include transition(all, .2s);
   background: #22313F;
   border: none;
+  .container{
+    overflow: visible;
+  }
   .navbar-brand{
     &:hover,
     &:focus,
