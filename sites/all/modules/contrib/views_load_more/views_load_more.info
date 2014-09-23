@@ -6,9 +6,9 @@ dependencies[] = views
 files[] = views_load_more.views.inc
 files[] = views_plugin_pager_load_more.inc
 
-; Information added by Drupal.org packaging script on 2014-08-29
-version = "7.x-1.3"
+; Information added by Drupal.org packaging script on 2014-09-15
+version = "7.x-1.4"
 core = "7.x"
 project = "views_load_more"
-datestamp = "1409348171"
+datestamp = "1410785925"
 
