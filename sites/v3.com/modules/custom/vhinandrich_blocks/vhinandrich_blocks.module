@@ -79,6 +79,7 @@ function vhinandrich_blocks_block_view_vr_header_video(){
     if(!drupal_is_front_page()){
       $items = array(array('uri' => 'public://vhinandrich_lr.mp4', 'filemime' => 'video/mp4'));
     }
+    $items[] = array('uri' => 'public://52_52.jpg', 'filemime' => 'image/jpeg');
     $args = array(
       'player_id' => 'vr-header',
       'items' => $items,
