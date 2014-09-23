@@ -174,7 +174,7 @@ function init_map(){
   var myOptions = {
     zoom:15,
     draggable: false,
-    center:new google.maps.LatLng(1.3917592,103.75239529999999),
+    center:new google.maps.LatLng(Drupal.settings.vhinandrich_blocks.map.location.lat,Drupal.settings.vhinandrich_blocks.map.location.lng),
     panControl: false,
     zoomControl: false,
     mapTypeControl: false,
@@ -184,7 +184,7 @@ function init_map(){
     styles: style
   };
   map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
-  marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(1.3917592, 103.75239529999999)});
+  marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(Drupal.settings.vhinandrich_blocks.map.location.lat,Drupal.settings.vhinandrich_blocks.map.location.lng)});
   infowindow = new google.maps.InfoWindow();
   google.maps.event.addListener(marker, "click", function(){
     infowindow.open(map,marker);

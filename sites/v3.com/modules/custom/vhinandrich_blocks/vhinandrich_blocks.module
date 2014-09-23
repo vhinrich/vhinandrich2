@@ -26,8 +26,26 @@ function vhinandrich_blocks_block_view($delta){
 }
 
 function vhinandrich_blocks_block_view_vr_map(){
-  $map_div = '<div style="overflow:hidden;height:500px;width:100%;"><div id="gmap_canvas" style="height:500px;width:100%;"></div><a class="google-map-code" href="http://www.trivoo.net" id="get-map-data">diese shop-navigation</a></div>';;
+  $map_div = '<div style="overflow:hidden;height:500px;width:100%;"><div id="gmap_canvas" style="height:500px;width:100%;"></div><a class="google-map-code" href="http://www.trivoo.net" id="get-map-data">diese shop-navigation</a></div>';
 
+  // Default location (Verde View Singapore)
+  $lat = 1.3917592;
+  $lng = 103.75239529999999;
+
+  // check if page is a node and get the node object
+  if($node = menu_get_object()){
+    if($node->type=='article'){
+      if(isset($node->field_location) && isset($node->field_location[$node->language]) && count($node->field_location[$node->language])>0){
+        $lat = $node->field_location[$node->language][0]['lat'];
+        $lng = $node->field_location[$node->language][0]['lng'];
+      }else{
+        // return nothing if location is empty
+        return FALSE;
+      }
+    }
+  }
+
+  drupal_add_js(array('vhinandrich_blocks' => array('map' => array('location' => array('lat' => $lat, 'lng' => $lng)))), 'setting');
   $block['content'] = array(
     '#markup' => $map_div,
     '#attached' => array(
