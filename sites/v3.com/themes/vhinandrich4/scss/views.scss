@@ -119,9 +119,11 @@
   }
 
   &.view-latest-instagram,
-  &.view-more-posts{
+  &.view-more-posts,
+  &.view-related-posts{
     &.view-id-latest_instagram,
-    &.view-id-more_posts{
+    &.view-id-more_posts,
+    &.view-id-related_posts{
       .view-header{
         font-size: 28px;
       }

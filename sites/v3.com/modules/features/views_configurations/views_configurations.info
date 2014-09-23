@@ -15,6 +15,7 @@ features[views_view][] = latest_instagram
 features[views_view][] = more_posts
 features[views_view][] = most_popular_hashtags
 features[views_view][] = most_viewed
+features[views_view][] = related_posts
 features[views_view][] = search
 features[views_view][] = timeline
 features_exclude[dependencies][views] = views
