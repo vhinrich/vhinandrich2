@@ -14,6 +14,7 @@ function vhinandrich_blocks_block_info(){
   );
   $blocks['vr_map'] = array(
     'info' => t('Vhin and Rich Map'),
+    'cache' => DRUPAL_NO_CACHE,
   );
   return $blocks;
 }
