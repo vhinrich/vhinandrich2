@@ -303,9 +303,9 @@ function content_types_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'geolocation',
+      'module' => 'geolocation_googlemaps',
       'settings' => array(),
-      'type' => 'geolocation_text',
+      'type' => 'geolocation_googlemap',
       'weight' => 16,
     ),
   );

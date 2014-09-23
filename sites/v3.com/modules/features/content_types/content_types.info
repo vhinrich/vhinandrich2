@@ -9,6 +9,7 @@ dependencies[] = field_group
 dependencies[] = file
 dependencies[] = file_entity
 dependencies[] = geolocation
+dependencies[] = geolocation_googlemaps
 dependencies[] = media
 dependencies[] = options
 dependencies[] = taxonomy
