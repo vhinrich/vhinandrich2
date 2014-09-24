@@ -2,7 +2,6 @@
   Drupal.behaviors.vhinandrich_blocks_header_video = {
     initHeaderVideo: function(context, settings){
       $(window).load(function(){
-        console.log(settings);
         if(
           $('#block-vhinandrich-blocks-vr-header-video .video-js > video > source').length===0 ||
           (
