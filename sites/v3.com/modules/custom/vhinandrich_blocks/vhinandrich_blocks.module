@@ -112,6 +112,7 @@ function vhinandrich_blocks_block_view_vr_header_video(){
     }
     $block['content']['#markup'] = theme('vhinrich_videoheader', $args);
     $block['content']['#attached']['js'][] = drupal_get_path('module', 'vhinandrich_blocks') . '/js/vhinandrich_blocks_header_video.js';
+    drupal_add_js(array('vhinandrich_blocks' => array('header_video' => $args)), 'setting');
   }else{
     $block['content']['#markup'] = '<div class="alert error">Video JS module must be installed.</div>';
   }
