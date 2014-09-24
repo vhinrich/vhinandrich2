@@ -94,7 +94,6 @@ function vhinandrich_blocks_block_view_vr_header(){
 
 function vhinandrich_blocks_block_view_vr_header_video(){
   if(module_exists('videojs')){
-    videojs_add(TRUE);
     // $items = array(array('uri' => 'public://vhinandrich.mp4', 'filemime' => 'video/mp4'));
     $items = array(array('uri' => 'public://vhinandrich_lr.mp4', 'filemime' => 'video/mp4'));
     if(!drupal_is_front_page()){
@@ -135,9 +134,62 @@ function vhinandrich_blocks_theme(){
 }
 
 function vhinandrich_blocks_preprocess_vhinrich_videoheader(&$vars){
-  if(function_exists('videojs_preprocess_videojs')){
-    videojs_preprocess_videojs($vars);
+  if(module_exists('videojs')){
+    videojs_add();
+
+    $items = $vars['items'];
+    $codecs = array(
+      'video/mp4' => 'video/mp4',
+      'video/x-m4v' => 'video/mp4',
+      'video/webm' => 'video/webm',
+      'application/octet-stream' => 'video/webm',
+      'video/ogg' => 'video/ogg',
+      'application/ogg' => 'video/ogg',
+      'video/quicktime' => 'video/mp4',
+      'video/flv' => 'video/flv',
+      'video/x-flv' => 'video/flv',
+      'audio/mpeg' => 'audio/mpeg',
+      'audio/ogg' => 'audio/ogg',
+      'application/vnd.apple.mpegurl' => 'application/vnd.apple.mpegurl', // .m3u8
+    );
+
+    $vars['width'] = !empty($vars['attributes']['width']) ? $vars['attributes']['width'] : variable_get('videojs_width', 640);
+    $vars['height'] = !empty($vars['attributes']['height']) ? $vars['attributes']['height'] : variable_get('videojs_height', 360);
+    $vars['autoplay'] = !!variable_get('videojs_autoplay', FALSE);
+    $vars['items'] = array();
+    $vars['poster'] = NULL;
+
+    foreach ($items as $item) {
+      if (empty($item['filemime'])) {
+        continue;
+      }
+
+      if (!isset($codecs[$item['filemime']])) {
+        // check for image file and add in it as poster
+        if (strncmp($item['filemime'], 'image/', 6) === 0) {
+          $vars['poster'] = $item['uri'];
+        }
+
+        // Skip unplayable items.
+        continue;
+      }
+
+      $item['videotype'] = $codecs[$item['filemime']];
+
+      $vars['items'][] = $item;
+    }
+
+    // Turn the poster image URI into a URL
+    if (!empty($vars['poster'])) {
+      if (empty($vars['posterimage_style'])) {
+        $vars['poster'] = file_create_url($vars['poster']);
+      }
+      else {
+        $vars['poster'] = image_style_url($vars['posterimage_style'], $vars['poster']);
+      }
+    }
   }
+
   if(!isset($vars['poster_only']) || !$vars['poster_only']){
     $vars['autoplay'] = TRUE;
   }else{
