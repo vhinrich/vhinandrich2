@@ -94,6 +94,7 @@ function vhinandrich_blocks_block_view_vr_header(){
 
 function vhinandrich_blocks_block_view_vr_header_video(){
   if(module_exists('videojs')){
+    videojs_add(TRUE);
     // $items = array(array('uri' => 'public://vhinandrich.mp4', 'filemime' => 'video/mp4'));
     $items = array(array('uri' => 'public://vhinandrich_lr.mp4', 'filemime' => 'video/mp4'));
     if(!drupal_is_front_page()){
