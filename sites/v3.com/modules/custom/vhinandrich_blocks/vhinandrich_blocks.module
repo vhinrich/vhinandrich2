@@ -94,7 +94,8 @@ function vhinandrich_blocks_block_view_vr_header(){
 
 function vhinandrich_blocks_block_view_vr_header_video(){
   if(module_exists('videojs')){
-    $items = array(array('uri' => 'public://vhinandrich.mp4', 'filemime' => 'video/mp4'));
+    // $items = array(array('uri' => 'public://vhinandrich.mp4', 'filemime' => 'video/mp4'));
+    $items = array(array('uri' => 'public://vhinandrich_lr.mp4', 'filemime' => 'video/mp4'));
     if(!drupal_is_front_page()){
       $items = array(array('uri' => 'public://vhinandrich_lr.mp4', 'filemime' => 'video/mp4'));
     }
@@ -106,9 +107,13 @@ function vhinandrich_blocks_block_view_vr_header_video(){
       'autoplay' => TRUE,
       'data_setup' => NULL,
     );
-    $block['content'] = theme('vhinrich_videoheader', $args);
+    if(!drupal_is_front_page()){
+      $args['poster_only'] = TRUE;
+    }
+    $block['content']['#markup'] = theme('vhinrich_videoheader', $args);
+    $block['content']['#attached']['js'][] = drupal_get_path('module', 'vhinandrich_blocks') . '/js/vhinandrich_blocks_header_video.js';
   }else{
-    $block['content'] = '<div class="alert error">Video JS module must be installed.</div>';
+    $block['content']['#markup'] = '<div class="alert error">Video JS module must be installed.</div>';
   }
   return $block;
 }
@@ -129,5 +134,7 @@ function vhinandrich_blocks_preprocess_vhinrich_videoheader(&$vars){
   if(function_exists('videojs_preprocess_videojs')){
     videojs_preprocess_videojs($vars);
   }
-  $vars['autoplay'] = TRUE;
+  if(!isset($vars['poster_only']) || !$vars['poster_only']){
+    $vars['autoplay'] = TRUE;
+  }
 }
