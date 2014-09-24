@@ -18,11 +18,11 @@ strong{
 }
 
 a{
-  color: #F7CA18;
+  color: #3498DB;
   &:hover,
   &:focus,
   &:active{
-    color: #F4D03F;
+    color: #3A539B;
     text-decoration: none;
   }
 }
@@ -142,13 +142,13 @@ a{
                 &:focus,
                 &:active{
                   border-top: 5px solid transparent;
-                  color: #F89406;
+                  color: #F4B350;
                 }
               }
               &.active>a,
               &.active>a:hover,
               &.active>a:focus{
-                color: #f7ca18;
+                color: #F9BF3B;
                 border-top: 5px solid transparent;
               }
             }
@@ -182,6 +182,7 @@ a{
         padding-top: 10px;
         padding-bottom: 10px;
         color: #ECF0F1;
+        @include transition(all, .3s);
         &:hover,
         &:focus,
         &:active{
@@ -232,6 +233,14 @@ a{
   margin-top: 0;
   background: #2C3E50;
   color: #f7f7f7;
+  a{
+    color: #F9BF3B;
+    &:hover,
+    &:active,
+    &:focus{
+      color: #FDE3A7;
+    }
+  }
 }
 
 .video-js{width: 100% !important; height: auto !important}
@@ -371,6 +380,7 @@ a{
     &:focus,
     &:active{
       background: #22313F;
+      color: #F9BF3B;
     }
   }
 }

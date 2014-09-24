@@ -58,6 +58,15 @@
   &#block-vhinandrich-blocks-vr-header-video{
     max-height: 400px;
     overflow: hidden;
+    a{
+      color: #F39C12;
+      @include transition(all, .3s);
+      &:hover,
+      &:active,
+      &:focus{
+        color: #FDE3A7;
+      }
+    }
   }
 }
 .front{
