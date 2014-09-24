@@ -3,6 +3,7 @@
 body{
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-size: 14px;
+  font-weight: 200;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -253,10 +254,20 @@ a{
     &:before{
       margin: 0 auto;
       position: relative;
-      padding: 30px;
+      padding: 26px;
+      content: "\f04b";
+      font-family: fontawesome;
+      @include transition(all, .2s);
       @include border-radius(50%);
-      @include box-rgba(245, 171, 53, 1);
+      @include box-rgba(0, 0, 0, .4);
       @include text-shadow(0,0,0);
+    }
+    &:hover,
+    &:focus,
+    &:active{
+      &:before{
+        @include box-rgba(1, 152, 117, 1);
+      }
     }
   }
 }
