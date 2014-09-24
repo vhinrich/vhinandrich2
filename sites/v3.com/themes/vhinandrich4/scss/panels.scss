@@ -19,6 +19,12 @@
         }
     }
   }
+  .panels-flexible-row{
+    &.row{
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+  }
   @media (max-width: 767px){
     .panels-flexible-region-main_footer_3_column_layout-left_region,
     .panels-flexible-region-main_footer_3_column_layout-center_region,
