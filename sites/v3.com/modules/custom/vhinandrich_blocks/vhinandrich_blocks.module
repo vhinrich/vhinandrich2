@@ -99,13 +99,15 @@ function vhinandrich_blocks_block_view_vr_header_video(){
     if(!drupal_is_front_page()){
       $items = array(array('uri' => 'public://vhinandrich_lr.mp4', 'filemime' => 'video/mp4'));
     }
-    $items[] = array('uri' => 'public://52_52.jpg', 'filemime' => 'image/jpeg');
+    $poster_uri = 'public://52_52.jpg';
+    $items[] = array('uri' => $poster_uri, 'filemime' => 'image/jpeg');
     $args = array(
       'player_id' => 'vr-header',
       'items' => $items,
       'attributes' => array('width' => '480','height' => '320'),
       'autoplay' => TRUE,
       'data_setup' => NULL,
+      'poster_url' => file_create_url($poster_uri),
     );
     if(!drupal_is_front_page()){
       $args['poster_only'] = TRUE;
@@ -137,5 +139,7 @@ function vhinandrich_blocks_preprocess_vhinrich_videoheader(&$vars){
   }
   if(!isset($vars['poster_only']) || !$vars['poster_only']){
     $vars['autoplay'] = TRUE;
+  }else{
+    unset($vars['autoplay']);
   }
 }

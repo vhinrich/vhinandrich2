@@ -17,5 +17,7 @@ if (!empty($items)): ?>
     <source src="<?php print check_plain(file_create_url($item['uri'])) ?>" type="<?php print check_plain($item['videotype']) ?>" />
   <?php endforeach; ?>
 </video>
-<div class="vjs-poster" tabindex="-1" style="display: none; background-image: url(<?php print check_plain($poster); ?>);"></div>
+<?php if($poster_url): ?>
+  <div class="vjs-poster" tabindex="-1" style="display: none; background-image: url(<?php print check_plain($poster_url); ?>);"></div>
+<?php endif; ?>
 <?php endif;
