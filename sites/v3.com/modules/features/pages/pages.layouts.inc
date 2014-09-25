@@ -64,7 +64,7 @@ function pages_default_panels_layout() {
         'width' => '25',
         'width_type' => 'px',
         'parent' => 'main-row',
-        'class' => 'col-sm-3',
+        'class' => 'col-sm-4 col-lg-3',
       ),
       'center_region' => array(
         'type' => 'region',
@@ -72,7 +72,7 @@ function pages_default_panels_layout() {
         'width' => '290',
         'width_type' => 'px',
         'parent' => 'main-row',
-        'class' => 'col-sm-6',
+        'class' => 'col-sm-4 col-lg-6',
       ),
       'right_region' => array(
         'type' => 'region',
@@ -80,7 +80,7 @@ function pages_default_panels_layout() {
         'width' => '314',
         'width_type' => 'px',
         'parent' => 'main-row',
-        'class' => 'col-sm-3',
+        'class' => 'col-sm-4 col-lg-3',
       ),
       1 => array(
         'type' => 'row',
