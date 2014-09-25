@@ -5,6 +5,16 @@
     font-weight: 100;
     font-size: 36px;
   }
+  @media (max-width: 1024px){
+    h2{
+      font-size: 30px;
+    }
+  }
+  @media (max-width: 768px){
+    h2{
+      font-size: 26px;
+    }
+  }
   .nav{
     >li{
       >a{
@@ -17,5 +27,8 @@
         }
       }
     }
+  }
+  .pane-vhinandrich-blocks-vr-footer{
+    margin-top: 1.8em;
   }
 }
