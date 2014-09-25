@@ -243,11 +243,11 @@ a{
   background: #2C3E50;
   color: #f7f7f7;
   a{
-    color: #F9BF3B;
+    color: #E4F1FE;
     &:hover,
     &:active,
     &:focus{
-      color: #FDE3A7;
+      color: #52B3D9;
     }
   }
 }
@@ -387,15 +387,16 @@ a{
     color: #f7f7f7;
   }
   &.btn-most{
-    background: #2574A9;
-    border: 1px solid #1E8BC3;
+    background: #22313F;
+    border: 1px solid #34495E;
     margin-right: 5px;
     margin-top: 5px;
     @include transition(all, .3s);
     &:hover,
     &:focus,
     &:active{
-      background: #22313F;
+      background: #34495E;
+      border: 1px solid #4B77BE;
       color: #F9BF3B;
     }
   }
