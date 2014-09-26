@@ -147,4 +147,62 @@
       }
     }
   }
+
+  &.view-featured{
+    &.view-id-featured{
+      &.row{
+        // margin-right: 0;
+        // margin-left: 0;
+        .views-row{
+          @for $i from 1 through 12 {
+              &.col-xs-#{$i},
+              &.col-sm-#{$i},
+              &.col-md-#{$i},
+              &.col-lg-#{$i}{
+                padding-left: 0;
+                padding-right: 0;
+              }
+          }
+          article{
+            &.node-article{
+              &.featured{
+                header,
+                .social-network-icon,
+                .field-name-content-social-buttons-js,
+                .field-name-content-social-buttons,
+                .field-name-field-date,
+                .field-name-body{
+                  display: none;
+                }
+                .field-name-field-media{
+                  position: relative;
+                  overflow: hidden;
+                  img{
+                    @include transition(all, .5s);
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                    position: relative;
+                    z-index: 2;
+                  }
+                }
+                // .media-link{
+                //   &:hover,
+                //   &:focus,
+                //   &:active{
+                //     img{
+                //       width: 110%;
+                //       margin-left: -8%;
+                //       margin-top: -8%;
+                //       z-index: 1;
+                //     }
+                //   }
+                // }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

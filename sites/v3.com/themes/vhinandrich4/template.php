@@ -58,8 +58,9 @@ function vhinandrich4_preprocess_node(&$vars, $hook) {
 
   // view mode function for all node types
   $vmfunc = __FUNCTION__ . '__' . $vars['view_mode'];
-  if (function_exists($vmfunc))
+  if (function_exists($vmfunc)){
       $vmfunc($vars, $hook);
+  }
   //
   // Template suggestions
   //
@@ -68,7 +69,9 @@ function vhinandrich4_preprocess_node(&$vars, $hook) {
 }
 
 function vhinandrich4_preprocess_node__featured(&$vars, $hook) {
-  $vars['classes_array'][] = 'row';
+  // $vars['classes_array'][] = 'row';
+  $vars['content']['field_media']['#prefix'] = '<a class="media-link" href="' . url('node/' . $vars['nid']) . '">';
+  $vars['content']['field_media']['#suffix'] = '</a>';
 }
 
 function vhinandrich4_preprocess_node_article__timeline(&$vars){
@@ -149,10 +152,10 @@ function vhinandrich4_preprocess_field_field_media__timeline(&$vars){
 }
 
 function vhinandrich4_preprocess_field_field_media__featured(&$vars){
-  $vars['classes_array'][] = 'col-sm-9';
-  if(count($vars['items'])>1){
-      $vars['items'] = array(reset($vars['items']));
-  }
+  // $vars['classes_array'][] = 'col-sm-9';
+  // if(count($vars['items'])>1){
+  //     $vars['items'] = array(reset($vars['items']));
+  // }
 }
 
 
