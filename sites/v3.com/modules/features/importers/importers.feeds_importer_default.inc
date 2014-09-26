@@ -41,6 +41,7 @@ function importers_feeds_importer_default() {
           'jsonpath_parser:7' => 'caption',
           'jsonpath_parser:8' => 'location.latitude',
           'jsonpath_parser:9' => 'location.longitude',
+          'jsonpath_parser:10' => 'images.standard_resolution.url',
         ),
         'debug' => array(
           'options' => array(
@@ -55,6 +56,7 @@ function importers_feeds_importer_default() {
             'jsonpath_parser:7' => 0,
             'jsonpath_parser:8' => 0,
             'jsonpath_parser:9' => 0,
+            'jsonpath_parser:10' => 0,
           ),
         ),
       ),
@@ -121,6 +123,11 @@ function importers_feeds_importer_default() {
           10 => array(
             'source' => 'jsonpath_parser:9',
             'target' => 'field_location:lng',
+            'unique' => FALSE,
+          ),
+          11 => array(
+            'source' => 'jsonpath_parser:10',
+            'target' => 'field_media_display_image',
             'unique' => FALSE,
           ),
         ),
