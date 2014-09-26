@@ -156,6 +156,13 @@ function vhinandrich4_preprocess_field_field_media__featured(&$vars){
   // if(count($vars['items'])>1){
   //     $vars['items'] = array(reset($vars['items']));
   // }
+  if(count($vars['items'])>1){
+      $vars['items'] = array(reset($vars['items']));
+      $vars['classes_array'][] = 'gallery';
+      $vars['classes_array'][] = 'gallery-' . $vars['element']['#object']->nid;
+      $vars['attributes_array']['data-node-id'] = $vars['element']['#object']->nid;
+      $vars['theme_hook_suggestions'][] = 'field__field_media__gallery__article__timeline';
+  }
 }
 
 
