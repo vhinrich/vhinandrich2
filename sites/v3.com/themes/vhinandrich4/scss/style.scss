@@ -252,8 +252,13 @@ a{
   }
 }
 
-.video-js{width: 100% !important; height: auto !important}
-.vjs-fullscreen{padding: 0}
+.video-js{
+  width: 100% !important;
+  height: auto !important;
+  &.vjs-fullscreen{
+    padding: 0 !important;
+  }
+}
 .vjs-poster{
   background-attachment: fixed;
   background-size: cover;
