@@ -250,8 +250,8 @@ function vhinandrich4_preprocess_views_view_field_latest_instagram_field_media(&
     isset($node->field_media_display_image[$node->language]) &&
     count($node->field_media_display_image[$node->language]) > 0){
     $row = $vars['row'];
-  dpm($row->field_field_media[0]['rendered']['file']['#file']);
-    $image_style = $row->field_field_media[0]['rendered']['file']['#style_name'];
+    // $image_style = $row->field_field_media[0]['rendered']['file']['#style_name'];
+    $image_style = 'thumbnail';
     $args['style_name'] = $image_style;
     $args['path'] = $node->field_media_display_image[$node->language][0]['uri'];
     $img = theme_image_style($args);
