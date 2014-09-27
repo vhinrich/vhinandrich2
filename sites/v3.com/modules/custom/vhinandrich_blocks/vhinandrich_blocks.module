@@ -27,7 +27,7 @@ function vhinandrich_blocks_block_view($delta){
 }
 
 function vhinandrich_blocks_block_view_vr_map(){
-  $map_div = '<div style="overflow:hidden;height:500px;width:100%;"><div id="gmap_canvas" style="height:500px;width:100%;"></div><a class="google-map-code" href="http://www.trivoo.net" id="get-map-data">diese shop-navigation</a></div>';
+  $map_div = '<div style="overflow:hidden;height:500px;width:100%;"><div id="gmap_canvas" style="height:500px;width:100%;"></div></div>';
 
   // Default location (Verde View Singapore)
   $lat = 1.3917592;
