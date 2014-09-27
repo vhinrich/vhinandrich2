@@ -9,10 +9,10 @@
  * Defines a new plugin.
  */
 $plugin = array(
-  'form' => 'socialnetwork_tamper_instagram_media_form',
+  'form' => 'socialnetwork_tamper_instagram_media_display_form',
   // Optional validation callback.
-  'callback' => 'socialnetwork_tamper_instagram_media_callback',
-  'name' => 'Instagram Media',
+  'callback' => 'socialnetwork_tamper_instagram_media_display_callback',
+  'name' => 'Instagram Media Display',
   'multi' => 'direct',
   'category' => 'Social Networks',
 );
@@ -20,9 +20,9 @@ $plugin = array(
 /**
  * Implements onix_xml_tamper_abstract_form().
  */
-function socialnetwork_tamper_instagram_media_form($importer, $element_key, $settings) {
+function socialnetwork_tamper_instagram_media_display_form($importer, $element_key, $settings) {
   $form = array();
-  $form['help']['#value'] = t('Get Instagram Media.');
+  $form['help']['#value'] = t('Get Instagram Media Display.');
   //
   // Other formy stuff here.
   //
@@ -32,7 +32,7 @@ function socialnetwork_tamper_instagram_media_form($importer, $element_key, $set
 /**
  * Implements callback function onix_xml_tamper_abstract_callback().
  */
-function socialnetwork_tamper_instagram_media_callback($source, $item_key, $element_key, &$field, $settings) {
+function socialnetwork_tamper_instagram_media_display_callback($source, $item_key, $element_key, &$field, $settings) {
   switch ($source->items[$item_key]['jsonpath_parser:2']){
     case 'image':
     case 'Photos':
@@ -40,7 +40,7 @@ function socialnetwork_tamper_instagram_media_callback($source, $item_key, $elem
       break;
     case 'video':
     case 'Videos':
-      $field = $source->items[$item_key]['jsonpath_parser:5'];
+      $field = $source->items[$item_key]['jsonpath_parser:3'];
       break;
   }
   $file_url = $field;
@@ -54,4 +54,3 @@ function socialnetwork_tamper_instagram_media_callback($source, $item_key, $elem
     $field = $tmp_file_uri;
   }
 }
-

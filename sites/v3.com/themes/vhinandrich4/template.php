@@ -257,3 +257,10 @@ function vhinandrich4_preprocess_views_view_field_latest_instagram_field_media(&
     $vars['output'] = $img;
   }
 }
+
+function vhinandrich4_preprocess_views_view_field_more_posts_field_media(&$vars){
+  vhinandrich4_preprocess_views_view_field_latest_instagram_field_media($vars);
+}
+function vhinandrich4_preprocess_views_view_field_related_posts_field_media(&$vars){
+  vhinandrich4_preprocess_views_view_field_latest_instagram_field_media($vars);
+}
