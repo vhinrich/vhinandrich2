@@ -33,16 +33,6 @@ function socialnetwork_tamper_instagram_media_display_form($importer, $element_k
  * Implements callback function onix_xml_tamper_abstract_callback().
  */
 function socialnetwork_tamper_instagram_media_display_callback($source, $item_key, $element_key, &$field, $settings) {
-  switch ($source->items[$item_key]['jsonpath_parser:2']){
-    case 'image':
-    case 'Photos':
-      $field = $source->items[$item_key]['jsonpath_parser:3'];
-      break;
-    case 'video':
-    case 'Videos':
-      $field = $source->items[$item_key]['jsonpath_parser:3'];
-      break;
-  }
   $file_url = $field;
   $tmp_file_uri = file_default_scheme().'://'.basename($file_url);
   if (!file_exists($tmp_file_uri)){
