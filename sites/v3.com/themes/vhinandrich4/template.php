@@ -132,13 +132,14 @@ function vhinandrich4_form_alter(&$form){
 function vhinandrich4_preprocess_field(&$vars){
     $function = __FUNCTION__ . '_' . $vars['element']['#field_name'];
     // for content type in general
-    if (function_exists($function))
-        $function($vars);
-
+    if (function_exists($function)){
+      $function($vars);
+    }
     // view_mode version
     $teaserfunc = $function . '__' . $vars['element']['#view_mode'];
-    if (function_exists($teaserfunc))
-        $teaserfunc($vars);
+    if (function_exists($teaserfunc)){
+      $teaserfunc($vars);
+    }
 }
 
 function vhinandrich4_preprocess_field_field_media__timeline(&$vars){
@@ -225,5 +226,34 @@ function vhinandrich4_html_head_alter(&$head_elements) {
 
       }
     }
+  }
+}
+
+function vhinandrich4_preprocess_views_view_field(&$vars){
+  $view = $vars['view'];
+  $field= $vars['field'];
+  $function = __FUNCTION__ . '_' . $view->name . '_' . $field->field_info['field_name'];
+  if(function_exists($function)){
+    $function($vars);
+  }
+}
+
+function vhinandrich4_preprocess_views_view_field_latest_instagram_field_media(&$vars){
+  $field_data = $vars['row']->_field_data;
+  $node = NULL;
+  if(isset($field_data['nid']) && $field_data['nid']['entity_type']=='node'){
+    // this is a node
+    $node = $field_data['nid']['entity'];
+  }
+
+  if($node &&
+    isset($node->field_media_display_image[$node->language]) &&
+    count($node->field_media_display_image[$node->language]) > 0){
+    $row = $vars['row'];
+    $image_style = $row->field_field_media[0]['rendered']['file']['#style_name'];
+    $args['style_name'] = $image_style;
+    $args['path'] = $node->field_media_display_image[$node->language][0]['uri'];
+    $img = theme_image_style($args);
+    $vars['output'] = $img;
   }
 }
