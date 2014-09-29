@@ -23,6 +23,15 @@ regions[page_bottom]    = 'Page bottom'
 
 
 ;;;;;;;;;;;;;;;;;;;;;
+;; Bootstrap 3
+;;;;;;;;;;;;;;;;;;;;;
+
+stylesheets[all][] = bootstrap/css/bootstrap-theme.min.css
+stylesheets[all][] = bootstrap/css/bootstrap.min.css
+scripts[] = 'bootstrap/js/bootstrap.min.js'
+
+
+;;;;;;;;;;;;;;;;;;;;;
 ;; Stylesheets
 ;;;;;;;;;;;;;;;;;;;;;
 
