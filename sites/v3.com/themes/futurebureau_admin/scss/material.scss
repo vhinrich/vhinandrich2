@@ -1,0 +1,21 @@
+/**
+ * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
+ * remove this comment and start adding your styles to this file.
+ */
+
+.checkbox{
+  label{
+    span{
+      top: 0;
+    }
+  }
+  input[type=checkbox]{
+    &[disabled=disabled]{
+      ~ .check:before{
+        border-right-color: red;
+        border-bottom-color: red;
+      }
+    }
+  }
+}
+
