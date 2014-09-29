@@ -9,13 +9,13 @@
       top: 0;
     }
   }
-  input[type=checkbox]{
-    &[disabled=disabled]{
-      ~ .check:before{
-        border-right-color: red;
-        border-bottom-color: red;
-      }
-    }
-  }
+  // input[type=checkbox]{
+  //   &[disabled=disabled]{
+  //     ~ .check:before{
+  //       border-right-color: red;
+  //       border-bottom-color: red;
+  //     }
+  //   }
+  // }
 }
 
