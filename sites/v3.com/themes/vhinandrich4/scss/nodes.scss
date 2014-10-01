@@ -68,6 +68,22 @@
     &.timeline{
       .field-item-overlay-link{display: none}
     }
+    &.featured{
+      .field-name-field-media{
+        visibility: hidden;
+      }
+      .featured-image-wrapper{
+        @include background-size(auto, 100%);
+        background-position: center center;
+        background-repeat: no-repeat;
+        @include transition(all, .8s);
+        &:hover,
+        &:focus,
+        &:active{
+          @include background-size(auto, 105%);
+        }
+      }
+    }
   }
   form{
     &.webform-client-form{

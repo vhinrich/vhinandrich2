@@ -70,8 +70,37 @@ function vhinandrich4_preprocess_node(&$vars, $hook) {
 
 function vhinandrich4_preprocess_node__featured(&$vars, $hook) {
   // $vars['classes_array'][] = 'row';
-  $vars['content']['field_media']['#prefix'] = '<a class="media-link" href="' . url('node/' . $vars['nid']) . '">';
-  $vars['content']['field_media']['#suffix'] = '</a>';
+  $node = $vars['node'];
+
+  $img_uri = NULL;
+  if( (isset($node->field_media_display_image[$node->language]) && count($node->field_media_display_image[$node->language])>0) ){
+    $img_uri = $node->field_media_display_image[$node->language][0]['uri'];
+  }else{
+    if( (isset($node->field_media[$node->language]) && count($node->field_media[$node->language])>0) ){
+      $img_uri = $node->field_media[$node->language][0]['uri'];
+    }
+  }
+
+  $tmp_prefix .= '<a class="media-link" href="' . url('node/' . $vars['nid']) . '">';
+  $tmp_suffix .= '</a>';
+
+  if($img_uri){
+    $tmp_prefix .= '<div class="featured-image-wrapper" style="background-image:url(' . image_style_url('featured', $img_uri) . ')">';
+    $tmp_suffix = '</div>' . $tmp_suffix;
+  }
+
+  if(isset($vars['content']['field_media_display_image'])){
+    $vars['content']['field_media_display_image']['#prefix'] = $tmp_prefix;
+    $vars['content']['field_media_display_image']['#suffix'] = $tmp_suffix;
+    if(isset($vars['content']['field_media'])){
+      unset($vars['content']['field_media']);
+    }
+  }
+  if(isset($vars['content']['field_media'])){
+    $vars['content']['field_media']['#prefix'] = $tmp_prefix;
+    $vars['content']['field_media']['#suffix'] = $tmp_suffix;
+  }
+
 }
 
 function vhinandrich4_preprocess_node_article__timeline(&$vars){
