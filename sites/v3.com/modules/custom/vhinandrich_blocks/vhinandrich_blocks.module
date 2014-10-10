@@ -98,11 +98,13 @@ function vhinandrich_blocks_block_view_vr_footer(){
 function vhinandrich_blocks_block_view_vr_header(){
   $enter_site = NULL;
   $subtitle = NULL;
+  $full_video_url = NULL;
   if(drupal_is_front_page()){
     $enter_site = '<div>';
     $enter_site .= '<a href="#navbar">Enter site</a>';
-
     $enter_site .= '</div>';
+
+    $full_video_url = variable_get('view_full_video_url', NULL);
   }else{
     $subtitle = drupal_get_title();
     if(arg(0)=='taxonomy' && arg(1)=='term' && is_numeric(arg(2))){
@@ -118,7 +120,7 @@ function vhinandrich_blocks_block_view_vr_header(){
     'title' => 'VHIN <span class="highlight">+</span> RICH',
     'subtitle' => $subtitle,
     'caption' => '<p>Mark Quirvien and Richelle Rivamonte Cristobal</p>' . $enter_site,
-    'full_video_url' => variable_get('view_full_video_url', NULL),
+    'full_video_url' => $full_video_url,
   );
   $block['content'] = theme('vhinrich_header', $args);
   return $block;

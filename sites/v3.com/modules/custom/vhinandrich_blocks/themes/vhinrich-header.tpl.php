@@ -15,9 +15,9 @@
       <div class="body col-sm-12">
         <?php if($caption): ?>
           <?php print $caption; ?>
-          <?php if($full_video_url): ?>
-            <div class="full-video-link"><a href="<?php print $full_video_url; ?>">View full video</a></div>
-          <?php endif; ?>
+        <?php endif; ?>
+        <?php if($full_video_url): ?>
+          <div class="full-video-link"><a href="<?php print $full_video_url; ?>">View full video</a></div>
         <?php endif; ?>
       </div>
     </article>
