@@ -19,6 +19,34 @@ function vhinandrich_blocks_block_info(){
   return $blocks;
 }
 
+function vhinandrich_blocks_block_configure($delta){
+  $function = __FUNCTION__ . '_' . $delta;
+  if(function_exists($function)){
+    return $function();
+  }
+}
+
+function vhinandrich_blocks_block_configure_vr_header(){
+  $form = NULL;
+  $form['view_full_video_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Full video URL'),
+    '#default_value' => variable_get('view_full_video_url', NULL)
+  );
+  return $form;
+}
+
+function vhinandrich_blocks_block_save($delta = '', $edit = array()){
+  $function = __FUNCTION__ . '_' . $delta;
+  if(function_exists($function)){
+    return $function($edit);
+  }
+}
+
+function vhinandrich_blocks_block_save_vr_header($edit = array()){
+  variable_set('view_full_video_url', $edit['view_full_video_url']);
+}
+
 function vhinandrich_blocks_block_view($delta){
   $function = __FUNCTION__ . '_' . $delta;
   if(function_exists($function)){
@@ -71,7 +99,10 @@ function vhinandrich_blocks_block_view_vr_header(){
   $enter_site = NULL;
   $subtitle = NULL;
   if(drupal_is_front_page()){
-    $enter_site = '<div><a href="#navbar">Enter site</a></div>';
+    $enter_site = '<div>';
+    $enter_site .= '<a href="#navbar">Enter site</a>';
+
+    $enter_site .= '</div>';
   }else{
     $subtitle = drupal_get_title();
     if(arg(0)=='taxonomy' && arg(1)=='term' && is_numeric(arg(2))){
@@ -86,7 +117,8 @@ function vhinandrich_blocks_block_view_vr_header(){
   $args = array(
     'title' => 'VHIN <span class="highlight">+</span> RICH',
     'subtitle' => $subtitle,
-    'caption' => '<p>Mark Quirvien and Richelle Rivamonte Cristobal</p>' . $enter_site
+    'caption' => '<p>Mark Quirvien and Richelle Rivamonte Cristobal</p>' . $enter_site,
+    'full_video_url' => variable_get('view_full_video_url', NULL),
   );
   $block['content'] = theme('vhinrich_header', $args);
   return $block;
