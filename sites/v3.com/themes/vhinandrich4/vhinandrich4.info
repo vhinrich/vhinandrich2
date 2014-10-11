@@ -36,8 +36,8 @@ regions[page_bottom]    = 'Page bottom'
 ;;;;;;;;;;;;;;;;;;;;;
 
 ; stylesheets[all][] = css/style.css
-stylesheets[all][] = css/fonts/lato/font.css
-stylesheets[all][] = css/fonts/opensans/font.css
+stylesheets[all][] = css/fonts/lato/lato-font.css
+stylesheets[all][] = css/fonts/opensans/opensans-font.css
 stylesheets[all][] = scss/css3-mixins.scss
 stylesheets[all][] = scss/style.scss
 stylesheets[all][] = scss/regions.scss
