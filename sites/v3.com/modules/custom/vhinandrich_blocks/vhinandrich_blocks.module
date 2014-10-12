@@ -67,6 +67,9 @@ function vhinandrich_blocks_block_view_vr_map(){
       if(isset($node->field_location) && isset($node->field_location[$node->language]) && count($node->field_location[$node->language])>0){
         $lat = $node->field_location[$node->language][0]['lat'];
         $lng = $node->field_location[$node->language][0]['lng'];
+        if($lat==0 && $long==0){
+          return FALSE;
+        }
       }else{
         // return nothing if location is empty
         return FALSE;
