@@ -21,3 +21,5 @@ features[feeds_tamper][] = instagram_import-jsonpath_parser_2-instagram_type
 features[feeds_tamper][] = instagram_import-jsonpath_parser_3-instagram_media
 features[feeds_tamper][] = instagram_import-jsonpath_parser_5-instagram_media
 features[feeds_tamper][] = instagram_import-jsonpath_parser_7-instagram_body
+features[feeds_tamper][] = instagram_import-jsonpath_parser_8-default_value
+features[feeds_tamper][] = instagram_import-jsonpath_parser_9-default_value
