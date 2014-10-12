@@ -116,7 +116,7 @@ function importers_feeds_tamper_default() {
   $feeds_tamper->source = 'jsonpath_parser:8';
   $feeds_tamper->plugin_id = 'default_value';
   $feeds_tamper->settings = array(
-    'default_value' => '',
+    'default_value' => '0',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Set default value';
@@ -130,7 +130,7 @@ function importers_feeds_tamper_default() {
   $feeds_tamper->source = 'jsonpath_parser:9';
   $feeds_tamper->plugin_id = 'default_value';
   $feeds_tamper->settings = array(
-    'default_value' => '',
+    'default_value' => '0',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Set default value';
