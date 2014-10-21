@@ -126,6 +126,10 @@
     &.view-id-related_posts{
       .view-header{
         font-size: 28px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #68C3A3;
       }
       .views-row{
         margin: 10px 0;
