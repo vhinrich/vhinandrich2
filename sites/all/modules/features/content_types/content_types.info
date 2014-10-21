@@ -10,6 +10,7 @@ dependencies[] = file
 dependencies[] = file_entity
 dependencies[] = geolocation
 dependencies[] = geolocation_googlemaps
+dependencies[] = image
 dependencies[] = media
 dependencies[] = options
 dependencies[] = taxonomy
