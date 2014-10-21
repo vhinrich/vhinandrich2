@@ -84,6 +84,11 @@ a{
       &.affix + div{
         // margin-top: 50px;
       }
+      @media(max-width: 767px){
+        &.affix + div{
+          margin-top: 50px;
+        }
+      }
       .navbar-toggle{
         border: none;
         padding: 18px 15px;
