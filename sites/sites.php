@@ -60,5 +60,7 @@
  $sites['back-mqcristobal.vhinandrich.com'] = 'mqcristobal.com';
  $sites['127.0.0.1.mqcristobal'] = 'mqcristobal.com';
 
+ $sites['mqcristobal.vhinandrich.local.com'] = 'mqcristobal.com';
+
  $sites['back.vhinandrich.com'] = 'default';
 
