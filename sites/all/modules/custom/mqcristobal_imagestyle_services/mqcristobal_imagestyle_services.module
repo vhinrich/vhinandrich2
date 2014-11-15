@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * Implementation of hook_services_resources()
+ */
+function mqcristobal_imagestyle_services_services_resources(){
+  $services['mqcristobal_image_styles'] = array(
+    'retrieve' => array(
+      'help' => t('Retrieves image style url from uri'),
+      'file' => array('file' => 'inc', 'module' => 'mqcristobal_imagestyle_services'),
+      'callback' => '_mqc_is_s_image_from_uri',
+      'access arguments' => array('view'),
+      'access arguments append' => TRUE,
+      'access callback' => '_mqc_is_s_image_from_uri_access',
+      'args' => array(
+        array(
+          'name' => 'image_style',
+          'type' => 'string',
+          'description' => '',
+          'source' => array('path' => 0),
+          'optional' => FALSE,
+          'default value' => 0
+
+        )
+      )
+    ),
+    'index' => array(
+      'help' => t('Retrieves listing of image styles'),
+      'file' => array('file' => 'inc', 'module' => 'mqcristobal_imagestyle_services'),
+      'callback' => '_mqc_is_s_index',
+      'access arguments' => array('access content'),
+      'access arguments append' => FALSE,
+      'args' => array(
+        array(
+          'name' => 'page',
+          'type' => 'int',
+          'description' => '',
+          'source' => array(
+            'params' => 'page'
+          ),
+          'optional' => TRUE,
+          'default value' => 0
+        ),
+        array(
+          'name' => 'parameters',
+          'type' => 'array',
+          'description' => '',
+          'source' => 'param',
+          'optional' => TRUE,
+          'default value' => array()
+        )
+      )
+    )
+  );
+
+  return $services;
+}

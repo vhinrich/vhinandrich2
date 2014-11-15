@@ -1,0 +1,14 @@
+name = MQCristobal Image Style Services
+description = MQCristobal Image Style Services
+package = MQ Cristobal
+core = 7.x
+
+files[] = mqcristobal_imagestyle_services.module
+; configure = admin/config/search/mqc-google-search-engine
+
+; Information added by drupal.org packaging script on 2012-02-10
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "mqcristobal_imagestyle_services"
+datestamp = "1392949874"
+
