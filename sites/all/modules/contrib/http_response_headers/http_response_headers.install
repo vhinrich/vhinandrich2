@@ -16,7 +16,7 @@ function http_response_headers_schema() {
       'key name' => 'Machine name',
       // Cache exported data.
       'cache defaults' => TRUE,
-      'identifier' => 'rule',
+      'identifier' => 'header_rule',
       'default hook' => 'http_response_headers_default_rule',
       'api' => array(
         'owner' => 'http_response_headers',

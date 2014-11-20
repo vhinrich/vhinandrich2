@@ -96,6 +96,7 @@ function http_response_headers_get_all_headers() {
     'X-Content-Type-Options',
     'X-Powered-By',
     'X-UA-Compatible',
+    'X-Permitted-Cross-Domain-Policies',
   );
 
   // Map key.
