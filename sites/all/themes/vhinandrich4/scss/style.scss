@@ -166,7 +166,7 @@ a{
 
 .navbar-default{
   @include transition(all, .2s);
-  background: #22313F;
+  background: #100F0F;
   border: none;
   .container{
     overflow: visible;
@@ -191,15 +191,14 @@ a{
         &:hover,
         &:focus,
         &:active{
-          border-top: 5px solid #F89406;
+          background: #F77518;
           color: #fff;
         }
       }
       &.active>a,
       &.active>a:hover,
       &.active>a:focus{
-        background: none;
-        border-top: 5px solid #f7ca18;
+        background: #F77518;
         color: #fff;
       }
     }
