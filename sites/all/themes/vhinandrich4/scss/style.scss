@@ -71,7 +71,7 @@ a{
         width: 100%;
         z-index: 5;
         max-width: none;
-        @include box-shadow(0, 0, 10px, #34495E);
+        /* @include box-shadow(0, 0, 10px, #34495E); */
         .navbar-sub-brand{
           color: #6C7A89;
           &:before{
@@ -166,7 +166,7 @@ a{
 
 .navbar-default{
   @include transition(all, .2s);
-  background: #100F0F;
+  background: #333;
   border: none;
   .container{
     overflow: visible;
@@ -180,19 +180,28 @@ a{
     color: #ECF0F1;
   }
   .navbar-nav{
+    margin-top: 0;
+    margin-bottom: 0;
     >li{
       a{
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         padding-top: 10px;
         padding-bottom: 10px;
-        color: #ECF0F1;
+        color: #f7f7f7;
         @include transition(all, .3s);
         &:hover,
         &:focus,
         &:active{
           background: #F77518;
           color: #fff;
+        }
+        @media sreen and (max-width: 767px){
+          &:hover,
+          &:focus,
+          &active{
+            background: #222;
+          }
         }
       }
       &.active>a,
@@ -244,7 +253,7 @@ a{
 .footer{
   border: none;
   margin-top: 0;
-  background: #333;
+  background: #444;
   color: #f7f7f7;
   a{
     color: #eee;
@@ -396,7 +405,7 @@ a{
     color: #f7f7f7;
   }
   &.btn-most{
-    background: #444;
+    background: #333;
     border: 1px solid transparent;
     margin-right: 5px;
     margin-top: 5px;
