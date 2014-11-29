@@ -18,12 +18,12 @@
   .nav{
     >li{
       >a{
-        border-bottom: 1px solid #34495E;
+        border-bottom: 1px solid #333;
         @include transition(all, .2s);
         &:hover,
         &:focus,
         &:active{
-          background: #34495E;
+          background: #444;
         }
       }
     }

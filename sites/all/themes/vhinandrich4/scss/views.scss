@@ -7,7 +7,7 @@
     &.view-display-id-photos_block,
     &.view-display-id-videos_block,
     &.view-display-id-page{
-      background: #F2F1EF;
+      background: #eee;
       .view-header{
         text-align: center;
         h2{
@@ -95,8 +95,8 @@
       }
     }
     &.view-display-id-videos_block{
-      background: #049372;
-      color: #F2F1EF;
+      background: #b5b5b5;
+      color: #333;
       .views-row{
         .node-article{
           > header > h2{
@@ -106,7 +106,7 @@
               height: 100%;
               width: 100%;
               padding: 10px 0;
-              color: #eee;
+              color: #444;
               font-weight: 200;
               background: none;
               @include transition(all, .3s);
@@ -129,7 +129,7 @@
         text-transform: uppercase;
         margin-bottom: 10px;
         padding-bottom: 10px;
-        border-bottom: 3px solid #68C3A3;
+        border-bottom: 3px solid #aaa;
       }
       .views-row{
         margin: 10px 0;

@@ -244,14 +244,14 @@ a{
 .footer{
   border: none;
   margin-top: 0;
-  background: #2C3E50;
+  background: #666;
   color: #f7f7f7;
   a{
-    color: #E4F1FE;
+    color: #eee;
     &:hover,
     &:active,
     &:focus{
-      color: #52B3D9;
+      color: #fff;
     }
   }
 }
@@ -358,10 +358,10 @@ a{
 }
 
 .well{
-  background: #049372;
-  border: 1px solid #019875;
+  background: #d5d5d5;
+  border: 1px solid #ddd;
   margin: 45px 0;
-  color: #f7f7f7;
+  color: #333;
   font-weight: 200;
   font-family: Lato, Helvetica, Arial, sans-serif;
   @include border-radius(0);
@@ -369,12 +369,12 @@ a{
     font-weight: 400;
   }
   a{
-    color: #eee;
+    color: #444;
     font-weight: 400;
     &:hover,
     &:focus,
     &:active{
-      color: #f7f7f7;
+      color: #494949;
     }
   }
 }
@@ -396,16 +396,16 @@ a{
     color: #f7f7f7;
   }
   &.btn-most{
-    background: #22313F;
-    border: 1px solid #34495E;
+    background: #333;
+    border: 1px solid #3a3a3a;
     margin-right: 5px;
     margin-top: 5px;
     @include transition(all, .3s);
     &:hover,
     &:focus,
     &:active{
-      background: #34495E;
-      border: 1px solid #4B77BE;
+      background: #444;
+      border: 1px solid #4a4a4a;
       color: #F9BF3B;
     }
   }
