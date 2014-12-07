@@ -46,6 +46,17 @@ function vhinandrich4_preprocess_node(&$vars, $hook) {
       }
   }
 
+
+  if(isset($vars['field_css'][LANGUAGE_NONE][0])){
+    $css_url = file_create_url($vars['field_css'][LANGUAGE_NONE][0]['uri']);
+    drupal_add_css($css_url);
+  }
+
+  if(isset($vars['field_js'][LANGUAGE_NONE][0])){
+    $js_url = file_create_url($vars['field_js'][LANGUAGE_NONE][0]['uri']);
+    drupal_add_js($js_url, array('type' => 'file', 'scope' => 'footer'));
+  }
+
   $function = __FUNCTION__ . '_' . $vars['node']->type;
   // for content type in general
   if (function_exists($function))

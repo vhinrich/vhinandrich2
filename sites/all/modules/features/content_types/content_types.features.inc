@@ -18,6 +18,14 @@ function content_types_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function content_types_node_info() {
   $items = array(
+    'animated_page' => array(
+      'name' => t('Animated Page'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'article' => array(
       'name' => t('Article'),
       'base' => 'node_content',
