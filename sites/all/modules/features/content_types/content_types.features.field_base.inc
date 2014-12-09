@@ -78,27 +78,23 @@ function content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_css',
     'foreign keys' => array(
-      'fid' => array(
+      'format' => array(
         'columns' => array(
-          'fid' => 'fid',
+          'format' => 'format',
         ),
-        'table' => 'file_managed',
+        'table' => 'filter_format',
       ),
     ),
     'indexes' => array(
-      'fid' => array(
-        0 => 'fid',
+      'format' => array(
+        0 => 'format',
       ),
     ),
     'locked' => 0,
-    'module' => 'file',
-    'settings' => array(
-      'display_default' => 0,
-      'display_field' => 0,
-      'uri_scheme' => 'public',
-    ),
+    'module' => 'text',
+    'settings' => array(),
     'translatable' => 0,
-    'type' => 'file',
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_date'
@@ -173,27 +169,23 @@ function content_types_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_js',
     'foreign keys' => array(
-      'fid' => array(
+      'format' => array(
         'columns' => array(
-          'fid' => 'fid',
+          'format' => 'format',
         ),
-        'table' => 'file_managed',
+        'table' => 'filter_format',
       ),
     ),
     'indexes' => array(
-      'fid' => array(
-        0 => 'fid',
+      'format' => array(
+        0 => 'format',
       ),
     ),
     'locked' => 0,
-    'module' => 'file',
-    'settings' => array(
-      'display_default' => 0,
-      'display_field' => 0,
-      'uri_scheme' => 'public',
-    ),
+    'module' => 'text',
+    'settings' => array(),
     'translatable' => 0,
-    'type' => 'file',
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_location'

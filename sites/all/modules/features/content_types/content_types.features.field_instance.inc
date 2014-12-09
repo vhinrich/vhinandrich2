@@ -50,20 +50,22 @@ function content_types_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 31,
+      'weight' => 4,
     ),
   );
 
   // Exported field_instance: 'node-animated_page-field_css'
   $field_instances['node-animated_page-field_css'] = array(
     'bundle' => 'animated_page',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 1,
       ),
       'teaser' => array(
@@ -78,45 +80,32 @@ function content_types_field_default_field_instances() {
     'label' => 'CSS',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
-      'file_directory' => 'customizations/css',
-      'file_extensions' => 'css',
-      'max_filesize' => '',
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'text',
       'settings' => array(
-        'allowed_schemes' => array(
-          'private' => 'private',
-          'public' => 'public',
-          'vimeo' => 0,
-          'youtube' => 0,
-        ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'default' => 'default',
-          'image' => 0,
-          'video' => 0,
-        ),
-        'progress_indicator' => 'throbber',
+        'rows' => 5,
       ),
-      'type' => 'media_generic',
-      'weight' => 41,
+      'type' => 'text_textarea',
+      'weight' => 43,
     ),
   );
 
   // Exported field_instance: 'node-animated_page-field_js'
   $field_instances['node-animated_page-field_js'] = array(
     'bundle' => 'animated_page',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 2,
       ),
       'teaser' => array(
@@ -131,9 +120,48 @@ function content_types_field_default_field_instances() {
     'label' => 'JS',
     'required' => 0,
     'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 44,
+    ),
+  );
+
+  // Exported field_instance: 'node-animated_page-field_media'
+  $field_instances['node-animated_page-field_media'] = array(
+    'bundle' => 'animated_page',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_media',
+    'label' => 'Media',
+    'required' => 0,
+    'settings' => array(
       'description_field' => 0,
-      'file_directory' => 'customizations/js',
-      'file_extensions' => 'js',
+      'file_directory' => 'animated-page/[current-date:year]',
+      'file_extensions' => 'jpeg jpg png gif mp4 ogv webm',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -149,14 +177,14 @@ function content_types_field_default_field_instances() {
         ),
         'allowed_types' => array(
           'audio' => 0,
-          'default' => 'default',
-          'image' => 0,
+          'default' => 0,
+          'image' => 'image',
           'video' => 0,
         ),
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 42,
+      'weight' => 45,
     ),
   );
 

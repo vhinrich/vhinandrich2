@@ -719,27 +719,11 @@ function views_configurations_views_default_views() {
     'title' => 'title',
     'field_media' => 'field_media',
   );
-  /* Header: Global: PHP */
+  /* Header: Broken/missing handler */
   $handler->display->display_options['header']['php']['id'] = 'php';
   $handler->display->display_options['header']['php']['table'] = 'views';
   $handler->display->display_options['header']['php']['field'] = 'php';
   $handler->display->display_options['header']['php']['empty'] = TRUE;
-  $handler->display->display_options['header']['php']['php_output'] = '<?php
-$arg1 = arg(1);
-?>
-<form class="search-form clearfix" id="search-form" accept-charset="UTF-8"><div><div class="form-wrapper form-group" id="edit-basic"><div class="input-group"><input placeholder="Search" class="form-control form-text" type="text" id="edit-keys" name="keys" size="40" maxlength="255" value="<?php print $arg1; ?>"><span class="input-group-btn"><button type="submit" class="btn btn-default"><i class="icon glyphicon glyphicon-search" aria-hidden="true"></i></button></span></div><button class="element-invisible btn btn-primary form-submit" id="edit-submit" name="op" value="Search" type="submit">Search</button></div></div></form>
-<script>
-(function($){
-$(document).ready(function(){
-
-$(\'.search-form #edit-submit, .search-form .btn.btn-default\').click(function(e){
-e.preventDefault();
-window.location = \'/search/\' + $(\'.search-form #edit-keys\').attr(\'value\');
-});
-
-});
-})(jQuery);
-</script>';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -856,26 +840,18 @@ window.location = \'/search/\' + $(\'.search-form #edit-keys\').attr(\'value\');
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  /* Field: Global: PHP */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['php_1']['id'] = 'php_1';
   $handler->display->display_options['fields']['php_1']['table'] = 'views';
   $handler->display->display_options['fields']['php_1']['field'] = 'php';
   $handler->display->display_options['fields']['php_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['php_1']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php_1']['php_output'] = '<?php echo date(\'Y\', $data->field_data_field_date_field_date_value); ?>';
-  $handler->display->display_options['fields']['php_1']['use_php_click_sortable'] = '0';
-  $handler->display->display_options['fields']['php_1']['php_click_sortable'] = '';
-  /* Field: Global: PHP */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['php']['id'] = 'php';
   $handler->display->display_options['fields']['php']['table'] = 'views';
   $handler->display->display_options['fields']['php']['field'] = 'php';
   $handler->display->display_options['fields']['php']['label'] = '';
   $handler->display->display_options['fields']['php']['exclude'] = TRUE;
   $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php']['php_output'] = '<?php echo date(\'F j\', $data->field_data_field_date_field_date_value); ?>';
-  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
-  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Field: Content: Date */
   $handler->display->display_options['fields']['field_date']['id'] = 'field_date';
   $handler->display->display_options['fields']['field_date']['table'] = 'field_data_field_date';
@@ -964,30 +940,10 @@ window.location = \'/search/\' + $(\'.search-form #edit-keys\').attr(\'value\');
   $handler = $view->new_display('block', 'Timeline Navigation', 'timeline_nav');
   $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Header: Global: PHP */
+  /* Header: Broken/missing handler */
   $handler->display->display_options['header']['php']['id'] = 'php';
   $handler->display->display_options['header']['php']['table'] = 'views';
   $handler->display->display_options['header']['php']['field'] = 'php';
-  $handler->display->display_options['header']['php']['php_output'] = '<?php
-$years = array();
-foreach($results as $key => $result){
- $years[] = date(\'Y\', $result->field_field_date[0][\'raw\'][\'value\']);
-}
-?>
-<script>
-(function($){
-Drupal.behaviors.timeline_nav = {
- attach: function(context, settings){
-  var years = <?php echo drupal_json_encode($years); ?>;
-  $.each(years, function(i,o){
-   var yearHeader = \'.year-group-header-\' + o;
-   $(yearHeader).parents().addClass(\'hide\');
-   $(yearHeader).first().parents().removeClass(\'hide\');
-  });
- }
-};
-})(jQuery);
-</script>';
 
   /* Display: Timeline page */
   $handler = $view->new_display('page', 'Timeline page', 'timeline_page');
@@ -1037,31 +993,10 @@ Drupal.behaviors.timeline_nav = {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Header: Global: PHP */
+  /* Header: Broken/missing handler */
   $handler->display->display_options['header']['php']['id'] = 'php';
   $handler->display->display_options['header']['php']['table'] = 'views';
   $handler->display->display_options['header']['php']['field'] = 'php';
-  $handler->display->display_options['header']['php']['php_output'] = '<?php
-$years = array();
-foreach($results as $key => $result){
- $years[] = date(\'Y\', $result->field_field_date[0][\'raw\'][\'value\']);
-}
-?>
-<script>
-(function($){
-Drupal.behaviors.timeline_nav = {
- attach: function(context, settings){
-  var years = <?php echo drupal_json_encode($years); ?>;
-  $.each(years, function(i,o){
-   var yearHeader = \'.year-group-header-\' + o;
-   $(yearHeader).parents().addClass(\'hide\');
-   $(yearHeader).first().parents().removeClass(\'hide\');
-   $(yearHeader).first().addClass(\'col-sm-12\');
-  });
- }
-};
-})(jQuery);
-</script>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
