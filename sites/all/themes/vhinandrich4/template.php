@@ -137,6 +137,16 @@ function vhinandrich4_preprocess_node__full(&$vars, $hook){
   unset($vars['content']['social-network-icon']);
 }
 
+function vhinandrich4_preprocess_node_animated_page(&$vars){
+  //echo drupal_json_encode($vars);
+  if(isset($vars['field_css'][$vars['language']]) && count($vars['field_css'][$vars['language']])>0){
+    drupal_add_css($vars['field_css'][$vars['language']][0]['value'], 'inline');
+  }
+  if(isset($vars['field_js'][$vars['language']]) && count($vars['field_js'][$vars['language']])>0){
+    drupal_add_js($vars['field_js'][$vars['language']][0]['value'], 'inline');
+  }
+}
+
 function vhinandrich4_form_alter(&$form){
     if(isset($form['#node']) && $form['#node']->type=='webform'){
       if(isset($form['submitted'])){

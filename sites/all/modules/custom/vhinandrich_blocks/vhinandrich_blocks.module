@@ -63,7 +63,7 @@ function vhinandrich_blocks_block_view_vr_map(){
 
   // check if page is a node and get the node object
   if($node = menu_get_object()){
-    if($node->type=='article'){
+    if($node->type=='article' || $node->type=='animated_page'){
       if(isset($node->field_location) && isset($node->field_location[$node->language]) && count($node->field_location[$node->language])>0){
         $lat = $node->field_location[$node->language][0]['lat'];
         $lng = $node->field_location[$node->language][0]['lng'];

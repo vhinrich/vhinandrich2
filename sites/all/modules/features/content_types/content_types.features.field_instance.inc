@@ -63,9 +63,8 @@ function content_types_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'teaser' => array(
@@ -103,9 +102,8 @@ function content_types_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'teaser' => array(
@@ -134,6 +132,45 @@ function content_types_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-animated_page-field_location'
+  $field_instances['node-animated_page-field_location'] = array(
+    'bundle' => 'animated_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_location',
+    'label' => 'Location',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'geolocation_googlemaps',
+      'settings' => array(
+        'marker_draggable' => 0,
+        'scrollwheel' => 0,
+      ),
+      'type' => 'geolocation_googlemap',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-animated_page-field_media'
   $field_instances['node-animated_page-field_media'] = array(
     'bundle' => 'animated_page',
@@ -142,9 +179,8 @@ function content_types_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'file',
         'settings' => array(),
-        'type' => 'file_default',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'teaser' => array(
