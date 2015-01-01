@@ -40,6 +40,10 @@
       .views-row{
         margin-top: 1.2%;
         margin-bottom: 1.2%;
+        .node{
+          max-width: 95%;
+          margin: 0 auto;
+        }
         .node-article{
           position: relative;
           overflow: hidden;
