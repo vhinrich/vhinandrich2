@@ -122,7 +122,7 @@ function vhinandrich_blocks_block_view_vr_header(){
 
   $domainGet = domain_get_domain();
   $domain = $domainGet['machine_name'];
-  if($domain == 'vhinandrich_com'){
+  if($domain != 'back_vhinandrich_com'){
     $full_video_url = '';
   }
 
