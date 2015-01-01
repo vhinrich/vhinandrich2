@@ -119,6 +119,13 @@ function vhinandrich_blocks_block_view_vr_header(){
     }
     $subtitle = truncate_utf8($subtitle, 13, FALSE, TRUE);
   }
+
+  $domainGet = domain_get_domain();
+  $domain = $domainGet['machine_name'];
+  if($domain == 'back_vhinandrich_com'){
+    $full_video_url = '';
+  }
+
   $args = array(
     'title' => 'VHIN <span class="highlight">+</span> RICH',
     'subtitle' => $subtitle,
@@ -126,7 +133,7 @@ function vhinandrich_blocks_block_view_vr_header(){
     'full_video_url' => $full_video_url,
   );
   $args['title'] = variable_get('site_name', NULL);
-  $args['caption'] = variable_get('site_slogan', NULL);
+  $args['caption'] = '<p>' . variable_get('site_slogan', NULL) . '</p>' . $enter_site;
   $block['content'] = theme('vhinrich_header', $args);
   return $block;
 }
