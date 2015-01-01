@@ -125,6 +125,8 @@ function vhinandrich_blocks_block_view_vr_header(){
     'caption' => '<p>Mark Quirvien and Richelle Rivamonte Cristobal</p>' . $enter_site,
     'full_video_url' => $full_video_url,
   );
+  $args['title'] = variable_get('site_name', NULL);
+  $args['caption'] = variable_get('site_slogan', NULL);
   $block['content'] = theme('vhinrich_header', $args);
   return $block;
 }
