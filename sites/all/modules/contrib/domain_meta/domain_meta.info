@@ -1,0 +1,12 @@
+name = Domain Meta Tags
+description = Provides <a href="http://drupal.org/project/metatag">Metatag</a> integration with <a href="http://drupal.org/project/domain">Domain Access</a> module.
+package = SEO
+dependencies[] = domain
+dependencies[] = metatag
+core = 7.x
+; Information added by drupal.org packaging script on 2013-10-24
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "domain_meta"
+datestamp = "1382575268"
+
