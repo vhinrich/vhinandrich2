@@ -13,6 +13,118 @@ function mqcristobal_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_form_entity_entityform_contact_form';
+  $strongarm->value = array(
+    'id' => 'entityform_id',
+    'activate' => 1,
+    'edit_activate' => 0,
+    'delete_activate' => 0,
+    'message' => 1,
+    'reload' => 1,
+    'view_mode_region' => 'bottom',
+    'view_mode' => 'full',
+  );
+  $export['ajax_form_entity_entityform_contact_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_form_entity_node_article';
+  $strongarm->value = array(
+    'id' => 'nid',
+    'activate' => 0,
+    'edit_activate' => 0,
+    'delete_activate' => 0,
+    'message' => 1,
+    'reload' => 1,
+    'view_mode_region' => 'top',
+    'view_mode' => 'full',
+  );
+  $export['ajax_form_entity_node_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_form_entity_node_blog';
+  $strongarm->value = array(
+    'id' => 'nid',
+    'activate' => 0,
+    'edit_activate' => 0,
+    'delete_activate' => 0,
+    'message' => 1,
+    'reload' => 1,
+    'view_mode_region' => 'top',
+    'view_mode' => 'full',
+  );
+  $export['ajax_form_entity_node_blog'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_form_entity_node_page';
+  $strongarm->value = array(
+    'id' => 'nid',
+    'activate' => 0,
+    'edit_activate' => 0,
+    'delete_activate' => 0,
+    'message' => 1,
+    'reload' => 1,
+    'view_mode_region' => 'top',
+    'view_mode' => 'full',
+  );
+  $export['ajax_form_entity_node_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_form_entity_node_panel';
+  $strongarm->value = array(
+    'id' => 'nid',
+    'activate' => 0,
+    'edit_activate' => 0,
+    'delete_activate' => 0,
+    'message' => 1,
+    'reload' => 1,
+    'view_mode_region' => 'top',
+    'view_mode' => 'full',
+  );
+  $export['ajax_form_entity_node_panel'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_form_entity_node_webform';
+  $strongarm->value = array(
+    'id' => 'nid',
+    'activate' => 0,
+    'edit_activate' => 0,
+    'delete_activate' => 0,
+    'message' => 1,
+    'reload' => 1,
+    'view_mode_region' => 'top',
+    'view_mode' => 'full',
+  );
+  $export['ajax_form_entity_node_webform'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_form_entity_user_user';
+  $strongarm->value = array(
+    'id' => 'uid',
+    'activate' => 0,
+    'edit_activate' => 0,
+    'delete_activate' => 0,
+    'message' => 1,
+    'reload' => 1,
+    'view_mode_region' => 'top',
+    'view_mode' => 'full',
+  );
+  $export['ajax_form_entity_user_user'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__article';
   $strongarm->value = array(
     'view_modes' => array(
