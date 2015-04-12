@@ -101,6 +101,33 @@ function mqcristobal_features_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_row1col1|node|article|default';
+  $field_group->group_name = 'group_row1col1';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'article';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_row1';
+  $field_group->data = array(
+    'label' => 'Row1Col1',
+    'weight' => '11',
+    'children' => array(),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Row1Col1',
+      'instance_settings' => array(
+        'classes' => 'col-sm-12',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_row1col1|node|article|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_row1col1|node|article|portfolio_card';
   $field_group->group_name = 'group_row1col1';
   $field_group->entity_type = 'node';
@@ -186,6 +213,35 @@ function mqcristobal_features_field_group_info() {
     ),
   );
   $export['group_row1col2|node|content_form|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_row1|node|article|default';
+  $field_group->group_name = 'group_row1';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'article';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Row1',
+    'weight' => '14',
+    'children' => array(
+      0 => 'group_row1col1',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Row1',
+      'instance_settings' => array(
+        'classes' => 'row',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_row1|node|article|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -306,6 +362,35 @@ function mqcristobal_features_field_group_info() {
     ),
   );
   $export['group_row2|node|article|portfolio_card'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_row2|node|content_form|full';
+  $field_group->group_name = 'group_row2';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'content_form';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Row2',
+    'weight' => '3',
+    'children' => array(
+      0 => 'custom_google_map',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Row2',
+      'instance_settings' => array(
+        'classes' => 'row',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_row2|node|content_form|full'] = $field_group;
 
   return $export;
 }

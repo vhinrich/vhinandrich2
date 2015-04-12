@@ -33,6 +33,43 @@ function mqcristobal_features_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_default_entity_rule_setting().
+ */
+function mqcristobal_features_default_entity_rule_setting() {
+  $items = array();
+  $items['1'] = entity_import('entity_rule_setting', '{
+    "id" : "1",
+    "entity_type" : "entityform",
+    "bundle" : "contact_form",
+    "op" : "entityform_submission",
+    "rules_config" : "rules_entityform_notification_email_admin",
+    "weight" : "0",
+    "args" : {
+      "email_subject" : "Message received from mqcristobal",
+      "email_body" : "Please view the message in mqcristobal site",
+      "show_submission" : 1,
+      "to_email" : "mq.cristobal@gmail.com"
+    },
+    "false_msg" : null
+  }');
+  $items['2'] = entity_import('entity_rule_setting', '{
+    "id" : "2",
+    "entity_type" : "entityform",
+    "bundle" : "contact_form",
+    "op" : "entityform_submission",
+    "rules_config" : "rules_entityform_notification_email_submitter",
+    "weight" : "1",
+    "args" : {
+      "email_subject" : "Thank you!",
+      "email_body" : "Thank you for your message! We will get back to you within 24 hours!",
+      "show_submission" : 0
+    },
+    "false_msg" : null
+  }');
+  return $items;
+}
+
+/**
  * Implements hook_default_entityform_type().
  */
 function mqcristobal_features_default_entityform_type() {
