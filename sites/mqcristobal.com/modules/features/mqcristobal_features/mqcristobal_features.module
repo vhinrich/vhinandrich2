@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MQCristobal Features feature.
+ */
+
+include_once 'mqcristobal_features.features.inc';

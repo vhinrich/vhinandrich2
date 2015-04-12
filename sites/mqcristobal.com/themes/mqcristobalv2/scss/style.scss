@@ -1,0 +1,58 @@
+@import 'css3-mixins.scss';
+
+body{
+  background: #333;
+}
+
+h1, h2, h3, h4, h5, h6{
+  margin-top: 0;
+  // margin-bottom: 0;
+}
+
+.main-container{
+  background: #fff;
+}
+
+.navbar{
+  margin-bottom: 0;
+}
+
+a:hover,
+a:focus,
+a:active{
+  text-decoration: none;
+}
+
+.contextual-links-wrapper{
+  margin-top: 20px;
+}
+.contextual-links-region.panel-pane.pane-node .contextual-links-wrapper{
+  margin-top: 40px;
+}
+.pane-title{
+  margin-top: 75px;
+}
+
+.animate-zoom-in{
+  display: block;
+  overflow: hidden;
+}
+.animate-zoom-in > *{
+  @include transition(all, 1.2s, ease-in-out);
+}
+.animate-zoom-in:hover > *,
+.animate-zoom-in:focus > *,
+.animate-zoom-in:active > *{
+  @include transform(scale(1.1));
+}
+
+.footer{
+  margin-top: 0;
+}
+
+div.panel-pane div.node{
+  &.center-block{
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

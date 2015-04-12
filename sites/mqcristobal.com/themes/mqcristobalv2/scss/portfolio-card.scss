@@ -1,0 +1,53 @@
+@import 'css3-mixins.scss';
+
+
+// panel support
+div.panel-pane div.node,
+.node{
+  &.node-display-portfolio-card{
+    .portfolio-card-wrapper{
+      overflow: hidden;
+      margin: 30px auto;
+      border: 1px solid #ccc;
+      background: #fff;
+      max-width: 400px;
+      // @include border-radius(4px);
+
+      // h1,h2,h3,h4,h5,h6{
+      //   margin-top: 0;
+      // }
+
+      .row{
+        .field{
+          &:last-child{
+            margin-bottom: 20px;
+          }
+        }
+        .card-media-wrapper{
+          .field{
+            border-bottom: 1px solid #ccc;
+          }
+        }
+      }
+
+      .card-media-wrapper{
+        margin-left: -15px;
+        margin-right: -15px;
+      }
+
+      .field-type-taxonomy-term-reference{
+        .field-items{
+          .field-item{
+            display: inline-block;
+            margin-right: 4px;
+            margin-bottom: 2px;
+            margin-top: 2px;
+            &:last-child{
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

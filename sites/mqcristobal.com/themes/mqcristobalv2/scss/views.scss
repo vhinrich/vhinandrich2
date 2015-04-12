@@ -1,0 +1,39 @@
+@import 'css3-mixins.scss';
+
+// .view{
+//   &.view-display-id-panel_pane_1{
+//     background: #e7e7e7;
+//     padding: 60px 0;
+//   }
+// }
+
+// panels support
+.panel-panel{
+  .panel-pane{
+    .view{
+      background: #f7f7f7;
+      padding: 60px 0;
+    }
+    &:nth-child(even){
+      .view{
+        background: #e7e7e7;
+      }
+    }
+  }
+}
+
+.page-taxonomy-term{
+  .panel-panel{
+    .panel-pane{
+      .view{
+        background: transparent;
+        padding: 60px 0;
+      }
+      &:nth-child(even){
+        .view{
+          background: transparent;
+        }
+      }
+    }
+  }
+}
