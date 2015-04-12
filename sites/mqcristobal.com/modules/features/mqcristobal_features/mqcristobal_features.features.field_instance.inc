@@ -28,10 +28,12 @@ function mqcristobal_features_field_default_field_instances() {
     'entity_type' => 'entityform',
     'field_name' => 'field_email_address',
     'label' => 'Your Email Address',
+    'placeholder' => '',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
+    'use_title_as_placeholder' => 1,
     'widget' => array(
       'active' => 1,
       'module' => 'email',
@@ -61,11 +63,13 @@ function mqcristobal_features_field_default_field_instances() {
     'entity_type' => 'entityform',
     'field_name' => 'field_message',
     'label' => 'Your Message',
+    'placeholder' => '',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
+    'use_title_as_placeholder' => 1,
     'widget' => array(
       'active' => 1,
       'module' => 'text',
