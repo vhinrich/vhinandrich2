@@ -62,6 +62,7 @@ stylesheets[all][] = scss/views.scss
 ; settings[bootstrap_cdn] = ''
 
 scripts[] = 'js/mqcristobalv2.helpers.js'
+scripts[] = 'js/mqcristobalv2.scrollanimate.js'
 
 
 ; ;-------------------------
