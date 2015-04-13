@@ -26,33 +26,19 @@ function mqcristobal_features_ctools_plugin_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_entityqueue_api().
+ */
+function mqcristobal_features_entityqueue_api($module = NULL, $api = NULL) {
+  if ($module == "entityqueue" && $api == "entityqueue_default") {
+    return array("version" => "1");
+  }
+}
+
+/**
  * Implements hook_views_api().
  */
 function mqcristobal_features_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
-}
-
-/**
- * Implements hook_default_entity_rule_setting().
- */
-function mqcristobal_features_default_entity_rule_setting() {
-  $items = array();
-  $items['1'] = entity_import('entity_rule_setting', '{
-    "id" : "1",
-    "entity_type" : "entityform",
-    "bundle" : "contact_form",
-    "op" : "entityform_submission",
-    "rules_config" : "rules_entityform_notification_email_admin",
-    "weight" : "0",
-    "args" : {
-      "email_subject" : "Message received from mqcristobal",
-      "email_body" : "Please view the message in mqcristobal site",
-      "show_submission" : 1,
-      "to_email" : "mq.cristobal@gmail.com"
-    },
-    "false_msg" : null
-  }');
-  return $items;
 }
 
 /**
@@ -68,8 +54,8 @@ function mqcristobal_features_default_entityform_type() {
       "draft_redirect_path" : "",
       "draft_button_text" : "",
       "draft_save_text" : { "value" : "", "format" : "filtered_html" },
-      "submit_button_text" : "Send",
-      "submit_confirm_msg" : "",
+      "submit_button_text" : "Send it!",
+      "submit_confirm_msg" : "Your message has been sent.",
       "your_submissions" : "",
       "disallow_resubmit_msg" : "",
       "delete_confirm_msg" : "",
