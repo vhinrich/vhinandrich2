@@ -13,6 +13,172 @@ function mqcristobal_features_default_page_manager_handlers() {
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
+  $handler->name = 'node_view__normal';
+  $handler->task = 'node_view';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Normal',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(
+      0 => array(
+        'identifier' => 'Taxonomy term from Node (on Node: Source [field_source])',
+        'keyword' => 'field_source_taxonomy_term',
+        'name' => 'entity_from_field:field_source-node-taxonomy_term',
+        'delta' => 0,
+        'context' => 'argument_entity_id:node_1',
+        'id' => 1,
+      ),
+    ),
+    'name' => 'normal',
+  );
+  $display = new panels_display();
+  $display->layout = 'bootstrap_twocol_stacked';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'top' => array(
+        'column_type' => 'col-lg',
+        'column_size' => '12',
+        'offset_type' => 'col-lg-offset',
+        'offset_size' => '0',
+      ),
+      'left' => array(
+        'column_type' => 'col-sm',
+        'column_size' => '9',
+        'offset_type' => 'col-sm-offset',
+        'offset_size' => '0',
+      ),
+      'right' => array(
+        'column_type' => 'col-sm',
+        'column_size' => '3',
+        'offset_type' => 'col-sm-offset',
+        'offset_size' => '0',
+      ),
+      'bottom' => array(
+        'column_type' => 'col-lg',
+        'column_size' => '12',
+        'offset_type' => 'col-lg-offset',
+        'offset_size' => '0',
+      ),
+      'default' => NULL,
+    ),
+    'top' => array(
+      'style' => 'bootstrap_region',
+    ),
+    'left' => array(
+      'style' => 'bootstrap_region',
+    ),
+    'right' => array(
+      'style' => 'bootstrap_region',
+    ),
+    'bottom' => array(
+      'style' => 'bootstrap_region',
+    ),
+  );
+  $display->cache = array();
+  $display->title = '%node:field_source:tid';
+  $display->uuid = '6ca9b501-403f-4752-baf0-7803ad1e4cf7';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-bcd7f207-bd94-4ec0-a40e-c2762166a381';
+    $pane->panel = 'left';
+    $pane->type = 'node';
+    $pane->subtype = 'node';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'nid' => '%1',
+      'links' => 0,
+      'leave_node_title' => 0,
+      'identifier' => '',
+      'build_mode' => 'full',
+      'link_node_title' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'bcd7f207-bd94-4ec0-a40e-c2762166a381';
+    $display->content['new-bcd7f207-bd94-4ec0-a40e-c2762166a381'] = $pane;
+    $display->panels['left'][0] = 'new-bcd7f207-bd94-4ec0-a40e-c2762166a381';
+    $pane = new stdClass();
+    $pane->pid = 'new-ec55b762-0e1e-42a2-861d-c02be7423aa6';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'more_of_taxonomy_term-panel_pane_3';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'arguments' => array(
+        'term_node_tid_depth' => '%field_source_taxonomy_term:tid',
+        'term_node_tid_depth_modifier' => '0',
+        'nid' => '%node:nid',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'ec55b762-0e1e-42a2-861d-c02be7423aa6';
+    $display->content['new-ec55b762-0e1e-42a2-861d-c02be7423aa6'] = $pane;
+    $display->panels['right'][0] = 'new-ec55b762-0e1e-42a2-861d-c02be7423aa6';
+    $pane = new stdClass();
+    $pane->pid = 'new-39519dc8-96a9-4f76-8a7f-22fc665e35a1';
+    $pane->panel = 'top';
+    $pane->type = 'page_title';
+    $pane->subtype = 'page_title';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'markup' => 'h1',
+      'class' => '',
+      'id' => '',
+      'override_title' => 1,
+      'override_title_text' => '%node:title',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'text-center',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '39519dc8-96a9-4f76-8a7f-22fc665e35a1';
+    $display->content['new-39519dc8-96a9-4f76-8a7f-22fc665e35a1'] = $pane;
+    $display->panels['top'][0] = 'new-39519dc8-96a9-4f76-8a7f-22fc665e35a1';
+  $display->hide_title = PANELS_TITLE_NONE;
+  $display->title_pane = 'new-39519dc8-96a9-4f76-8a7f-22fc665e35a1';
+  $handler->conf['display'] = $display;
+  $export['node_view__normal'] = $handler;
+
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
   $handler->name = 'term_view__normal';
   $handler->task = 'term_view';
   $handler->subtask = '';
@@ -118,7 +284,7 @@ function mqcristobal_features_default_page_manager_handlers() {
     $pane->configuration = array(
       'arguments' => array(
         'term_node_tid_depth' => '%term:tid',
-        'term_node_tid_depth_modifier' => '',
+        'term_node_tid_depth_modifier' => '0',
       ),
     );
     $pane->cache = array();
@@ -320,7 +486,7 @@ function mqcristobal_features_default_page_manager_pages() {
     $pane->configuration = array(
       'arguments' => array(
         'term_node_tid_depth' => '3',
-        'term_node_tid_depth_modifier' => '',
+        'term_node_tid_depth_modifier' => '0',
       ),
       'override_title' => 1,
       'override_title_text' => '',

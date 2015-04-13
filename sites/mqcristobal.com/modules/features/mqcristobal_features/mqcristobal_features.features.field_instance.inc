@@ -93,7 +93,7 @@ function mqcristobal_features_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 1,
       ),
       'portfolio' => array(
         'label' => 'hidden',
@@ -107,6 +107,12 @@ function mqcristobal_features_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 10,
+      ),
+      'portfolio_small_card' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -153,7 +159,7 @@ function mqcristobal_features_field_default_field_instances() {
           'trim_length' => 80,
         ),
         'type' => 'url_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'portfolio' => array(
         'label' => 'hidden',
@@ -170,6 +176,12 @@ function mqcristobal_features_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 9,
+      ),
+      'portfolio_small_card' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -208,7 +220,7 @@ function mqcristobal_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
-          'file_view_mode' => 'media_small',
+          'file_view_mode' => 'portfolio',
         ),
         'type' => 'file_rendered',
         'weight' => 0,
@@ -230,6 +242,15 @@ function mqcristobal_features_field_default_field_instances() {
         ),
         'type' => 'file_rendered',
         'weight' => 2,
+      ),
+      'portfolio_small_card' => array(
+        'label' => 'hidden',
+        'module' => 'file_entity',
+        'settings' => array(
+          'file_view_mode' => 'media_small',
+        ),
+        'type' => 'file_rendered',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -283,7 +304,7 @@ function mqcristobal_features_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'portfolio' => array(
         'label' => 'hidden',
@@ -298,6 +319,12 @@ function mqcristobal_features_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 1,
+      ),
+      'portfolio_small_card' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -337,7 +364,7 @@ function mqcristobal_features_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'portfolio' => array(
         'label' => 'above',
@@ -350,6 +377,12 @@ function mqcristobal_features_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 2,
+      ),
+      'portfolio_small_card' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -401,6 +434,12 @@ function mqcristobal_features_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 11,
+      ),
+      'portfolio_small_card' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',

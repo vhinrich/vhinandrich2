@@ -237,6 +237,15 @@ function mqcristobal_features_user_default_permissions() {
     'module' => 'block',
   );
 
+  // Exported permission: 'administer ckeditor'.
+  $permissions['administer ckeditor'] = array(
+    'name' => 'administer ckeditor',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'ckeditor',
+  );
+
   // Exported permission: 'administer consumers'.
   $permissions['administer consumers'] = array(
     'name' => 'administer consumers',
@@ -645,6 +654,15 @@ function mqcristobal_features_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'path',
+  );
+
+  // Exported permission: 'customize ckeditor'.
+  $permissions['customize ckeditor'] = array(
+    'name' => 'customize ckeditor',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'ckeditor',
   );
 
   // Exported permission: 'delete any article content'.

@@ -31,10 +31,25 @@ function mqcristobalv2_preprocess_field(&$variables){
   }
 }
 
+function mqcristobalv2_preprocess_field_full(&$variables){
+  $function = __FUNCTION__ . '_' . $variables['element']['#field_name'];
+  if(function_exists($function)){
+    $function($variables);
+  }
+}
+
 function mqcristobalv2_preprocess_field_portfolio_card(&$variables){
   $function = __FUNCTION__ . '_' . $variables['element']['#field_name'];
   if(function_exists($function)){
     $function($variables);
+  }
+}
+
+function mqcristobalv2_preprocess_field_full_field_site_features(&$variables){
+  foreach($variables['items'] as $item_key => $item){
+    $variables['items'][$item_key]['#options']['attributes']['class'][] = 'btn';
+    $variables['items'][$item_key]['#options']['attributes']['class'][] = 'btn-xs';
+    $variables['items'][$item_key]['#options']['attributes']['class'][] = 'btn-primary';
   }
 }
 
@@ -57,7 +72,7 @@ function mqcristobalv2_preprocess_field_portfolio_card_field_media(&$variables){
 
 function mqcristobalv2_form_contact_form_entityform_edit_form_alter(&$form, &$form_state){
   $form['actions']['submit']['#attributes']['class'][] = 'btn-lg';
-  $form['actions']['submit']['#attributes']['class'][] = 'btn-primary';
+  $form['actions']['submit']['#attributes']['class'][] = 'btn-success';
   $form['actions']['submit']['#prefix'] = '<div class="text-center">';
   $form['actions']['submit']['#suffix'] = '</div>';
 }

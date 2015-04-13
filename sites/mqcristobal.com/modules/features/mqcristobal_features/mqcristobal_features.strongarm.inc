@@ -164,6 +164,12 @@ function mqcristobal_features_strongarm() {
       'portfolio_card' => array(
         'custom_settings' => TRUE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'portfolio_small_card' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -401,7 +407,7 @@ function mqcristobal_features_strongarm() {
     'favicon_path' => '',
     'favicon_upload' => '',
     'global__active_tab' => 'edit-theme-settings',
-    'bootstrap__active_tab' => 'edit-general',
+    'bootstrap__active_tab' => 'edit-components',
     'bootstrap_button_size' => '',
     'bootstrap_button_colorize' => 0,
     'bootstrap_button_iconize' => 0,
@@ -416,7 +422,7 @@ function mqcristobal_features_strongarm() {
     'bootstrap_breadcrumb' => '1',
     'bootstrap_breadcrumb_home' => 0,
     'bootstrap_breadcrumb_title' => 1,
-    'bootstrap_navbar_position' => 'static-top',
+    'bootstrap_navbar_position' => 'fixed-top',
     'bootstrap_navbar_inverse' => 0,
     'bootstrap_region_well-navigation' => '',
     'bootstrap_region_well-header' => '',

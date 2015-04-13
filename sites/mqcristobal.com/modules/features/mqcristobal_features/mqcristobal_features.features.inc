@@ -170,6 +170,31 @@ function mqcristobal_features_image_default_styles() {
     ),
   );
 
+  // Exported image style: super_square_thumbnail.
+  $styles['super_square_thumbnail'] = array(
+    'label' => 'super_square_thumbnail',
+    'effects' => array(
+      7 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 32,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 2,
+      ),
+      8 => array(
+        'name' => 'image_crop',
+        'data' => array(
+          'width' => 32,
+          'height' => 32,
+          'anchor' => 'center-top',
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
   return $styles;
 }
 

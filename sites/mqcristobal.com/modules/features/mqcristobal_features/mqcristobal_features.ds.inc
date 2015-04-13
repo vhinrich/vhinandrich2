@@ -32,6 +32,26 @@ function mqcristobal_features_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|article|portfolio_small_card';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'article';
+  $ds_fieldsetting->view_mode = 'portfolio_small_card';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h6',
+        'class' => '',
+      ),
+    ),
+  );
+  $export['node|article|portfolio_small_card'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|content_form|default';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'content_form';
@@ -457,6 +477,48 @@ function mqcristobal_features_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|article|default';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'article';
+  $ds_layout->view_mode = 'default';
+  $ds_layout->layout = 'bootstrap_12';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'central' => array(
+        0 => 'field_media',
+        1 => 'body',
+        2 => 'field_link',
+        3 => 'field_source',
+        4 => 'field_site_features',
+        5 => 'field_tags',
+      ),
+    ),
+    'fields' => array(
+      'field_media' => 'central',
+      'body' => 'central',
+      'field_link' => 'central',
+      'field_source' => 'central',
+      'field_site_features' => 'central',
+      'field_tags' => 'central',
+    ),
+    'classes' => array(
+      'layout_class' => array(
+        '' => '',
+      ),
+    ),
+    'wrappers' => array(
+      'central' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|article|default'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|article|portfolio_card';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'article';
@@ -505,6 +567,43 @@ function mqcristobal_features_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|article|portfolio_card'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|article|portfolio_small_card';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'article';
+  $ds_layout->view_mode = 'portfolio_small_card';
+  $ds_layout->layout = 'ds_2col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'left' => array(
+        0 => 'field_media',
+      ),
+      'right' => array(
+        1 => 'title',
+      ),
+    ),
+    'fields' => array(
+      'field_media' => 'left',
+      'title' => 'right',
+    ),
+    'classes' => array(
+      'layout_class' => array(
+        '' => '',
+      ),
+    ),
+    'wrappers' => array(
+      'left' => 'div',
+      'right' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|article|portfolio_small_card'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
@@ -657,6 +756,15 @@ function mqcristobal_features_ds_view_modes_info() {
     'node' => 'node',
   );
   $export['portfolio_card'] = $ds_view_mode;
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'portfolio_small_card';
+  $ds_view_mode->label = 'Portfolio Small Card';
+  $ds_view_mode->entities = array(
+    'node' => 'node',
+  );
+  $export['portfolio_small_card'] = $ds_view_mode;
 
   return $export;
 }
