@@ -52,20 +52,6 @@ function mqcristobal_features_default_entity_rule_setting() {
     },
     "false_msg" : null
   }');
-  $items['2'] = entity_import('entity_rule_setting', '{
-    "id" : "2",
-    "entity_type" : "entityform",
-    "bundle" : "contact_form",
-    "op" : "entityform_submission",
-    "rules_config" : "rules_entityform_notification_email_submitter",
-    "weight" : "1",
-    "args" : {
-      "email_subject" : "Thank you!",
-      "email_body" : "Thank you for your message! We will get back to you within 24 hours!",
-      "show_submission" : 0
-    },
-    "false_msg" : null
-  }');
   return $items;
 }
 
@@ -163,6 +149,31 @@ function mqcristobal_features_image_default_styles() {
         'data' => array(
           'width' => 480,
           'height' => 320,
+          'anchor' => 'center-top',
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: portfolio_full.
+  $styles['portfolio_full'] = array(
+    'label' => 'Portfolio Full',
+    'effects' => array(
+      11 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 600,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+      12 => array(
+        'name' => 'image_crop',
+        'data' => array(
+          'width' => 600,
+          'height' => 400,
           'anchor' => 'center-top',
         ),
         'weight' => 2,

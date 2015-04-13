@@ -220,7 +220,7 @@ function mqcristobal_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
-          'file_view_mode' => 'portfolio',
+          'file_view_mode' => 'portfolio_full_image',
         ),
         'type' => 'file_rendered',
         'weight' => 0,
