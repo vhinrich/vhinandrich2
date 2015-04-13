@@ -50,6 +50,44 @@ function mqcristobal_features_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['block-copyright'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'machine_name' => 'copyright',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'mqcristobal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'mqcristobal',
+        'weight' => 0,
+      ),
+      'mqcristobalv2' => array(
+        'region' => 'footer',
+        'status' => 1,
+        'theme' => 'mqcristobalv2',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   $export['blog-recent'] = array(
     'cache' => 1,
     'custom' => 0,
