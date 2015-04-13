@@ -124,7 +124,7 @@ jQuery(document).ready(function($){
 	var marker_url = \'/sites/mqcristobal.com/files/cd-icon-location.png\';
 		
 	//define the basic color of your map, plus a value for saturation and brightness
-	var	main_color = \'#2d313f\',
+	var	main_color = \'#2196f3\',
 		saturation_value= -20,
 		brightness_value= 5;
 
@@ -310,6 +310,7 @@ jQuery(document).ready(function($){
       	mapTypeId: google.maps.MapTypeId.ROADMAP,
       	scrollwheel: false,
       	styles: style,
+        draggable: false
     }
     //inizialize the map
 	var map = new google.maps.Map(document.getElementById(\'google-container\'), map_options);

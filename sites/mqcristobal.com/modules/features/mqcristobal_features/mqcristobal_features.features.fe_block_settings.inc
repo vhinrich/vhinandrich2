@@ -33,12 +33,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'theme' => 'mqcristobal',
         'weight' => 0,
       ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
-        'weight' => 0,
-      ),
       'seven' => array(
         'region' => '',
         'status' => 0,
@@ -69,12 +63,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'mqcristobal',
-        'weight' => 0,
-      ),
-      'mqcristobalv2' => array(
-        'region' => 'footer',
-        'status' => 1,
-        'theme' => 'mqcristobalv2',
         'weight' => 0,
       ),
       'seven' => array(
@@ -109,12 +97,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'theme' => 'mqcristobal',
         'weight' => 0,
       ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
-        'weight' => 0,
-      ),
       'seven' => array(
         'region' => '',
         'status' => 0,
@@ -145,12 +127,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'mqcristobal',
-        'weight' => 0,
-      ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
         'weight' => 0,
       ),
       'seven' => array(
@@ -185,12 +161,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'theme' => 'mqcristobal',
         'weight' => 0,
       ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
-        'weight' => 0,
-      ),
       'seven' => array(
         'region' => '',
         'status' => 0,
@@ -221,12 +191,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'mqcristobal',
-        'weight' => 0,
-      ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
         'weight' => 0,
       ),
       'seven' => array(
@@ -261,12 +225,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'theme' => 'mqcristobal',
         'weight' => 0,
       ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
-        'weight' => 0,
-      ),
       'seven' => array(
         'region' => '',
         'status' => 0,
@@ -297,12 +255,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'mqcristobal',
-        'weight' => 0,
-      ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
         'weight' => 0,
       ),
       'seven' => array(
@@ -337,12 +289,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'theme' => 'mqcristobal',
         'weight' => 0,
       ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
-        'weight' => 0,
-      ),
       'seven' => array(
         'region' => '',
         'status' => 0,
@@ -373,12 +319,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'mqcristobal',
-        'weight' => 0,
-      ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
         'weight' => 0,
       ),
       'seven' => array(
@@ -413,12 +353,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'theme' => 'mqcristobal',
         'weight' => 0,
       ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
-        'weight' => 0,
-      ),
       'seven' => array(
         'region' => 'help',
         'status' => 1,
@@ -449,12 +383,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'region' => 'content',
         'status' => 1,
         'theme' => 'mqcristobal',
-        'weight' => 0,
-      ),
-      'mqcristobalv2' => array(
-        'region' => 'content',
-        'status' => 1,
-        'theme' => 'mqcristobalv2',
         'weight' => 0,
       ),
       'seven' => array(
@@ -489,12 +417,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'theme' => 'mqcristobal',
         'weight' => 0,
       ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
-        'weight' => 0,
-      ),
       'seven' => array(
         'region' => '',
         'status' => 0,
@@ -525,12 +447,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'mqcristobal',
-        'weight' => 0,
-      ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
         'weight' => 0,
       ),
       'seven' => array(
@@ -565,12 +481,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'theme' => 'mqcristobal',
         'weight' => 0,
       ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
-        'weight' => 0,
-      ),
       'seven' => array(
         'region' => '',
         'status' => 0,
@@ -601,12 +511,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'mqcristobal',
-        'weight' => -9,
-      ),
-      'mqcristobalv2' => array(
-        'region' => 'footer',
-        'status' => 1,
-        'theme' => 'mqcristobalv2',
         'weight' => -9,
       ),
       'seven' => array(
@@ -641,12 +545,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'theme' => 'mqcristobal',
         'weight' => 0,
       ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
-        'weight' => 0,
-      ),
       'seven' => array(
         'region' => '',
         'status' => 0,
@@ -677,12 +575,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'mqcristobal',
-        'weight' => 0,
-      ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
         'weight' => 0,
       ),
       'seven' => array(
@@ -717,12 +609,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'theme' => 'mqcristobal',
         'weight' => 0,
       ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
-        'weight' => 0,
-      ),
       'seven' => array(
         'region' => '',
         'status' => 0,
@@ -753,12 +639,6 @@ function mqcristobal_features_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'mqcristobal',
-        'weight' => 0,
-      ),
-      'mqcristobalv2' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'mqcristobalv2',
         'weight' => 0,
       ),
       'seven' => array(
