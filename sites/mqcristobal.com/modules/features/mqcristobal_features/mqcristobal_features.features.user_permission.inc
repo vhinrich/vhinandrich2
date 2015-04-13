@@ -273,6 +273,15 @@ function mqcristobal_features_user_default_permissions() {
     'module' => 'entityform',
   );
 
+  // Exported permission: 'administer entityqueue'.
+  $permissions['administer entityqueue'] = array(
+    'name' => 'administer entityqueue',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'entityqueue',
+  );
+
   // Exported permission: 'administer features'.
   $permissions['administer features'] = array(
     'name' => 'administer features',
@@ -1069,6 +1078,24 @@ function mqcristobal_features_user_default_permissions() {
     'module' => 'features',
   );
 
+  // Exported permission: 'manipulate all entityqueues'.
+  $permissions['manipulate all entityqueues'] = array(
+    'name' => 'manipulate all entityqueues',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'entityqueue',
+  );
+
+  // Exported permission: 'manipulate entityqueues'.
+  $permissions['manipulate entityqueues'] = array(
+    'name' => 'manipulate entityqueues',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'entityqueue',
+  );
+
   // Exported permission: 'notify of path changes'.
   $permissions['notify of path changes'] = array(
     'name' => 'notify of path changes',
@@ -1198,6 +1225,13 @@ function mqcristobal_features_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'devel',
+  );
+
+  // Exported permission: 'update article_queue entityqueue'.
+  $permissions['update article_queue entityqueue'] = array(
+    'name' => 'update article_queue entityqueue',
+    'roles' => array(),
+    'module' => 'entityqueue',
   );
 
   // Exported permission: 'use PHP for tracking visibility'.

@@ -375,9 +375,7 @@ function mqcristobal_features_field_group_info() {
   $field_group->data = array(
     'label' => 'Row2',
     'weight' => '3',
-    'children' => array(
-      0 => 'custom_google_map',
-    ),
+    'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
       'label' => 'Row2',

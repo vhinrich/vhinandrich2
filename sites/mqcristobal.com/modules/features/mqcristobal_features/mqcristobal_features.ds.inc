@@ -72,11 +72,6 @@ function mqcristobal_features_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'content_form';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'custom_google_map' => array(
-      'weight' => '2',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'referenced_entityform_css' => array(
       'weight' => '4',
       'label' => 'hidden',
@@ -654,22 +649,20 @@ function mqcristobal_features_ds_layout_settings_info() {
       'central' => array(
         0 => 'spacertop',
         1 => 'group_container',
-        2 => 'custom_google_map',
-        3 => 'group_row1',
-        4 => 'group_row2',
-        5 => 'referenced_entityform_css',
-        6 => 'title',
-        7 => 'body',
-        8 => 'field_entityform',
-        9 => 'spacer',
-        10 => 'group_row1col1',
-        11 => 'group_row1col2',
+        2 => 'group_row1',
+        3 => 'group_row2',
+        4 => 'referenced_entityform_css',
+        5 => 'title',
+        6 => 'body',
+        7 => 'field_entityform',
+        8 => 'spacer',
+        9 => 'group_row1col1',
+        10 => 'group_row1col2',
       ),
     ),
     'fields' => array(
       'spacertop' => 'central',
       'group_container' => 'central',
-      'custom_google_map' => 'central',
       'group_row1' => 'central',
       'group_row2' => 'central',
       'referenced_entityform_css' => 'central',
