@@ -9,6 +9,14 @@
  */
 function mqcristobal_features_taxonomy_default_vocabularies() {
   return array(
+    'category' => array(
+      'name' => 'Category',
+      'machine_name' => 'category',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
     'site_features' => array(
       'name' => 'Site features',
       'machine_name' => 'site_features',

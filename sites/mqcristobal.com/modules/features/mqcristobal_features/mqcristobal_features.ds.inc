@@ -52,6 +52,46 @@ function mqcristobal_features_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|blog|teaser';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'blog';
+  $ds_fieldsetting->view_mode = 'teaser';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+      ),
+    ),
+    'node_link' => array(
+      'weight' => '15',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'post_date' => array(
+      'weight' => '4',
+      'label' => 'hidden',
+      'format' => 'ds_post_date_long',
+    ),
+    'submitted_by' => array(
+      'weight' => '5',
+      'label' => 'hidden',
+      'format' => 'ds_time_ago',
+    ),
+    'ds_user_picture' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'ds_picture_square_thumbnail',
+    ),
+  );
+  $export['node|blog|teaser'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|content_form|default';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'content_form';
@@ -599,6 +639,62 @@ function mqcristobal_features_ds_layout_settings_info() {
     'layout_link_custom' => '',
   );
   $export['node|article|portfolio_small_card'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|blog|teaser';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'blog';
+  $ds_layout->view_mode = 'teaser';
+  $ds_layout->layout = 'bootstrap_12';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'central' => array(
+        0 => 'title',
+        1 => 'group_user',
+        2 => 'group_bodycontainer',
+        3 => 'group_userrow',
+        4 => 'ds_user_picture',
+        5 => 'post_date',
+        6 => 'submitted_by',
+        7 => 'field_category',
+        8 => 'group_userrowcol1',
+        9 => 'body',
+        10 => 'group_userrowcol2',
+        11 => 'group_readmorewrapper',
+        12 => 'node_link',
+      ),
+    ),
+    'fields' => array(
+      'title' => 'central',
+      'group_user' => 'central',
+      'group_bodycontainer' => 'central',
+      'group_userrow' => 'central',
+      'ds_user_picture' => 'central',
+      'post_date' => 'central',
+      'submitted_by' => 'central',
+      'field_category' => 'central',
+      'group_userrowcol1' => 'central',
+      'body' => 'central',
+      'group_userrowcol2' => 'central',
+      'group_readmorewrapper' => 'central',
+      'node_link' => 'central',
+    ),
+    'classes' => array(
+      'layout_class' => array(
+        '' => '',
+      ),
+    ),
+    'wrappers' => array(
+      'central' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|blog|teaser'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;

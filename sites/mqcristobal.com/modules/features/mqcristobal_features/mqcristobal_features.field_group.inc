@@ -13,6 +13,37 @@ function mqcristobal_features_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_bodycontainer|node|blog|teaser';
+  $field_group->group_name = 'group_bodycontainer';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'blog';
+  $field_group->mode = 'teaser';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'BodyContainer',
+    'weight' => '2',
+    'children' => array(
+      0 => 'body',
+      1 => 'field_category',
+      2 => 'group_readmorewrapper',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'BodyContainer',
+      'instance_settings' => array(
+        'classes' => 'group-bodycontainer field-group-html-element',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => 'style="margin-top: 8px"',
+      ),
+    ),
+  );
+  $export['group_bodycontainer|node|blog|teaser'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_cardimagewrapper|node|article|portfolio_card';
   $field_group->group_name = 'group_cardimagewrapper';
   $field_group->entity_type = 'node';
@@ -97,6 +128,35 @@ function mqcristobal_features_field_group_info() {
     ),
   );
   $export['group_portfolio_card_wrapper|node|article|portfolio_card'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_readmorewrapper|node|blog|teaser';
+  $field_group->group_name = 'group_readmorewrapper';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'blog';
+  $field_group->mode = 'teaser';
+  $field_group->parent_name = 'group_bodycontainer';
+  $field_group->data = array(
+    'label' => 'ReadMoreWrapper',
+    'weight' => '14',
+    'children' => array(
+      0 => 'node_link',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'ReadMoreWrapper',
+      'instance_settings' => array(
+        'classes' => 'group-readmorewrapper field-group-html-element text-right',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_readmorewrapper|node|blog|teaser'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -389,6 +449,124 @@ function mqcristobal_features_field_group_info() {
     ),
   );
   $export['group_row2|node|content_form|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_userrowcol1|node|blog|teaser';
+  $field_group->group_name = 'group_userrowcol1';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'blog';
+  $field_group->mode = 'teaser';
+  $field_group->parent_name = 'group_userrow';
+  $field_group->data = array(
+    'label' => 'UserRowCol1',
+    'weight' => '13',
+    'children' => array(
+      0 => 'ds_user_picture',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'UserRowCol1',
+      'instance_settings' => array(
+        'classes' => 'group-userrowcol1 field-group-html-element',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => 'style="width:48px;float:left;margin-right:15px"',
+      ),
+    ),
+  );
+  $export['group_userrowcol1|node|blog|teaser'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_userrowcol2|node|blog|teaser';
+  $field_group->group_name = 'group_userrowcol2';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'blog';
+  $field_group->mode = 'teaser';
+  $field_group->parent_name = 'group_userrow';
+  $field_group->data = array(
+    'label' => 'UserRowCol2',
+    'weight' => '14',
+    'children' => array(
+      0 => 'post_date',
+      1 => 'submitted_by',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'UserRowCol2',
+      'instance_settings' => array(
+        'classes' => 'group-userrowcol2 field-group-html-element',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => 'style="width:auto;float:left"',
+      ),
+    ),
+  );
+  $export['group_userrowcol2|node|blog|teaser'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_userrow|node|blog|teaser';
+  $field_group->group_name = 'group_userrow';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'blog';
+  $field_group->mode = 'teaser';
+  $field_group->parent_name = 'group_user';
+  $field_group->data = array(
+    'label' => 'UserRow',
+    'weight' => '2',
+    'children' => array(
+      0 => 'group_userrowcol1',
+      1 => 'group_userrowcol2',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'UserRow',
+      'instance_settings' => array(
+        'classes' => 'group-userrow field-group-html-element',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_userrow|node|blog|teaser'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_user|node|blog|teaser';
+  $field_group->group_name = 'group_user';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'blog';
+  $field_group->mode = 'teaser';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'User',
+    'weight' => '1',
+    'children' => array(
+      0 => 'group_userrow',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'User',
+      'instance_settings' => array(
+        'classes' => 'group-user field-group-html-element clearfix',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_user|node|blog|teaser'] = $field_group;
 
   return $export;
 }

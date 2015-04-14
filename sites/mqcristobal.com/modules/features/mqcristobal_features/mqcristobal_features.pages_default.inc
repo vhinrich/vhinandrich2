@@ -26,7 +26,21 @@ function mqcristobal_features_default_page_manager_handlers() {
     'body_classes_to_add' => '',
     'css_id' => '',
     'css' => '',
-    'contexts' => array(),
+    'contexts' => array(
+      0 => array(
+        'identifier' => 'String',
+        'keyword' => 'string',
+        'name' => 'string',
+        'string' => 'Blog',
+        'id' => 1,
+      ),
+      1 => array(
+        'identifier' => 'Token',
+        'keyword' => 'token',
+        'name' => 'token',
+        'id' => 1,
+      ),
+    ),
     'relationships' => array(),
     'name' => 'normal',
   );
@@ -36,10 +50,42 @@ function mqcristobal_features_default_page_manager_handlers() {
   $display->panel_settings = array(
     'style_settings' => array(
       'default' => NULL,
-      'top' => NULL,
-      'left' => NULL,
-      'right' => NULL,
-      'bottom' => NULL,
+      'top' => array(
+        'column_type' => 'col-lg',
+        'column_size' => '12',
+        'offset_type' => 'col-lg-offset',
+        'offset_size' => '0',
+      ),
+      'left' => array(
+        'column_type' => 'col-lg',
+        'column_size' => '9',
+        'offset_type' => 'col-lg-offset',
+        'offset_size' => '0',
+      ),
+      'right' => array(
+        'column_type' => 'col-lg',
+        'column_size' => '3',
+        'offset_type' => 'col-lg-offset',
+        'offset_size' => '0',
+      ),
+      'bottom' => array(
+        'column_type' => 'col-lg',
+        'column_size' => '12',
+        'offset_type' => 'col-lg-offset',
+        'offset_size' => '0',
+      ),
+    ),
+    'left' => array(
+      'style' => 'bootstrap_region',
+    ),
+    'top' => array(
+      'style' => 'bootstrap_region',
+    ),
+    'bottom' => array(
+      'style' => 'bootstrap_region',
+    ),
+    'right' => array(
+      'style' => 'bootstrap_region',
     ),
   );
   $display->cache = array();
@@ -47,6 +93,47 @@ function mqcristobal_features_default_page_manager_handlers() {
   $display->uuid = '244a4952-8cd4-413c-8560-12bc384fd838';
   $display->content = array();
   $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-03a5b09f-caa4-4e41-9e99-dd0dc23d9d52';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'blogs-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '03a5b09f-caa4-4e41-9e99-dd0dc23d9d52';
+    $display->content['new-03a5b09f-caa4-4e41-9e99-dd0dc23d9d52'] = $pane;
+    $display->panels['left'][0] = 'new-03a5b09f-caa4-4e41-9e99-dd0dc23d9d52';
+    $pane = new stdClass();
+    $pane->pid = 'new-f57434ac-93c5-48c9-a24f-76b729bc9de1';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'categories-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'container-fluid',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'f57434ac-93c5-48c9-a24f-76b729bc9de1';
+    $display->content['new-f57434ac-93c5-48c9-a24f-76b729bc9de1'] = $pane;
+    $display->panels['right'][0] = 'new-f57434ac-93c5-48c9-a24f-76b729bc9de1';
     $pane = new stdClass();
     $pane->pid = 'new-0709dc82-e5aa-47fe-8771-8e75fb1abfc8';
     $pane->panel = 'top';
@@ -59,7 +146,7 @@ function mqcristobal_features_default_page_manager_handlers() {
       'class' => '',
       'id' => '',
       'override_title' => 1,
-      'override_title_text' => 'Blog',
+      'override_title_text' => '%string:html_safe',
       'override_title_heading' => 'h1',
     );
     $pane->cache = array();
@@ -76,60 +163,8 @@ function mqcristobal_features_default_page_manager_handlers() {
     $pane->uuid = '0709dc82-e5aa-47fe-8771-8e75fb1abfc8';
     $display->content['new-0709dc82-e5aa-47fe-8771-8e75fb1abfc8'] = $pane;
     $display->panels['top'][0] = 'new-0709dc82-e5aa-47fe-8771-8e75fb1abfc8';
-    $pane = new stdClass();
-    $pane->pid = 'new-03a5b09f-caa4-4e41-9e99-dd0dc23d9d52';
-    $pane->panel = 'top';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'blogs-panel_pane_1';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array();
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $pane->uuid = '03a5b09f-caa4-4e41-9e99-dd0dc23d9d52';
-    $display->content['new-03a5b09f-caa4-4e41-9e99-dd0dc23d9d52'] = $pane;
-    $display->panels['top'][1] = 'new-03a5b09f-caa4-4e41-9e99-dd0dc23d9d52';
-    $pane = new stdClass();
-    $pane->pid = 'new-f6766543-f5ec-4cc2-8b01-f166131ec4c2';
-    $pane->panel = 'top';
-    $pane->type = 'custom';
-    $pane->subtype = 'custom';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'admin_title' => 'Temporary blog page message',
-      'title' => '',
-      'body' => '<p>Blog page&nbsp;coming soon!</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-',
-      'format' => 'filtered_html',
-      'substitute' => TRUE,
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'container-fluid',
-    );
-    $pane->extras = array();
-    $pane->position = 2;
-    $pane->locks = array();
-    $pane->uuid = 'f6766543-f5ec-4cc2-8b01-f166131ec4c2';
-    $display->content['new-f6766543-f5ec-4cc2-8b01-f166131ec4c2'] = $pane;
-    $display->panels['top'][2] = 'new-f6766543-f5ec-4cc2-8b01-f166131ec4c2';
   $display->hide_title = PANELS_TITLE_NONE;
-  $display->title_pane = 'new-03a5b09f-caa4-4e41-9e99-dd0dc23d9d52';
+  $display->title_pane = 'new-0709dc82-e5aa-47fe-8771-8e75fb1abfc8';
   $handler->conf['display'] = $display;
   $export['blog__normal'] = $handler;
 

@@ -808,6 +808,13 @@ function mqcristobal_features_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete terms in category'.
+  $permissions['delete terms in category'] = array(
+    'name' => 'delete terms in category',
+    'roles' => array(),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: 'delete terms in site_features'.
   $permissions['delete terms in site_features'] = array(
     'name' => 'delete terms in site_features',
@@ -972,6 +979,13 @@ function mqcristobal_features_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'panels_node',
+  );
+
+  // Exported permission: 'edit terms in category'.
+  $permissions['edit terms in category'] = array(
+    'name' => 'edit terms in category',
+    'roles' => array(),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: 'edit terms in site_features'.
@@ -1311,6 +1325,7 @@ function mqcristobal_features_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'blogger' => 'blogger',
     ),
     'module' => 'filter',
   );

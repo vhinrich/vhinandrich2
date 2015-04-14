@@ -35,7 +35,8 @@
   }
 }
 
-.page-taxonomy-term{
+.page-taxonomy-term,
+.page-blog{
   .panel-panel{
     .panel-pane{
       .view{
@@ -46,6 +47,18 @@
         .view{
           background: transparent;
         }
+      }
+    }
+  }
+}
+
+.view-id-blogs{
+  .view-content{
+    .views-row{
+      border-bottom: 1px solid #ccc;
+      padding: 15px;
+      &:last-child{
+        border-bottom: none;
       }
     }
   }
