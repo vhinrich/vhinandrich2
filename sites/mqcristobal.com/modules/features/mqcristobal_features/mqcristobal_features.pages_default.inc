@@ -13,6 +13,129 @@ function mqcristobal_features_default_page_manager_handlers() {
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
+  $handler->name = 'blog__normal';
+  $handler->task = 'blog';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Normal',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => 'normal',
+  );
+  $display = new panels_display();
+  $display->layout = 'bootstrap_twocol_stacked';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+      'bottom' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = '244a4952-8cd4-413c-8560-12bc384fd838';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-0709dc82-e5aa-47fe-8771-8e75fb1abfc8';
+    $pane->panel = 'top';
+    $pane->type = 'page_title';
+    $pane->subtype = 'page_title';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'markup' => 'h1',
+      'class' => '',
+      'id' => '',
+      'override_title' => 1,
+      'override_title_text' => 'Blog',
+      'override_title_heading' => 'h1',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'text-center',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '0709dc82-e5aa-47fe-8771-8e75fb1abfc8';
+    $display->content['new-0709dc82-e5aa-47fe-8771-8e75fb1abfc8'] = $pane;
+    $display->panels['top'][0] = 'new-0709dc82-e5aa-47fe-8771-8e75fb1abfc8';
+    $pane = new stdClass();
+    $pane->pid = 'new-03a5b09f-caa4-4e41-9e99-dd0dc23d9d52';
+    $pane->panel = 'top';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'blogs-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '03a5b09f-caa4-4e41-9e99-dd0dc23d9d52';
+    $display->content['new-03a5b09f-caa4-4e41-9e99-dd0dc23d9d52'] = $pane;
+    $display->panels['top'][1] = 'new-03a5b09f-caa4-4e41-9e99-dd0dc23d9d52';
+    $pane = new stdClass();
+    $pane->pid = 'new-f6766543-f5ec-4cc2-8b01-f166131ec4c2';
+    $pane->panel = 'top';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Temporary blog page message',
+      'title' => '',
+      'body' => '<p>Blog page&nbsp;coming soon!</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+',
+      'format' => 'filtered_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'container-fluid',
+    );
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $pane->uuid = 'f6766543-f5ec-4cc2-8b01-f166131ec4c2';
+    $display->content['new-f6766543-f5ec-4cc2-8b01-f166131ec4c2'] = $pane;
+    $display->panels['top'][2] = 'new-f6766543-f5ec-4cc2-8b01-f166131ec4c2';
+  $display->hide_title = PANELS_TITLE_NONE;
+  $display->title_pane = 'new-03a5b09f-caa4-4e41-9e99-dd0dc23d9d52';
+  $handler->conf['display'] = $display;
+  $export['blog__normal'] = $handler;
+
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
   $handler->name = 'node_view__normal';
   $handler->task = 'node_view';
   $handler->subtask = '';

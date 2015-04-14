@@ -75,7 +75,45 @@ function mqcristobal_features_default_fe_block_settings() {
         'region' => 'footer',
         'status' => 1,
         'theme' => 'mqcristobalv2',
+        'weight' => -10,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
         'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['block-social_links'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'machine_name' => 'social_links',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'mqcristobal' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'mqcristobal',
+        'weight' => 0,
+      ),
+      'mqcristobalv2' => array(
+        'region' => 'footer',
+        'status' => 1,
+        'theme' => 'mqcristobalv2',
+        'weight' => -11,
       ),
       'seven' => array(
         'region' => '',
