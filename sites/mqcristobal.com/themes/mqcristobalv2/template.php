@@ -63,6 +63,9 @@ function mqcristobalv2_preprocess_field_portfolio_card(&$variables){
   }
 }
 
+function mqcristobalv2_preprocess_field_full_ds_user_picture(&$variables){
+  mqcristobalv2_preprocess_field_teaser_ds_user_picture($variables);
+}
 function mqcristobalv2_preprocess_field_teaser_ds_user_picture(&$variables){
   if(isset($variables['element']['#object']->uid)){
     $user = user_load($variables['element']['#object']->uid);

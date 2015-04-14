@@ -52,6 +52,31 @@ function mqcristobal_features_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|blog|full';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'blog';
+  $ds_fieldsetting->view_mode = 'full';
+  $ds_fieldsetting->settings = array(
+    'post_date' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'ds_post_date_long',
+    ),
+    'submitted_by' => array(
+      'weight' => '4',
+      'label' => 'hidden',
+      'format' => 'ds_time_ago',
+    ),
+    'ds_user_picture' => array(
+      'weight' => '7',
+      'label' => 'hidden',
+      'format' => 'ds_picture_square_thumbnail',
+    ),
+  );
+  $export['node|blog|full'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|blog|teaser';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'blog';
@@ -642,6 +667,84 @@ function mqcristobal_features_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|blog|default';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'blog';
+  $ds_layout->view_mode = 'default';
+  $ds_layout->layout = 'bootstrap_12';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'central' => array(
+        0 => 'body',
+        1 => 'field_category',
+      ),
+    ),
+    'fields' => array(
+      'body' => 'central',
+      'field_category' => 'central',
+    ),
+    'classes' => array(
+      'layout_class' => array(
+        '' => '',
+      ),
+    ),
+    'wrappers' => array(
+      'central' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|blog|default'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|blog|full';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'blog';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'bootstrap_12';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'central' => array(
+        0 => 'group_user',
+        1 => 'field_category',
+        2 => 'body',
+        3 => 'post_date',
+        4 => 'submitted_by',
+        5 => 'group_userrow',
+        6 => 'ds_user_picture',
+        7 => 'group_userrowcol1',
+        8 => 'group_userrowcol2',
+      ),
+    ),
+    'fields' => array(
+      'group_user' => 'central',
+      'field_category' => 'central',
+      'body' => 'central',
+      'post_date' => 'central',
+      'submitted_by' => 'central',
+      'group_userrow' => 'central',
+      'ds_user_picture' => 'central',
+      'group_userrowcol1' => 'central',
+      'group_userrowcol2' => 'central',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'central' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|blog|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|blog|teaser';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'blog';
@@ -660,8 +763,8 @@ function mqcristobal_features_ds_layout_settings_info() {
         7 => 'field_category',
         8 => 'group_userrowcol1',
         9 => 'body',
-        10 => 'group_userrowcol2',
-        11 => 'group_readmorewrapper',
+        10 => 'group_readmorewrapper',
+        11 => 'group_userrowcol2',
         12 => 'node_link',
       ),
     ),
@@ -676,15 +779,11 @@ function mqcristobal_features_ds_layout_settings_info() {
       'field_category' => 'central',
       'group_userrowcol1' => 'central',
       'body' => 'central',
-      'group_userrowcol2' => 'central',
       'group_readmorewrapper' => 'central',
+      'group_userrowcol2' => 'central',
       'node_link' => 'central',
     ),
-    'classes' => array(
-      'layout_class' => array(
-        '' => '',
-      ),
-    ),
+    'classes' => array(),
     'wrappers' => array(
       'central' => 'div',
     ),

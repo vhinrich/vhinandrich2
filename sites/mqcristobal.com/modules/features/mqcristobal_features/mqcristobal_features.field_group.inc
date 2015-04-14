@@ -453,6 +453,35 @@ function mqcristobal_features_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_userrowcol1|node|blog|full';
+  $field_group->group_name = 'group_userrowcol1';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'blog';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_userrow';
+  $field_group->data = array(
+    'label' => 'UserRowCol1',
+    'weight' => '10',
+    'children' => array(
+      0 => 'ds_user_picture',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'UserRowCol1',
+      'instance_settings' => array(
+        'classes' => 'group-userrowcol1 field-group-html-element',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => 'style="width:48px;float:left;margin-right:15px"',
+      ),
+    ),
+  );
+  $export['group_userrowcol1|node|blog|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_userrowcol1|node|blog|teaser';
   $field_group->group_name = 'group_userrowcol1';
   $field_group->entity_type = 'node';
@@ -478,6 +507,36 @@ function mqcristobal_features_field_group_info() {
     ),
   );
   $export['group_userrowcol1|node|blog|teaser'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_userrowcol2|node|blog|full';
+  $field_group->group_name = 'group_userrowcol2';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'blog';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_userrow';
+  $field_group->data = array(
+    'label' => 'UserRowCol2',
+    'weight' => '11',
+    'children' => array(
+      0 => 'post_date',
+      1 => 'submitted_by',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'UserRowCol2',
+      'instance_settings' => array(
+        'classes' => 'group-userrowcol2 field-group-html-element',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => 'style="width:auto;float:left"',
+      ),
+    ),
+  );
+  $export['group_userrowcol2|node|blog|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -512,6 +571,37 @@ function mqcristobal_features_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_userrow|node|blog|full';
+  $field_group->group_name = 'group_userrow';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'blog';
+  $field_group->mode = 'full';
+  $field_group->parent_name = 'group_user';
+  $field_group->data = array(
+    'label' => 'UserRow',
+    'weight' => '7',
+    'children' => array(
+      0 => 'group_userrowcol1',
+      1 => 'group_userrowcol2',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'element' => 'div',
+        'show_label' => 0,
+        'label_element' => 'div',
+        'classes' => 'group-userrow field-group-html-element',
+        'attributes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_userrow|node|blog|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_userrow|node|blog|teaser';
   $field_group->group_name = 'group_userrow';
   $field_group->entity_type = 'node';
@@ -538,6 +628,35 @@ function mqcristobal_features_field_group_info() {
     ),
   );
   $export['group_userrow|node|blog|teaser'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_user|node|blog|full';
+  $field_group->group_name = 'group_user';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'blog';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'User',
+    'weight' => '0',
+    'children' => array(
+      0 => 'group_userrow',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'User',
+      'instance_settings' => array(
+        'classes' => 'group-user field-group-fieldset clearfix',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_user|node|blog|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

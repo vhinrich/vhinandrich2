@@ -301,6 +301,38 @@ function mqcristobal_features_default_page_manager_handlers() {
     $display->content['new-ec55b762-0e1e-42a2-861d-c02be7423aa6'] = $pane;
     $display->panels['right'][0] = 'new-ec55b762-0e1e-42a2-861d-c02be7423aa6';
     $pane = new stdClass();
+    $pane->pid = 'new-7f3b2e30-55e0-4b30-ae36-994496e9f717';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'categories-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'blog' => 'blog',
+            ),
+          ),
+          'context' => 'argument_entity_id:node_1',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '7f3b2e30-55e0-4b30-ae36-994496e9f717';
+    $display->content['new-7f3b2e30-55e0-4b30-ae36-994496e9f717'] = $pane;
+    $display->panels['right'][1] = 'new-7f3b2e30-55e0-4b30-ae36-994496e9f717';
+    $pane = new stdClass();
     $pane->pid = 'new-39519dc8-96a9-4f76-8a7f-22fc665e35a1';
     $pane->panel = 'top';
     $pane->type = 'page_title';
