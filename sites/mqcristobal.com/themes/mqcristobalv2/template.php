@@ -5,6 +5,15 @@
  * template.php
  */
 
+function mqcristobalv2_preprocess_html(&$variables){
+  // font awesome
+  $attributes = array(
+    'rel' => 'stylesheet',
+    'href' => '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'
+  );
+  drupal_add_html_head_link($attributes, TRUE);
+}
+
 function mqcristobalv2_preprocess_page(&$variables){
   // if(in_array('container', $variables['navbar_classes_array'])){
   //   if($container_index = array_search('container', $variables['navbar_classes_array'])){
