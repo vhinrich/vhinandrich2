@@ -13,8 +13,7 @@
     .view{
       background: #f7f7f7;
       padding: 60px 0;
-      &.view-id-more_of_taxonomy_term,
-      &.view-id-blogs.view-display-id-panel_pane_1{
+      &.view-id-more_of_taxonomy_term{
         padding: 30px 0;
         background: #e7e7e7;
         margin: 30px 0;
@@ -26,8 +25,7 @@
     &:nth-child(even){
       .view{
         background: #e7e7e7;
-        &.view-id-more_of_taxonomy_term,
-        &.view-id-blogs.view-display-id-panel_pane_1{
+        &.view-id-more_of_taxonomy_term{
           padding: 0;
           background: #e7e7e7;
           margin: 30px 0;

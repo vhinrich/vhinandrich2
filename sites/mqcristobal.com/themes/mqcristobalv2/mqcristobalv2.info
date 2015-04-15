@@ -28,6 +28,7 @@ regions[page_bottom]    = 'Page bottom'
 stylesheets[all][] = scss/css3-mixins.scss
 stylesheets[all][] = scss/style.scss
 stylesheets[all][] = scss/full.scss
+stylesheets[all][] = scss/teaser.scss
 stylesheets[all][] = scss/portfolio-card.scss
 stylesheets[all][] = scss/portfolio-small-card.scss
 stylesheets[all][] = scss/views.scss

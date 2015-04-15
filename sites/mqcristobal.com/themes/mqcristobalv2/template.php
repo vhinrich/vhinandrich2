@@ -78,12 +78,21 @@ function mqcristobalv2_preprocess_field_teaser_ds_user_picture(&$variables){
   }
 }
 
+function mqcristobalv2_preprocess_field_full_field_category(&$variables){
+  mqcristobalv2_preprocess_field_portfolio_card_field_site_features($variables);
+}
+
+function mqcristobalv2_preprocess_field_teaser_field_category(&$variables){
+  mqcristobalv2_preprocess_field_portfolio_card_field_site_features($variables);
+}
+
 function mqcristobalv2_preprocess_field_full_field_site_features(&$variables){
-  foreach($variables['items'] as $item_key => $item){
-    $variables['items'][$item_key]['#options']['attributes']['class'][] = 'btn';
-    $variables['items'][$item_key]['#options']['attributes']['class'][] = 'btn-xs';
-    $variables['items'][$item_key]['#options']['attributes']['class'][] = 'btn-primary';
-  }
+  // foreach($variables['items'] as $item_key => $item){
+  //   $variables['items'][$item_key]['#options']['attributes']['class'][] = 'btn';
+  //   $variables['items'][$item_key]['#options']['attributes']['class'][] = 'btn-xs';
+  //   $variables['items'][$item_key]['#options']['attributes']['class'][] = 'btn-primary';
+  // }
+  mqcristobalv2_preprocess_field_portfolio_card_field_site_features($variables);
 }
 
 function mqcristobalv2_preprocess_field_portfolio_card_field_site_features(&$variables){
