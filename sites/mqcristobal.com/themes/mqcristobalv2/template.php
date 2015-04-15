@@ -63,9 +63,38 @@ function mqcristobalv2_preprocess_field_portfolio_card(&$variables){
   }
 }
 
+function mqcristobalv2_preprocess_field_teaser_node_link(&$variables){
+  foreach($variables['items'] as $item_key => $item){
+    $arguments = array(
+      'attributes' => array(
+        'class' => array('btn', 'btn-success', 'btn-sm'),
+        // 'style' => 'margin-top: 10px;width: 100%'
+      ),
+    );
+    $variables['items'][$item_key]['#markup'] = l(t('Read more'), url('node/' . $variables['element']['#object']->nid), $arguments);
+  }
+}
+
+function mqcristobalv2_preprocess_field_portfolio_card_node_link(&$variables){
+  foreach($variables['items'] as $item_key => $item){
+    $arguments = array(
+      'attributes' => array(
+        'class' => array('btn', 'btn-success'),
+        'style' => 'margin-top: 10px;width: 100%'
+      ),
+    );
+    $variables['items'][$item_key]['#markup'] = l(t('Read more'), url('node/' . $variables['element']['#object']->nid), $arguments);
+  }
+}
+
 function mqcristobalv2_preprocess_field_full_ds_user_picture(&$variables){
   mqcristobalv2_preprocess_field_teaser_ds_user_picture($variables);
 }
+
+function mqcristobalv2_preprocess_field_portfolio_card_ds_user_picture(&$variables){
+  mqcristobalv2_preprocess_field_teaser_ds_user_picture($variables);
+}
+
 function mqcristobalv2_preprocess_field_teaser_ds_user_picture(&$variables){
   if(isset($variables['element']['#object']->uid)){
     $user = user_load($variables['element']['#object']->uid);
@@ -86,12 +115,11 @@ function mqcristobalv2_preprocess_field_teaser_field_category(&$variables){
   mqcristobalv2_preprocess_field_portfolio_card_field_site_features($variables);
 }
 
+function mqcristobalv2_preprocess_field_portfolio_card_field_category(&$variables){
+  mqcristobalv2_preprocess_field_portfolio_card_field_site_features($variables);
+}
+
 function mqcristobalv2_preprocess_field_full_field_site_features(&$variables){
-  // foreach($variables['items'] as $item_key => $item){
-  //   $variables['items'][$item_key]['#options']['attributes']['class'][] = 'btn';
-  //   $variables['items'][$item_key]['#options']['attributes']['class'][] = 'btn-xs';
-  //   $variables['items'][$item_key]['#options']['attributes']['class'][] = 'btn-primary';
-  // }
   mqcristobalv2_preprocess_field_portfolio_card_field_site_features($variables);
 }
 

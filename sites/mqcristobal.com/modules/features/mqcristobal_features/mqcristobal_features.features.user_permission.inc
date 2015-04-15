@@ -1070,6 +1070,7 @@ function mqcristobal_features_user_default_permissions() {
     'name' => 'import media',
     'roles' => array(
       'administrator' => 'administrator',
+      'blogger' => 'blogger',
     ),
     'module' => 'media',
   );

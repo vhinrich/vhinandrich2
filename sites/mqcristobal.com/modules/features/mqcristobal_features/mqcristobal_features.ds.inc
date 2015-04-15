@@ -77,6 +77,46 @@ function mqcristobal_features_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|blog|portfolio_card';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'blog';
+  $ds_fieldsetting->view_mode = 'portfolio_card';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '6',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+      ),
+    ),
+    'node_link' => array(
+      'weight' => '10',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'post_date' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'ds_post_date_long',
+    ),
+    'submitted_by' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'ds_time_ago',
+    ),
+    'ds_user_picture' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'ds_picture_square_thumbnail',
+    ),
+  );
+  $export['node|blog|portfolio_card'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|blog|teaser';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'blog';
@@ -745,6 +785,64 @@ function mqcristobal_features_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|blog|portfolio_card';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'blog';
+  $ds_layout->view_mode = 'portfolio_card';
+  $ds_layout->layout = 'bootstrap_12';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'central' => array(
+        0 => 'ds_user_picture',
+        1 => 'group_portfolio_card_wrapper',
+        2 => 'post_date',
+        3 => 'submitted_by',
+        4 => 'group_row',
+        5 => 'title',
+        6 => 'group_user',
+        7 => 'body',
+        8 => 'group_row1col1',
+        9 => 'field_category',
+        10 => 'node_link',
+        11 => 'group_userrow',
+        12 => 'group_userrowcol1',
+        13 => 'group_userrowcol2',
+      ),
+    ),
+    'fields' => array(
+      'ds_user_picture' => 'central',
+      'group_portfolio_card_wrapper' => 'central',
+      'post_date' => 'central',
+      'submitted_by' => 'central',
+      'group_row' => 'central',
+      'title' => 'central',
+      'group_user' => 'central',
+      'body' => 'central',
+      'group_row1col1' => 'central',
+      'field_category' => 'central',
+      'node_link' => 'central',
+      'group_userrow' => 'central',
+      'group_userrowcol1' => 'central',
+      'group_userrowcol2' => 'central',
+    ),
+    'classes' => array(
+      'layout_class' => array(
+        '' => '',
+      ),
+    ),
+    'wrappers' => array(
+      'central' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+  );
+  $export['node|blog|portfolio_card'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|blog|teaser';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'blog';
@@ -763,8 +861,8 @@ function mqcristobal_features_ds_layout_settings_info() {
         7 => 'field_category',
         8 => 'group_userrowcol1',
         9 => 'body',
-        10 => 'group_readmorewrapper',
-        11 => 'group_userrowcol2',
+        10 => 'group_userrowcol2',
+        11 => 'group_readmorewrapper',
         12 => 'node_link',
       ),
     ),
@@ -779,11 +877,15 @@ function mqcristobal_features_ds_layout_settings_info() {
       'field_category' => 'central',
       'group_userrowcol1' => 'central',
       'body' => 'central',
-      'group_readmorewrapper' => 'central',
       'group_userrowcol2' => 'central',
+      'group_readmorewrapper' => 'central',
       'node_link' => 'central',
     ),
-    'classes' => array(),
+    'classes' => array(
+      'layout_class' => array(
+        '' => '',
+      ),
+    ),
     'wrappers' => array(
       'central' => 'div',
     ),

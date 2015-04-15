@@ -523,6 +523,15 @@ function mqcristobal_features_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'portfolio_card' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 300,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 8,
+      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -573,6 +582,13 @@ function mqcristobal_features_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 1,
+      ),
+      'portfolio_card' => array(
+        'label' => 'hidden',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'hidden',
