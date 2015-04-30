@@ -641,8 +641,7 @@ function mqcristobal_features_field_group_info() {
     'label' => 'UserRowCol2',
     'weight' => '11',
     'children' => array(
-      0 => 'post_date',
-      1 => 'submitted_by',
+      0 => 'submitted_by',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

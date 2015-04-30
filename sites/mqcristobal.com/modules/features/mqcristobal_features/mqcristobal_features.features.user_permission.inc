@@ -489,6 +489,15 @@ function mqcristobal_features_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: 'administer site verify'.
+  $permissions['administer site verify'] = array(
+    'name' => 'administer site verify',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'site_verify',
+  );
+
   // Exported permission: 'administer software updates'.
   $permissions['administer software updates'] = array(
     'name' => 'administer software updates',
@@ -541,6 +550,15 @@ function mqcristobal_features_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'views',
+  );
+
+  // Exported permission: 'administer xmlsitemap'.
+  $permissions['administer xmlsitemap'] = array(
+    'name' => 'administer xmlsitemap',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'xmlsitemap',
   );
 
   // Exported permission: 'block IP addresses'.

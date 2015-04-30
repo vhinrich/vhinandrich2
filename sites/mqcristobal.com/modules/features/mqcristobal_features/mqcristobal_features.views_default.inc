@@ -159,7 +159,7 @@ function mqcristobal_features_views_default_views() {
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
-  /* Relationship: Entityqueue: Node Queue */
+  /* Relationship: Entityqueue: Content Queue */
   $handler->display->display_options['relationships']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
   $handler->display->display_options['relationships']['entityqueue_relationship']['table'] = 'node';
   $handler->display->display_options['relationships']['entityqueue_relationship']['field'] = 'entityqueue_relationship';
@@ -173,7 +173,7 @@ function mqcristobal_features_views_default_views() {
   $handler->display->display_options['sorts']['queue']['field'] = 'queue';
   $handler->display->display_options['sorts']['queue']['relationship'] = 'entityqueue_relationship';
   $handler->display->display_options['sorts']['queue']['order'] = 'DESC';
-  /* Sort criterion: Entityqueue: Node Queue Position */
+  /* Sort criterion: Entityqueue: Content Queue Position */
   $handler->display->display_options['sorts']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
   $handler->display->display_options['sorts']['entityqueue_relationship']['table'] = 'node';
   $handler->display->display_options['sorts']['entityqueue_relationship']['field'] = 'entityqueue_relationship';
