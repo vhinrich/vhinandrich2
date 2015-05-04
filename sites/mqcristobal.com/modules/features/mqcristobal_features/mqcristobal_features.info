@@ -18,7 +18,6 @@ dependencies[] = ckeditor
 dependencies[] = contextual
 dependencies[] = cors
 dependencies[] = ctools
-dependencies[] = dblog
 dependencies[] = devel
 dependencies[] = diff
 dependencies[] = ds
