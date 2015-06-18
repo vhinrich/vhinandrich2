@@ -46,6 +46,12 @@ function advagg_admin_settings_form($form, $form_state) {
     '#disabled' => module_exists('httprl') ? FALSE : TRUE,
     '#description' => t('If <a href="@link">HTTPRL</a> is installed, advagg will use it to generate aggregates on the fly in a background parallel process.', array('@link' => 'http://drupal.org/project/httprl')),
   );
+  $form['global']['advagg_browser_dns_prefetch'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Use DNS Prefetch for external CSS/JS.'),
+    '#default_value' => variable_get('advagg_browser_dns_prefetch', ADVAGG_BROWSER_DNS_PREFETCH),
+    '#description' => t('Start the DNS lookup for external CSS and JavaScript files as soon as possible.'),
+  );
 
   $aggressive_cache_conflicts = advagg_aggressive_cache_conflicts();
   if (empty($aggressive_cache_conflicts)) {
@@ -81,7 +87,7 @@ function advagg_admin_settings_form($form, $form_state) {
     ),
   );
   // Show msg about advagg css compress.
-  if (module_exists('advagg_css_compress') && (variable_get('advagg_css_compressor', ADVAGG_CSS_COMPRESSOR) || variable_get('advagg_css_compress_inline', ADVAGG_CSS_COMPRESS_INLINE))) {
+  if (module_exists('advagg_css_compress') && (variable_get('advagg_css_compressor', ADVAGG_CSS_COMPRESSOR) > 0 || variable_get('advagg_css_compress_inline', ADVAGG_CSS_COMPRESS_INLINE))) {
     $form['global']['dev_container']['advagg_css_compress_msg'] = array(
       '#markup' => '<p>' . t('The <a href="@css">AdvAgg CSS Compression module</a> is disabled when in development mode.', array('@css' => url($config_path . '/advagg/css-compress'))) . '</p>',
     );

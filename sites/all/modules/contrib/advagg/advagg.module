@@ -188,6 +188,17 @@ define('ADVAGG_AUTH_BASIC_PASS', '');
  */
 define('ADVAGG_SKIP_FAR_FUTURE_CHECK', FALSE);
 
+/**
+ * Skip far future check on status page.
+ */
+define('ADVAGG_SKIP_ENABLED_PREPROCESS_CHECK', FALSE);
+
+/**
+ * Prefetch External domains for CSS/JS.
+ */
+define('ADVAGG_BROWSER_DNS_PREFETCH', FALSE);
+
+
 // Core hook implementations.
 /**
  * Inbound URL rewrite helper.
@@ -267,10 +278,12 @@ function advagg_hook_info() {
   // advagg_get_root_files_dir_alter
   // because these 3 hooks are used on most requests.
   $advagg_hooks = array(
+    'advagg_get_css_file_contents_pre_alter',
     'advagg_get_css_file_contents_alter',
     'advagg_get_js_file_contents_alter',
     'advagg_get_css_aggregate_contents_alter',
     'advagg_get_js_aggregate_contents_alter',
+    'advagg_save_aggregate_pre_alter',
     'advagg_save_aggregate_alter',
     'advagg_build_aggregate_plans_alter',
     'advagg_css_groups_alter',
@@ -1326,11 +1339,11 @@ function advagg_get_render_cache(array $full_css, array $js_scope_array) {
   $hooks_hash = advagg_get_current_hooks_hash();
   if (advagg_file_aggregation_enabled('css')) {
     // Generate css cache id.
-    $cids[] = $css_cache_id = 'advagg:css:full:' . $hooks_hash . ':' . drupal_hash_base64(serialize($full_css));
+    $cids[] = $css_cache_id = 'advagg:css:full:1.1:' . $hooks_hash . ':' . drupal_hash_base64(serialize($full_css));
   }
   if (advagg_file_aggregation_enabled('js')) {
     // Generate js cache id.
-    $cids[] = $js_cache_id = 'advagg:js:full:' . $hooks_hash . ':' . drupal_hash_base64(serialize($js_scope_array));
+    $cids[] = $js_cache_id = 'advagg:js:full:1.1:' . $hooks_hash . ':' . drupal_hash_base64(serialize($js_scope_array));
   }
 
   if (!empty($cids)) {
@@ -1460,7 +1473,6 @@ function _advagg_process_html(&$variables) {
   if (isset($variables['page']['#children'])) {
     $variables['page'] = $variables['page']['#children'];
   }
-  $variables['head'] = drupal_get_html_head();
 
   // Get default javascript.
   // @see http://drupal.org/node/1279226
@@ -1493,7 +1505,7 @@ function _advagg_process_html(&$variables) {
   // CSS has nice hooks so we don't need to work around it.
   if (!empty($css_cache->data)) {
     // Use render cache.
-    $variables['styles'] = $css_cache->data;
+    list($variables['styles'], $full_css) = $css_cache->data;
   }
   else {
     // Get the css if we have not done so.
@@ -1504,11 +1516,11 @@ function _advagg_process_html(&$variables) {
     $variables['styles'] = drupal_render($full_css);
     if (!empty($css_cache_id)) {
       // Save to the cache.
-      cache_set($css_cache_id, $variables['styles'], 'cache_advagg_aggregates', CACHE_TEMPORARY);
+      cache_set($css_cache_id, array($variables['styles'], $full_css), 'cache_advagg_aggregates', CACHE_TEMPORARY);
     }
     if (!empty($css_cache_id_no_alter)) {
       // Save to the cache.
-      cache_set($css_cache_id_no_alter, $variables['styles'], 'cache_advagg_aggregates', CACHE_TEMPORARY);
+      cache_set($css_cache_id_no_alter, array($variables['styles'], $full_css), 'cache_advagg_aggregates', CACHE_TEMPORARY);
     }
   }
 
@@ -1539,7 +1551,9 @@ function _advagg_process_html(&$variables) {
       }
     }
 
-    foreach ($js_cache->data as $scope => $value) {
+    list($js_cache_data, $js_scope_array) = $js_cache->data;
+
+    foreach ($js_cache_data as $scope => $value) {
       $scope_settings = $scope;
       if ($scope_settings === 'scripts') {
         $scope_settings = 'header';
@@ -1652,13 +1666,55 @@ function _advagg_process_html(&$variables) {
       }
 
       if (!empty($js_cache_id) && !empty($js_cache)) {
-        cache_set($js_cache_id, $js_cache, 'cache_advagg_aggregates', CACHE_TEMPORARY);
+        cache_set($js_cache_id, array($js_cache, $js_scope_array), 'cache_advagg_aggregates', CACHE_TEMPORARY);
       }
       if (!empty($js_cache_id_no_alter) && !empty($js_cache)) {
-        cache_set($js_cache_id_no_alter, $js_cache, 'cache_advagg_aggregates', CACHE_TEMPORARY);
+        cache_set($js_cache_id_no_alter, array($js_cache, $js_scope_array), 'cache_advagg_aggregates', CACHE_TEMPORARY);
       }
     }
   }
+
+  if (variable_get('advagg_browser_dns_prefetch', ADVAGG_BROWSER_DNS_PREFETCH)) {
+    // Prefetch css domains.
+    foreach ($full_css['#items'] as $values) {
+      if ($values['type'] === 'external') {
+        // Get external domains.
+        advagg_add_dns_prefetch($values['data']);
+      }
+      if (!empty($values['dns_prefetch'])) {
+        // Grab domains that will be access when this file is loaded.
+        if (is_array($values['dns_prefetch'])) {
+          foreach ($values['dns_prefetch'] as $url) {
+            advagg_add_dns_prefetch($url);
+          }
+        }
+        else {
+          advagg_add_dns_prefetch($values['dns_prefetch']);
+        }
+      }
+    }
+    // Prefetch js domains.
+    foreach ($js_scope_array as $scope_js) {
+      foreach ($scope_js['#items'] as $values) {
+        if (!empty($values['type']) && $values['type'] === 'external') {
+          // Get external domains.
+          advagg_add_dns_prefetch($values['data']);
+        }
+        if (!empty($values['dns_prefetch'])) {
+          // Grab domains that will be access when this file is loaded.
+          if (is_array($values['dns_prefetch'])) {
+            foreach ($values['dns_prefetch'] as $url) {
+              advagg_add_dns_prefetch($url);
+            }
+          }
+          else {
+            advagg_add_dns_prefetch($values['dns_prefetch']);
+          }
+        }
+      }
+    }
+  }
+  $variables['head'] = drupal_get_html_head();
 
   // Output debug info.
   if (variable_get('advagg_debug', ADVAGG_DEBUG)) {
@@ -1671,6 +1727,37 @@ function _advagg_process_html(&$variables) {
     }
     watchdog('advagg_debug', $output, array(), WATCHDOG_DEBUG);
   }
+}
+
+/**
+ * Add in the dns-prefetch header for CSS & JS external files.
+ *
+ * @param string $url
+ *   The url of the external host.
+ *
+ * @return bool
+ *   TRUE if it was added to the head.
+ */
+function advagg_add_dns_prefetch($url) {
+  // Get the host.
+  $parse = @parse_url($url);
+  if (empty($parse['host'])) {
+    return FALSE;
+  }
+
+  // Build render array. Goes after charset tag.
+  $element = array(
+    '#type' => 'html_tag',
+    '#tag' => 'link',
+    '#attributes' => array(
+      'rel' => 'dns-prefetch',
+      'href' => '//' . $parse['host'],
+    ),
+    '#weight' => '-999.999',
+  );
+  // Add markup for dns-prefetch to html_head.
+  drupal_add_html_head($element, 'advagg_dns_prefetch:' . $parse['host']);
+  return TRUE;
 }
 
 /**
@@ -2450,10 +2537,12 @@ function advagg_set_hash_settings($hash, $settings) {
 function advagg_hooks_implemented($all = TRUE) {
   // Get hooks in use.
   $hooks = array(
+    'advagg_get_css_file_contents_pre_alter' => array(),
     'advagg_get_css_file_contents_alter' => array(),
     'advagg_get_css_aggregate_contents_alter' => array(),
     'advagg_get_js_file_contents_alter' => array(),
     'advagg_get_js_aggregate_contents_alter' => array(),
+    'advagg_save_aggregate_pre_alter' => array(),
     'advagg_save_aggregate_alter' => array(),
     'advagg_current_hooks_hash_array_alter' => array(),
     'advagg_get_root_files_dir_alter' => array(),
@@ -2700,10 +2789,12 @@ function advagg_build_ajax_js_css() {
   // HTML in the page. We pass TRUE as the $skip_alter argument to prevent the
   // data from being altered again, as we already altered it above. Settings are
   // handled separately, afterwards.
-  if (isset($items['js']['settings'])) {
-    $settings = $items['js']['settings'];
+  $scripts = drupal_add_js();
+  if (isset($scripts['settings'])) {
+    $settings = $scripts['settings'];
     unset($items['js']['settings']);
   }
+
   $styles = drupal_get_css($items['css'], TRUE);
   $scripts_footer = drupal_get_js('footer', $items['js'], TRUE);
   $scripts_header = drupal_get_js('header', $items['js'], TRUE);
@@ -3160,7 +3251,7 @@ function advagg_pre_render_styles(array $elements) {
             if (file_exists($item['data'])) {
               // The dummy query string needs to be added to the URL to control
               // browser-caching. IE7 does not support a media type on the
-              // @import statement, so we instead specify the media for the
+              // "@import" statement, so we instead specify the media for the
               // group on the STYLE tag.
               $import[] = '@import url("' . check_plain(advagg_file_create_url($item['data']) . '?' . $query_string) . '");';
             }
