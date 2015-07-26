@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Lens commerce features feature.
+ */
+
+include_once 'lens_commerce_features.features.inc';
