@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Install/Update/Uninstall functions for social icons */
+
+/**
+ * Implements hook_field_schema().
+ */
+function socialicon_field_field_schema($field) {
+  return array(
+    'columns' => array(
+      'value' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+    ),
+  );
+}
+
+
+// TODO: data migration from the old DB structure, could be tough..
+

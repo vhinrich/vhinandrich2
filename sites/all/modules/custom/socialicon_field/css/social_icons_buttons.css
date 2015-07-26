@@ -1,0 +1,9 @@
+.node ul.social-icons-list{
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.node ul.social-icons-list li{
+  display: inline;
+}

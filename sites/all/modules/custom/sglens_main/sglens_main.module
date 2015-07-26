@@ -1,0 +1,327 @@
+<?php
+
+/**
+ * Implements hook_menu_alter.
+ */
+function sglens_main_menu_alter(&$item){
+    // unset($item['user/login']['type']);
+    // unset($item['user/register']['type']);
+    // unset($item['user/password']['type']);
+    // unset($item['user/simple-fb-connect ']['type']);
+}
+
+/**
+ * Submit callback - sglens_main_form_alter_add_to_cart_submit
+ * This will be called before the actual add to cart submit
+ */
+function sglens_main_form_alter_add_to_cart_submit(&$form, &$form_state){
+    if(isset($form_state['values']['line_item_fields']['field_prescription'][LANGUAGE_NONE][0]) && $field_prescription = &$form_state['values']['line_item_fields']['field_prescription'][LANGUAGE_NONE][0]){
+        if(!isset($form_state['values']['prescription_select_method']) || $form_state['values']['prescription_select_method'] == 0){
+            unset($field_prescription['entity']->field_prescription_attachment);
+        }
+
+        if(isset($form_state['values']['prescription_select_method']) && $form_state['values']['prescription_select_method'] > 0){
+            foreach($field_prescription as $prescription_field_key => $prescription_field){
+                if($prescription_field_key != 'field_prescription_attachment'){
+                    unset($field_prescription['entity']->{$prescription_field_key});
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Validate callback - sglens_main_form_alter_add_to_cart_validate
+ */
+function sglens_main_form_alter_add_to_cart_validate($form,  &$form_state){
+    $commerce_product = commerce_product_load($form_state['values']['product_id']);
+    if(isset($form_state['values']['prescription_select_method']) && $form_state['values']['prescription_select_method'] > 0){
+        if(isset($form_state['values']['line_item_fields']['field_prescription'][LANGUAGE_NONE][0]) && $field_prescription = $form_state['values']['line_item_fields']['field_prescription'][LANGUAGE_NONE][0]){
+            if(isset($field_prescription['field_prescription_attachment'][LANGUAGE_NONE][0]) && empty($field_prescription['field_prescription_attachment'][LANGUAGE_NONE][0]['fid'])){
+                form_set_error('field_prescription_attachment', t('Add to cart %node_title%: Please upload your prescription.', array('%node_title%' => $commerce_product->title)));
+            }
+        }
+    }else{
+        if(isset($form_state['values']['line_item_fields']['field_prescription'][LANGUAGE_NONE][0]) && $field_prescription = $form_state['values']['line_item_fields']['field_prescription'][LANGUAGE_NONE][0]){
+            $line_item_form_empty = TRUE;
+            foreach($field_prescription as $prescription_field_key => $prescription_field){
+                if($prescription_field_key != 'field_prescription_attachment' && is_array($prescription_field)){
+                    if(isset($prescription_field[LANGUAGE_NONE][0]) &&
+                        ( !empty($prescription_field[LANGUAGE_NONE][0]['value']) || ( is_numeric($prescription_field[LANGUAGE_NONE][0]['value']) && $prescription_field[LANGUAGE_NONE][0]['value'] >= 0 )) ){
+                        $line_item_form_empty = FALSE;
+                    }
+                }
+            }
+            if($line_item_form_empty){
+                form_set_error('submit', t('Add to cart %node_title%: Please enter your prescription.', array('%node_title%' => $commerce_product->title)));
+            }
+        }
+    }
+}
+
+/**
+ * Ajax callback - prescription_select_method
+ */
+function sglens_main_form_alter_prescription_submit_ajax($form, &$form_state){
+    $commands = array();
+    $parent_form_classes = '.' . implode('.', $form['#attributes']['class']);
+    $commands[] = ajax_command_invoke($parent_form_classes . ' .field-group-html-element.row', 'addClass', array('hidden'));
+    if(isset($form_state['values']['prescription_select_method']) && $form_state['values']['prescription_select_method'] > 0){
+        $commands[] = ajax_command_invoke($parent_form_classes . ' .group-prescription-attach-row', 'removeClass', array('hidden'));
+    }else{
+        $commands[] = ajax_command_invoke($parent_form_classes . ' .group-prescription-row', 'removeClass', array('hidden'));
+        $commands[] = ajax_command_invoke($parent_form_classes . ' .group-other-row', 'removeClass', array('hidden'));
+    }
+    return array(
+        '#type' => 'ajax',
+        '#commands' => $commands
+    );
+}
+
+/**
+ * Checkout form - Lens info group
+ */
+function sglens_main_form_alter_lens_info(&$form, &$form_state){
+    $prescription_method = $form['prescription_select_method']['#default_value'];
+    $line_item_form_method_class = '';
+    $line_item_attachment_method_class = '';
+    if($prescription_method > 0){
+        $line_item_form_method_class = 'hidden';
+    }else{
+        $line_item_attachment_method_class = 'hidden';
+    }
+
+    if(isset($form['line_item_fields']['field_prescription'][LANGUAGE_NONE][0]) && $field_prescription = &$form['line_item_fields']['field_prescription'][LANGUAGE_NONE][0]){
+        if($prescription_method > 0){
+            if(isset($field_prescription['#groups']['group_prescription_row'])){
+                $field_prescription['#groups']['group_prescription_row']->format_settings['instance_settings']['classes'] .= ' hidden';
+                $field_prescription['#groups']['group_other_row']->format_settings['instance_settings']['classes'] .= ' hidden';
+            }
+        }else{
+            if(isset($field_prescription['#groups']['group_prescription_attach_row'])){
+                $field_prescription['#groups']['group_prescription_attach_row']->format_settings['instance_settings']['classes'] .= ' hidden';
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_block_info.
+ */
+function sglens_main_block_info(){
+    $blocks['sglens_shopping_cart_icon'] = array(
+        'info' => t('Shopping cart icon')
+    );
+    return $blocks;
+}
+
+/**
+ * Implements hook_block_view
+ */
+function sglens_main_block_view($delta = ''){
+    $function = __FUNCTION__ . '_' . $delta;
+    if(function_exists($function)){
+        return $function();
+    }
+}
+
+/**
+ * block view callback for sglens_shopping_cart_icon
+ */
+function sglens_main_block_view_sglens_shopping_cart_icon(){
+    global $user;
+    $cart_item_count = 0;
+    if($order = commerce_cart_order_load($user->uid)){
+        $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+        $cart_item_count = commerce_line_items_quantity($order_wrapper->commerce_line_items, commerce_product_line_item_types());
+    }
+
+    $cart_item_count_html = '';
+    if($cart_item_count > 0){
+        $cart_item_count_html = '<div class="counter">' . $cart_item_count . '</div>';
+    }
+    $menu_item_shopping_cart = array(
+        // 'href' => url('/cart'),
+        'href' => '',
+        'fragment' => 'sglens-commerce-cart-block',
+        'title' => '<div class="shopping-cart-counter-container"><i class="fa fa-shopping-cart"></i>' . $cart_item_count_html . '</div>',
+        'html' => TRUE
+    );
+    $menu_item_shopping_cart['attributes']['data-toggle'][] = 'collapse';
+    if(current_path() == 'cart'){
+        $menu_item_shopping_cart['attributes']['class'][] = 'active';
+        $menu['shopping-cart active'] = $menu_item_shopping_cart;
+    }else{
+        $menu['shopping-cart'] = $menu_item_shopping_cart;
+    }
+    $block['content'] = theme('links', array(
+        'links' => $menu,
+        'attributes' => array('class' => array('menu', 'nav', 'navbar-nav', 'shopping-cart-icon', 'navbar-default'))
+    ));
+    return $block;
+}
+
+/**
+ * Implements hook_preprocess_block.
+ */
+function sglens_main_preprocess_block(&$variables){
+    $function = __FUNCTION__ . '_' . $variables['block']->module . '_' . $variables['block']->delta;
+    if(function_exists($function)){
+        $function($variables);
+    }
+}
+
+function sglens_main_preprocess_block_commerce_cart_cart(&$variables){
+    $variables['block_html_id'] = 'sglens-commerce-cart-block';
+    $variables['classes_array'][] = 'collapse';
+}
+
+/**
+ * Implements hook_theme.
+ */
+function sglens_main_theme(){
+    $themes['sglens_radios'] = array(
+        'arguments' => array(),
+        'template' => 'tpl/sglens-radios',
+        'render element' => 'element'
+    );
+
+    return $themes;
+}
+
+/**
+ * Implements template_preprocess_sglens_radios()
+ */
+function template_preprocess_sglens_radios(&$vars) {
+    $element = &$vars['element'];
+    $attributes = array();
+    if (isset($element['#id'])) {
+        $attributes['id'] = $element['#id'];
+    }
+    $attributes['class'] = 'form-radios';
+    if (!empty($element['#attributes']['class'])) {
+        $attributes['class'] .= ' ' . implode(' ', $element['#attributes']['class']);
+    }
+    if (isset($element['#attributes']['title'])) {
+        $attributes['title'] = $element['#attributes']['title'];
+    }
+    $vars['attributes'] = $attributes;
+    $vars['radios_classes'] = '';
+
+    if(isset($element['#content'])){
+      foreach(element_children($element) as $key) {
+        $element[$key]['content'] = $element['#content'][$key];
+        unset($element[$key]['#title']);
+        unset($element[$key]['#title_display']);
+        unset($element[$key]['#theme_wrappers']);
+      }
+    }
+    foreach(element_children($element) as $key) {
+        $element[$key]['#classes'] = '';
+    }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter.
+ */
+function sglens_main_form_commerce_cart_add_to_cart_form_alter(&$form, $form_state, $form_id) {
+    $form['cart_messages'] = array(
+        '#prefix' => '<div class="cart-messages-' . $form_id . '">',
+        '#suffix' => '</div>'
+    );
+
+    $form['prescription_select_method'] = array(
+        '#type' => 'radios',
+        '#options' => array(
+            t('Online form'),
+            t('Attach prescription')
+        ),
+        '#default_value' => isset($form_state['values']['prescription_select_method']) ? $form_state['values']['prescription_select_method'] : 0,
+        '#title' => t('How do you want to submit your prescription?'),
+        '#theme' => array('sglens_radios'),
+        '#ajax' => array(
+            'callback' => 'sglens_main_form_alter_prescription_submit_ajax',
+            'event' => 'change'
+        )
+    );
+
+    $form['line_item_fields']['field_prescription'][LANGUAGE_NONE][0]['#title'] = NULL;
+
+    sglens_main_form_alter_lens_info($form, $form_state);
+
+    array_unshift($form['#submit'], 'sglens_main_form_alter_add_to_cart_submit');
+
+    $form['#validate'][] = 'sglens_main_form_alter_add_to_cart_validate';
+    $form['submit']['#ajax'] = array(
+        'callback' => 'sglens_main_commerce_ajax_cart_callback',
+    );
+}
+
+/**
+ * Implements hook_field_widget_form_alter.
+ */
+function sglens_main_field_widget_form_alter(&$element, &$form_state, $context){
+    if(isset($element['#type'])){
+        $function = __FUNCTION__ . '_' . $element['#type'];
+        if(function_exists($function)){
+            $function($element, $form_state, $context);
+        }
+    }
+}
+
+function sglens_main_commerce_ajax_cart_callback($form, &$form_state){
+    global $user;
+
+
+    $form = drupal_rebuild_form($form['#form_id'], $form_state, $form);
+    $shopping_cart_block = block_load('sglens_main', 'sglens_shopping_cart_icon');
+    $shopping_cart_block = _block_render_blocks(array($shopping_cart_block));
+    $shopping_cart_block = _block_get_renderable_array($shopping_cart_block);
+
+    $commerce_cart_block = block_load('commerce_cart', 'cart');
+    $commerce_cart_block = _block_render_blocks(array($commerce_cart_block));
+    $commerce_cart_block = _block_get_renderable_array($commerce_cart_block);
+
+    $commands = array();
+    $commands[] = array('command' => 'commerce_ajax_cart_update');
+    // $commands[] = ajax_command_prepend('#messages-container', theme('status_messages'));
+    $form['cart_messages']['message'] = array(
+        '#markup' => theme('status_messages')
+    );
+
+    $commands[] = ajax_command_replace('.' . drupal_html_class($form['#form_id']), drupal_render($form));
+    $commands[] = ajax_command_replace('.block[id*="block-sglens-main-sglens-shopping-cart-icon"]', drupal_render($shopping_cart_block));
+    $commands[] = ajax_command_replace('.block[id*="sglens-commerce-cart-block"]', drupal_render($commerce_cart_block));
+    $commands[] = array(
+        'command' => 'commerceAjaxCartFireTrigger',
+        'data'    => $form['#form_id']
+    );
+
+    return array('#type' => 'ajax', '#commands' => $commands);
+}
+
+
+/**
+ * Implements hook_field_widget_form_alter.
+ */
+function sglens_main_field_widget_options_select_form_alter(&$element, &$form_state, $context){
+    if(in_array('line_item_fields', $element['#field_parents'])){
+        if($element['#bundle'] == 'field_prescription'){
+            // if($element['#field_name'] == 'field_distance' || $element['#field_name'] == 'field_near'){
+            //     $element['#options']['_none'] = $context['instance']['label'];
+            // }else{
+            //     $element['#options']['_none'] = '--';
+            // }
+            $element['#options']['_none'] = '--';
+        }
+    }
+}
+
+function sglens_main_commerce_line_item_summary_link_info_alter(&$links){
+    $links['view_cart']['title'] = t('Edit cart');
+    $links['view_cart']['attributes']['class'][] = 'btn';
+    $links['view_cart']['attributes']['class'][] = 'btn-default';
+
+    $links['checkout']['attributes']['class'][] = 'btn';
+    $links['checkout']['attributes']['class'][] = 'btn-success';
+}

@@ -1,0 +1,238 @@
+<?php
+
+/**
+ * Implements hook_field_info.
+ */
+function socialicon_field_field_info(){
+    $fields['social_icons'] = array(
+        'label' => t('Social Icons'),
+        'instance_settings' => array(
+            'social_icons_facebook' => TRUE,
+            'social_icons_twitter' => TRUE,
+            'social_icons_instagram' => TRUE,
+            'social_icons_pinterest' => TRUE,
+            'social_icons_google_plus' => TRUE,
+            'social_icons_email' => TRUE,
+            'others' => array()
+        ),
+        'default_formatter' => 'social_icons_formatter',
+        'default_widget' => 'social_icons_field',
+        'property_type' => 'text',
+    );
+
+    return $fields;
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function socialicon_field_field_is_empty($item, $field) {
+  return empty($item['value']);
+}
+
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function socialicon_field_field_formatter_info() {
+    return array(
+        'social_icons_formatter' => array(
+            'label' => t('Default'),
+            'field types' => array('social_icons'),
+        )
+    );
+}
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function socialicon_field_field_widget_info() {
+  return array(
+    'social_icons_field' => array(
+      'label' => t('Social icons field'),
+      'field types' => array('social_icons'),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_field_settings_form().
+ */
+function socialicon_field_field_settings_form($field, $instance, $has_data) {
+  $settings = $field['settings'];
+
+  $form = array();
+  // $form['test'] = array('#type' => 'textfield', '#title' => t('Title'));
+
+  return $form;
+}
+
+/**
+ * Implements hook_field_instance_settings_form().
+ */
+function socialicon_field_field_instance_settings_form($field, $instance) {
+    $settings = $instance['settings'];
+
+    $form['social_icons_facebook'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Facebook'),
+        '#default_value' => $settings['social_icons_facebook']
+    );
+
+    $form['social_icons_twitter'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Twitter'),
+        '#default_value' => $settings['social_icons_twitter']
+    );
+
+    $form['social_icons_instagram'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Instagram'),
+        '#default_value' => $settings['social_icons_instagram']
+    );
+
+    $form['social_icons_pinterest'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Pinterest'),
+        '#default_value' => $settings['social_icons_pinterest']
+    );
+
+    $form['social_icons_google_plus'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Google+'),
+        '#default_value' => $settings['social_icons_google_plus']
+    );
+
+    $form['social_icons_email'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Email'),
+        '#default_value' => $settings['social_icons_email']
+    );
+
+    return $form;
+}
+
+/**
+ * Implements hook_field_presave().
+ */
+function socialicon_field_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items) {
+
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function socialicon_field_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+    $element += array(
+        '#type' => 'checkbox',
+        '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : 0,
+        '#title' => $element['#title']
+    );
+    return array('value' => $element);
+}
+
+/**
+ * Implements hook_field_validate().
+ */
+function socialicon_field_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function socialicon_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+    $element = array();
+
+    // font awesome
+    $attributes = array(
+    'rel' => 'stylesheet',
+    'href' => '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'
+    );
+    drupal_add_html_head_link($attributes, TRUE);
+
+    drupal_add_js(drupal_get_path('module', 'socialicon_field') . '/js/social_icons_buttons.js');
+    drupal_add_css(drupal_get_path('module', 'socialicon_field') . '/css/social_icons_buttons.css');
+
+    $node = $entity;
+    $node_url = url('node/' . $node->nid, array('absolute' => true));
+    foreach($items as $delta => $item){
+        $new_markup = '';
+        $new_markup_list_data = array();
+        foreach($instance['settings'] as $setting_key => $setting){
+            if($setting){
+                $button_key = '';
+                switch ($setting_key) {
+                    case 'social_icons_facebook':
+                        $button_key = 'facebook';
+                        break;
+                    case 'social_icons_twitter':
+                        $button_key = 'twitter';
+                        break;
+                    case 'social_icons_instagram':
+                        $button_key = 'instagram';
+                        break;
+                    case 'social_icons_pinterest':
+                        $button_key = 'pinterest';
+                        break;
+                    case 'social_icons_google_plus':
+                        $button_key = 'google-plus';
+                        break;
+                    case 'social_icons_email':
+                        $button_key = 'email';
+                        break;
+                }
+                $item['data'] = socialicon_field_social_icons_generate_button($button_key, $node_url, $node);
+                $new_markup_list_data[] = $item;
+            }
+        }
+        $new_markup = theme('item_list', array(
+            'items' => $new_markup_list_data,
+            'attributes' => array('class' => array('social-icons-list'))
+        ));
+        $element[$delta]['#markup'] = $new_markup;
+    }
+    return $element;
+}
+
+function socialicon_field_social_icons_generate_button($icon, $url, $node){
+  $markup = '';
+  $tmpBody  = '';
+  if(isset($node->body[$node->language]) && isset($node->body[$node->language][0])){
+    $tmpBody = truncate_utf8(strip_tags($node->body[$node->language][0]['value']), 120, true, true);
+  }
+  switch ($icon){
+    case 'facebook-like':
+      $markup = '<div class="fb-like" data-href="' . $url . '" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>';
+      break;
+    case 'facebook':
+      $markup = '<a class="btn btn-default" href="https://www.facebook.com/sharer/sharer.php?u=' . $url . '&t=' . $tmpBody .'"><i class="fa fa-facebook fa-fw"></i></a>';
+      break;
+    case 'twitter':
+      $markup = '<a class="btn btn-default" href="https://twitter.com/intent/tweet?original_referer=' . $url . '&text=' . urlencode($tmpBody) . '&tw_p=tweetbutton&url=' . $url .'"><i class="fa fa-twitter fa-fw"></i></a>';
+      break;
+    case 'google-plus':
+      $markup = '<a class="btn btn-default" href="https://plus.google.com/share?url=' . $url . '"><i class="fa fa-google-plus fa-fw"></i></a>';
+      break;
+    case 'pinterest':
+      $url = urlencode($url);
+      // $token = content_social_buttons_icon_token_get_setting($node->type, $icon);
+      // $media_url = urlencode(token_replace($token, array('node' => $node)));
+      $media_url = 'image-here.png';
+      $description = urlencode($tmpBody);
+      $markup = '<a class="btn btn-default" href="//www.pinterest.com/pin/create/button/?url=' . $url . '&media=' . $media_url . '&description=' . $description . '" data-pin-do="buttonPin" data-pin-config="none"><i class="fa fa-pinterest fa-fw"></i></a>';
+      break;
+    case 'instagram':
+        // $markup = t('Instagram share is not possible at the moment.');
+        $markup = '<a class="btn btn-default" href="#"><i class="fa fa-instagram fa-fw"></i></a>';
+        break;
+    case 'email':
+        $markup = '<a class="btn btn-default" href="mailto:?subject=Content: ' . $node->title . '&body=' . $tmpBody . '"><i class="fa fa-envelope-o fa-fw"></i></a>';
+        break;
+    default:
+      $markup = $icon;
+      break;
+  }
+  return $markup;
+}
