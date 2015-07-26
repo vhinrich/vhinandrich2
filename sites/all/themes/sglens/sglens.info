@@ -1,4 +1,4 @@
-name = Tobats
+name = SGLens
 description = A Bootstrap Sub-theme.
 core = 7.x
 base theme = bootstrap
@@ -8,13 +8,16 @@ base theme = bootstrap
 ;; Regions
 ;;;;;;;;;;;;;;;;;;;;;
 
+regions[top_header]     = 'Top Header'
 regions[navigation]     = 'Navigation'
+regions[bottom_header]= 'Bottom Header'
 regions[header]         = 'Top Bar'
 regions[highlighted]    = 'Highlighted'
 regions[help]           = 'Help'
 regions[content]        = 'Content'
 regions[sidebar_first]  = 'Primary'
 regions[sidebar_second] = 'Secondary'
+regions[top_footer]     = 'Top Footer'
 regions[footer]         = 'Footer'
 regions[page_top]       = 'Page top'
 regions[page_bottom]    = 'Page bottom'
@@ -25,8 +28,14 @@ regions[page_bottom]    = 'Page bottom'
 ;;;;;;;;;;;;;;;;;;;;;
 
 ; stylesheets[all][] = css/style.css
-stylesheets[all][] = scss/mixins.scss
+stylesheets[all][] = scss/css3-mixins.scss
 stylesheets[all][] = scss/style.scss
+stylesheets[all][] = scss/node.card-teaser.scss
+stylesheets[all][] = scss/node.card-teaser-small.scss
+stylesheets[all][] = scss/node.full.scss
+stylesheets[all][] = scss/blocks.scss
+stylesheets[all][] = scss/views.scss
+stylesheets[all][] = scss/form.add-to-cart.scss
 
 
 ; For information on choosing the desired method, please read the Drupal
@@ -56,8 +65,8 @@ stylesheets[all][] = scss/style.scss
 ;
 ; ; Disable BootstrapCDN if using Bootstrap source files in your sub-theme.
 ; settings[bootstrap_cdn] = ''
-
-; scripts[] = 'js/tobats.affix.js'
+scripts[] = 'js/mqcristobalv2.helpers.js'
+scripts[] = 'js/sglens.js'
 
 
 ; ;-------------------------

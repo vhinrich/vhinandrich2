@@ -1,0 +1,34 @@
+@import 'css3-mixins.scss';
+
+.theme-sglens{
+  .view{
+    &.view-id-lens_type_list{
+        &.view-display-id-panel_pane_1{
+            padding: 60px 0;
+            background: #1D95D1;
+            color: #EEE;
+
+            // background: rgb(234, 232, 227);
+            // background: #BDE6F4;
+
+            // color: #53453D;
+
+            .view-header{
+                h1,h2,h3,h4,h5,h6{
+                    color: #FFF;
+                    margin-bottom: 45px;
+                    // color: rgb(45, 68, 81);
+                }
+            }
+            .view-header{
+                text-align: center;
+            }
+
+            .well{
+                color: #333;
+                font-size: 1em;
+            }
+        }
+    }
+  }
+}

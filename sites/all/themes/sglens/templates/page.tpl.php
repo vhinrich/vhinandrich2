@@ -73,17 +73,24 @@
  * @ingroup themeable
  */
 ?>
+<?php if(!empty($page['top_header'])): ?>
+  <div class="top-header-region-container container-fluid">
+    <div class="top-header-region-wrapper">
+      <?php print render($page['top_header']); ?>
+    </div>
+  </div>
+<?php endif; ?>
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
   <div class="container">
     <div class="navbar-header">
       <?php if ($logo): ?>
-      <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-        <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-      </a>
+        <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
+          <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" class="img-responsive center-block" />
+        </a>
       <?php endif; ?>
 
       <?php if (!empty($site_name)): ?>
-      <a class="name navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
+        <a class="name navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
       <?php endif; ?>
 
       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
@@ -112,57 +119,92 @@
     <?php endif; ?>
   </div>
 </header>
+<?php if(!empty($page['bottom_header'])): ?>
+  <div id="bottom-header-region" class="bottom-header-region-container container-fluid">
+    <div class="bottom-header-region-wrapper">
+      <?php print render($page['bottom_header']); ?>
+    </div>
+  </div>
+<?php endif; ?>
 
-<div class="main-container container">
+<div id="messages-container">
+  <?php print $messages; ?>
+</div>
 
-  <header role="banner" id="page-header">
-    <?php if (!empty($site_slogan)): ?>
-      <p class="lead"><?php print $site_slogan; ?></p>
-    <?php endif; ?>
+<div class="main-container container-fluid">
+  <div class="<?php print $main_container_wrapper_classes; ?>">
 
-    <?php print render($page['header']); ?>
-  </header> <!-- /#page-header -->
-
-  <div class="row">
-
-    <?php if (!empty($page['sidebar_first'])): ?>
-      <aside class="col-sm-3" role="complementary">
-        <?php print render($page['sidebar_first']); ?>
-      </aside>  <!-- /#sidebar-first -->
-    <?php endif; ?>
-
-    <section<?php print $content_column_class; ?>>
-      <?php if (!empty($page['highlighted'])): ?>
-        <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
+    <header role="banner" id="page-header">
+      <?php if (!empty($site_slogan)): ?>
+        <p class="lead"><?php print $site_slogan; ?></p>
       <?php endif; ?>
-      <?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
-      <a id="main-content"></a>
-      <?php print render($title_prefix); ?>
-      <?php if (!empty($title)): ?>
-        <h1 class="page-header"><?php print $title; ?></h1>
-      <?php endif; ?>
-      <?php print render($title_suffix); ?>
-      <?php print $messages; ?>
-      <?php if (!empty($tabs)): ?>
-        <?php print render($tabs); ?>
-      <?php endif; ?>
-      <?php if (!empty($page['help'])): ?>
-        <?php print render($page['help']); ?>
-      <?php endif; ?>
-      <?php if (!empty($action_links)): ?>
-        <ul class="action-links"><?php print render($action_links); ?></ul>
-      <?php endif; ?>
-      <?php print render($page['content']); ?>
-    </section>
 
-    <?php if (!empty($page['sidebar_second'])): ?>
-      <aside class="col-sm-3" role="complementary">
-        <?php print render($page['sidebar_second']); ?>
-      </aside>  <!-- /#sidebar-second -->
-    <?php endif; ?>
+      <?php print render($page['header']); ?>
+    </header> <!-- /#page-header -->
+
+    <div class="row">
+
+      <?php if (!empty($page['sidebar_first'])): ?>
+        <aside class="col-sm-3" role="complementary">
+          <?php print render($page['sidebar_first']); ?>
+        </aside>  <!-- /#sidebar-first -->
+      <?php endif; ?>
+
+      <section<?php print $content_column_class; ?>>
+        <?php if (!empty($page['highlighted'])): ?>
+          <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
+        <?php endif; ?>
+        <?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
+        <a id="main-content"></a>
+        <?php print render($title_prefix); ?>
+        <?php if (!empty($title)): ?>
+          <h1 class="page-header"><?php print $title; ?></h1>
+        <?php endif; ?>
+        <?php print render($title_suffix); ?>
+        <?php if (!empty($tabs)): ?>
+          <?php print render($tabs); ?>
+        <?php endif; ?>
+        <?php if (!empty($page['help'])): ?>
+          <?php print render($page['help']); ?>
+        <?php endif; ?>
+        <?php if (!empty($action_links)): ?>
+          <ul class="action-links"><?php print render($action_links); ?></ul>
+        <?php endif; ?>
+        <?php print render($page['content']); ?>
+      </section>
+
+      <?php if (!empty($page['sidebar_second'])): ?>
+        <aside class="col-sm-3" role="complementary">
+          <?php print render($page['sidebar_second']); ?>
+        </aside>  <!-- /#sidebar-second -->
+      <?php endif; ?>
+
+    </div>
 
   </div>
 </div>
-<footer class="footer container">
+<div class="top-footer container-fluid">
+  <?php print render($page['top_footer']); ?>
+</div>
+<footer class="footer container-fluid">
   <?php print render($page['footer']); ?>
 </footer>
+
+<!-- default bootstrap modal start -->
+<div class="modal fade" id="default-bootstrap-modal" tabindex="-1" role="dialog" aria-labelledby="deafult-bootstrap-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="deafult-bootstrap-modal-label"></h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- default bootstrap modal end -->

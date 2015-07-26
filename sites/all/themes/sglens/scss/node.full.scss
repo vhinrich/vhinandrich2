@@ -1,0 +1,81 @@
+@import 'css3-mixins.scss';
+
+.theme-sglens{
+  .view-mode-full{
+    .field-name-commerce-price{
+      font-size: 1.8em;
+      // text-align: right;
+      .field-item{
+        // margin-top: 30px;
+      }
+    }
+    .field-name-field-savings-price{
+      font-size: 1.5em;
+    }
+
+    .field-name-field-media{
+      border-bottom: 1px solid #F2F2F2;
+    }
+
+    .field-name-field-shop-price{
+      @include opacity(0.6);
+
+      .field-item{
+        font-size: 1.5em;
+        text-decoration: line-through;
+      }
+
+    }
+    .field-name-body{
+      margin-top: 30px;
+
+      .field-item{
+        margin-top: 20px;
+        margin-bottom: 50px;
+      }
+    }
+    .field-name-content-social-buttons{
+      // text-align: right;
+      .field-items{
+        .field-item{
+          display: inline-block;
+          font-size: 1.3em;
+        }
+      }
+    }
+  }
+
+  // panel support
+  &:not(.node-type-contact-form-display){
+    div.panel-pane div.node{
+      &.view-mode-full{
+        &.node-contact-form-display{
+          &>.row{
+            padding-top: 60px;
+            padding-bottom: 60px;
+            background: #333;
+            color: #F7F7F7;
+            h1, h2, h3, h4, h5, h6{
+              color: #FFF;
+            }
+          }
+          .field-name-field-entityform{
+            .entity-entityform-type{
+              &>h2{
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // &.page-node{
+  //   .field-name-commerce-price{
+  //     font-size: 30px;
+  //     .field-item{
+  //       margin-bottom: 30px;
+  //     }
+  //   }
+  // }
+}

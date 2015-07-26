@@ -1,0 +1,25 @@
+@import 'css3-mixins.scss';
+
+.theme-sglens{
+  .commerce-add-to-cart{
+    .group-prescription-row-left-col,
+    .group-prescription-row-right-col,
+    .group-other-col-left,
+    .group-other-col-right{
+      label.control-label{
+        display: none;
+      }
+    }
+    .form-item-prescription-select-method{
+      .btn-group{
+        width: 100%;
+        .btn{
+          width: 50%;
+        }
+      }
+    }
+    .btn{
+      width: 100%;
+    }
+  }
+}
