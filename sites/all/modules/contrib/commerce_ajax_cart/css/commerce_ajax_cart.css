@@ -1,0 +1,23 @@
+#commerce-ajax-cart-preview {
+  position: absolute;
+
+  box-sizing: content-box;
+  padding: 1em;
+
+  background-color: #fff;
+  box-shadow: 3px 3px #ccc;
+  z-index: 99;
+}
+
+#commerce-ajax-cart-preview.loading {
+  min-width: 100px;
+  min-height: 100px;
+
+  background-image: url(../images/ajax-loader.gif);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.view-id-shopping_cart {
+  cursor: pointer;
+}

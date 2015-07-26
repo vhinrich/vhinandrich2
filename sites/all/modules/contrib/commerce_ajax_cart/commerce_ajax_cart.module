@@ -1,0 +1,337 @@
+<?php
+
+/**
+ * @file
+ * Primarily Drupal hooks and global API functions to
+ * manipulate commerce_ajax_cart.
+ */
+
+define('COMMERCE_AJAX_CART_CACHE_PREFIX', 'commerce_ajax_cart_');
+define('COMMERCE_AJAX_CART_DEFAULT_VIEW', 'commerce_cart_block.default');
+
+/**
+ * Implements hook_views_api().
+ */
+function commerce_ajax_cart_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'commerce_ajax_cart') . '/includes/views',
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function commerce_ajax_cart_menu() {
+  $items['cart/ajax'] = array(
+    'page callback' => 'commerce_ajax_cart_show_contents',
+    'access callback' => 'commerce_ajax_validate_post_request',
+    'type' => MENU_CALLBACK,
+  );
+  $items['cart/ajax/update'] = array(
+    'page callback' => 'commerce_ajax_cart_update_block',
+    'access callback' => 'commerce_ajax_validate_post_request',
+    'type' => MENU_CALLBACK,
+  );
+  $items['cart/ajax/block'] = array(
+    'page callback' => 'commerce_ajax_cart_show_contents_block',
+    'access callback' => 'commerce_ajax_validate_post_request',
+    'type' => MENU_CALLBACK,
+  );
+  $items['admin/commerce/config/advanced-settings/ajax-cart'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('commerce_ajax_cart_settings_form'),
+    'file' => 'commerce_ajax_cart.admin.inc',
+    'title' => 'Commerce ajax cart settings',
+    'access arguments' => array('configure store'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+/**
+ * Provides default values for JQuery UI position values.
+ *
+ * @return array
+ *   JQuery UI default values.
+ */
+function commerce_ajax_cart_get_defaults() {
+  return array(
+    'my' => 'left top',
+    'at' => 'left bottom',
+    'collision' => '',
+  );
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function commerce_ajax_cart_preprocess_block(&$variables) {
+  if ('commerce_cart' == $variables['block']->module && $variables['block_id'] == 1) {
+    $variables['content'] = l('<span>' . t('Show cart') . '</span>', 'cart', array(
+      'html' => TRUE,
+      'attributes' => array(
+        'class' => array('commerce-ajax-cart-loader'),
+      ),
+    ));
+  }
+}
+
+/**
+ * Menu callback to print the contents block.
+ */
+function commerce_ajax_cart_show_contents_block() {
+  $content = commerce_cart_block_view('cart');
+  print $content['content'];
+}
+
+/**
+ * Menu access callback.
+ */
+function commerce_ajax_validate_post_request() {
+  if (strtolower($_SERVER['REQUEST_METHOD']) !== 'post') {
+    drupal_goto('cart');
+  }
+  return TRUE;
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function commerce_ajax_cart_preprocess_html() {
+  $defaults = variable_get('commerce_ajax_cart_position', commerce_ajax_cart_get_defaults());
+  drupal_add_library('system', 'ui.position');
+  drupal_add_library('system', 'drupal.ajax');
+  drupal_add_js(drupal_get_path('module', 'commerce_ajax_cart') . '/js/commerce_ajax_cart.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 9,
+  ));
+  $commerce_ajax_cart_view = commerce_ajax_cart_get_view_name();
+  drupal_add_js(array(
+    'commerce_ajax_cart' => array(
+      'position' => $defaults,
+      'update_url' => url('cart/ajax/update'),
+      'form_id' => $commerce_ajax_cart_view['view'],
+      'update_url_block' => url('cart/ajax/block'),
+      'ajax_url' => url('cart/ajax'),
+      'text' => variable_get('commerce_ajax_cart_text', t('There is no product in your cart')),
+    ),
+  ), 'setting');
+  $behaves = commerce_ajax_cart_script_examples();
+  $behaviours_default = variable_get('commerce_ajax_cart_behaves', array());
+  foreach ($behaviours_default as $key => $status) {
+    if ($status == 1) {
+      $cmd = "jQuery(window).bind('commerce_ajax_cart_update',function(e,formId) {";
+      $cmd .= $behaves[$key]['content'];
+      $cmd .= "});";
+      drupal_add_js($cmd, array(
+        'type' => 'inline',
+        'scope' => 'footer',
+        'weight' => 10,
+      ));
+      $cmd = '';
+    }
+  }
+}
+
+/**
+ * Page callback for show cart contents.
+ */
+function commerce_ajax_cart_show_contents() {
+  global $user, $language;
+  $cart_id = commerce_cart_order_id($user->uid);
+  $cid = COMMERCE_AJAX_CART_CACHE_PREFIX . $cart_id . $language->language;
+  if ($cart_id && FALSE !== ($cache = cache_get($cid, 'cache'))) {
+    print $cache->data;
+  }
+  else {
+    $commerce_ajax_cart_view = commerce_ajax_cart_get_view_name();
+    $view = views_get_view($commerce_ajax_cart_view['view']);
+    $view->set_arguments(array($cart_id));
+    $output = $view->preview($commerce_ajax_cart_view['display']);
+    if (!$view->result || count($view->result) == 0) {
+      $output = '<div class="empty-cart">' . variable_get('commerce_ajax_cart_text', t('There is no product in your cart')) . '</div>';
+    }
+    cache_set($cid, $output, 'cache', CACHE_TEMPORARY);
+    print $output;
+  }
+}
+
+/**
+ * Page callback for update cart block.
+ */
+function commerce_ajax_cart_update_block() {
+  global $user;
+  $cart_id = commerce_cart_order_id($user->uid);
+  $commerce_ajax_cart_view = commerce_ajax_cart_get_view_name();
+  print views_embed_view($commerce_ajax_cart_view['view'], $commerce_ajax_cart_view['display'], $cart_id);
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ *
+ * Create new view mode for product display, commerce product.
+ */
+function commerce_ajax_cart_entity_info_alter(&$entity_info) {
+  $view_mode = array(
+    'commerce_product_in_cart' => array(
+      'label' => t('Cart view mode'),
+      'custom settings' => TRUE,
+    ),
+  );
+  $entity_info['commerce_line_item']['view modes'] += $view_mode;
+  $entity_info['commerce_product']['view modes'] += $view_mode;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function commerce_ajax_cart_form_commerce_cart_add_to_cart_form_alter(&$form, $form_state, $form_id) {
+  $form['submit']['#ajax'] = array(
+    'callback' => 'commerce_ajax_cart_callback',
+  );
+}
+
+/**
+ * The drupal commerce add to cart ajax callback.
+ */
+function commerce_ajax_cart_callback($form, &$form_state) {
+  global $user;
+
+  $form = drupal_rebuild_form($form['#form_id'], $form_state, $form);
+
+  $commands[] = array('command' => 'commerce_ajax_cart_update');
+  $commands[] = ajax_command_prepend('#block-system-main', theme('status_messages'));
+  $commands[] = ajax_command_replace('.' . drupal_html_class($form['#form_id']), drupal_render($form));
+  $commands[] = array(
+    'command' => 'commerceAjaxCartFireTrigger',
+    'data' => $form['#form_id'],
+  );
+
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands,
+  );
+}
+
+/**
+ * Implements hook_boost_is_cacheable().
+ */
+function commerce_ajax_cart_boost_is_cacheable($parts, $request_type = 'normal') {
+  global $user;
+  $url_parts = explode('/', $parts['normal_path']);
+  if (isset($url_parts[0]) && isset($url_parts[1]) && $url_parts[0] == 'cart') {
+    if ($url_parts[1] == 'ajax') {
+      $parts['is_cacheable'] = FALSE;
+      $parts['is_cacheable_reason'] = 'Do not cache cart update urls.';
+    }
+  }
+  else {
+    $parts['is_cacheable'] = TRUE;
+  }
+  return $parts;
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function commerce_ajax_cart_entity_update($entity, $type) {
+  if ($type != 'commerce_order' || $entity->status != 'cart') {
+    return;
+  }
+  global $language;
+  $cid = COMMERCE_AJAX_CART_CACHE_PREFIX . $entity->order_id . $language->language;
+  cache_clear_all($cid, 'cache');
+  commerce_ajax_cart_generate_cache($entity->order_id);
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function commerce_ajax_cart_entity_delete($entity, $type) {
+  if ($type != 'commerce_order') {
+    return;
+  }
+  global $language;
+  $cid = COMMERCE_AJAX_CART_CACHE_PREFIX . $entity->order_id . $language->language;
+  cache_clear_all($cid, 'cache');
+}
+
+/**
+ * Helper to store the cart view in temporary cache.
+ *
+ * @param int $cart_id The cart identifier.
+ */
+function commerce_ajax_cart_generate_cache($cart_id) {
+  global $language;
+  $cid = COMMERCE_AJAX_CART_CACHE_PREFIX . $cart_id . $language->language;
+  $commerce_ajax_cart_view = commerce_ajax_cart_get_view_name();
+  $view = views_get_view($commerce_ajax_cart_view['view']);
+  if (!$view) {
+    $output = t('Please configure view settings for ajax cart @link', array('@link' => l(t('Settings'), 'admin/commerce/config/advanced-settings/ajax-cart')));
+    cache_set($cid, $output, 'cache', CACHE_TEMPORARY);
+    return;
+  }
+  $view->set_arguments(array($cart_id));
+  $output = $view->preview($commerce_ajax_cart_view['display']);
+  if (!$view->result || count($view->result) == 0) {
+    $output = '<div class="empty-cart">' . variable_get('commerce_ajax_cart_text', t('There is no product in your cart')) . '</div>';
+  }
+  cache_set($cid, $output, 'cache', CACHE_TEMPORARY);
+}
+
+/**
+ * Get view name and display.
+ *
+ * @return array View name and display.
+ */
+function commerce_ajax_cart_get_view_name() {
+  $view_parts = explode('.', variable_get('commerce_ajax_cart_view', COMMERCE_AJAX_CART_DEFAULT_VIEW));
+  return array(
+    'view' => $view_parts[0],
+    'display' => $view_parts[1],
+  );
+}
+
+/**
+ * Provides example JS snippets.
+ */
+function commerce_ajax_cart_script_examples() {
+  return array(
+    'show_cart' => array(
+      'title' => t('Open cart'),
+      'content' => "var cart = jQuery('.view-shopping-cart');
+cart.trigger('mouseenter');",
+    ),
+    'fly_to_cart' => array(
+      'title' => t('Fly to cart'),
+      'content' => "var cart = jQuery('.view-shopping-cart');
+var imgtodrag = jQuery('.commerce-product-field').find('img').eq(0);
+if (imgtodrag) {
+  var imgclone = imgtodrag.clone().offset({
+    top: imgtodrag.offset().top,
+    left: imgtodrag.offset().left
+  }).css({
+    'opacity': '0.5',
+    'position': 'absolute',
+    'height': '150px',
+    'width': '150px',
+    'z-index': '100'
+  }).appendTo(jQuery('body')).animate({
+    'top': cart.offset().top + 10,
+    'left': cart.offset().left + 10,
+    'width': 75,
+    'height': 75
+  }, 1000);
+  imgclone.animate({
+    'width': 0,
+    'height': 0
+  },
+  function () {
+    jQuery(this).detach();
+  });
+}",
+    ),
+  );
+}

@@ -419,7 +419,12 @@ function ajax_form_entity_field_extra_fields() {
  * Implements hook_entity_view_alter().
  */
 function ajax_form_entity_entity_view_alter(&$build, $type) {
-  $bundle = $build['#bundle'];
+  if (isset($build['#bundle'])) {
+    $bundle = $build['#bundle'];
+  } else {
+    $bundle = '';
+  }
+
   // If activated, process with the entity.
   $settings = variable_get('ajax_form_entity_' . $type . '_' . $bundle, array());
 
