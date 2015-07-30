@@ -327,15 +327,6 @@ function mqcristobal_features_user_default_permissions() {
     'module' => 'image',
   );
 
-  // Exported permission: 'administer media'.
-  $permissions['administer media'] = array(
-    'name' => 'administer media',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'media',
-  );
-
   // Exported permission: 'administer menu'.
   $permissions['administer menu'] = array(
     'name' => 'administer menu',
@@ -922,15 +913,6 @@ function mqcristobal_features_user_default_permissions() {
     'module' => 'panels_node',
   );
 
-  // Exported permission: 'edit media'.
-  $permissions['edit media'] = array(
-    'name' => 'edit media',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'media',
-  );
-
   // Exported permission: 'edit meta tags'.
   $permissions['edit meta tags'] = array(
     'name' => 'edit meta tags',
@@ -1081,16 +1063,6 @@ function mqcristobal_features_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'services',
-  );
-
-  // Exported permission: 'import media'.
-  $permissions['import media'] = array(
-    'name' => 'import media',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'blogger' => 'blogger',
-    ),
-    'module' => 'media',
   );
 
   // Exported permission: 'manage PACE settings'.
@@ -1365,18 +1337,6 @@ function mqcristobal_features_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'entityform',
-  );
-
-  // Exported permission: 'view media'.
-  $permissions['view media'] = array(
-    'name' => 'view media',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-      'blogger' => 'blogger',
-    ),
-    'module' => 'media',
   );
 
   // Exported permission: 'view own entityform'.

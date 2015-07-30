@@ -67,12 +67,12 @@ function mqcristobal_features_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
   );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Blogs');
   t('Home');
   t('Portfolio');
-
 
   return $menu_links;
 }
