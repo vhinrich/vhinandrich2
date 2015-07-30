@@ -361,6 +361,7 @@ function lens_commerce_features_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'user-menu_my-account:user',
   );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('About us');
@@ -376,7 +377,6 @@ function lens_commerce_features_menu_default_menu_links() {
   t('Register');
   t('Request new password');
   t('View');
-
 
   return $menu_links;
 }

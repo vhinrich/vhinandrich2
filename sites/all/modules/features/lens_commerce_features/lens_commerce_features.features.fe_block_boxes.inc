@@ -18,7 +18,7 @@ function lens_commerce_features_default_fe_block_boxes() {
 <div class="image-container-row row">
 <div class="image-container-col">
 <div style="max-height:550px;overflow:hidden">
-<img src="/sites/default/files/zoom-37456962-3.jpg" class="img-responsive center-block" style="width:100%" />
+<img src="/sites/commerce.vhinandrich.com/files/zoom-37456962-3.jpg" class="img-responsive center-block" style="width:100%" />
 </div>
 </div>
 </div>
@@ -92,7 +92,7 @@ Copyright © [current-date:custom:Y] [site:name]. All rights reserved.
 <div class="image-container-row row">
 <div class="image-container-col">
 <div style="max-height:550px">
-<img src="/sites/default/files/zoom-37034904-3.jpg" class="img-responsive center-block" style="width:100%" />
+<img src="/sites/commerce.vhinandrich.com/files/zoom-37034904-3.jpg" class="img-responsive center-block" style="width:100%" />
 </div>
 </div>
 </div>

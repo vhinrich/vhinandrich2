@@ -276,7 +276,6 @@ function lens_commerce_features_strongarm() {
   $strongarm->value = array(
     'invoice_header' => 'My company<br/>Street 123, State<br/>United States',
     'invoice_location' => 'Location',
-    'invoice_date_format' => 'Y-m-d',
     'invoice_text' => '',
     'invoice_footer' => 'My company, Street 123, State, United States',
   );
@@ -1007,35 +1006,35 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'metatag_enable_node__article';
-  $strongarm->value = 1;
+  $strongarm->value = TRUE;
   $export['metatag_enable_node__article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'metatag_enable_node__contact_form_display';
-  $strongarm->value = 1;
+  $strongarm->value = TRUE;
   $export['metatag_enable_node__contact_form_display'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'metatag_enable_node__lens_type';
-  $strongarm->value = 1;
+  $strongarm->value = TRUE;
   $export['metatag_enable_node__lens_type'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'metatag_enable_node__page';
-  $strongarm->value = 1;
+  $strongarm->value = TRUE;
   $export['metatag_enable_node__page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'metatag_enable_node__panel';
-  $strongarm->value = 1;
+  $strongarm->value = TRUE;
   $export['metatag_enable_node__panel'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1049,14 +1048,14 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'metatag_enable_taxonomy_term__tags';
-  $strongarm->value = 1;
+  $strongarm->value = TRUE;
   $export['metatag_enable_taxonomy_term__tags'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'metatag_enable_user';
-  $strongarm->value = 1;
+  $strongarm->value = TRUE;
   $export['metatag_enable_user'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1694,7 +1693,7 @@ Your account on [site:name] has been canceled.
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_picture_default';
-  $strongarm->value = '/sites/default/files/anonymous.png';
+  $strongarm->value = '/sites/commerce.vhinandrich.com/files/anonymous.png';
   $export['user_picture_default'] = $strongarm;
 
   $strongarm = new stdClass();

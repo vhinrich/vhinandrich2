@@ -23,7 +23,7 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'commerce_coupon',
@@ -40,7 +40,7 @@ function lens_commerce_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 4,
     ),
   );
 
@@ -57,7 +57,6 @@ function lens_commerce_features_field_default_field_instances() {
         ),
       ),
     ),
-    'default_value_function' => 'field_default_token_default_value_function',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -68,7 +67,7 @@ function lens_commerce_features_field_default_field_instances() {
           'calculation' => FALSE,
         ),
         'type' => 'commerce_price_formatted_amount',
-        'weight' => 5,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'commerce_coupon',
@@ -110,7 +109,7 @@ function lens_commerce_features_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 4,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'commerce_coupon',
@@ -128,7 +127,7 @@ function lens_commerce_features_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 3,
+      'weight' => 5,
     ),
   );
 
@@ -145,7 +144,7 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'commerce_coupon',
@@ -162,7 +161,7 @@ function lens_commerce_features_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 6,
     ),
   );
 
@@ -188,7 +187,7 @@ function lens_commerce_features_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 4,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'commerce_coupon',
@@ -206,7 +205,7 @@ function lens_commerce_features_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 4,
+      'weight' => 7,
     ),
   );
 
@@ -228,7 +227,7 @@ function lens_commerce_features_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_decimal',
-        'weight' => 5,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'commerce_coupon',
@@ -246,7 +245,7 @@ function lens_commerce_features_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 5,
+      'weight' => 8,
     ),
   );
 

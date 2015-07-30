@@ -184,9 +184,9 @@ function lens_commerce_features_default_fe_block_settings() {
 
   $export['block-top_header_logo_2'] = array(
     'cache' => -1,
-    'css' => NULL,
+    'css' => '',
     'custom' => 0,
-    'js' => NULL,
+    'js' => '',
     'machine_name' => 'top_header_logo_2',
     'module' => 'block',
     'node_types' => array(),
