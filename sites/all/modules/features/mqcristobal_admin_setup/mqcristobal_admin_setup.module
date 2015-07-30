@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the MQCristobal Admin Setup feature.
+ */
+
+include_once 'mqcristobal_admin_setup.features.inc';
