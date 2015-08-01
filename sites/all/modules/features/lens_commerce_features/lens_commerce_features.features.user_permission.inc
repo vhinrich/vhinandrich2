@@ -486,16 +486,6 @@ function lens_commerce_features_user_default_permissions() {
     'module' => 'mailsystem',
   );
 
-  // Exported permission: 'administer media'.
-  $permissions['administer media'] = array(
-    'name' => 'administer media',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'store manager' => 'store manager',
-    ),
-    'module' => 'media',
-  );
-
   // Exported permission: 'administer menu'.
   $permissions['administer menu'] = array(
     'name' => 'administer menu',
@@ -1396,16 +1386,6 @@ function lens_commerce_features_user_default_permissions() {
     'module' => 'cpn',
   );
 
-  // Exported permission: 'edit media'.
-  $permissions['edit media'] = array(
-    'name' => 'edit media',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'store manager' => 'store manager',
-    ),
-    'module' => 'media',
-  );
-
   // Exported permission: 'edit meta tags'.
   $permissions['edit meta tags'] = array(
     'name' => 'edit meta tags',
@@ -1613,16 +1593,6 @@ function lens_commerce_features_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'features',
-  );
-
-  // Exported permission: 'import media'.
-  $permissions['import media'] = array(
-    'name' => 'import media',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'store manager' => 'store manager',
-    ),
-    'module' => 'media',
   );
 
   // Exported permission: 'list custom tokens'.
@@ -1956,18 +1926,6 @@ function lens_commerce_features_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'entityform',
-  );
-
-  // Exported permission: 'view media'.
-  $permissions['view media'] = array(
-    'name' => 'view media',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-      'store manager' => 'store manager',
-    ),
-    'module' => 'media',
   );
 
   // Exported permission: 'view own commerce_coupon entities'.

@@ -48,9 +48,9 @@ function lens_commerce_features_default_fe_block_settings() {
 
   $export['block-about_us_top_header_logo'] = array(
     'cache' => -1,
-    'css' => '',
+    'css' => NULL,
     'custom' => 0,
-    'js' => '',
+    'js' => NULL,
     'machine_name' => 'about_us_top_header_logo',
     'module' => 'block',
     'node_types' => array(),
@@ -184,9 +184,9 @@ function lens_commerce_features_default_fe_block_settings() {
 
   $export['block-top_header_logo_2'] = array(
     'cache' => -1,
-    'css' => '',
+    'css' => NULL,
     'custom' => 0,
-    'js' => '',
+    'js' => NULL,
     'machine_name' => 'top_header_logo_2',
     'module' => 'block',
     'node_types' => array(),

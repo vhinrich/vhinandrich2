@@ -35,11 +35,6 @@ function lens_commerce_features_filter_default_formats() {
         'status' => 1,
         'settings' => array(),
       ),
-      'media_filter' => array(
-        'weight' => 2,
-        'status' => 1,
-        'settings' => array(),
-      ),
       'filter_htmlcorrector' => array(
         'weight' => 10,
         'status' => 1,
@@ -119,11 +114,6 @@ function lens_commerce_features_filter_default_formats() {
     'filters' => array(
       'filter_tokens' => array(
         'weight' => 0,
-        'status' => 1,
-        'settings' => array(),
-      ),
-      'media_filter' => array(
-        'weight' => 2,
         'status' => 1,
         'settings' => array(),
       ),

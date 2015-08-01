@@ -57,6 +57,7 @@ function lens_commerce_features_field_default_field_instances() {
         ),
       ),
     ),
+    'default_value_function' => 'field_default_token_default_value_function',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -2468,7 +2469,7 @@ function lens_commerce_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
-          'file_view_mode' => 'media_large',
+          'file_view_mode' => 'full',
         ),
         'type' => 'file_rendered',
         'weight' => 1,
@@ -2498,6 +2499,7 @@ function lens_commerce_features_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
+        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
