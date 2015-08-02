@@ -15,3 +15,6 @@ projects[advagg][subdir] = contrib
 
 projects[ckeditor][patch][] = "https://www.drupal.org/files/issues/Issue_2454933_0.patch"
 projects[ckeditor][subdir] = contrib
+
+projects[commerce_auto_product_display][patch][] = "https://www.drupal.org/files/issues/field_groups_fix-1992890-2_0.patch"
+projects[commerce_auto_product_display][subdir] = contrib
