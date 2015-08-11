@@ -1,7 +1,7 @@
 @import 'css3-mixins.scss';
 
 .theme-sglens{
-  .view-mode-full{
+  .view-mode-full:not(.node-slide){
     .field-name-commerce-price{
       font-size: 1.8em;
       // text-align: right;
@@ -40,6 +40,42 @@
         .field-item{
           display: inline-block;
           font-size: 1.3em;
+        }
+      }
+    }
+  }
+
+  .node-slide{
+    .banner-slide-image-container{
+      max-height: 600px;
+      overflow: hidden;
+      position: relative;
+      .banner-slide-image-inner{
+        position: relative;
+        z-index: 0;
+        img{
+          width: 100%;
+        }
+      }
+      .banner-slide-image-text-inner{
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 3em 5em;
+        @include box-rgba(0, 0, 0, 0.6);
+        color: #FFF;
+        .banner-slide-image-text-wrapper{
+          display: table;
+          height: 100%;
+          > .banner-slide-image-text-wrapper-inner{
+            display: table-cell;
+            vertical-align: middle;
+            height: 100%;
+            width: 100%;
+          }
         }
       }
     }
