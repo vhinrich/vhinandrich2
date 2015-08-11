@@ -1,0 +1,28 @@
+(function($){
+  Drupal.behaviors.bannerSlides = {
+    attach: function(context, settings){
+      this.initParallax(context, settings);
+    },
+    initParallax: function(context, settings){
+      $(document).ready(function(){
+        $(window).scroll(function(){
+          var scrollY = $(this).scrollTop();
+
+          var bannerInner = $('.banner-slide-image-inner');
+          $(bannerInner).each(function(){
+            if(scrollY >= $(this).offset().top && scrollY <= ($(this).offset().top + $(this).height())){
+              var percentage = (scrollY / ($(this).offset().top + $(this).height())) * 100;
+              $('img', this).css({
+                'margin-top': (percentage * 1.5) * -1 + 'px'
+              });
+
+            }else{
+              $('img', this).removeAttr('style');
+            }
+          });
+        });
+      });
+    }
+  };
+})(jQuery);
+

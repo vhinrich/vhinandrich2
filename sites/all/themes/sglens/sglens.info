@@ -67,6 +67,7 @@ stylesheets[all][] = scss/form.add-to-cart.scss
 ; settings[bootstrap_cdn] = ''
 scripts[] = 'js/mqcristobalv2.helpers.js'
 scripts[] = 'js/sglens.js'
+scripts[] = 'js/banner-slides.js'
 
 
 ; ;-------------------------
