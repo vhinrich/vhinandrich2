@@ -310,6 +310,34 @@ function lens_commerce_features_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_categorize|node|lens_type|form';
+  $field_group->group_name = 'group_categorize';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'lens_type';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_other_info';
+  $field_group->data = array(
+    'label' => 'Categorize',
+    'weight' => '48',
+    'children' => array(
+      0 => 'field_category',
+      1 => 'field_gender',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-categorize field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_categorize|node|lens_type|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_col1|node|contact_form_display|default';
   $field_group->group_name = 'group_col1';
   $field_group->entity_type = 'node';
@@ -572,6 +600,32 @@ function lens_commerce_features_field_group_info() {
     ),
   );
   $export['group_other_col_left|field_collection_item|field_prescription|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_other_info|node|lens_type|form';
+  $field_group->group_name = 'group_other_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'lens_type';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Other Info',
+    'weight' => '11',
+    'children' => array(
+      0 => 'group_categorize',
+      1 => 'group_pricing_extra',
+    ),
+    'format_type' => 'tabs',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'classes' => 'group-other-info field-group-tabs',
+      ),
+    ),
+  );
+  $export['group_other_info|node|lens_type|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1063,6 +1117,34 @@ function lens_commerce_features_field_group_info() {
     ),
   );
   $export['group_prescription_thead|field_collection_item|field_prescription|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_pricing_extra|node|lens_type|form';
+  $field_group->group_name = 'group_pricing_extra';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'lens_type';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_other_info';
+  $field_group->data = array(
+    'label' => 'Pricing extra',
+    'weight' => '49',
+    'children' => array(
+      0 => 'field_shop_price',
+      1 => 'field_savings_price',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-pricing-extra field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_pricing_extra|node|lens_type|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

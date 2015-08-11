@@ -212,6 +212,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->name = 'commerce_apd_product_display';
   $strongarm->value = array(
     'product' => 'lens_type',
+    'watch' => 'lens_type',
   );
   $export['commerce_apd_product_display'] = $strongarm;
 
@@ -586,6 +587,13 @@ function lens_commerce_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_css_enabled_lens_type';
+  $strongarm->value = 0;
+  $export['cpn_css_enabled_lens_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'cpn_css_enabled_page';
   $strongarm->value = 1;
   $export['cpn_css_enabled_page'] = $strongarm;
@@ -593,9 +601,44 @@ function lens_commerce_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_css_enabled_slide';
+  $strongarm->value = 1;
+  $export['cpn_css_enabled_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_css_enabled_watch';
+  $strongarm->value = 0;
+  $export['cpn_css_enabled_watch'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_css_lens_type';
+  $strongarm->value = '';
+  $export['cpn_css_lens_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'cpn_css_page';
   $strongarm->value = '';
   $export['cpn_css_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_css_slide';
+  $strongarm->value = '';
+  $export['cpn_css_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_css_watch';
+  $strongarm->value = '';
+  $export['cpn_css_watch'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -635,6 +678,13 @@ function lens_commerce_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_js_enabled_lens_type';
+  $strongarm->value = 0;
+  $export['cpn_js_enabled_lens_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'cpn_js_enabled_page';
   $strongarm->value = 1;
   $export['cpn_js_enabled_page'] = $strongarm;
@@ -642,9 +692,44 @@ function lens_commerce_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_js_enabled_slide';
+  $strongarm->value = 1;
+  $export['cpn_js_enabled_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_js_enabled_watch';
+  $strongarm->value = 0;
+  $export['cpn_js_enabled_watch'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_js_lens_type';
+  $strongarm->value = '';
+  $export['cpn_js_lens_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'cpn_js_page';
   $strongarm->value = '';
   $export['cpn_js_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_js_slide';
+  $strongarm->value = '';
+  $export['cpn_js_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_js_watch';
+  $strongarm->value = '';
+  $export['cpn_js_watch'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -663,12 +748,42 @@ function lens_commerce_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_view_modes_node_lens_type';
+  $strongarm->value = array(
+    0 => 'full',
+    1 => 'teaser',
+  );
+  $export['cpn_view_modes_node_lens_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'cpn_view_modes_node_page';
   $strongarm->value = array(
     0 => 'full',
     1 => 'teaser',
   );
   $export['cpn_view_modes_node_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_view_modes_node_slide';
+  $strongarm->value = array(
+    0 => 'full',
+    1 => 'teaser',
+  );
+  $export['cpn_view_modes_node_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'cpn_view_modes_node_watch';
+  $strongarm->value = array(
+    0 => 'full',
+    1 => 'teaser',
+  );
+  $export['cpn_view_modes_node_watch'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -847,19 +962,19 @@ function lens_commerce_features_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '5',
         ),
         'title' => array(
-          'weight' => '-5',
+          'weight' => '0',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '1',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '2',
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '3',
         ),
       ),
       'display' => array(
@@ -927,6 +1042,63 @@ function lens_commerce_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__slide';
+  $strongarm->value = array(
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'card_teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'card_teaser_small' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
+    'extra_fields' => array(
+      'form' => array(
+        'cpn' => array(
+          'weight' => '5',
+        ),
+        'metatags' => array(
+          'weight' => '40',
+        ),
+        'title' => array(
+          'weight' => '-5',
+        ),
+        'path' => array(
+          'weight' => '30',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'hidden_captcha_label';
   $strongarm->value = 'drupal hidden captcha';
   $export['hidden_captcha_label'] = $strongarm;
@@ -970,6 +1142,15 @@ function lens_commerce_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_slide';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_article';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_article'] = $strongarm;
@@ -994,6 +1175,13 @@ function lens_commerce_features_strongarm() {
   $strongarm->name = 'menu_parent_page';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_slide';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_slide'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1216,6 +1404,15 @@ function lens_commerce_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_slide';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_article';
   $strongarm->value = '0';
   $export['node_preview_article'] = $strongarm;
@@ -1244,6 +1441,13 @@ function lens_commerce_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_slide';
+  $strongarm->value = '0';
+  $export['node_preview_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_article';
   $strongarm->value = 1;
   $export['node_submitted_article'] = $strongarm;
@@ -1268,6 +1472,13 @@ function lens_commerce_features_strongarm() {
   $strongarm->name = 'node_submitted_page';
   $strongarm->value = 0;
   $export['node_submitted_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_slide';
+  $strongarm->value = 0;
+  $export['node_submitted_slide'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

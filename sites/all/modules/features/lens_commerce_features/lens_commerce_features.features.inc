@@ -20,6 +20,9 @@ function lens_commerce_features_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "file_entity" && $api == "file_default_displays") {
     return array("version" => "1");
   }
+  if ($module == "file_entity" && $api == "file_type") {
+    return array("version" => "1");
+  }
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
@@ -116,6 +119,22 @@ function lens_commerce_features_image_default_styles() {
     ),
   );
 
+  // Exported image style: square_thumbnail.
+  $styles['square_thumbnail'] = array(
+    'label' => 'square_thumbnail',
+    'effects' => array(
+      3 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 180,
+          'height' => 180,
+          'weight' => 0,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
   return $styles;
 }
 
@@ -141,7 +160,7 @@ function lens_commerce_features_node_info() {
       'help' => '',
     ),
     'lens_type' => array(
-      'name' => t('Lens type'),
+      'name' => t('Product Display'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
@@ -152,6 +171,14 @@ function lens_commerce_features_node_info() {
       'name' => t('Basic page'),
       'base' => 'node_content',
       'description' => t('Use <em>basic pages</em> for your static content, such as an \'About us\' page.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'slide' => array(
+      'name' => t('Slide'),
+      'base' => 'node_content',
+      'description' => '',
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

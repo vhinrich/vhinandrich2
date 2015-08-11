@@ -613,6 +613,33 @@ function lens_commerce_features_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|slide|default';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'slide';
+  $ds_layout->view_mode = 'default';
+  $ds_layout->layout = 'bootstrap_12';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'central' => array(
+        0 => 'body',
+      ),
+    ),
+    'fields' => array(
+      'body' => 'central',
+    ),
+    'classes' => array(),
+    'wrappers' => array(),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => TRUE,
+    'layout_link_attribute' => FALSE,
+    'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
+  );
+  $export['node|slide|default'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'user|user|default';
   $ds_layout->entity_type = 'user';
   $ds_layout->bundle = 'user';
