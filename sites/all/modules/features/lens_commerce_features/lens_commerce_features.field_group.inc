@@ -71,6 +71,153 @@ function lens_commerce_features_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_bsic|node|slide|default';
+  $field_group->group_name = 'group_bsic';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'slide';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Banner Slide Image Container',
+    'weight' => '0',
+    'children' => array(
+      0 => 'group_bsii',
+      1 => 'group_bsiti',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Banner Slide Image Container',
+      'instance_settings' => array(
+        'classes' => 'banner-slide-image-container',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_bsic|node|slide|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_bsii|node|slide|default';
+  $field_group->group_name = 'group_bsii';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'slide';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_bsic';
+  $field_group->data = array(
+    'label' => 'Banner Slide Image Inner',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_media',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Banner Slide Image Inner',
+      'instance_settings' => array(
+        'classes' => 'banner-slide-image-inner',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_bsii|node|slide|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_bsiti|node|slide|default';
+  $field_group->group_name = 'group_bsiti';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'slide';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_bsic';
+  $field_group->data = array(
+    'label' => 'Banner Slide Image Text Inner',
+    'weight' => '8',
+    'children' => array(
+      0 => 'group_bsitw',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Banner Slide Image Text Inner',
+      'instance_settings' => array(
+        'classes' => 'banner-slide-image-text-inner',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_bsiti|node|slide|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_bsitwi|node|slide|default';
+  $field_group->group_name = 'group_bsitwi';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'slide';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_bsitw';
+  $field_group->data = array(
+    'label' => 'Banner Slide Image Text Wrapper Inner',
+    'weight' => '22',
+    'children' => array(
+      0 => 'body',
+      1 => 'title',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Banner Slide Image Text Wrapper Inner',
+      'instance_settings' => array(
+        'classes' => 'banner-slide-image-text-wrapper-inner',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_bsitwi|node|slide|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_bsitw|node|slide|default';
+  $field_group->group_name = 'group_bsitw';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'slide';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_bsiti';
+  $field_group->data = array(
+    'label' => 'Banner Slide Image Text Wrapper',
+    'weight' => '19',
+    'children' => array(
+      0 => 'group_bsitwi',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Banner Slide Image Text Wrapper',
+      'instance_settings' => array(
+        'classes' => 'banner-slide-image-text-wrapper container',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_bsitw|node|slide|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_c_t_read_more_inner|node|lens_type|card_teaser';
   $field_group->group_name = 'group_c_t_read_more_inner';
   $field_group->entity_type = 'node';

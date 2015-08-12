@@ -117,6 +117,21 @@ function lens_commerce_features_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|slide|default';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'slide';
+  $ds_fieldsetting->view_mode = 'default';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '20',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|slide|default'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'user|user|default';
   $ds_fieldsetting->entity_type = 'user';
   $ds_fieldsetting->bundle = 'user';
@@ -621,20 +636,39 @@ function lens_commerce_features_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'central' => array(
-        0 => 'body',
+        0 => 'group_bsic',
+        1 => 'group_bsii',
+        2 => 'group_bsiti',
+        3 => 'field_media',
+        4 => 'group_bsitw',
+        5 => 'title',
+        6 => 'body',
+        7 => 'group_bsitwi',
       ),
     ),
     'fields' => array(
+      'group_bsic' => 'central',
+      'group_bsii' => 'central',
+      'group_bsiti' => 'central',
+      'field_media' => 'central',
+      'group_bsitw' => 'central',
+      'title' => 'central',
       'body' => 'central',
+      'group_bsitwi' => 'central',
     ),
-    'classes' => array(),
-    'wrappers' => array(),
+    'classes' => array(
+      'layout_class' => array(
+        '' => '',
+      ),
+    ),
+    'wrappers' => array(
+      'central' => 'div',
+    ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
-    'layout_attributes_merge' => TRUE,
-    'layout_link_attribute' => FALSE,
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
     'layout_link_custom' => '',
-    'layout_disable_css' => FALSE,
   );
   $export['node|slide|default'] = $ds_layout;
 

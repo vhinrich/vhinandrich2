@@ -91,7 +91,7 @@ function lens_commerce_features_menu_default_menu_links() {
       'menu_token_options' => array(
         'clear' => 0,
       ),
-      'alter' => FALSE,
+      'alter' => TRUE,
       'identifier' => 'menu-user-account-menu_edit:menutoken/55365aff5f8b7',
     ),
     'module' => 'menu',
@@ -114,7 +114,7 @@ function lens_commerce_features_menu_default_menu_links() {
       'menu_token_options' => array(
         'clear' => 0,
       ),
-      'alter' => FALSE,
+      'alter' => TRUE,
       'attributes' => array(),
       'item_attributes' => array(
         'id' => '',
@@ -149,7 +149,7 @@ function lens_commerce_features_menu_default_menu_links() {
       'menu_token_options' => array(
         'clear' => 0,
       ),
-      'alter' => FALSE,
+      'alter' => TRUE,
       'identifier' => 'menu-user-account-menu_my-orders:menutoken/55365ae8acb6e',
     ),
     'module' => 'menu',
