@@ -656,6 +656,9 @@ function lens_commerce_features_ds_layout_settings_info() {
       'body' => 'central',
       'group_bsitwi' => 'central',
     ),
+    'limit' => array(
+      'field_media' => '1',
+    ),
     'classes' => array(
       'layout_class' => array(
         '' => '',

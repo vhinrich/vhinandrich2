@@ -224,6 +224,15 @@ function lens_commerce_features_user_default_permissions() {
     'module' => 'panels',
   );
 
+  // Exported permission: 'administer ais'.
+  $permissions['administer ais'] = array(
+    'name' => 'administer ais',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'ais',
+  );
+
   // Exported permission: 'administer ajax for entity'.
   $permissions['administer ajax for entity'] = array(
     'name' => 'administer ajax for entity',
