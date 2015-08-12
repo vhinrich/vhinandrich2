@@ -6,7 +6,10 @@
     },
     initCarousel: function(context, settings){
       $('.view-id-banner_slides .carousel').on('slide.bs.carousel', function(){
-        $('img', this).removeAttr('style');
+        $('img', this).css({
+          'top': 0,
+          'position': 'relative'
+        });
       });
     },
     initParallax: function(context, settings){
