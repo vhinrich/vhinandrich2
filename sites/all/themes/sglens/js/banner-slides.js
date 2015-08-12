@@ -2,6 +2,10 @@
   Drupal.behaviors.bannerSlides = {
     attach: function(context, settings){
       this.initParallax(context, settings);
+      this.initCarousel(context, settings);
+    },
+    initCarousel: function(context, settings){
+      // $('.view-id-banner_slides .carousel').on('slide.bs.carousel')
     },
     initParallax: function(context, settings){
       $(document).ready(function(){

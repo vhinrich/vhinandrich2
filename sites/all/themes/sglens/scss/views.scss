@@ -1,4 +1,45 @@
 @import 'css3-mixins.scss';
+@import 'animate.scss';
+
+@include keyframes(slideInLeft) {
+    from {
+    opacity: 0;
+    @include transform(translateX(-2000px));
+  }
+    to {
+    @include transform(translateX(0));
+  }
+}
+
+@include keyframes(slideInRight) {
+    from {
+    opacity: 0;
+    @include transform(translateX(2000px));
+  }
+    to {
+    @include transform(translateX(0));
+  }
+}
+
+@include keyframes(slideOutLeft) {
+    from {
+    @include transform(translateX(0));
+  }
+    to {
+    opacity: 0;
+    @include transform(translateX(-2000px));
+  }
+}
+
+@include keyframes(slideOutRight) {
+    from {
+    @include transform(translateX(0));
+  }
+    to {
+    opacity: 0;
+    @include transform(translateX(2000px));
+  }
+}
 
 .theme-sglens{
   .view{
@@ -30,5 +71,47 @@
             }
         }
     }
+
+    &.view-id-banner_slides{
+        .carousel{
+            .carousel-inner{
+                .active{
+                    .banner-slide-image-text-inner{
+                        .banner-slide-image-text-title{
+                            @include slideInLeft();
+                        }
+                        .banner-slide-image-text-subtitle{
+                            @include slideInRight();
+                        }
+                    }
+                    &.right{
+                        .banner-slide-image-text-title{
+                            @include slideOutLeft();
+                        }
+                        .banner-slide-image-text-subtitle{
+                            @include slideOutRight();
+                        }
+                    }
+                    &.left{
+                        .banner-slide-image-text-title{
+                            @include slideOutRight();
+                        }
+                        .banner-slide-image-text-subtitle{
+                            @include slideOutLeft();
+                        }
+                    }
+                }
+                .banner-slide-image-text-inner{
+                    .banner-slide-image-text-title{
+                        @include slideOutRight();
+                    }
+                    .banner-slide-image-text-subtitle{
+                        @include slideOutLeft();
+                    }
+                }
+            }
+        }
+    }
+
   }
 }
