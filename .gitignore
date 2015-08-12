@@ -10,6 +10,7 @@ sites/*/private
 *.DS_Store*
 php.ini.*
 php.ini
+.htaccess
 .htaccess.*
 
 # Ignore default text files
