@@ -5,7 +5,9 @@
       this.initCarousel(context, settings);
     },
     initCarousel: function(context, settings){
-      // $('.view-id-banner_slides .carousel').on('slide.bs.carousel')
+      $('.view-id-banner_slides .carousel').on('slide.bs.carousel', function(){
+        $('img', this).removeAttr('style');
+      });
     },
     initParallax: function(context, settings){
       $(document).ready(function(){
@@ -17,7 +19,8 @@
             if(scrollY >= $(this).offset().top && scrollY <= ($(this).offset().top + $(this).height())){
               var percentage = (scrollY / ($(this).offset().top + $(this).height())) * 100;
               $('img', this).css({
-                'margin-top': (percentage * 1.5) * -1 + 'px'
+                'top': (percentage * 1.5) * 1 + 'px',
+                'position': 'relative'
               });
 
             }else{

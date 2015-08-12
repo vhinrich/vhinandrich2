@@ -77,37 +77,45 @@
             .carousel-inner{
                 .active{
                     .banner-slide-image-text-inner{
-                        .banner-slide-image-text-title{
+                        .field-name-title{
                             @include slideInLeft();
                         }
-                        .banner-slide-image-text-subtitle{
+                        .field-name-body{
                             @include slideInRight();
                         }
                     }
                     &.right{
-                        .banner-slide-image-text-title{
+                        .field-name-title{
                             @include slideOutLeft();
                         }
-                        .banner-slide-image-text-subtitle{
+                        .field-name-body{
                             @include slideOutRight();
                         }
                     }
                     &.left{
-                        .banner-slide-image-text-title{
+                        .field-name-title{
                             @include slideOutRight();
                         }
-                        .banner-slide-image-text-subtitle{
+                        .field-name-body{
                             @include slideOutLeft();
                         }
                     }
                 }
                 .banner-slide-image-text-inner{
-                    .banner-slide-image-text-title{
+                    .field-name-title{
                         @include slideOutRight();
                     }
-                    .banner-slide-image-text-subtitle{
+                    .field-name-body{
                         @include slideOutLeft();
                     }
+                }
+            }
+
+            .carousel-control{
+                .icon-next,
+                .icon-prev{
+                    font-size: 3em;
+                    margin-top: -43px;
                 }
             }
         }
