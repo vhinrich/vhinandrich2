@@ -28,6 +28,7 @@ regions[page_bottom]    = 'Page bottom'
 ;;;;;;;;;;;;;;;;;;;;;
 
 ; stylesheets[all][] = css/style.css
+stylesheets[all][] = scss/animate.scss/animate.scss
 stylesheets[all][] = scss/css3-mixins.scss
 stylesheets[all][] = scss/style.scss
 stylesheets[all][] = scss/node.card-teaser.scss
