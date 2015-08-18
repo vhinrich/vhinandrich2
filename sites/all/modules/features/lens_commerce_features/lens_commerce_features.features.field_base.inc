@@ -26,8 +26,10 @@ function lens_commerce_features_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
+    'translatable' => 1,
     'type' => 'text_with_summary',
   );
 
@@ -48,6 +50,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 1,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 255,
     ),
     'translatable' => 0,
@@ -72,7 +75,9 @@ function lens_commerce_features_field_default_field_bases() {
     'label' => 'Fixed Amount',
     'locked' => 0,
     'module' => 'commerce_price',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'commerce_price',
   );
@@ -89,7 +94,9 @@ function lens_commerce_features_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'number_integer',
   );
@@ -112,6 +119,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(),
       'target_type' => 'commerce_coupon',
@@ -135,6 +143,7 @@ function lens_commerce_features_field_default_field_bases() {
     'module' => 'number',
     'settings' => array(
       'decimal_separator' => '.',
+      'entity_translation_sync' => FALSE,
       'precision' => 10,
       'scale' => 2,
     ),
@@ -160,6 +169,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(),
       'target_type' => 'commerce_coupon',
@@ -180,7 +190,9 @@ function lens_commerce_features_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'addressfield',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'addressfield',
   );
@@ -202,6 +214,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'commerce_customer',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'options_list_limit' => 50,
       'profile_type' => 'billing',
     ),
@@ -226,6 +239,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'commerce_customer',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'options_list_limit' => 50,
       'profile_type' => 'shipping',
     ),
@@ -250,6 +264,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 1,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 255,
     ),
     'translatable' => 0,
@@ -272,7 +287,9 @@ function lens_commerce_features_field_default_field_bases() {
     ),
     'locked' => 1,
     'module' => 'commerce_line_item',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'commerce_line_item_reference',
   );
@@ -294,7 +311,9 @@ function lens_commerce_features_field_default_field_bases() {
     ),
     'locked' => 1,
     'module' => 'commerce_price',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'commerce_price',
   );
@@ -316,7 +335,9 @@ function lens_commerce_features_field_default_field_bases() {
     ),
     'locked' => 1,
     'module' => 'commerce_price',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'commerce_price',
   );
@@ -338,6 +359,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 1,
     'module' => 'commerce_product_reference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'options_list_limit' => NULL,
     ),
     'translatable' => 0,
@@ -363,6 +385,7 @@ function lens_commerce_features_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(),
       'allowed_values_function' => 'commerce_shipping_service_options_list',
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -385,7 +408,9 @@ function lens_commerce_features_field_default_field_bases() {
     ),
     'locked' => 1,
     'module' => 'commerce_price',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'commerce_price',
   );
@@ -407,7 +432,9 @@ function lens_commerce_features_field_default_field_bases() {
     ),
     'locked' => 1,
     'module' => 'commerce_price',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'commerce_price',
   );
@@ -429,6 +456,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 1,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'entityqueue',
       'handler_settings' => array(
         'behaviors' => array(
@@ -464,6 +492,7 @@ function lens_commerce_features_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
@@ -480,6 +509,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'date',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'granularity' => array(
         'day' => 'day',
         'hour' => 'hour',
@@ -507,6 +537,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'date',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'granularity' => array(
         'day' => 'day',
         'hour' => 'hour',
@@ -543,6 +574,7 @@ function lens_commerce_features_field_default_field_bases() {
         'Feedback' => 'Feedback',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -623,6 +655,7 @@ function lens_commerce_features_field_default_field_bases() {
         '78.00mm' => '78.00mm',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -638,7 +671,9 @@ function lens_commerce_features_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'email',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'email',
   );
@@ -658,6 +693,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
@@ -694,6 +730,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 255,
     ),
     'translatable' => 0,
@@ -715,6 +752,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'text',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max_length' => 255,
     ),
     'translatable' => 0,
@@ -742,6 +780,7 @@ function lens_commerce_features_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',
@@ -763,6 +802,9 @@ function lens_commerce_features_field_default_field_bases() {
     'module' => 'image',
     'settings' => array(
       'default_image' => FALSE,
+      'entity_translation_sync' => array(
+        0 => 'fid',
+      ),
       'uri_scheme' => 'public',
     ),
     'translatable' => 0,
@@ -968,6 +1010,7 @@ function lens_commerce_features_field_default_field_bases() {
         180 => 180,
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -1008,6 +1051,7 @@ function lens_commerce_features_field_default_field_bases() {
         '+2.00' => '+2.00',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -1096,6 +1140,7 @@ function lens_commerce_features_field_default_field_bases() {
         '+6.00' => '+6.00',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -1118,9 +1163,12 @@ function lens_commerce_features_field_default_field_bases() {
     'settings' => array(
       'display_default' => 0,
       'display_field' => 0,
+      'entity_translation_sync' => array(
+        0 => 'fid',
+      ),
       'uri_scheme' => 'public',
     ),
-    'translatable' => 0,
+    'translatable' => 1,
     'type' => 'file',
   );
 
@@ -1138,7 +1186,9 @@ function lens_commerce_features_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'text_long',
   );
@@ -1154,6 +1204,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'markup',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'markup' => array(
         'format' => 'super_full_html',
         'value' => '<td class="col-xs-3">&nbsp;</td><td class="col-xs-3">&nbsp;</td>',
@@ -1174,6 +1225,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'markup',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'markup' => array(
         'format' => 'super_full_html',
         'value' => '<th class="text-right col-xs-3">PD</th>',
@@ -1198,6 +1250,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'hide_blank_items' => 1,
       'path' => '',
     ),
@@ -1222,6 +1275,9 @@ function lens_commerce_features_field_default_field_bases() {
     'settings' => array(
       'display_default' => 0,
       'display_field' => 0,
+      'entity_translation_sync' => array(
+        0 => 'fid',
+      ),
       'uri_scheme' => 'public',
     ),
     'translatable' => 0,
@@ -1239,6 +1295,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'markup',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'markup' => array(
         'format' => 'super_full_html',
         'value' => '<th class="text-right col-xs-3">L</th>',
@@ -1259,6 +1316,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'markup',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'markup' => array(
         'format' => 'super_full_html',
         'value' => '<th class="text-right col-xs-3">R</th>',
@@ -1279,6 +1337,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'markup',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'markup' => array(
         'format' => 'super_full_html',
         'value' => '<th class="text-center col-xs-3">&nbsp;</th>
@@ -1306,6 +1365,7 @@ function lens_commerce_features_field_default_field_bases() {
     'locked' => 0,
     'module' => 'commerce_product_reference',
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'options_list_limit' => '',
     ),
     'translatable' => 0,
@@ -1511,6 +1571,7 @@ function lens_commerce_features_field_default_field_bases() {
         180 => 180,
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -1551,6 +1612,7 @@ function lens_commerce_features_field_default_field_bases() {
         '+2.00' => '+2.00',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -1639,6 +1701,7 @@ function lens_commerce_features_field_default_field_bases() {
         '+6.00' => '+6.00',
       ),
       'allowed_values_function' => '',
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'list_text',
@@ -1659,7 +1722,9 @@ function lens_commerce_features_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'commerce_price',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'commerce_price',
   );
@@ -1679,7 +1744,9 @@ function lens_commerce_features_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'commerce_price',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'commerce_price',
   );
@@ -1694,7 +1761,9 @@ function lens_commerce_features_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'socialicon_field',
-    'settings' => array(),
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'social_icons',
   );
@@ -1720,6 +1789,7 @@ function lens_commerce_features_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
+      'entity_translation_sync' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',

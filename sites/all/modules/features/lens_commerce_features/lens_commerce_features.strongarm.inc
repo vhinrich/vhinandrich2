@@ -437,6 +437,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_enabled_currencies';
   $strongarm->value = array(
+    'PHP' => 'PHP',
     'SGD' => 'SGD',
     'USD' => 'USD',
     'AED' => 0,
@@ -541,7 +542,6 @@ function lens_commerce_features_strongarm() {
     'PAB' => 0,
     'PEN' => 0,
     'PGK' => 0,
-    'PHP' => 0,
     'PKR' => 0,
     'PLN' => 0,
     'PYG' => 0,
@@ -1130,6 +1130,13 @@ function lens_commerce_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'language_content_type_slide';
+  $strongarm->value = '4';
+  $export['language_content_type_slide'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_article';
   $strongarm->value = array(
     0 => 'main-menu',
@@ -1610,7 +1617,7 @@ function lens_commerce_features_strongarm() {
     'favicon_path' => '',
     'favicon_upload' => '',
     'global__active_tab' => 'edit-theme-settings',
-    'bootstrap__active_tab' => 'edit-components',
+    'bootstrap__active_tab' => 'edit-advanced',
     'bootstrap_button_size' => '',
     'bootstrap_button_colorize' => 1,
     'bootstrap_button_iconize' => 1,

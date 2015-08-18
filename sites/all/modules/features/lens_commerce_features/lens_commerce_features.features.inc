@@ -111,8 +111,8 @@ function lens_commerce_features_image_default_styles() {
       2 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 400,
-          'height' => 225,
+          'width' => 480,
+          'height' => 640,
         ),
         'weight' => 2,
       ),

@@ -62,8 +62,8 @@ function lens_commerce_features_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'lens_type';
   $ds_fieldsetting->view_mode = 'card_teaser';
   $ds_fieldsetting->settings = array(
-    'add_to_cart_modal_form_link' => array(
-      'weight' => '9',
+    'product_image_with_node_link' => array(
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -74,16 +74,6 @@ function lens_commerce_features_ds_field_settings_info() {
       'formatter_settings' => array(
         'link' => '1',
         'wrapper' => 'h3',
-        'class' => '',
-      ),
-    ),
-    'node_link' => array(
-      'weight' => '8',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'link text' => 'Read more',
-        'wrapper' => '',
         'class' => '',
       ),
     ),
@@ -243,6 +233,24 @@ function lens_commerce_features_ds_custom_fields_info() {
     'use_token' => 1,
   );
   $export['order_number'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'product_image_with_node_link';
+  $ds_field->label = 'Product Image with node link';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<a href="[node:url]"><img src="[node:field_media:card_teaser]" class="img-responsive center-block" /></a>',
+      'format' => 'super_full_html',
+    ),
+    'use_token' => 1,
+  );
+  $export['product_image_with_node_link'] = $ds_field;
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
@@ -466,34 +474,19 @@ function lens_commerce_features_ds_layout_settings_info() {
       'central' => array(
         0 => 'group_card_teaser_wrapper',
         1 => 'group_well',
-        2 => 'field_media',
-        3 => 'group_c_t_read_more_inner',
+        2 => 'product_image_with_node_link',
+        3 => 'title',
         4 => 'group_cardtext',
-        5 => 'title',
-        6 => 'product:commerce_price',
-        7 => 'group_c_t_read_more_wrapper',
-        8 => 'body',
-        9 => 'node_link',
-        10 => 'add_to_cart_modal_form_link',
-        11 => 'field_product',
+        5 => 'product:commerce_price',
       ),
     ),
     'fields' => array(
       'group_card_teaser_wrapper' => 'central',
       'group_well' => 'central',
-      'field_media' => 'central',
-      'group_c_t_read_more_inner' => 'central',
-      'group_cardtext' => 'central',
+      'product_image_with_node_link' => 'central',
       'title' => 'central',
+      'group_cardtext' => 'central',
       'product:commerce_price' => 'central',
-      'group_c_t_read_more_wrapper' => 'central',
-      'body' => 'central',
-      'node_link' => 'central',
-      'add_to_cart_modal_form_link' => 'central',
-      'field_product' => 'central',
-    ),
-    'limit' => array(
-      'field_media' => '1',
     ),
     'classes' => array(
       'layout_class' => array(

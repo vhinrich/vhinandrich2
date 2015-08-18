@@ -283,7 +283,7 @@ function lens_commerce_features_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'lens_type';
   $field_group->mode = 'card_teaser';
-  $field_group->parent_name = 'group_well';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Card Teaser Read More Wrapper',
     'weight' => '4',
@@ -373,11 +373,10 @@ function lens_commerce_features_field_group_info() {
   $field_group->parent_name = 'group_well';
   $field_group->data = array(
     'label' => 'CardText',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
-      0 => 'body',
-      1 => 'product:commerce_price',
-      2 => 'title',
+      0 => 'product:commerce_price',
+      1 => 'title',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -387,7 +386,7 @@ function lens_commerce_features_field_group_info() {
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
-        'attributes' => 'style="padding:15px 15px 35px;border-top:1px solid #E3E1DE"',
+        'attributes' => '',
       ),
     ),
   );
@@ -1395,9 +1394,8 @@ function lens_commerce_features_field_group_info() {
     'label' => 'Well',
     'weight' => '1',
     'children' => array(
-      0 => 'field_media',
+      0 => 'product_image_with_node_link',
       1 => 'group_cardtext',
-      2 => 'group_c_t_read_more_wrapper',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -1407,7 +1405,7 @@ function lens_commerce_features_field_group_info() {
         'element' => 'div',
         'show_label' => '0',
         'label_element' => 'div',
-        'attributes' => 'data-uniform-height-group="lens-type-card" style="min-height:550px"',
+        'attributes' => 'data-uniform-height-group="lens-type-card"',
       ),
     ),
   );

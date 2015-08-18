@@ -31,6 +31,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Coupon Code',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -76,6 +77,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Fixed Amount',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -118,6 +120,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Maximum number of Uses',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max' => '',
       'min' => 0,
       'prefix' => '',
@@ -153,6 +156,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Coupon Code',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -196,6 +200,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Maximum number of Uses',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max' => '',
       'min' => 0,
       'prefix' => '',
@@ -236,6 +241,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Percentage Amount',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'max' => 100,
       'min' => 0,
       'prefix' => '',
@@ -276,6 +282,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Address',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -352,6 +359,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Address',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -401,6 +409,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Coupon',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -474,6 +483,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Total',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -545,6 +555,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Unit price',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -584,6 +595,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Display path',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -624,6 +636,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Product',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'field_injection' => TRUE,
       'referenceable_types' => array(),
       'user_register_form' => FALSE,
@@ -689,6 +702,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Total',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -750,6 +764,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Unit price',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -791,6 +806,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Prescription',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -830,6 +846,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Shipping service',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -898,6 +915,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Total',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -968,6 +986,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Unit price',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1033,6 +1052,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Coupon',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1095,6 +1115,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Billing information',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1153,6 +1174,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Shipping information',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1221,6 +1243,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Line items',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1308,6 +1331,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Order total',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1376,6 +1400,7 @@ function lens_commerce_features_field_default_field_instances() {
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1450,6 +1475,7 @@ function lens_commerce_features_field_default_field_instances() {
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1562,6 +1588,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Price',
     'required' => TRUE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1594,6 +1621,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Type',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1631,6 +1659,7 @@ function lens_commerce_features_field_default_field_instances() {
     'placeholder' => 'Your email address *',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'use_title_as_placeholder' => 0,
@@ -1666,6 +1695,7 @@ function lens_commerce_features_field_default_field_instances() {
     'placeholder' => 'Your message *',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -1703,6 +1733,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Queue items',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1738,6 +1769,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Queue items',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1774,6 +1806,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Distance',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1807,6 +1840,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Left axis',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1840,6 +1874,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Left  cylinder',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1874,6 +1909,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Left sphere',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1906,6 +1942,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Other row empty td',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1938,6 +1975,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'PD Label',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1970,6 +2008,7 @@ function lens_commerce_features_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
+      'entity_translation_sync' => FALSE,
       'file_directory' => 'prescription-attachments/[current-date:custom:M]',
       'file_extensions' => 'pdf png jpg jpeg gif',
       'max_filesize' => '',
@@ -2007,6 +2046,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Prescription Left Label',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2039,6 +2079,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Prescription Right Label',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2071,6 +2112,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Prescription thead ths',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2104,6 +2146,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Right axis',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2137,6 +2180,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Right cylinder',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2171,6 +2215,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Right sphere',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2243,6 +2288,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Alt Text',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -2318,6 +2364,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Title Text',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -2362,6 +2409,7 @@ function lens_commerce_features_field_default_field_instances() {
     'required' => FALSE,
     'settings' => array(
       'display_summary' => TRUE,
+      'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -2410,6 +2458,7 @@ function lens_commerce_features_field_default_field_instances() {
     'settings' => array(
       'alt_field' => TRUE,
       'default_image' => 0,
+      'entity_translation_sync' => FALSE,
       'file_directory' => 'field/image',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -2456,6 +2505,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Tags',
     'required' => FALSE,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2499,6 +2549,7 @@ function lens_commerce_features_field_default_field_instances() {
     'required' => FALSE,
     'settings' => array(
       'display_summary' => TRUE,
+      'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -2542,6 +2593,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Entityform',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2566,21 +2618,8 @@ function lens_commerce_features_field_default_field_instances() {
     'display' => array(
       'card_teaser' => array(
         'label' => 'hidden',
-        'module' => 'smart_trim',
-        'settings' => array(
-          'more_link' => 0,
-          'more_text' => 'Read more',
-          'summary_handler' => 'full',
-          'trim_length' => 300,
-          'trim_link' => 0,
-          'trim_options' => array(
-            'text' => 'text',
-          ),
-          'trim_preserve_tags' => '<p><ul><li>',
-          'trim_suffix' => '...',
-          'trim_type' => 'chars',
-        ),
-        'type' => 'smart_trim_format',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 5,
       ),
       'card_teaser_small' => array(
@@ -2612,6 +2651,7 @@ function lens_commerce_features_field_default_field_instances() {
     'required' => FALSE,
     'settings' => array(
       'display_summary' => TRUE,
+      'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -2660,6 +2700,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Category',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2708,6 +2749,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Gender',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2727,11 +2769,8 @@ function lens_commerce_features_field_default_field_instances() {
     'display' => array(
       'card_teaser' => array(
         'label' => 'hidden',
-        'module' => 'file_entity',
-        'settings' => array(
-          'file_view_mode' => 'card_teaser',
-        ),
-        'type' => 'file_rendered',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'card_teaser_small' => array(
@@ -2759,6 +2798,7 @@ function lens_commerce_features_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
+      'entity_translation_sync' => FALSE,
       'file_directory' => '[current-date:custom:m]/lens-type',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -2794,15 +2834,8 @@ function lens_commerce_features_field_default_field_instances() {
     'display' => array(
       'card_teaser' => array(
         'label' => 'hidden',
-        'module' => 'commerce_cart',
-        'settings' => array(
-          'combine' => 1,
-          'default_quantity' => 1,
-          'line_item_type' => 'product',
-          'show_quantity' => 0,
-          'show_single_product_attributes' => 0,
-        ),
-        'type' => 'commerce_cart_add_to_cart_form',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 10,
       ),
       'card_teaser_small' => array(
@@ -2830,6 +2863,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Product',
     'required' => 1,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'field_injection' => 1,
       'referenceable_types' => array(
         'product' => 0,
@@ -2880,6 +2914,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Savings Price',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2928,6 +2963,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Shop Price',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2977,6 +3013,7 @@ function lens_commerce_features_field_default_field_instances() {
     'label' => 'Social Icons',
     'required' => 0,
     'settings' => array(
+      'entity_translation_sync' => FALSE,
       'others' => array(),
       'social_icons_email' => 1,
       'social_icons_facebook' => 1,
@@ -3025,6 +3062,7 @@ function lens_commerce_features_field_default_field_instances() {
     'required' => FALSE,
     'settings' => array(
       'display_summary' => TRUE,
+      'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -3069,6 +3107,7 @@ function lens_commerce_features_field_default_field_instances() {
     'required' => FALSE,
     'settings' => array(
       'display_summary' => TRUE,
+      'entity_translation_sync' => FALSE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -3112,6 +3151,7 @@ function lens_commerce_features_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
+      'entity_translation_sync' => FALSE,
       'file_directory' => 'slide/[current-date:custom:M-Y]',
       'file_extensions' => 'jpg png svg jpeg gif',
       'max_filesize' => '',
