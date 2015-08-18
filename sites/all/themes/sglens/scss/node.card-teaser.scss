@@ -21,9 +21,25 @@
         overflow: hidden;
         position: relative;
 
+        .group-cardtext{
+          margin-top: 1.5em;
+        }
+
+        .field-name-title{
+          float: left;
+          width: 50%;
+          margin-right: 2%;
+          text-align: left
+        }
         .field-name-commerce-price{
-          font-size: 1.5em;
-          // text-align: right;
+          text-align: right;
+        }
+
+        .field-name-commerce-price,
+        .field-name-title h3{
+          font-size: 1em;
+          line-height: 1em;
+          font-weight: normal;
           .field-item{
             margin-bottom: 4px;
           }
