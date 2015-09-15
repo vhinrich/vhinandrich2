@@ -1,5 +1,5 @@
 name = Vhin and Rich 5
-description = A bootstrap sub-theme
+description = Uses http://bootstrapcdn.com for all styles and JavaScript. No source files or compiling is necessary and is recommended for simple sites or beginners.
 core = 7.x
 base theme = bootstrap
 
@@ -24,25 +24,4 @@ regions[page_bottom]    = 'Page bottom'
 ;; Stylesheets
 ;;;;;;;;;;;;;;;;;;;;;
 
-stylesheets[all][] = css/style.css
-
-
-;;;;;;;;;;;;;;;;;;;;;
-;; Scripts
-;;;;;;;;;;;;;;;;;;;;;
-
-scripts[] = 'bootstrap/js/affix.js'
-scripts[] = 'bootstrap/js/alert.js'
-scripts[] = 'bootstrap/js/button.js'
-scripts[] = 'bootstrap/js/carousel.js'
-scripts[] = 'bootstrap/js/collapse.js'
-scripts[] = 'bootstrap/js/dropdown.js'
-scripts[] = 'bootstrap/js/modal.js'
-scripts[] = 'bootstrap/js/tooltip.js'
-scripts[] = 'bootstrap/js/popover.js'
-scripts[] = 'bootstrap/js/scrollspy.js'
-scripts[] = 'bootstrap/js/tab.js'
-scripts[] = 'bootstrap/js/transition.js'
-
-; Disable BootstrapCDN so the compiled LESS source files can be used.
-settings[bootstrap_cdn] = ''
+; stylesheets[all][] = css/style.css
