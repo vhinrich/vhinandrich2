@@ -30,6 +30,7 @@ function sglens_preprocess_page(&$variables){
 
 function sglens_preprocess_html(&$variables){
   $variables['classes_array'][] = 'theme-sglens';
+  $variables['classes_array'][] = 'navbar-is-' . theme_get_setting('bootstrap_navbar_position');
 
   // font awesome
   $attributes = array(
