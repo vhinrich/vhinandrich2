@@ -1,6 +1,9 @@
 @import 'css3-mixins.scss';
 
 .theme-sglens{
+  &.navbar-is-fixed-top{
+    padding-top: 51px !important;
+  }
 
   // font-family: "Open Sans", sans-serif;
   font-size: 15px;
