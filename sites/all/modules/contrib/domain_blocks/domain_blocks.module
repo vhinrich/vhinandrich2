@@ -266,11 +266,9 @@ function domain_blocks_block_list_alter(&$blocks) {
   $block_domains = array();
   // If the realm for a block is domain_site then that block is to be displayed 
   // on all domains regardless of the value of domain_id.
-  $result = db_query("SELECT domain_id, realm, module, delta FROM {domain_blocks} WHERE
-  (domain_id = :domain_id AND realm = 'domain_id') OR (realm = 'domain_site')",
-  array(':domain_id' => $_domain['domain_id']));
+  $result = domain_blocks_get_domain_blocks($_domain['domain_id']);
   foreach ($result as $record) {
-    $block_domains[$record->module][$record->delta] = TRUE;
+    $block_domains[$record['module']][$record['delta']] = TRUE;
   }
   foreach ($blocks as $key => $block) {
     // Any module using this alter should inspect the data before changing it,
@@ -288,21 +286,6 @@ function domain_blocks_block_list_alter(&$blocks) {
 }
 
 /**
- * Look up domain blocks based on block module and delta
- *
- * @param string $module
- * @param string $delta
- * @return array
- */
-function _domain_blocks_domain_lookup($module = NULL, $delta = NULL) {
-  $result = array();
-  if (!is_null($module) && !is_null($delta)) {
-    $result = db_fetch_array(db_query("SELECT domain_id from {domain_blocks} WHERE module = :module AND delta = :delta", array(':module' => $module, ':delta' => $delta)));
-  }
-  return $result;
-}
-
-/**
  * Returns block visibility.
  * NULL if not available, array() if using domain_site grant, keyed array if
  * using domain_id grant(s).
@@ -311,9 +294,9 @@ function _domain_blocks_domain_lookup($module = NULL, $delta = NULL) {
  */
 function _domain_blocks_load($module, $delta) {
   $block = NULL;
-  $result = db_query("SELECT domain_id, realm FROM {domain_blocks} WHERE module = :module AND delta = :delta", array(':module' => $module, ':delta' => $delta));
+  $result = domain_blocks_get_block_domains($module, $delta);
   foreach ($result as $record) {
-    $block[$record->realm][] = $record->domain_id;
+    $block[$record['realm']][] = $record['domain_id'];
   }
   if (isset($block['domain_site'])) {
     return array();
@@ -334,4 +317,46 @@ function domain_blocks_domain_delete($domain, $form_values = array()) {
     ->condition('domain_id', $domain['domain_id'])
     ->condition('realm', 'domain_id')
   ->execute();
+}
+
+/**
+ * Returns domains the block is visible on.
+ * @param string $module
+ * @param string $delta
+ * @return An indexed array of arrays, or an empty array.
+ */
+function domain_blocks_get_block_domains($module = NULL, $delta = NULL) {
+  if (!empty($module) && !empty($delta)) {
+    return db_select('domain_blocks')
+    ->fields('domain_blocks', array('domain_id', 'realm'))
+    ->condition('module', $module, '=')
+    ->condition('delta', $delta, '=')
+    ->execute()->fetchAll(PDO::FETCH_ASSOC);
+  }
+  return array();
+}
+
+/**
+ * Returns blocks assigned to a domain.
+ *
+ * @param $domain_id
+ *   The id of the domain to look up. If null, the current domain is used.
+ *
+ * @return
+ *   An indexed array of arrays, or an empty array.
+ */
+function domain_blocks_get_domain_blocks($domain_id=NULL) {
+  if (empty($domain_id)) {
+    $_domain = domain_get_domain();
+    $domain_id = $_domain['domain_id'];
+  }
+
+  $db_or = db_or();
+  $db_or->condition('domain_id', $domain_id, '=');
+  $db_or->condition('realm', 'domain_site', '=');
+
+  return db_select('domain_blocks')
+    ->fields('domain_blocks', array('domain_id', 'realm', 'module', 'delta'))
+    ->condition($db_or)
+    ->execute()->fetchAll(PDO::FETCH_ASSOC);
 }
