@@ -39,9 +39,9 @@
 
 .page-node{
   &.node-type-article{
-    .panel-flexible{
-      max-width: 1120px;
-      float: none;
+    .panel-flexible,
+    #block-system-main{
+      max-width: 1024px;
       margin: 0 auto;
     }
   }

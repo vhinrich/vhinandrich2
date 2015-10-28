@@ -282,9 +282,11 @@ function vhinandrich4_html_head_alter(&$head_elements) {
 function vhinandrich4_preprocess_views_view_field(&$vars){
   $view = $vars['view'];
   $field= $vars['field'];
-  $function = __FUNCTION__ . '_' . $view->name . '_' . $field->field_info['field_name'];
-  if(function_exists($function)){
-    $function($vars);
+  if (isset($field->field_info)) {
+    $function = __FUNCTION__ . '_' . $view->name . '_' . $field->field_info['field_name'];
+    if(function_exists($function)){
+      $function($vars);
+    }
   }
 }
 
