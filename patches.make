@@ -12,6 +12,3 @@ projects[ckeditor][subdir] = contrib
 
 projects[commerce_auto_product_display][patch][] = "https://www.drupal.org/files/issues/field_groups_fix-1992890-2_0.patch"
 projects[commerce_auto_product_display][subdir] = contrib
-
-projects[expire_alias][patch][] = "https://www.drupal.org/files/issues/expire_alias-expire-2-compatibility-2424181.patch"
-projects[expire_alias][subdir] = contrib
