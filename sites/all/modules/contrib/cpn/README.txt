@@ -14,6 +14,9 @@ The primary features include:
 * CSS and JS may be added to any block, with an optional wrapper to make the
   code simpler.
 
+* A "noscript" code block may be added for nodes and blocks to display HTML if
+  the visitor has disabled JS.
+
 * Control over which node view modes cause the CSS and JS to be loaded.
 
 * Control over whether the CSS and JS output is aggregated with other files.
@@ -31,15 +34,18 @@ The primary features include:
 * Optionally control the weight of the CSS and JS, allowing for exact
   positioning of each.
 
+* Integrate with the AdvAgg and Varnish modules to clear their respective caches
+  when the CSS or JS are updated.
+
 
 Installation
 ------------------------------------------------------------------------------
 The module should be installed and enabled in the usual way.
 
-It is suggested to also install the CodeMirror library (v3.20 or a newer v3
-release) to provide syntax highlighting, etc. To install CodeMirror:
+It is suggested to also install the CodeMirror library (v3.20 or newer) to
+provide syntax highlighting, etc. To install CodeMirror:
 
- 1. Download the latest v3 package from http://codemirror.net/.
+ 1. Download the latest package from http://codemirror.net/.
  2. Extract the archive.
  3. Ensure that the directory is named "codemirror" (case sensitive).
  4. Move the directory to sites/all/libraries so that there is a file located
@@ -68,9 +74,9 @@ Configuration
     - The "Edit JS per block" permission to the roles that are allowed to add
       custom JavaScript for individual blocks.
 
- 2. The main admininistrative page controls the site-wide settings, including
-    the location of the custom files, whether aggregation is enabled, customize
-    the code wrappers, and global CSS & JS:
+ 2. The main administrative page controls the site-wide settings, including the
+    location of the custom files, whether aggregation is enabled, customize the
+    code wrappers, and global CSS & JS:
       admin/config/content/cpn
 
  3. Each content type can have the CSS & JS enabled on their respective edit
@@ -104,6 +110,16 @@ Troubleshooting / Tips
   a replacement for properly built code added to the site's theme.
 
 
+Related Modules
+------------------------------------------------------------------------------
+Other modules provide related or similar functionality to CPN:
+
+* Panels CSS & JS
+  https://www.drupal.org/project/panels_css_js
+  Add CSS and JS to displays managed by Panels, Mini Panels, Panels Everywhere
+  and Panelizer.
+
+
 Credits / Contact
 ------------------------------------------------------------------------------
 Originally build by joelstein [1], Rob Loach [2] contributed on the D7 port.
@@ -114,7 +130,7 @@ Continued development is sponsored by Mediacurrent [4].
 
 The best way to contact the authors is to submit an issue, be it a support
 request, a feature request or a bug report, in the project issue queue:
-  http://drupal.org/project/issues/metatag
+  http://drupal.org/project/issues/cpn
 
 
 References
