@@ -98,7 +98,7 @@ function cpn_requirements($phase) {
             }
 
             // Verify the version of CodeMirror installed is new enough.
-            elseif ($version_parts[0] == 3 && $version_parts[1] >= 20) {
+            elseif (($version_parts[0] == 3 && $version_parts[1] >= 20) || $version_parts[0] >= 4) {
               $requirements[] = array(
                 'title' => 'Code per Node',
                 'value' => t('CodeMirror v!ver is installed.', array('!ver' => $package['version'])),
@@ -157,6 +157,11 @@ function cpn_schema() {
         'not null' => FALSE,
         'size' => 'big',
       ),
+      'noscript' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'size' => 'big',
+      ),
     ),
     'primary key' => array('nid'),
   );
@@ -170,8 +175,21 @@ function cpn_schema_alter(&$schema) {
   // If block table exists, alter its schema. Use this instead of module_exists
   // because the Block module might be disabled.
   if (db_table_exists('block')) {
-    $schema['block']['fields']['css'] = array('type' => 'text', 'not null' => FALSE);
-    $schema['block']['fields']['js'] = array('type' => 'text', 'not null' => FALSE);
+    $schema['block']['fields']['css'] = array(
+      'type' => 'text',
+      'not null' => FALSE,
+      'size' => 'big',
+    );
+    $schema['block']['fields']['js'] = array(
+      'type' => 'text',
+      'not null' => FALSE,
+      'size' => 'big',
+    );
+    $schema['block']['fields']['noscript'] = array(
+      'type' => 'text',
+      'not null' => FALSE,
+      'size' => 'big',
+    );
   }
 }
 
@@ -202,6 +220,7 @@ function cpn_uninstall() {
   $node_types = array_keys(node_type_get_types());
   foreach (array('css', 'js') as $type) {
     variable_del('cpn_aggregation_' . $type);
+    variable_del('cpn_external_' . $type);
     variable_del('cpn_global_' . $type);
     variable_del('cpn_global_' . $type . '_admin');
     variable_del('cpn_global_' . $type . '_agree');
@@ -374,5 +393,45 @@ function cpn_update_7104() {
     // Update the permission caches again.
     drupal_static_reset('user_access');
     drupal_static_reset('user_role_permissions');
+  }
+}
+
+/**
+ * Add the 'noscript' field to the {cpn} table.
+ */
+function cpn_update_7105() {
+  $table = 'cpn';
+  $field = 'noscript';
+  if (!db_field_exists($table, $field)) {
+    $spec = array(
+      'type' => 'text',
+      'not null' => FALSE,
+      'size' => 'big',
+    );
+    db_add_field($table, $field, $spec);
+    drupal_set_message(t('Added the "noscript" field to the {cpn} table.'));
+  }
+  else {
+    drupal_set_message(t('The "noscript" field already exists in the {cpn} table.'));
+  }
+}
+
+/**
+ * Add the 'noscript' field to the {block} table.
+ */
+function cpn_update_7106() {
+  $table = 'block';
+  $field = 'noscript';
+  if (!db_field_exists($table, $field)) {
+    $spec = array(
+      'type' => 'text',
+      'not null' => FALSE,
+      'size' => 'big',
+    );
+    db_add_field($table, $field, $spec);
+    drupal_set_message(t('Added the "noscript" field to the {block} table.'));
+  }
+  else {
+    drupal_set_message(t('The "noscript" field already exists in the {block} table.'));
   }
 }

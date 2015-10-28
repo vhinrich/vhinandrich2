@@ -1,8 +1,23 @@
+CPN 7.x-1.6, 2015-10-25
+-----------------------
+#2292521 by DamienMcKenna: Support newer versions of CodeMirror.
+#2418809 by cyborg_572, DamienMcKenna: Wrong issue queue URL in README.txt file.
+#2304521 by DamienMcKenna: Verify the library exists before loading it.
+#2410691 by DamienMcKenna: Notify Varnish when files are saved.
+#2361575 by kepford, DamienMcKenna: Optionally load the CSS/JS as 'external' to
+  work around caching issues with some hosting platforms.
+#2443219 by kepford, DamienMcKenna: Optional NOSCRIPT fields for nodes/blocks.
+#2412369 by DamienMcKenna: Don't delete records if the user does not have
+  permission to edit the node or block fields.
+By DamienMcKenna: Added a note to README.txt about the panels_css_js module.
+
+
 CPN 7.x-1.5, 2015-06-07
 -----------------------
 #2203659 by DamienMcKenna, Raines37: Removed variable interaction in
   cpn_requirements().
 #2138539 by DamienMcKenna: Support for AdvAgg.
+#2475637 by xiukun.zhou: README file had a typo.
 
 
 CPN 7.x-1.5-rc1, 2014-02-22

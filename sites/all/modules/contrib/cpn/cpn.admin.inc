@@ -27,7 +27,7 @@ function cpn_settings($form, &$form_state) {
       $form['cpn_syntax_highlighting']['#options']['codemirror'] = 'CodeMirror v' . $version;
       $old_version = FALSE;
       $version_parts = explode('.', $version);
-      if (count($version_parts) <= 2 || $version_parts[0] != 3 || $version_parts[1] < 20) {
+      if (count($version_parts) <= 2 || $version_parts[0] < 3 || ($version_parts[0] == 3 && $version_parts[1] < 20)) {
         $old_version = TRUE;
       }
     }
@@ -48,7 +48,7 @@ function cpn_settings($form, &$form_state) {
     drupal_set_message(t('Syntax highlighting requires <a href="@codemirror">CodeMirror</a>. Download it, rename the folder "codemirror", and place it at "sites/all/libraries" (or any <a href="@libraries">Libraries API</a> eligible path). Then return to this page and enable syntax highlighting.', array(
       '@codemirror' => 'http://codemirror.net/',
       '@libraries' => 'http://drupal.org/project/libraries',
-    )), 'error', FALSE);
+    )), 'warning', FALSE);
   }
 
   $form['cpn_path'] = array(
@@ -75,6 +75,23 @@ function cpn_settings($form, &$form_state) {
     '#type' => 'checkbox',
     '#title' => t('JavaScript aggregation'),
     '#default_value' => variable_get('cpn_aggregation_js', TRUE),
+  );
+  $form['cpn_external'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Load node files as external'),
+    '#description' => t('By default the node CSS and JS files will be loaded as normal local files. In some situations, e.g. when using Varnish or a heavily tuned web hosting platform like Pantheon, this can lead to changes not being loaded correctly. This option changes the loading mechanism to treat them as "external" files, which can work around caching problems.'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['cpn_external']['cpn_external_css'] = array(
+    '#title' => t('Load CSS as external file'),
+    '#type' => 'checkbox',
+    '#default_value' => variable_get('cpn_external_css', FALSE),
+  );
+  $form['cpn_external']['cpn_external_js'] = array(
+    '#title' => t('Load JavaScript as external file'),
+    '#type' => 'checkbox',
+    '#default_value' => variable_get('cpn_external_js', FALSE),
   );
 
   // Added weight to the appearance of the CSS & JS in the template.

@@ -9,13 +9,20 @@
  * Admin form to list your domains.
  */
 function expire_alias_form_expire_admin_settings_form_alter(&$form, &$form_state, $form_id) {
-  $form['expire_alias_domainlist_group'] = array(
+  $form['tabs']['aliases'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Domain Aliases'),
-    '#description' => t('Domain aliases to purge whenever content is altered.')
+    '#title' => t('Domain aliases'),
+    '#group' => 'tabs',
+    '#weight' => 10,
   );
 
-  $form['expire_alias_domainlist_group']['expire_alias_domainlist'] = array(
+  $form['tabs']['aliases']['settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Settings'),
+    '#description' => t('Domain aliases to purge whenever content is altered.'),
+  );
+
+  $form['tabs']['aliases']['settings']['expire_alias_domainlist'] = array(
     '#type' => 'textarea',
     '#title' => t('Domain list'),
     '#default_value' => variable_get('expire_alias_domainlist', ''),
@@ -24,21 +31,23 @@ function expire_alias_form_expire_admin_settings_form_alter(&$form, &$form_state
     '#description' => t('List domains (including protocol) one per line with no trailing slash.'),
   );
 
-  // Prevent the Expire protocol include base url option from being selected
-  $form['format']['expire_include_base_url']['#disabled'] = TRUE;
-  $form['format']['expire_include_base_url']['#default_value'] = FALSE;
-  $form['format']['expire_include_base_url']['#description'] = $form['format']['expire_include_base_url']['#description'] . ' <em>' . t('NOTE: This option is disabled when using Expire Aliases (below).') . '</em>';
+  // Prevent the Expire protocol include base url option from being selected.
+  $form['tabs']['status']['common']['expire_include_base_url']['#disabled'] = TRUE;
+  $form['tabs']['status']['common']['expire_include_base_url']['#default_value'] = FALSE;
+
+  if (!isset($form['tabs']['status']['common']['expire_include_base_url']['#description'])) {
+    $form['tabs']['status']['common']['expire_include_base_url']['#description'] = '';
+  }
+  $form['tabs']['status']['common']['expire_include_base_url']['#description'] .= ' <em>' . t('NOTE: This option is disabled when using Expire Aliases (below).') . '</em>';
   variable_set('expire_include_base_url', FALSE);
 }
 
-
-
 /**
- * Implement hook_expire_cache_alter().
+ * Implements hook_expire_cache_alter().
  *
  * Rebuilds list of paths to expire based on the domain aliases defined.
  */
-function expire_alias_expire_urls_alter(&$expire, $node = NULL, $paths) {
+function expire_alias_expire_urls_alter(&$urls, $object_type, $object, $absolute_urls_passed) {
   $domainlist = variable_get('expire_alias_domainlist', '');
 
   // Don't do anything to the $expire array if we have no configuration.
@@ -71,20 +80,20 @@ function expire_alias_expire_urls_alter(&$expire, $node = NULL, $paths) {
       $domains = array_merge($domains, $domain_urls);
     }
 
-    $urls = array();
-
     // We want a full URL for each expiring path, for each domain.
-    foreach (array_unique($expire) as $path) {
+    $absolute_urls = array();
+    foreach (array_unique($urls) as $path) {
       foreach ($domains as $domain) {
         // Special logic for front page.
         if ($path == '<front>') {
-          $urls[] = $domain;
-        } else {
-          $urls[] = $domain . '/' . $path;
+          $absolute_urls[] = $domain;
+        }
+        else {
+          $absolute_urls[] = $domain . '/' . $path;
         }
       }
     }
 
-    $expire = $urls;
+    $urls = $absolute_urls;
   }
 }
