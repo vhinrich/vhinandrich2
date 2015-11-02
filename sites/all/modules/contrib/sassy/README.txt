@@ -27,4 +27,4 @@ Configure preprocessing settings at
 Add .scss or .sass files to your theme's .info file.
 
 Making Drupal Sassy - an overview of Sassy, Prepro, and PHPSass (PDF)
-http://livelinknewmedia.com/documents/Making%20Drupal%20Sassy.pdf
+https://www.drupal.org/files/Making%20Drupal%20Sassy.pdf

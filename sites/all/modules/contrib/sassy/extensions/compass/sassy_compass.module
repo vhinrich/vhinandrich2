@@ -23,7 +23,7 @@ function sassy_compass_sassy_resolve_path_compass($filename, $syntax = 'scss') {
 
   // Check for compass installed as a Library, if not use ours.
   // The latest Compass build can be found at https://github.com/chriseppstein/compass
-  $path = libraries_get_path('compass') . '/frameworks/compass';
+  $path = libraries_get_path('compass') . '/core';
   if (!file_exists($path)) {
     $path = drupal_get_path('module', 'sassy_compass');
   }

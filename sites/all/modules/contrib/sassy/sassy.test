@@ -124,11 +124,12 @@ class SassyBaseUnitTest extends DrupalWebTestCase {
       return $this->fail('Comparison file not found - ' . $output);
     }
 
+    $exploded = explode('.', $input);
     try {
       $settings = $settings + array(
         'style' => 'nested',
         'cache' => FALSE,
-        'syntax' => array_pop(explode('.', $input)),
+        'syntax' => array_pop($exploded),
         'debug' => FALSE,
         'debug_info' => FALSE,
         'load_path_functions' => array('sassy_load_callback'),
@@ -188,7 +189,7 @@ class SassyBaseUnitTest extends DrupalWebTestCase {
 
 class SassyUnitTest extends SassyBaseUnitTest {
 
-  function getInfo() {
+  public static function getInfo() {
     return array(
       'name' => 'Sassy unit tests',
       'description' => 'Tests Sassy by compiling SASS-format files and comparing them against preset CSS files',
