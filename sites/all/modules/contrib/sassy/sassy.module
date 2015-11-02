@@ -117,7 +117,7 @@ function _sassy_watchdog($message, $context, $type, $level) {
 function sassy_get_functions() {
   $functions =& drupal_static(__FUNCTION__);
 
-  if (!isset($function)) {
+  if (!isset($functions)) {
     foreach (module_invoke_all('sassy_functions') as $info) {
       $info = (object) $info;
       $functions[$info->name] = $info->callback;
@@ -147,7 +147,13 @@ function sassy_get_functions() {
  */
 function sassy_load_callback($file) {
   $file = explode('/', $file, 2);
-  $namespace = preg_replace('/[^0-9a-z]+/', '_', strtolower(array_shift($file)));
+  $namespace = '';
+  
+  // Don't reduce the file array if there is only one element and no namespace
+  if (count($file) >= 2) {
+    $namespace = preg_replace('/[^0-9a-z]+/', '_', strtolower(array_shift($file)));
+  }
+  
   # check for implementing modules specific to namespace and invoke looking for a paths array.
   foreach (module_implements('sassy_resolve_path_' . $namespace) as $module) {
     $hook = $module . '_sassy_resolve_path_' . $namespace;
@@ -158,7 +164,7 @@ function sassy_load_callback($file) {
   # check for implenting modules for the generic hook, looking for a path array.
   foreach (module_implements('sassy_resolve_path') as $module) {
     $hook = $module . '_sassy_resolve_path';
-    if (function_exists($hook) && $paths = call_user_func($hook, $file)) {
+    if (function_exists($hook) && $paths = call_user_func($hook, $file, $namespace)) {
       return (array) $paths;
     }
   }

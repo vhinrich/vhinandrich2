@@ -2,7 +2,7 @@
 
 class SassyCompassUnitTest extends SassyBaseUnitTest {
 
-  function getInfo() {
+  public static function getInfo() {
     return array(
       'name' => 'Sassy Compass unit tests',
         'description' => 'Tests Sassy Compass integration',
