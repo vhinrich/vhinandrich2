@@ -36,6 +36,5 @@ function lens_commerce_features_menu_default_menu_custom() {
   t('User account menu');
   t('User menu');
 
-
   return $menus;
 }

@@ -10,7 +10,7 @@
 function lens_commerce_features_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'body'
+  // Exported field_base: 'body'.
   $field_bases['body'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -33,7 +33,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'commerce_coupon_code'
+  // Exported field_base: 'commerce_coupon_code'.
   $field_bases['commerce_coupon_code'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -57,7 +57,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'commerce_coupon_fixed_amount'
+  // Exported field_base: 'commerce_coupon_fixed_amount'.
   $field_bases['commerce_coupon_fixed_amount'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -82,7 +82,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'commerce_price',
   );
 
-  // Exported field_base: 'commerce_coupon_number_of_uses'
+  // Exported field_base: 'commerce_coupon_number_of_uses'.
   $field_bases['commerce_coupon_number_of_uses'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -101,7 +101,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'commerce_coupon_order_reference'
+  // Exported field_base: 'commerce_coupon_order_reference'.
   $field_bases['commerce_coupon_order_reference'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -128,7 +128,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'commerce_coupon_percent_amount'
+  // Exported field_base: 'commerce_coupon_percent_amount'.
   $field_bases['commerce_coupon_percent_amount'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -151,7 +151,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'number_decimal',
   );
 
-  // Exported field_base: 'commerce_coupon_reference'
+  // Exported field_base: 'commerce_coupon_reference'.
   $field_bases['commerce_coupon_reference'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -178,7 +178,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'commerce_customer_address'
+  // Exported field_base: 'commerce_customer_address'.
   $field_bases['commerce_customer_address'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -197,7 +197,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'addressfield',
   );
 
-  // Exported field_base: 'commerce_customer_billing'
+  // Exported field_base: 'commerce_customer_billing'.
   $field_bases['commerce_customer_billing'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -222,7 +222,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'commerce_customer_profile_reference',
   );
 
-  // Exported field_base: 'commerce_customer_shipping'
+  // Exported field_base: 'commerce_customer_shipping'.
   $field_bases['commerce_customer_shipping'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -247,7 +247,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'commerce_customer_profile_reference',
   );
 
-  // Exported field_base: 'commerce_display_path'
+  // Exported field_base: 'commerce_display_path'.
   $field_bases['commerce_display_path'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -271,7 +271,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'commerce_line_items'
+  // Exported field_base: 'commerce_line_items'.
   $field_bases['commerce_line_items'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -294,7 +294,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'commerce_line_item_reference',
   );
 
-  // Exported field_base: 'commerce_order_total'
+  // Exported field_base: 'commerce_order_total'.
   $field_bases['commerce_order_total'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -318,7 +318,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'commerce_price',
   );
 
-  // Exported field_base: 'commerce_price'
+  // Exported field_base: 'commerce_price'.
   $field_bases['commerce_price'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -342,7 +342,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'commerce_price',
   );
 
-  // Exported field_base: 'commerce_product'
+  // Exported field_base: 'commerce_product'.
   $field_bases['commerce_product'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -366,7 +366,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'commerce_product_reference',
   );
 
-  // Exported field_base: 'commerce_shipping_service'
+  // Exported field_base: 'commerce_shipping_service'.
   $field_bases['commerce_shipping_service'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -391,7 +391,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'commerce_total'
+  // Exported field_base: 'commerce_total'.
   $field_bases['commerce_total'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -415,7 +415,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'commerce_price',
   );
 
-  // Exported field_base: 'commerce_unit_price'
+  // Exported field_base: 'commerce_unit_price'.
   $field_bases['commerce_unit_price'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -439,7 +439,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'commerce_price',
   );
 
-  // Exported field_base: 'eq_node'
+  // Exported field_base: 'eq_node'.
   $field_bases['eq_node'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -471,7 +471,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_category'
+  // Exported field_base: 'field_category'.
   $field_bases['field_category'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -498,7 +498,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_commerce_billy_cancel_date'
+  // Exported field_base: 'field_commerce_billy_cancel_date'.
   $field_bases['field_commerce_billy_cancel_date'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -526,7 +526,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'datestamp',
   );
 
-  // Exported field_base: 'field_commerce_billy_i_date'
+  // Exported field_base: 'field_commerce_billy_i_date'.
   $field_bases['field_commerce_billy_i_date'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -554,7 +554,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'datestamp',
   );
 
-  // Exported field_base: 'field_contact_type'
+  // Exported field_base: 'field_contact_type'.
   $field_bases['field_contact_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -580,7 +580,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_distance'
+  // Exported field_base: 'field_distance'.
   $field_bases['field_distance'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -661,7 +661,50 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_email_address'
+  // Exported field_base: 'field_earned_coupons'.
+  $field_bases['field_earned_coupons'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_earned_coupons',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'entityqueue' => array(
+            'status' => 0,
+          ),
+          'field_default_token' => array(
+            'status' => TRUE,
+          ),
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(),
+      ),
+      'target_type' => 'commerce_coupon',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_email_address'.
   $field_bases['field_email_address'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -678,7 +721,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'email',
   );
 
-  // Exported field_base: 'field_entityform'
+  // Exported field_base: 'field_entityform'.
   $field_bases['field_entityform'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -715,7 +758,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_file_image_alt_text'
+  // Exported field_base: 'field_file_image_alt_text'.
   $field_bases['field_file_image_alt_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -737,7 +780,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_file_image_title_text'
+  // Exported field_base: 'field_file_image_title_text'.
   $field_bases['field_file_image_title_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -759,34 +802,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_gender'
-  $field_bases['field_gender'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_gender',
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'gender',
-          'parent' => 0,
-        ),
-      ),
-      'entity_translation_sync' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
-  );
-
-  // Exported field_base: 'field_image'
+  // Exported field_base: 'field_image'.
   $field_bases['field_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -811,7 +827,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_left_axis'
+  // Exported field_base: 'field_left_axis'.
   $field_bases['field_left_axis'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1016,7 +1032,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_left_cylinder'
+  // Exported field_base: 'field_left_cylinder'.
   $field_bases['field_left_cylinder'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1057,7 +1073,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_left_sphere'
+  // Exported field_base: 'field_left_sphere'.
   $field_bases['field_left_sphere'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1146,7 +1162,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_media'
+  // Exported field_base: 'field_media'.
   $field_bases['field_media'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -1172,7 +1188,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_message'
+  // Exported field_base: 'field_message'.
   $field_bases['field_message'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1193,7 +1209,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_other_row_empty_td'
+  // Exported field_base: 'field_other_row_empty_td'.
   $field_bases['field_other_row_empty_td'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1214,7 +1230,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'markup',
   );
 
-  // Exported field_base: 'field_pd_label'
+  // Exported field_base: 'field_pd_label'.
   $field_bases['field_pd_label'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1235,7 +1251,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'markup',
   );
 
-  // Exported field_base: 'field_prescription'
+  // Exported field_base: 'field_prescription'.
   $field_bases['field_prescription'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1258,7 +1274,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_prescription_attachment'
+  // Exported field_base: 'field_prescription_attachment'.
   $field_bases['field_prescription_attachment'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1284,7 +1300,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_prescription_left_label'
+  // Exported field_base: 'field_prescription_left_label'.
   $field_bases['field_prescription_left_label'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1305,7 +1321,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'markup',
   );
 
-  // Exported field_base: 'field_prescription_right_label'
+  // Exported field_base: 'field_prescription_right_label'.
   $field_bases['field_prescription_right_label'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1326,7 +1342,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'markup',
   );
 
-  // Exported field_base: 'field_prescription_thead_ths'
+  // Exported field_base: 'field_prescription_thead_ths'.
   $field_bases['field_prescription_thead_ths'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1350,7 +1366,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'markup',
   );
 
-  // Exported field_base: 'field_product'
+  // Exported field_base: 'field_product'.
   $field_bases['field_product'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1372,7 +1388,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'commerce_product_reference',
   );
 
-  // Exported field_base: 'field_right_axis'
+  // Exported field_base: 'field_right_axis'.
   $field_bases['field_right_axis'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1577,7 +1593,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_right_cylinder'
+  // Exported field_base: 'field_right_cylinder'.
   $field_bases['field_right_cylinder'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1618,7 +1634,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_right_sphere'
+  // Exported field_base: 'field_right_sphere'.
   $field_bases['field_right_sphere'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1707,7 +1723,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_savings_price'
+  // Exported field_base: 'field_savings_price'.
   $field_bases['field_savings_price'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1729,7 +1745,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'commerce_price',
   );
 
-  // Exported field_base: 'field_shop_price'
+  // Exported field_base: 'field_shop_price'.
   $field_bases['field_shop_price'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1751,7 +1767,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'commerce_price',
   );
 
-  // Exported field_base: 'field_social_icons'
+  // Exported field_base: 'field_social_icons'.
   $field_bases['field_social_icons'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1768,7 +1784,7 @@ function lens_commerce_features_field_default_field_bases() {
     'type' => 'social_icons',
   );
 
-  // Exported field_base: 'field_tags'
+  // Exported field_base: 'field_tags'.
   $field_bases['field_tags'] = array(
     'active' => 1,
     'cardinality' => -1,

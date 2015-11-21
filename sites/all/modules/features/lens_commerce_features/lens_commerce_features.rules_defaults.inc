@@ -123,6 +123,37 @@ function lens_commerce_features_default_rules_configuration() {
       "PROVIDES VARIABLES" : [ "continue" ]
     }
   }');
+  $items['rules_create_temporary_coupon_after_checkout'] = entity_import('rules_config', '{ "rules_create_temporary_coupon_after_checkout" : {
+      "LABEL" : "Create temporary coupon after checkout",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "commerce_payment" ],
+      "ON" : { "commerce_payment_order_paid_in_full" : [] },
+      "IF" : [
+        { "entity_has_field" : {
+            "entity" : [ "commerce-order:owner" ],
+            "field" : "field_earned_coupons"
+          }
+        }
+      ],
+      "DO" : [
+        { "entity_create" : {
+            "USING" : { "type" : "commerce_coupon" },
+            "PROVIDE" : { "entity_created" : { "coupon_created" : "Created coupon" } }
+          }
+        },
+        { "data_set" : { "data" : [ "coupon-created:is-active" ], "value" : "0" } },
+        { "data_set" : { "data" : [ "coupon-created:type" ], "value" : "commerce_coupon_fixed" } },
+        { "entity_save" : { "data" : [ "coupon-created" ], "immediate" : "1" } },
+        { "list_add" : {
+            "list" : [ "commerce-order:owner:field-earned-coupons" ],
+            "item" : [ "coupon-created" ],
+            "unique" : "1"
+          }
+        }
+      ]
+    }
+  }');
   $items['rules_send_an_order_notification_e_mail_to_client'] = entity_import('rules_config', '{ "rules_send_an_order_notification_e_mail_to_client" : {
       "LABEL" : "Send an order notification e-mail to client",
       "PLUGIN" : "reaction rule",
