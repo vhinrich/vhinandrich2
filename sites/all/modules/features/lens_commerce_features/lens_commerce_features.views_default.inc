@@ -107,12 +107,8 @@ function lens_commerce_features_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['row_class'] = 'col-xs-6 col-sm-4 col-md-3';
+  $handler->display->display_options['style_options']['row_class'] = 'col-sm-6 col-md-4';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['view_mode'] = 'card_teaser';
   $handler->display->display_options['row_options']['links'] = FALSE;
@@ -121,8 +117,8 @@ function lens_commerce_features_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '<div class="container-fluid">
-<h2>Our Watches</h2>
-<h3>Helvetica seitan pickled, authentic VHS +1 aesthetic hoodie retro direct trade Vice. Thundercats banh mi fingerstache lomo. Cliche freegan quinoa, you probably haven\'t heard of them Carles McSweeney\'s post-ironic roof party.</h3>
+<h2>Our Lenses</h2>
+<h3>Our lenses correct <em>Myopia</em> (also known as short-sighted or near-sighted), <em>Hyperopia</em> and <em>Presbyopia</em> (old age yes having problems reading)</h3>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 </div>';
@@ -166,7 +162,6 @@ function lens_commerce_features_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'lens_type' => 'lens_type',
-    'watch' => 'watch',
   );
 
   /* Display: Content pane */
@@ -229,8 +224,8 @@ function lens_commerce_features_views_default_views() {
     t('next ›'),
     t('last »'),
     t('<div class="container-fluid">
-<h2>Our Watches</h2>
-<h3>Helvetica seitan pickled, authentic VHS +1 aesthetic hoodie retro direct trade Vice. Thundercats banh mi fingerstache lomo. Cliche freegan quinoa, you probably haven\'t heard of them Carles McSweeney\'s post-ironic roof party.</h3>
+<h2>Our Lenses</h2>
+<h3>Our lenses correct <em>Myopia</em> (also known as short-sighted or near-sighted), <em>Hyperopia</em> and <em>Presbyopia</em> (old age yes having problems reading)</h3>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 </div>'),

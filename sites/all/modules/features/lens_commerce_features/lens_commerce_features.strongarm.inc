@@ -45,7 +45,7 @@ function lens_commerce_features_strongarm() {
     'delete_activate' => 0,
     'message' => 1,
     'reload' => 1,
-    'view_mode_region' => '0',
+    'view_mode_region' => 0,
     'view_mode' => 'full',
   );
   $export['ajax_form_entity_entityform_contact_form'] = $strongarm;
@@ -178,7 +178,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'captcha_default_challenge_on_nonlisted_forms';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['captcha_default_challenge_on_nonlisted_forms'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -220,14 +220,14 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'captcha_wrong_response_counter';
-  $strongarm->value = 7;
+  $strongarm->value = 10;
   $export['captcha_wrong_response_counter'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_apd_auto_delete_display';
-  $strongarm->value = '1';
+  $strongarm->value = 1;
   $export['commerce_apd_auto_delete_display'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -244,7 +244,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_apd_show_product_display_form';
-  $strongarm->value = '1';
+  $strongarm->value = 1;
   $export['commerce_apd_show_product_display_form'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -259,7 +259,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_billy_invoice_nr_last';
   $strongarm->value = array(
-    'year' => '2015',
+    'year' => 2015,
     'id' => 4,
   );
   $export['commerce_billy_invoice_nr_last'] = $strongarm;
@@ -311,12 +311,11 @@ function lens_commerce_features_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_checkout_progress_block_pages';
   $strongarm->value = array(
-    0 => 'cart',
-    1 => 'checkout',
-    2 => 'shipping',
-    3 => 'review',
-    4 => 'payment',
-    5 => 'complete',
+    0 => 'checkout',
+    1 => 'shipping',
+    2 => 'review',
+    3 => 'payment',
+    4 => 'complete',
   );
   $export['commerce_checkout_progress_block_pages'] = $strongarm;
 
@@ -331,7 +330,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_checkout_progress_link';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['commerce_checkout_progress_link'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -813,14 +812,14 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'cpn_weight_css';
-  $strongarm->value = '100';
+  $strongarm->value = 100;
   $export['cpn_weight_css'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'cpn_weight_js';
-  $strongarm->value = '100';
+  $strongarm->value = 100;
   $export['cpn_weight_js'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -862,7 +861,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'db_maintenance_cron_frequency';
-  $strongarm->value = '86400';
+  $strongarm->value = 86400;
   $export['db_maintenance_cron_frequency'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -938,13 +937,13 @@ function lens_commerce_features_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '-5',
+          'weight' => -5,
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => 30,
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => 30,
         ),
       ),
       'display' => array(),
@@ -986,25 +985,25 @@ function lens_commerce_features_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '5',
+          'weight' => 5,
         ),
         'title' => array(
-          'weight' => '0',
+          'weight' => 0,
         ),
         'path' => array(
-          'weight' => '1',
+          'weight' => 1,
         ),
         'redirect' => array(
-          'weight' => '2',
+          'weight' => 2,
         ),
         'xmlsitemap' => array(
-          'weight' => '3',
+          'weight' => 3,
         ),
       ),
       'display' => array(
         'product:sku' => array(
           'default' => array(
-            'weight' => '18',
+            'weight' => 18,
             'visible' => FALSE,
           ),
           'card_teaser' => array(
@@ -1018,7 +1017,7 @@ function lens_commerce_features_strongarm() {
         ),
         'product:title' => array(
           'default' => array(
-            'weight' => '19',
+            'weight' => 19,
             'visible' => FALSE,
           ),
           'card_teaser' => array(
@@ -1032,7 +1031,7 @@ function lens_commerce_features_strongarm() {
         ),
         'product:status' => array(
           'default' => array(
-            'weight' => '20',
+            'weight' => 20,
             'visible' => FALSE,
           ),
           'card_teaser' => array(
@@ -1046,7 +1045,7 @@ function lens_commerce_features_strongarm() {
         ),
         'product:commerce_price' => array(
           'default' => array(
-            'weight' => '16',
+            'weight' => 16,
             'visible' => TRUE,
           ),
           'card_teaser' => array(
@@ -1097,22 +1096,22 @@ function lens_commerce_features_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'cpn' => array(
-          'weight' => '5',
+          'weight' => 5,
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => 40,
         ),
         'title' => array(
-          'weight' => '-5',
+          'weight' => -5,
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => 30,
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => 30,
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => 30,
         ),
       ),
       'display' => array(),
@@ -1131,7 +1130,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_slide';
-  $strongarm->value = '4';
+  $strongarm->value = 4;
   $export['language_content_type_slide'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1445,35 +1444,35 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_article';
-  $strongarm->value = '0';
+  $strongarm->value = 0;
   $export['node_preview_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_contact_form_display';
-  $strongarm->value = '0';
+  $strongarm->value = 0;
   $export['node_preview_contact_form_display'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_lens_type';
-  $strongarm->value = '0';
+  $strongarm->value = 0;
   $export['node_preview_lens_type'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_page';
-  $strongarm->value = '0';
+  $strongarm->value = 0;
   $export['node_preview_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_slide';
-  $strongarm->value = '0';
+  $strongarm->value = 0;
   $export['node_preview_slide'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1514,6 +1513,34 @@ function lens_commerce_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_article_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_article_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_lens_type_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_lens_type_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_page_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_page_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_tags_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_tags_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'theme_default';
   $strongarm->value = 'sglens';
   $export['theme_default'] = $strongarm;
@@ -1540,7 +1567,7 @@ function lens_commerce_features_strongarm() {
     'favicon_upload' => '',
     'general__active_tab' => 'edit-theme-settings',
     'bootstrap__active_tab' => 'edit-advanced',
-    'bootstrap_breadcrumb' => '1',
+    'bootstrap_breadcrumb' => 1,
     'bootstrap_breadcrumb_home' => 0,
     'bootstrap_breadcrumb_title' => 1,
     'bootstrap_navbar_position' => '',
@@ -1573,7 +1600,7 @@ function lens_commerce_features_strongarm() {
     ),
     'bootstrap_popover_title' => '',
     'bootstrap_popover_content' => '',
-    'bootstrap_popover_delay' => '0',
+    'bootstrap_popover_delay' => 0,
     'bootstrap_popover_container' => 'body',
     'bootstrap_tooltip_enabled' => 1,
     'bootstrap_tooltip_descriptions' => 1,
@@ -1587,7 +1614,7 @@ function lens_commerce_features_strongarm() {
       'click' => 0,
       'manual' => 0,
     ),
-    'bootstrap_tooltip_delay' => '0',
+    'bootstrap_tooltip_delay' => 0,
     'bootstrap_tooltip_container' => 'body',
     'bootstrap_cdn' => '3.0.2',
     'bootstrap_bootswatch' => '',
@@ -1611,17 +1638,20 @@ function lens_commerce_features_strongarm() {
     'toggle_main_menu' => 1,
     'toggle_secondary_menu' => 1,
     'default_logo' => 0,
-    'logo_path' => 'public://sglens-small_0.png',
+    'logo_path' => 'public://eysight-eye-logo-white-43h.png',
     'logo_upload' => '',
     'default_favicon' => 1,
     'favicon_path' => '',
     'favicon_upload' => '',
-    'global__active_tab' => 'edit-theme-settings',
     'bootstrap__active_tab' => 'edit-advanced',
+    'bootstrap_fluid_container' => 0,
     'bootstrap_button_size' => '',
     'bootstrap_button_colorize' => 1,
     'bootstrap_button_iconize' => 1,
     'bootstrap_forms_required_has_error' => 0,
+    'bootstrap_forms_smart_descriptions' => 1,
+    'bootstrap_forms_smart_descriptions_limit' => '1',
+    'bootstrap_forms_smart_descriptions_allowed_tags' => 'b, code, em, i, kbd, span, strong',
     'bootstrap_image_shape' => '',
     'bootstrap_image_responsive' => 1,
     'bootstrap_table_bordered' => 0,
@@ -1634,6 +1664,7 @@ function lens_commerce_features_strongarm() {
     'bootstrap_breadcrumb_title' => 1,
     'bootstrap_navbar_position' => 'fixed-top',
     'bootstrap_navbar_inverse' => 0,
+    'bootstrap_pager_first_and_last' => 1,
     'bootstrap_region_well-top_header' => '',
     'bootstrap_region_well-navigation' => '',
     'bootstrap_region_well-bottom_header' => '',
@@ -1650,7 +1681,6 @@ function lens_commerce_features_strongarm() {
     'bootstrap_anchors_fix' => 1,
     'bootstrap_anchors_smooth_scrolling' => 1,
     'bootstrap_forms_has_error_value_toggle' => 1,
-    'bootstrap_tooltip_descriptions' => 1,
     'bootstrap_popover_enabled' => 1,
     'bootstrap_popover_animation' => 1,
     'bootstrap_popover_html' => 0,
@@ -1668,7 +1698,6 @@ function lens_commerce_features_strongarm() {
     'bootstrap_popover_delay' => '0',
     'bootstrap_popover_container' => 'body',
     'bootstrap_tooltip_enabled' => 1,
-    'bootstrap_tooltip_descriptions_length' => '200',
     'bootstrap_tooltip_animation' => 1,
     'bootstrap_tooltip_html' => 0,
     'bootstrap_tooltip_placement' => 'auto left',
@@ -1681,9 +1710,15 @@ function lens_commerce_features_strongarm() {
     ),
     'bootstrap_tooltip_delay' => '0',
     'bootstrap_tooltip_container' => 'body',
-    'bootstrap_cdn' => '3.2.0',
-    'bootstrap_bootswatch' => 'cosmo',
     'bootstrap_toggle_jquery_error' => 0,
+    'bootstrap_cdn_provider' => 'jsdelivr',
+    'bootstrap_cdn_custom_css' => '//cdn.jsdelivr.net/bootstrap/3.3.2/css/bootstrap.css',
+    'bootstrap_cdn_custom_css_min' => '//cdn.jsdelivr.net/bootstrap/3.3.2/css/bootstrap.min.css',
+    'bootstrap_cdn_custom_js' => '//cdn.jsdelivr.net/bootstrap/3.3.2/js/bootstrap.js',
+    'bootstrap_cdn_custom_js_min' => '//cdn.jsdelivr.net/bootstrap/3.3.2/js/bootstrap.min.js',
+    'bootstrap_cdn_jsdelivr_version' => '3.3.5',
+    'bootstrap_cdn_jsdelivr_theme' => 'cosmo',
+    'jquery_update_jquery_version' => '',
   );
   $export['theme_sglens_settings'] = $strongarm;
 
@@ -1691,7 +1726,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_admin_role';
-  $strongarm->value = '3';
+  $strongarm->value = 3;
   $export['user_admin_role'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1705,7 +1740,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_default_timezone';
-  $strongarm->value = '0';
+  $strongarm->value = 0;
   $export['user_default_timezone'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1949,7 +1984,7 @@ Your account on [site:name] has been canceled.
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_picture_file_size';
-  $strongarm->value = '800';
+  $strongarm->value = 800;
   $export['user_picture_file_size'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1977,7 +2012,7 @@ Your account on [site:name] has been canceled.
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_register';
-  $strongarm->value = '1';
+  $strongarm->value = 1;
   $export['user_register'] = $strongarm;
 
   $strongarm = new stdClass();

@@ -160,6 +160,14 @@ function lens_commerce_features_default_page_manager_handlers() {
       ),
       'logic' => 'and',
     ),
+    'metatag_panels' => array(
+      'enabled' => 1,
+      'metatags' => array(
+        'title' => array(
+          'value' => '[node:title] | [site:name]',
+        ),
+      ),
+    ),
   );
   $display = new panels_display();
   $display->layout = 'bootstrap_twocol_stacked';
@@ -207,7 +215,7 @@ function lens_commerce_features_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'Test %node:title';
   $display->uuid = 'becf220e-b196-4093-a894-2175c4eb3064';
   $display->content = array();
   $display->panels = array();
