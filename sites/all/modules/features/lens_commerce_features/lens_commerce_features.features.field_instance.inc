@@ -170,6 +170,57 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'commerce_coupon-commerce_coupon_fixed-field_from_order'.
+  $field_instances['commerce_coupon-commerce_coupon_fixed-field_from_order'] = array(
+    'bundle' => 'commerce_coupon_fixed',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 9,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'field_from_order',
+    'label' => 'From order',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
   // 'commerce_coupon-commerce_coupon_pct-commerce_coupon_code'.
   $field_instances['commerce_coupon-commerce_coupon_pct-commerce_coupon_code'] = array(
     'bundle' => 'commerce_coupon_pct',
@@ -321,6 +372,57 @@ function lens_commerce_features_field_default_field_instances() {
       'settings' => array(),
       'type' => 'number',
       'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'commerce_coupon-commerce_coupon_pct-field_from_order'.
+  $field_instances['commerce_coupon-commerce_coupon_pct-field_from_order'] = array(
+    'bundle' => 'commerce_coupon_pct',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 9,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'field_from_order',
+    'label' => 'From order',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 10,
     ),
   );
 
@@ -1546,7 +1648,7 @@ function lens_commerce_features_field_default_field_instances() {
           ),
         ),
         'type' => 'entityreference_label',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'customer' => array(
         'label' => 'hidden',
@@ -1658,7 +1760,7 @@ function lens_commerce_features_field_default_field_instances() {
           ),
         ),
         'type' => 'commerce_customer_profile_reference_display',
-        'weight' => 5,
+        'weight' => 9,
       ),
       'customer' => array(
         'label' => 'above',
@@ -1777,7 +1879,7 @@ function lens_commerce_features_field_default_field_instances() {
           ),
         ),
         'type' => 'commerce_customer_profile_reference_display',
-        'weight' => 4,
+        'weight' => 8,
       ),
       'customer' => array(
         'label' => 'above',
@@ -1898,7 +2000,7 @@ function lens_commerce_features_field_default_field_instances() {
           'view' => 'commerce_line_item_table|default',
         ),
         'type' => 'commerce_line_item_reference_view',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'customer' => array(
         'label' => 'hidden',
@@ -2023,7 +2125,7 @@ function lens_commerce_features_field_default_field_instances() {
           ),
         ),
         'type' => 'commerce_price_formatted_components',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'customer' => array(
         'label' => 'hidden',
@@ -2174,7 +2276,7 @@ function lens_commerce_features_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 10,
+        'weight' => 6,
       ),
       'default' => array(
         'label' => 'above',
@@ -2285,7 +2387,7 @@ function lens_commerce_features_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 9,
+        'weight' => 5,
       ),
       'default' => array(
         'label' => 'above',
@@ -4661,6 +4763,7 @@ function lens_commerce_features_field_default_field_instances() {
   t('Enter a comma-separated list of words to describe your content.');
   t('Entityform');
   t('Fixed Amount');
+  t('From order');
   t('Image');
   t('Internally set once the order is cancelled.');
   t('Internally set once the order is invoiced');
