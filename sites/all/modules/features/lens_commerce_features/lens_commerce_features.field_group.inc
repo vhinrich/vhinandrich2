@@ -373,7 +373,7 @@ function lens_commerce_features_field_group_info() {
   $field_group->parent_name = 'group_well';
   $field_group->data = array(
     'label' => 'CardText',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'product:commerce_price',
       1 => 'title',
@@ -746,6 +746,36 @@ function lens_commerce_features_field_group_info() {
     ),
   );
   $export['group_other_col_left|field_collection_item|field_prescription|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_other_col_right|field_collection_item|field_prescription|form';
+  $field_group->group_name = 'group_other_col_right';
+  $field_group->entity_type = 'field_collection_item';
+  $field_group->bundle = 'field_prescription';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_other_row';
+  $field_group->data = array(
+    'label' => 'Other col right',
+    'weight' => '52',
+    'children' => array(
+      0 => 'field_near',
+    ),
+    'format_type' => 'html-element',
+    'format_settings' => array(
+      'label' => 'Other col right',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-other-col-right field-group-html-element col-xs-6',
+        'element' => 'div',
+        'show_label' => '0',
+        'label_element' => 'div',
+        'attributes' => '',
+      ),
+    ),
+  );
+  $export['group_other_col_right|field_collection_item|field_prescription|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1394,7 +1424,7 @@ function lens_commerce_features_field_group_info() {
     'label' => 'Well',
     'weight' => '1',
     'children' => array(
-      0 => 'product_image_with_node_link',
+      0 => 'field_media',
       1 => 'group_cardtext',
     ),
     'format_type' => 'html-element',
@@ -1426,7 +1456,6 @@ function lens_commerce_features_field_group_info() {
     'children' => array(
       0 => 'field_media',
       1 => 'group_cardtext',
-      2 => 'group_media_row',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(

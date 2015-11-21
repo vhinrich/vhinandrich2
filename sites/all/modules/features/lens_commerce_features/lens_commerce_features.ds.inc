@@ -62,11 +62,6 @@ function lens_commerce_features_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'lens_type';
   $ds_fieldsetting->view_mode = 'card_teaser';
   $ds_fieldsetting->settings = array(
-    'product_image_with_node_link' => array(
-      'weight' => '2',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'title' => array(
       'weight' => '3',
       'label' => 'hidden',
@@ -245,7 +240,7 @@ function lens_commerce_features_ds_custom_fields_info() {
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<a href="[node:url]"><img src="[node:field_media:card_teaser]" class="img-responsive center-block" /></a>',
+      'value' => '<a href="[node:url]"><img src="[node:field_media:card_teaser:uri]" class="img-responsive center-block" /></a>',
       'format' => 'super_full_html',
     ),
     'use_token' => 1,
@@ -473,20 +468,23 @@ function lens_commerce_features_ds_layout_settings_info() {
     'regions' => array(
       'central' => array(
         0 => 'group_card_teaser_wrapper',
-        1 => 'group_well',
-        2 => 'product_image_with_node_link',
-        3 => 'title',
-        4 => 'group_cardtext',
+        1 => 'field_media',
+        2 => 'group_well',
+        3 => 'group_cardtext',
+        4 => 'title',
         5 => 'product:commerce_price',
       ),
     ),
     'fields' => array(
       'group_card_teaser_wrapper' => 'central',
+      'field_media' => 'central',
       'group_well' => 'central',
-      'product_image_with_node_link' => 'central',
-      'title' => 'central',
       'group_cardtext' => 'central',
+      'title' => 'central',
       'product:commerce_price' => 'central',
+    ),
+    'limit' => array(
+      'field_media' => '1',
     ),
     'classes' => array(
       'layout_class' => array(
@@ -519,10 +517,8 @@ function lens_commerce_features_ds_layout_settings_info() {
         2 => 'product:commerce_price',
         3 => 'node_link',
         4 => 'group_well',
-        5 => 'group_media_row',
-        6 => 'field_media',
-        7 => 'group_cardtext',
-        8 => 'group_media_row_column',
+        5 => 'field_media',
+        6 => 'group_cardtext',
       ),
     ),
     'fields' => array(
@@ -531,10 +527,8 @@ function lens_commerce_features_ds_layout_settings_info() {
       'product:commerce_price' => 'central',
       'node_link' => 'central',
       'group_well' => 'central',
-      'group_media_row' => 'central',
       'field_media' => 'central',
       'group_cardtext' => 'central',
-      'group_media_row_column' => 'central',
     ),
     'limit' => array(
       'field_media' => '1',
