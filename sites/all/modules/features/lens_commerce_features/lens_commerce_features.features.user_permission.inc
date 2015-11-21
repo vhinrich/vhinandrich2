@@ -137,7 +137,6 @@ function lens_commerce_features_user_default_permissions() {
     'name' => 'access rules debug',
     'roles' => array(
       'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
     ),
     'module' => 'rules',
   );
