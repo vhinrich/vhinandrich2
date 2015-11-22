@@ -1,0 +1,32 @@
+@font-face {
+	font-family: 'eyesight';
+	src:url('fonts/eyesight.eot?n9ir8p');
+	src:url('fonts/eyesight.eot?n9ir8p#iefix') format('embedded-opentype'),
+		url('fonts/eyesight.ttf?n9ir8p') format('truetype'),
+		url('fonts/eyesight.woff?n9ir8p') format('woff'),
+		url('fonts/eyesight.svg?n9ir8p#eyesight') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-eyesight"], [class*=" icon-eyesight"] {
+	font-family: 'eyesight';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-eyesight-logo:before {
+	content: "\e900";
+}
+.icon-eyesight-logo-eye:before {
+	content: "\e901";
+}
+
