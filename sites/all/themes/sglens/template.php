@@ -32,6 +32,13 @@ function sglens_preprocess_html(&$variables){
   $variables['classes_array'][] = 'theme-sglens';
   $variables['classes_array'][] = 'navbar-is-' . theme_get_setting('bootstrap_navbar_position');
 
+  $color_scheme = theme_get_setting('bootstrap_color_scheme');
+  if ($color_scheme) {
+    $variables['classes_array'][] = 'color-scheme-' . $color_scheme;
+    $path = drupal_get_path('theme', 'sglens');
+    drupal_add_css($path . '/scss/color_schemes/' . $color_scheme . '.scss');
+  }
+
   // font awesome
   $attributes = array(
     'rel' => 'stylesheet',

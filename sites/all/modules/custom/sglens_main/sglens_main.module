@@ -156,7 +156,7 @@ function sglens_main_block_view_sglens_shopping_cart_icon(){
     }
     $block['content'] = theme('links', array(
         'links' => $menu,
-        'attributes' => array('class' => array('menu', 'nav', 'navbar-nav', 'shopping-cart-icon', 'navbar-default'))
+        'attributes' => array('class' => array('menu', 'nav', 'navbar-nav', 'shopping-cart-icon'))
     ));
     return $block;
 }
