@@ -2,6 +2,16 @@
 
 .theme-sglens{
   &.color-scheme-eyesight_beige{
+    a{
+      &:not(.btn){
+        color: #677D90;
+        &:hover,
+        &:active,
+        &:focus{
+          color: #455262;
+        }
+      }
+    }
     .navbar-default{
       background: #FFFFFF;
       border: none;
@@ -14,7 +24,7 @@
           content: ' ';
           position: absolute;
           bottom: 0;
-          left: 0;
+          left: 50%;
           height: 5px;
           width: 0;
           background: none;
@@ -26,8 +36,14 @@
           &:after{
             background: #BECC7E;
             width: 100%;
+            left: 0;
           }
         }
+      }
+
+      .navbar-collapse,
+      .navbar-form{
+        border-color: #eee;
       }
 
       .navbar-nav > .active > a,
@@ -38,6 +54,7 @@
         &:after{
           background: #DDC58A;
           width: 100%;
+          left: 0;
         }
       }
 
@@ -58,8 +75,33 @@
 
 
     &:not(.node-type-contact-form-display) div.panel-pane div.node.view-mode-full.node-contact-form-display>.row{
-      background: #3C392F;
+      background: #455262;
+      a{
+        &:not(.btn){
+          color: #EEE0B6;
+          &:hover,
+          &:active,
+          &:focus{
+            color: #B1BB86;
+          }
+        }
+      }
     }
 
+    .footer{
+      border-color: #e7e7e7;
+      background: #f7f7f7;
+      color: #455262;
+      a{
+        &:not(.btn){
+          color: #455262;
+          &:hover,
+          &:active,
+          &:focus{
+            color: #677D90;
+          }
+        }
+      }
+    }
   }
 }
