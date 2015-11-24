@@ -220,7 +220,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'captcha_wrong_response_counter';
-  $strongarm->value = 10;
+  $strongarm->value = 17;
   $export['captcha_wrong_response_counter'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1657,12 +1657,11 @@ function lens_commerce_features_strongarm() {
     'toggle_main_menu' => 1,
     'toggle_secondary_menu' => 1,
     'default_logo' => 0,
-    'logo_path' => 'public://eysight-eye-logo-white-43h.png',
-    'logo_upload' => '',
+    'logo_path' => 'public://eysight-eye-logo-43h.png',
     'default_favicon' => 1,
     'favicon_path' => '',
     'favicon_upload' => '',
-    'bootstrap__active_tab' => 'edit-advanced',
+    'bootstrap__active_tab' => 'edit-general',
     'bootstrap_fluid_container' => 0,
     'bootstrap_button_size' => '',
     'bootstrap_button_colorize' => 1,
@@ -1737,6 +1736,7 @@ function lens_commerce_features_strongarm() {
     'bootstrap_cdn_custom_js_min' => '//cdn.jsdelivr.net/bootstrap/3.3.2/js/bootstrap.min.js',
     'bootstrap_cdn_jsdelivr_version' => '3.3.5',
     'bootstrap_cdn_jsdelivr_theme' => 'cosmo',
+    'bootstrap_color_scheme' => 'eyesight_beige',
     'jquery_update_jquery_version' => '',
   );
   $export['theme_sglens_settings'] = $strongarm;
