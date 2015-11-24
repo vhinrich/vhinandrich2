@@ -383,9 +383,14 @@ function lens_commerce_features_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['style_plugin'] = 'views_bootstrap_table_plugin_style';
+  $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'coupon_id' => 'coupon_id',
+    'commerce_coupon_code' => 'commerce_coupon_code',
+    'field_from_order' => 'field_from_order',
+    'granted_amount' => 'granted_amount',
+    'commerce_coupon_number_of_uses' => 'commerce_coupon_number_of_uses',
+    'times_used' => 'times_used',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -396,12 +401,39 @@ function lens_commerce_features_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-  );
-  $handler->display->display_options['style_options']['bootstrap_styles'] = array(
-    'striped' => 'striped',
-    'bordered' => 'bordered',
-    'hover' => 0,
-    'condensed' => 0,
+    'commerce_coupon_code' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_from_order' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'granted_amount' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'commerce_coupon_number_of_uses' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'times_used' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
   );
   /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area']['id'] = 'area';
@@ -430,6 +462,8 @@ function lens_commerce_features_views_default_views() {
   $handler->display->display_options['fields']['commerce_coupon_code']['id'] = 'commerce_coupon_code';
   $handler->display->display_options['fields']['commerce_coupon_code']['table'] = 'field_data_commerce_coupon_code';
   $handler->display->display_options['fields']['commerce_coupon_code']['field'] = 'commerce_coupon_code';
+  $handler->display->display_options['fields']['commerce_coupon_code']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['commerce_coupon_code']['element_class'] = 'text-info';
   $handler->display->display_options['fields']['commerce_coupon_code']['settings'] = array(
     'linked_field' => array(
       'linked' => 0,
