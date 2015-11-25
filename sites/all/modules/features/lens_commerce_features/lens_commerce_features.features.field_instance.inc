@@ -4140,6 +4140,64 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-lens_type-field_gender'.
+  $field_instances['node-lens_type-field_gender'] = array(
+    'bundle' => 'lens_type',
+    'default_value' => NULL,
+    'default_value_label_token' => 0,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'card_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'card_teaser_small' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 17,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_gender',
+    'label' => 'Gender',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 12,
+    ),
+  );
+
   // Exported field_instance: 'node-lens_type-field_media'.
   $field_instances['node-lens_type-field_media'] = array(
     'bundle' => 'lens_type',
@@ -4764,6 +4822,7 @@ function lens_commerce_features_field_default_field_instances() {
   t('Entityform');
   t('Fixed Amount');
   t('From order');
+  t('Gender');
   t('Image');
   t('Internally set once the order is cancelled.');
   t('Internally set once the order is invoiced');

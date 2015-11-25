@@ -185,7 +185,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'captcha_default_validation';
-  $strongarm->value = '1';
+  $strongarm->value = 1;
   $export['captcha_default_validation'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -213,7 +213,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'captcha_persistence';
-  $strongarm->value = '1';
+  $strongarm->value = 1;
   $export['captcha_persistence'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -259,7 +259,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'commerce_billy_invoice_nr_last';
   $strongarm->value = array(
-    'year' => '2015',
+    'year' => 2015,
     'id' => 5,
   );
   $export['commerce_billy_invoice_nr_last'] = $strongarm;
@@ -1007,11 +1007,11 @@ function lens_commerce_features_strongarm() {
             'visible' => FALSE,
           ),
           'card_teaser' => array(
-            'weight' => '11',
+            'weight' => 11,
             'visible' => FALSE,
           ),
           'card_teaser_small' => array(
-            'weight' => '17',
+            'weight' => 17,
             'visible' => FALSE,
           ),
         ),
@@ -1021,11 +1021,11 @@ function lens_commerce_features_strongarm() {
             'visible' => FALSE,
           ),
           'card_teaser' => array(
-            'weight' => '12',
+            'weight' => 12,
             'visible' => FALSE,
           ),
           'card_teaser_small' => array(
-            'weight' => '18',
+            'weight' => 18,
             'visible' => FALSE,
           ),
         ),
@@ -1035,11 +1035,11 @@ function lens_commerce_features_strongarm() {
             'visible' => FALSE,
           ),
           'card_teaser' => array(
-            'weight' => '14',
+            'weight' => 14,
             'visible' => FALSE,
           ),
           'card_teaser_small' => array(
-            'weight' => '20',
+            'weight' => 20,
             'visible' => FALSE,
           ),
         ),
@@ -1049,11 +1049,11 @@ function lens_commerce_features_strongarm() {
             'visible' => TRUE,
           ),
           'card_teaser' => array(
-            'weight' => '4',
+            'weight' => 4,
             'visible' => TRUE,
           ),
           'card_teaser_small' => array(
-            'weight' => '4',
+            'weight' => 4,
             'visible' => TRUE,
           ),
         ),
@@ -1132,25 +1132,6 @@ function lens_commerce_features_strongarm() {
   $strongarm->name = 'language_content_type_slide';
   $strongarm->value = 4;
   $export['language_content_type_slide'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'language_default';
-  $strongarm->value = (object) array(
-    'language' => 'en',
-    'name' => 'English',
-    'native' => 'English',
-    'direction' => 0,
-    'enabled' => 1,
-    'plurals' => 0,
-    'formula' => '',
-    'domain' => '',
-    'prefix' => '',
-    'weight' => 0,
-    'javascript' => '',
-  );
-  $export['language_default'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1668,7 +1649,7 @@ function lens_commerce_features_strongarm() {
     'bootstrap_button_iconize' => 1,
     'bootstrap_forms_required_has_error' => 0,
     'bootstrap_forms_smart_descriptions' => 1,
-    'bootstrap_forms_smart_descriptions_limit' => '1',
+    'bootstrap_forms_smart_descriptions_limit' => 1,
     'bootstrap_forms_smart_descriptions_allowed_tags' => 'b, code, em, i, kbd, span, strong',
     'bootstrap_image_shape' => '',
     'bootstrap_image_responsive' => 1,
@@ -1677,7 +1658,7 @@ function lens_commerce_features_strongarm() {
     'bootstrap_table_hover' => 1,
     'bootstrap_table_striped' => 1,
     'bootstrap_table_responsive' => 1,
-    'bootstrap_breadcrumb' => '1',
+    'bootstrap_breadcrumb' => 1,
     'bootstrap_breadcrumb_home' => 0,
     'bootstrap_breadcrumb_title' => 1,
     'bootstrap_navbar_position' => 'fixed-top',
@@ -1713,7 +1694,7 @@ function lens_commerce_features_strongarm() {
     'bootstrap_popover_trigger_autoclose' => 1,
     'bootstrap_popover_title' => '',
     'bootstrap_popover_content' => '',
-    'bootstrap_popover_delay' => '0',
+    'bootstrap_popover_delay' => 0,
     'bootstrap_popover_container' => 'body',
     'bootstrap_tooltip_enabled' => 1,
     'bootstrap_tooltip_animation' => 1,
@@ -1726,7 +1707,7 @@ function lens_commerce_features_strongarm() {
       'click' => 0,
       'manual' => 0,
     ),
-    'bootstrap_tooltip_delay' => '0',
+    'bootstrap_tooltip_delay' => 0,
     'bootstrap_tooltip_container' => 'body',
     'bootstrap_toggle_jquery_error' => 0,
     'bootstrap_cdn_provider' => 'jsdelivr',
@@ -1745,7 +1726,7 @@ function lens_commerce_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_admin_role';
-  $strongarm->value = 3;
+  $strongarm->value = '3';
   $export['user_admin_role'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1989,21 +1970,21 @@ Your account on [site:name] has been canceled.
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_picture_default';
-  $strongarm->value = '/sites/commerce.vhinandrich.com/files/anonymous.png';
+  $strongarm->value = '/sites/eyesight.vhinandrich.com/files/anonymous.png';
   $export['user_picture_default'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_picture_dimensions';
-  $strongarm->value = '1024x1024';
+  $strongarm->value = '300x300';
   $export['user_picture_dimensions'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_picture_file_size';
-  $strongarm->value = 800;
+  $strongarm->value = '800';
   $export['user_picture_file_size'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -2031,7 +2012,7 @@ Your account on [site:name] has been canceled.
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_register';
-  $strongarm->value = 1;
+  $strongarm->value = '1';
   $export['user_register'] = $strongarm;
 
   $strongarm = new stdClass();
