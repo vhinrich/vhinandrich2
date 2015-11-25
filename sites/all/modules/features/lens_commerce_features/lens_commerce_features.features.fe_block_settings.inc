@@ -192,7 +192,7 @@ function lens_commerce_features_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'adminimal',
-        'weight' => -15,
+        'weight' => -13,
       ),
       'bartik' => array(
         'region' => '',
@@ -601,8 +601,8 @@ cart',
     'roles' => array(),
     'themes' => array(
       'adminimal' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'dashboard_inactive',
+        'status' => 1,
         'theme' => 'adminimal',
         'weight' => 0,
       ),
@@ -892,8 +892,8 @@ cart*',
     'roles' => array(),
     'themes' => array(
       'adminimal' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'dashboard_sidebar',
+        'status' => 1,
         'theme' => 'adminimal',
         'weight' => 0,
       ),
@@ -1097,8 +1097,8 @@ cart*',
     'roles' => array(),
     'themes' => array(
       'adminimal' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'dashboard_sidebar',
+        'status' => 1,
         'theme' => 'adminimal',
         'weight' => 0,
       ),
@@ -1138,10 +1138,10 @@ cart*',
     'roles' => array(),
     'themes' => array(
       'adminimal' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'dashboard_sidebar',
+        'status' => 1,
         'theme' => 'adminimal',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'bartik' => array(
         'region' => '',
@@ -1179,8 +1179,8 @@ cart*',
     'roles' => array(),
     'themes' => array(
       'adminimal' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'dashboard_main',
+        'status' => 1,
         'theme' => 'adminimal',
         'weight' => 0,
       ),
