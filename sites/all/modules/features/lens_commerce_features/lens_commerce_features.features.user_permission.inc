@@ -107,11 +107,29 @@ function lens_commerce_features_user_default_permissions() {
     'module' => 'devel',
   );
 
+  // Exported permission: 'access linked field list'.
+  $permissions['access linked field list'] = array(
+    'name' => 'access linked field list',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'linked_field',
+  );
+
   // Exported permission: 'access media browser'.
   $permissions['access media browser'] = array(
     'name' => 'access media browser',
     'roles' => array(),
     'module' => 'media',
+  );
+
+  // Exported permission: 'access private fields'.
+  $permissions['access private fields'] = array(
+    'name' => 'access private fields',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: 'access rules debug'.
@@ -445,6 +463,15 @@ function lens_commerce_features_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'field_collection',
+  );
+
+  // Exported permission: 'administer field permissions'.
+  $permissions['administer field permissions'] = array(
+    'name' => 'administer field permissions',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: 'administer fieldgroups'.
@@ -960,7 +987,6 @@ function lens_commerce_features_user_default_permissions() {
     'name' => 'create commerce_customer_profile entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
       'store manager' => 'store manager',
     ),
     'module' => 'commerce_customer',
@@ -1030,6 +1056,16 @@ function lens_commerce_features_user_default_permissions() {
     'name' => 'create contact_form_display content',
     'roles' => array(),
     'module' => 'node',
+  );
+
+  // Exported permission: 'create field_earned_coupons'.
+  $permissions['create field_earned_coupons'] = array(
+    'name' => 'create field_earned_coupons',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: 'create files'.
@@ -1622,6 +1658,16 @@ function lens_commerce_features_user_default_permissions() {
     'module' => 'cpn',
   );
 
+  // Exported permission: 'edit field_earned_coupons'.
+  $permissions['edit field_earned_coupons'] = array(
+    'name' => 'edit field_earned_coupons',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'store manager' => 'store manager',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'edit javascript per block'.
   $permissions['edit javascript per block'] = array(
     'name' => 'edit javascript per block',
@@ -1707,7 +1753,6 @@ function lens_commerce_features_user_default_permissions() {
     'name' => 'edit own commerce_customer_profile entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
       'store manager' => 'store manager',
     ),
     'module' => 'commerce_customer',
@@ -1793,6 +1838,16 @@ function lens_commerce_features_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'entityform',
+  );
+
+  // Exported permission: 'edit own field_earned_coupons'.
+  $permissions['edit own field_earned_coupons'] = array(
+    'name' => 'edit own field_earned_coupons',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'store manager' => 'store manager',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: 'edit own image files'.
@@ -2274,6 +2329,16 @@ function lens_commerce_features_user_default_permissions() {
     'module' => 'entityform',
   );
 
+  // Exported permission: 'view field_earned_coupons'.
+  $permissions['view field_earned_coupons'] = array(
+    'name' => 'view field_earned_coupons',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'store manager' => 'store manager',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'view files'.
   $permissions['view files'] = array(
     'name' => 'view files',
@@ -2319,7 +2384,6 @@ function lens_commerce_features_user_default_permissions() {
     'name' => 'view own commerce_customer_profile entities',
     'roles' => array(
       'administrator' => 'administrator',
-      'authenticated user' => 'authenticated user',
       'store manager' => 'store manager',
     ),
     'module' => 'commerce_customer',
@@ -2393,6 +2457,16 @@ function lens_commerce_features_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'entityform',
+  );
+
+  // Exported permission: 'view own field_earned_coupons'.
+  $permissions['view own field_earned_coupons'] = array(
+    'name' => 'view own field_earned_coupons',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'store manager' => 'store manager',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: 'view own files'.
