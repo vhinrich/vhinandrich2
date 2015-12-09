@@ -104,7 +104,8 @@ function ais_image_style_deliver($style, $scheme) {
   $bypass_granted = FALSE;
   if (!variable_get('image_allow_insecure_derivatives', FALSE) && defined('IMAGE_DERIVATIVE_TOKEN')) {
     // First check that an adaptive style is being requested.
-    $bypass = isset($style['name']) && _ais_is_used($style['name'], variable_get('ais_adaptive_styles', array()));
+    $styles = variable_get('ais_adaptive_styles', array());
+    $bypass = isset($style['name']) && _ais_is_used($style['name'], $styles);
     // Next check that a valid token for the main adaptive style is present.
     $bypass = $bypass && isset($_GET[IMAGE_DERIVATIVE_TOKEN]) && $_GET[IMAGE_DERIVATIVE_TOKEN] === image_style_path_token(AIS_ADAPTIVE_STYLE, $scheme . '://' . $target);
     // If so, we can bypass the standard image_style_deliver() security check

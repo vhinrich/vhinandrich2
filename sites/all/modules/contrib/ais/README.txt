@@ -31,11 +31,27 @@ Example:
 Caveats
 -------
 
-AIS works using an htaccess rewrite rule, so for it to work the way its
-configured you need to be using Apache with Mod Rewrite enabled.
-However, the rewrite rules can most likely be ported to most webservers.
+AIS works using an htaccess rewrite rule when using Apache or web server configuration when using NginX.
 
 If a client has JavaScript disabled, the original image will be displayed.
+
+
+Non-Apache / NGINX server configuration references
+--------------------------------------------------
+
+Web tool to convert htaccess rules to NGINX rules:
+	http://winginx.com/htaccess
+
+Related, solved issues:
+
+Validate NginX rules:
+#1669182: Running this module on a non-apache server
+	https://drupal.org/node/1669182
+
+Octopus / NGINX:
+#1452732: adaptive image styles for my responsive design.
+	https://drupal.org/node/1452732
+
 
 Installation
 ------------
@@ -81,6 +97,23 @@ it must be set to "RewriteBase /mydirectory".
 If you've modified your .htaccess file correctly (and you have no other
 modification), your .htaccess file should look like the "ais.htaccess.example"
 file included with this module.
+
+
+Running AIS on NginX
+--------------------
+
+The following NginX configuration should work with AIS:
+
+location ~* /(?:.+)/files/styles/adaptive/(?:.+)$ {
+  if ( $http_cookie ~* "ais=(?<ais_cookie>[a-z0-9-_]+)" ) {
+    rewrite ^/(.+)/files/styles/adaptive/(.+)$ /$1/files/styles/$ais_cookie/$2 last;
+  }
+  access_log off;
+  add_header X-Header "AIS Generator 1.0";
+  set $nocache_details "Skip";
+  try_files  $uri @drupal;
+}
+
 
 Author
 ------
