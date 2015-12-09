@@ -12,6 +12,21 @@ function lens_commerce_features_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'commerce_order|commerce_order|backoffice';
+  $ds_fieldsetting->entity_type = 'commerce_order';
+  $ds_fieldsetting->bundle = 'commerce_order';
+  $ds_fieldsetting->view_mode = 'backoffice';
+  $ds_fieldsetting->settings = array(
+    'order_reward_coupon' => array(
+      'weight' => '11',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['commerce_order|commerce_order|backoffice'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'commerce_order|commerce_order|default';
   $ds_fieldsetting->entity_type = 'commerce_order';
   $ds_fieldsetting->bundle = 'commerce_order';
@@ -62,11 +77,6 @@ function lens_commerce_features_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'lens_type';
   $ds_fieldsetting->view_mode = 'card_teaser';
   $ds_fieldsetting->settings = array(
-    'product_image_with_node_link' => array(
-      'weight' => '2',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'title' => array(
       'weight' => '3',
       'label' => 'hidden',
@@ -236,6 +246,21 @@ function lens_commerce_features_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
+  $ds_field->field = 'order_reward_coupon';
+  $ds_field->label = 'Order reward coupon';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'commerce_order' => 'commerce_order',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'block' => 'views|order_reward_coupon-block',
+    'block_render' => '1',
+  );
+  $export['order_reward_coupon'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
   $ds_field->field = 'product_image_with_node_link';
   $ds_field->label = 'Product Image with node link';
   $ds_field->field_type = 5;
@@ -245,7 +270,7 @@ function lens_commerce_features_ds_custom_fields_info() {
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<a href="[node:url]"><img src="[node:field_media:card_teaser]" class="img-responsive center-block" /></a>',
+      'value' => '<a href="[node:url]"><img src="[node:field_media:card_teaser:uri]" class="img-responsive center-block" /></a>',
       'format' => 'super_full_html',
     ),
     'use_token' => 1,
@@ -293,6 +318,66 @@ function lens_commerce_features_ds_custom_fields_info() {
  */
 function lens_commerce_features_ds_layout_settings_info() {
   $export = array();
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'commerce_order|commerce_order|backoffice';
+  $ds_layout->entity_type = 'commerce_order';
+  $ds_layout->bundle = 'commerce_order';
+  $ds_layout->view_mode = 'backoffice';
+  $ds_layout->layout = 'panels-twocol_stacked';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'left' => array(
+        0 => 'commerce_line_items',
+        1 => 'commerce_coupon_order_reference',
+        2 => 'commerce_order_total',
+        3 => 'tracking_add',
+        4 => 'tracking',
+        5 => 'field_commerce_billy_i_date',
+        6 => 'field_commerce_billy_cancel_date',
+      ),
+      'right' => array(
+        7 => 'status',
+        8 => 'commerce_customer_shipping',
+        9 => 'commerce_customer_billing',
+        10 => 'commerce_backoffice_order_payments_quick_edit_payment',
+        11 => 'order_reward_coupon',
+      ),
+    ),
+    'fields' => array(
+      'commerce_line_items' => 'left',
+      'commerce_coupon_order_reference' => 'left',
+      'commerce_order_total' => 'left',
+      'tracking_add' => 'left',
+      'tracking' => 'left',
+      'field_commerce_billy_i_date' => 'left',
+      'field_commerce_billy_cancel_date' => 'left',
+      'status' => 'right',
+      'commerce_customer_shipping' => 'right',
+      'commerce_customer_billing' => 'right',
+      'commerce_backoffice_order_payments_quick_edit_payment' => 'right',
+      'order_reward_coupon' => 'right',
+    ),
+    'classes' => array(
+      'layout_class' => array(
+        '' => '',
+      ),
+    ),
+    'wrappers' => array(
+      'top' => 'div',
+      'left' => 'div',
+      'right' => 'div',
+      'bottom' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+    'layout_disable_css' => 0,
+  );
+  $export['commerce_order|commerce_order|backoffice'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
@@ -473,20 +558,23 @@ function lens_commerce_features_ds_layout_settings_info() {
     'regions' => array(
       'central' => array(
         0 => 'group_card_teaser_wrapper',
-        1 => 'group_well',
-        2 => 'product_image_with_node_link',
-        3 => 'title',
-        4 => 'group_cardtext',
+        1 => 'field_media',
+        2 => 'group_well',
+        3 => 'group_cardtext',
+        4 => 'title',
         5 => 'product:commerce_price',
       ),
     ),
     'fields' => array(
       'group_card_teaser_wrapper' => 'central',
+      'field_media' => 'central',
       'group_well' => 'central',
-      'product_image_with_node_link' => 'central',
-      'title' => 'central',
       'group_cardtext' => 'central',
+      'title' => 'central',
       'product:commerce_price' => 'central',
+    ),
+    'limit' => array(
+      'field_media' => '1',
     ),
     'classes' => array(
       'layout_class' => array(
@@ -519,10 +607,8 @@ function lens_commerce_features_ds_layout_settings_info() {
         2 => 'product:commerce_price',
         3 => 'node_link',
         4 => 'group_well',
-        5 => 'group_media_row',
-        6 => 'field_media',
-        7 => 'group_cardtext',
-        8 => 'group_media_row_column',
+        5 => 'field_media',
+        6 => 'group_cardtext',
       ),
     ),
     'fields' => array(
@@ -531,10 +617,8 @@ function lens_commerce_features_ds_layout_settings_info() {
       'product:commerce_price' => 'central',
       'node_link' => 'central',
       'group_well' => 'central',
-      'group_media_row' => 'central',
       'field_media' => 'central',
       'group_cardtext' => 'central',
-      'group_media_row_column' => 'central',
     ),
     'limit' => array(
       'field_media' => '1',

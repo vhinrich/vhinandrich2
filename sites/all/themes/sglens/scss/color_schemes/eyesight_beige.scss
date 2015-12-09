@@ -1,0 +1,148 @@
+@import '../css3-mixins.scss';
+
+.theme-sglens{
+  &.color-scheme-eyesight_beige{
+    a{
+      &:not(.btn){
+        color: #455262;
+        &:hover,
+        &:active,
+        &:focus{
+          color: #677D90;
+        }
+      }
+    }
+
+    .alert{
+      a{
+        color: #333;
+        &:hover,
+        &:focus{
+          color: #3d3d3d;
+        }
+      }
+    }
+
+    .dropdown-menu {
+      > li > a{
+        color: #455262;
+        &:hover,
+        &:focus{
+          background: #F3F3F3;
+          color: #455262;
+        }
+      }
+    }
+
+    #auth_box h1#the_logo img{
+      background: none;
+    }
+
+    .navbar-default{
+      background: #FFFFFF;
+      border: none;
+      @include box-shadow(0, 0, 4px, rgba(0,0,0,.2));
+
+      .navbar-nav{
+        > .open > a,
+        > .open > a:hover,
+        > .open > a:focus{
+          background: #F3F3F3;
+          color: #455262;
+        }
+        > li > a{
+          color: #455262;
+          position: relative;
+          &:after{
+            content: ' ';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            height: 5px;
+            width: 0;
+            background: none;
+            @include transition(all, 0.4s, ease);
+          }
+          &:hover,
+          &:focus{
+            background: none;
+            &:after{
+              background: #DDC58A;
+              width: 100%;
+              left: 0;
+            }
+          }
+        }
+      }
+
+      .navbar-collapse,
+      .navbar-form{
+        border-color: #eee;
+      }
+
+      .navbar-nav > .active > a,
+      .navbar-nav > .active > a:hover,
+      .navbar-nav > .active > a:focus{
+        background: none;
+        color: #455262;
+        &:after{
+          background: #FDD39E;
+          width: 100%;
+          left: 0;
+        }
+      }
+
+      .navbar-toggle{
+        &:hover,
+        &:focus{
+          background: none;
+          .icon-bar{
+            background: #92A0A7;
+          }
+        }
+
+        .icon-bar{
+          background: #455262;
+        }
+      }
+    }
+
+    .block.block-commerce-cart{
+      background: #FFFEFC;
+      @include box-shadow(2px, 2px 3px, rgba(0, 0, 0, 0.3));
+    }
+
+
+    &:not(.node-type-contact-form-display) div.panel-pane div.node.view-mode-full.node-contact-form-display>.row{
+      background: #F5F2ED;
+      color: #455262;
+      h1,h2,h3,h4,h5{
+        color: #455262;
+      }
+      a{
+        &:not(.btn){
+          color: #647600;
+          &:hover,
+          &:focus{
+            color: #B1BB86;
+          }
+        }
+      }
+    }
+
+    .footer{
+      border-color: #e7e7e7;
+      background: #f7f7f7;
+      color: #455262;
+      a{
+        &:not(.btn){
+          color: #455262;
+          &:hover,
+          &:focus{
+            color: #677D90;
+          }
+        }
+      }
+    }
+  }
+}
