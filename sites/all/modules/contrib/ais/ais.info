@@ -13,9 +13,9 @@ stylesheets[all][] = assets/css/ais.css
 dependencies[] = image
 
 
-; Information added by drupal.org packaging script on 2013-04-04
-version = "7.x-1.6"
+; Information added by Drupal.org packaging script on 2015-12-07
+version = "7.x-1.7"
 core = "7.x"
 project = "ais"
-datestamp = "1365081612"
+datestamp = "1449496140"
 

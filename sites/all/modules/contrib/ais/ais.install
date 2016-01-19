@@ -51,6 +51,7 @@ function ais_requirements($phase) {
         'title' => $t("Adaptive Image Styles"),
         'description' => $t("It doesn't look like you're running Apache.  Please verify that the web server settings required are in place for AIS to work."),
         'severity' => REQUIREMENT_WARNING,
+        'value' => array(),
       );
       return $requirements;
     }
@@ -61,6 +62,7 @@ function ais_requirements($phase) {
         'title' => $t("Adaptive Image Styles"),
         'description' => $t("The htaccess file could not be checked, please verify that AIS is working correctly."),
         'severity' => REQUIREMENT_WARNING,
+        'value' => array(),
       );
       return $requirements;
     }
@@ -97,6 +99,7 @@ function ais_requirements($phase) {
         'title' => $t("Adaptive Image Styles"),
         'description' => $t("There was a problem finding standard Drupal rules in the htaccess file, please verify that AIS is working correctly."),
         'severity' => REQUIREMENT_WARNING,
+        'value' => array(),
       );
       return $requirements;
     }
@@ -113,6 +116,7 @@ function ais_requirements($phase) {
         'title' => $t("Adaptive Image Styles"),
         'description' => $t("Found multiple RewriteBases configured in the .htaccess file, please correct this."),
         'severity' => REQUIREMENT_ERROR,
+        'value' => array(),
       );
     }
     elseif (sizeof($matches[1]) != 1 or !isset($matches[1][0])) {
@@ -120,20 +124,22 @@ function ais_requirements($phase) {
         'title' => $t("Adaptive Image Styles"),
         'description' => $t("RewriteBase not configured in .htaccess file, AIS requires that the rewritebase be configured."),
         'severity' => REQUIREMENT_ERROR,
+        'value' => array(),
       );
     }
 
     $okrequirements['ais']['value'][] = "Found RewriteBase rule";
 
     $rewritebase = $matches[1][0];
-    $script = explode("/", $_SERVER['SCRIPT_NAME']);
+    $script = dirname($_SERVER['SCRIPT_NAME']);
 
-    if ($rewritebase != "/" . $script[1]) {
+    if ($rewritebase != $script) {
       // Rewrite base appears to be misconfigured
       $requirements['badrewritebase'] =  array(
         'title' => $t("Adaptive Image Styles"),
-        'description' => $t("RewriteBase appears to be configured incorrectly in the .htaccess file.  The RewriteBase is set to '%bad', but should be '%good'.", array('%bad' => $rewritebase, '%good' => '/' . $script[1])),
+        'description' => $t("RewriteBase appears to be configured incorrectly in the .htaccess file.  The RewriteBase is set to '%bad', but should be '%good'.", array('%bad' => $rewritebase, '%good' => $script)),
         'severity' => REQUIREMENT_ERROR,
+        'value' => array(),
       );
     }
 
@@ -161,6 +167,7 @@ function ais_requirements($phase) {
         'title' => $t("Adaptive Image Styles"),
         'description' => $t("Couldn't find the AIS htaccess rules in the htaccess file.  Without these rules, AIS will not work."),
         'severity' => REQUIREMENT_ERROR,
+        'value' => array(),
       );
       return $requirements;
     }
@@ -172,6 +179,7 @@ function ais_requirements($phase) {
         'title' => $t("Adaptive Image Styles"),
         'description' => $t("The rules added for AIS to work need to come before Drupals index.php redirect rules."),
         'severity' => REQUIREMENT_ERROR,
+        'value' => array(),
       );
       return $requirements;
     }
