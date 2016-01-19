@@ -123,6 +123,102 @@ function lens_commerce_features_default_rules_configuration() {
       "PROVIDES VARIABLES" : [ "continue" ]
     }
   }');
+  $items['rules_create_temporary_coupon_after_checkout'] = entity_import('rules_config', '{ "rules_create_temporary_coupon_after_checkout" : {
+      "LABEL" : "Create temporary coupon after checkout",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "rules_conditional", "commerce_payment" ],
+      "ON" : { "commerce_payment_order_paid_in_full" : [] },
+      "IF" : [
+        { "entity_has_field" : {
+            "entity" : [ "commerce-order:owner" ],
+            "field" : "field_earned_coupons"
+          }
+        }
+      ],
+      "DO" : [
+        { "entity_create" : {
+            "USING" : { "type" : "commerce_coupon" },
+            "PROVIDE" : { "entity_created" : { "coupon_created" : "Created coupon" } }
+          }
+        },
+        { "data_set" : { "data" : [ "coupon-created:is-active" ], "value" : "0" } },
+        { "data_set" : { "data" : [ "coupon-created:type" ], "value" : "commerce_coupon_fixed" } },
+        { "CONDITIONAL" : [
+            {
+              "IF" : { "entity_has_field" : { "entity" : [ "coupon-created" ], "field" : "field_from_order" } },
+              "DO" : [
+                { "data_set" : {
+                    "data" : [ "coupon-created:field-from-order" ],
+                    "value" : [ "commerce-order" ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        { "entity_save" : { "data" : [ "coupon-created" ], "immediate" : "1" } },
+        { "list_add" : {
+            "list" : [ "commerce-order:owner:field-earned-coupons" ],
+            "item" : [ "coupon-created" ],
+            "unique" : "1"
+          }
+        }
+      ]
+    }
+  }');
+  $items['rules_notify_user_of_reward_coupon'] = entity_import('rules_config', '{ "rules_notify_user_of_reward_coupon" : {
+      "LABEL" : "Notify user of reward coupon",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "rules_conditional", "mimemail", "entity" ],
+      "ON" : { "commerce_order_update" : [] },
+      "IF" : [
+        { "data_is" : {
+            "data" : [ "commerce-order:state" ],
+            "op" : "IN",
+            "value" : { "value" : { "completed" : "completed", "invoiced" : "invoiced" } }
+          }
+        }
+      ],
+      "DO" : [
+        { "entity_query" : {
+            "USING" : {
+              "type" : "commerce_coupon",
+              "property" : "field_from_order",
+              "value" : [ "commerce-order" ],
+              "limit" : "1"
+            },
+            "PROVIDE" : { "entity_fetched" : { "coupon_fetched" : "Fetched coupon" } }
+          }
+        },
+        { "LOOP" : {
+            "USING" : { "list" : [ "coupon-fetched" ] },
+            "ITEM" : { "list_coupon" : "Current coupon" },
+            "DO" : [
+              { "CONDITIONAL" : [
+                  {
+                    "IF" : { "data_is" : { "data" : [ "list-coupon:is-active" ], "value" : "1" } },
+                    "DO" : [
+                      { "mimemail" : {
+                          "key" : "reward-coupon-[list-coupon:coupon-id]-[commerce-order:order-id]",
+                          "to" : [ "commerce-order:owner:mail" ],
+                          "subject" : "Reward coupon from [site:name]",
+                          "body" : "\\u003Cp\\u003ECongratulations!\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EYou have received a reward coupon code worth \\u003Cstrong\\u003E[list-coupon:commerce_coupon_fixed_amount]\\u003C\\/strong\\u003E!\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EYour coupon code: \\u003Cspan style=\\u0022color:#4d8f46;font-size:3em\\u0022\\u003E[list-coupon:commerce_coupon_code]\\u003C\\/span\\u003E\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003EYou can use it on your next purchase at \\u003Cstrong\\u003E[site:name]\\u003C\\/strong\\u003E.\\u003C\\/p\\u003E\\r\\n\\r\\nThanks!",
+                          "plaintext" : "Congratulations!\\r\\n\\r\\nYou have received a reward coupon code worth [list-coupon:commerce-coupon-fixed-amount]!\\r\\n\\r\\nYour coupon code: [list-coupon:commerce_coupon_code]\\r\\n\\r\\nYou can use it on your next purchase at [site:name].\\r\\n\\r\\nThanks!",
+                          "language" : [ "" ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }');
   $items['rules_send_an_order_notification_e_mail_to_client'] = entity_import('rules_config', '{ "rules_send_an_order_notification_e_mail_to_client" : {
       "LABEL" : "Send an order notification e-mail to client",
       "PLUGIN" : "reaction rule",

@@ -100,9 +100,9 @@ Copyright © [current-date:custom:Y] [site:name]. All rights reserved.
 <div class="text-container-col col-sm-6">
 <div class="text-container-wrapper">
 <div class="text-content text-center">
-<div><a href="[site:url]"><h1 style="font-weight:700;display:inline;padding:0 30px;font-family: \'Open Sans\', sans-serif">[site:name]</h1></a></div>
+<div><a href="[site:url]"><h1 style="font-weight:700;padding:0 30px;font-family: \'Open Sans\', sans-serif"><i class="eyesight-icon icon-eyesight-logo"></i><span style="display:none">[site:name]</span></h1></a></div>
 <div style="margin-top:15px"><h3>[site:slogan]</h3></div>
-<div style="margin-top:40px;position:relative;z-index:9"><a href="#block-system-main" class="btn btn-lg btn-default text-uppercase">Discover more</a></div>
+<div style="margin-top:40px;position:relative;z-index:9"><a href="#block-system-main" class="btn btn-lg btn-primary text-uppercase">Discover more</a></div>
 </div>
 </div>
 </div>
