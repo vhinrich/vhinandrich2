@@ -11,7 +11,7 @@ function lens_commerce_features_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
-  // 'commerce_coupon-commerce_coupon_fixed-commerce_coupon_code'
+  // 'commerce_coupon-commerce_coupon_fixed-commerce_coupon_code'.
   $field_instances['commerce_coupon-commerce_coupon_fixed-commerce_coupon_code'] = array(
     'bundle' => 'commerce_coupon_fixed',
     'default_value' => NULL,
@@ -21,7 +21,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'text_default',
         'weight' => 6,
       ),
@@ -46,7 +58,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_coupon-commerce_coupon_fixed-commerce_coupon_fixed_amount'
+  // 'commerce_coupon-commerce_coupon_fixed-commerce_coupon_fixed_amount'.
   $field_instances['commerce_coupon-commerce_coupon_fixed-commerce_coupon_fixed_amount'] = array(
     'bundle' => 'commerce_coupon_fixed',
     'default_value' => array(
@@ -67,6 +79,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 8,
@@ -91,7 +114,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_coupon-commerce_coupon_fixed-commerce_coupon_number_of_uses'
+  // 'commerce_coupon-commerce_coupon_fixed-commerce_coupon_number_of_uses'.
   $field_instances['commerce_coupon-commerce_coupon_fixed-commerce_coupon_number_of_uses'] = array(
     'bundle' => 'commerce_coupon_fixed',
     'default_value' => array(
@@ -107,6 +130,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'prefix_suffix' => TRUE,
           'scale' => 0,
           'thousand_separator' => ' ',
@@ -136,7 +170,58 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_coupon-commerce_coupon_pct-commerce_coupon_code'
+  // 'commerce_coupon-commerce_coupon_fixed-field_from_order'.
+  $field_instances['commerce_coupon-commerce_coupon_fixed-field_from_order'] = array(
+    'bundle' => 'commerce_coupon_fixed',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 9,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'field_from_order',
+    'label' => 'From order',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'commerce_coupon-commerce_coupon_pct-commerce_coupon_code'.
   $field_instances['commerce_coupon-commerce_coupon_pct-commerce_coupon_code'] = array(
     'bundle' => 'commerce_coupon_pct',
     'default_value' => NULL,
@@ -146,7 +231,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'text_default',
         'weight' => 6,
       ),
@@ -171,7 +268,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_coupon-commerce_coupon_pct-commerce_coupon_number_of_uses'
+  // 'commerce_coupon-commerce_coupon_pct-commerce_coupon_number_of_uses'.
   $field_instances['commerce_coupon-commerce_coupon_pct-commerce_coupon_number_of_uses'] = array(
     'bundle' => 'commerce_coupon_pct',
     'default_value' => array(
@@ -187,6 +284,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'prefix_suffix' => TRUE,
           'scale' => 0,
           'thousand_separator' => ' ',
@@ -216,7 +324,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_coupon-commerce_coupon_pct-commerce_coupon_percent_amount'
+  // 'commerce_coupon-commerce_coupon_pct-commerce_coupon_percent_amount'.
   $field_instances['commerce_coupon-commerce_coupon_pct-commerce_coupon_percent_amount'] = array(
     'bundle' => 'commerce_coupon_pct',
     'default_value' => NULL,
@@ -228,6 +336,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'prefix_suffix' => TRUE,
           'scale' => 2,
           'thousand_separator' => ' ',
@@ -257,7 +376,58 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_customer_profile-billing-commerce_customer_address'
+  // 'commerce_coupon-commerce_coupon_pct-field_from_order'.
+  $field_instances['commerce_coupon-commerce_coupon_pct-field_from_order'] = array(
+    'bundle' => 'commerce_coupon_pct',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 9,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'commerce_coupon',
+    'field_name' => 'field_from_order',
+    'label' => 'From order',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'commerce_customer_profile-billing-commerce_customer_address'.
   $field_instances['commerce_customer_profile-billing-commerce_customer_address'] = array(
     'bundle' => 'billing',
     'default_value' => NULL,
@@ -270,6 +440,17 @@ function lens_commerce_features_field_default_field_instances() {
         'settings' => array(
           'format_handlers' => array(
             0 => 'address',
+          ),
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
           ),
           'use_widget_handlers' => 1,
         ),
@@ -310,7 +491,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_customer_profile-shipping-commerce_customer_address'
+  // 'commerce_customer_profile-shipping-commerce_customer_address'.
   $field_instances['commerce_customer_profile-shipping-commerce_customer_address'] = array(
     'bundle' => 'shipping',
     'default_value' => NULL,
@@ -324,6 +505,17 @@ function lens_commerce_features_field_default_field_instances() {
           'format_handlers' => array(
             0 => 'address',
           ),
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'use_widget_handlers' => 1,
         ),
         'type' => 'addressfield_default',
@@ -336,6 +528,17 @@ function lens_commerce_features_field_default_field_instances() {
           'format_handlers' => array(
             0 => 'address',
           ),
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'use_widget_handlers' => 1,
         ),
         'type' => 'addressfield_default',
@@ -347,6 +550,17 @@ function lens_commerce_features_field_default_field_instances() {
         'settings' => array(
           'format_handlers' => array(
             0 => 'address',
+          ),
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
           ),
           'use_widget_handlers' => 1,
         ),
@@ -387,7 +601,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_line_item-commerce_coupon-commerce_coupon_reference'
+  // 'commerce_line_item-commerce_coupon-commerce_coupon_reference'.
   $field_instances['commerce_line_item-commerce_coupon-commerce_coupon_reference'] = array(
     'bundle' => 'commerce_coupon',
     'default_value' => NULL,
@@ -399,6 +613,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'entityreference_label',
         'weight' => 2,
@@ -425,7 +650,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_line_item-commerce_coupon-commerce_total'
+  // 'commerce_line_item-commerce_coupon-commerce_total'.
   $field_instances['commerce_line_item-commerce_coupon-commerce_total'] = array(
     'bundle' => 'commerce_coupon',
     'default_value' => NULL,
@@ -437,6 +662,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 1,
@@ -446,6 +682,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 1,
@@ -455,6 +702,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 1,
@@ -464,6 +722,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 1,
@@ -473,6 +742,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 1,
@@ -497,7 +777,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_line_item-commerce_coupon-commerce_unit_price'
+  // 'commerce_line_item-commerce_coupon-commerce_unit_price'.
   $field_instances['commerce_line_item-commerce_coupon-commerce_unit_price'] = array(
     'bundle' => 'commerce_coupon',
     'default_value' => NULL,
@@ -509,6 +789,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -518,6 +809,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -527,6 +829,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -536,6 +849,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -545,6 +869,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -568,7 +903,8 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-product-commerce_display_path'
+  // Exported field_instance:
+  // 'commerce_line_item-product-commerce_display_path'.
   $field_instances['commerce_line_item-product-commerce_display_path'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -578,14 +914,38 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'text_default',
         'weight' => 3,
       ),
       'display' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
@@ -609,7 +969,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-product-commerce_product'
+  // Exported field_instance: 'commerce_line_item-product-commerce_product'.
   $field_instances['commerce_line_item-product-commerce_product'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -619,14 +979,38 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'commerce_product_reference',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'commerce_product_reference_title_link',
         'weight' => 2,
       ),
       'display' => array(
         'label' => 'hidden',
         'module' => 'commerce_product_reference',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'commerce_product_reference_title_link',
         'weight' => 0,
       ),
@@ -653,7 +1037,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-product-commerce_total'
+  // Exported field_instance: 'commerce_line_item-product-commerce_total'.
   $field_instances['commerce_line_item-product-commerce_total'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -665,6 +1049,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 1,
@@ -674,6 +1069,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 1,
@@ -683,6 +1089,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 1,
@@ -692,6 +1109,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 1,
@@ -715,7 +1143,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-product-commerce_unit_price'
+  // Exported field_instance: 'commerce_line_item-product-commerce_unit_price'.
   $field_instances['commerce_line_item-product-commerce_unit_price'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -727,6 +1155,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -736,6 +1175,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -745,6 +1195,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -754,6 +1215,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -777,7 +1249,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-product-field_prescription'
+  // Exported field_instance: 'commerce_line_item-product-field_prescription'.
   $field_instances['commerce_line_item-product-field_prescription'] = array(
     'bundle' => 'product',
     'commerce_cart_settings' => array(
@@ -795,6 +1267,17 @@ function lens_commerce_features_field_default_field_instances() {
           'delete' => 'Delete',
           'description' => TRUE,
           'edit' => 'Edit',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
@@ -819,7 +1302,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_line_item-shipping-commerce_shipping_service'
+  // 'commerce_line_item-shipping-commerce_shipping_service'.
   $field_instances['commerce_line_item-shipping-commerce_shipping_service'] = array(
     'bundle' => 'shipping',
     'default_value' => NULL,
@@ -829,14 +1312,38 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'list',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'list_default',
         'weight' => 2,
       ),
       'display' => array(
         'label' => 'hidden',
         'module' => 'list',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'list_default',
         'weight' => 0,
       ),
@@ -857,7 +1364,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-shipping-commerce_total'
+  // Exported field_instance: 'commerce_line_item-shipping-commerce_total'.
   $field_instances['commerce_line_item-shipping-commerce_total'] = array(
     'bundle' => 'shipping',
     'default_value' => NULL,
@@ -869,6 +1376,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 1,
@@ -878,6 +1396,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 1,
@@ -887,6 +1416,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 1,
@@ -896,6 +1436,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 1,
@@ -905,6 +1456,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 1,
@@ -928,7 +1490,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-shipping-commerce_unit_price'
+  // Exported field_instance: 'commerce_line_item-shipping-commerce_unit_price'.
   $field_instances['commerce_line_item-shipping-commerce_unit_price'] = array(
     'bundle' => 'shipping',
     'default_value' => NULL,
@@ -940,6 +1502,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -949,6 +1522,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -958,6 +1542,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -967,6 +1562,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -976,6 +1582,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -1000,7 +1617,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_order-commerce_order-commerce_coupon_order_reference'
+  // 'commerce_order-commerce_order-commerce_coupon_order_reference'.
   $field_instances['commerce_order-commerce_order-commerce_coupon_order_reference'] = array(
     'bundle' => 'commerce_order',
     'default_value' => NULL,
@@ -1018,9 +1635,20 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'entityreference_label',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'customer' => array(
         'label' => 'hidden',
@@ -1033,6 +1661,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'entityreference_label',
         'weight' => 2,
@@ -1042,6 +1681,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'entityreference_label',
         'weight' => 5,
@@ -1068,7 +1718,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_order-commerce_order-commerce_customer_billing'
+  // 'commerce_order-commerce_order-commerce_customer_billing'.
   $field_instances['commerce_order-commerce_order-commerce_customer_billing'] = array(
     'bundle' => 'commerce_order',
     'deleted' => 0,
@@ -1077,35 +1727,95 @@ function lens_commerce_features_field_default_field_instances() {
       'administrator' => array(
         'label' => 'above',
         'module' => 'commerce_customer',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'commerce_customer_profile_reference_display',
         'weight' => -5,
       ),
       'backoffice' => array(
         'label' => 'above',
         'module' => 'commerce_customer',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'commerce_customer_profile_reference_display',
-        'weight' => 5,
+        'weight' => 9,
       ),
       'customer' => array(
         'label' => 'above',
         'module' => 'commerce_customer',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'commerce_customer_profile_reference_display',
         'weight' => -5,
       ),
       'default' => array(
         'label' => 'above',
         'module' => 'commerce_customer',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'commerce_customer_profile_reference_display',
         'weight' => 4,
       ),
       'pdf' => array(
         'label' => 'above',
         'module' => 'commerce_customer',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'commerce_customer_profile_reference_display',
         'weight' => 7,
       ),
@@ -1127,7 +1837,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_order-commerce_order-commerce_customer_shipping'
+  // 'commerce_order-commerce_order-commerce_customer_shipping'.
   $field_instances['commerce_order-commerce_order-commerce_customer_shipping'] = array(
     'bundle' => 'commerce_order',
     'deleted' => 0,
@@ -1136,35 +1846,95 @@ function lens_commerce_features_field_default_field_instances() {
       'administrator' => array(
         'label' => 'above',
         'module' => 'commerce_customer',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'commerce_customer_profile_reference_display',
         'weight' => -5,
       ),
       'backoffice' => array(
         'label' => 'above',
         'module' => 'commerce_customer',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'commerce_customer_profile_reference_display',
-        'weight' => 4,
+        'weight' => 8,
       ),
       'customer' => array(
         'label' => 'above',
         'module' => 'commerce_customer',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'commerce_customer_profile_reference_display',
         'weight' => -5,
       ),
       'default' => array(
         'label' => 'above',
         'module' => 'commerce_customer',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'commerce_customer_profile_reference_display',
         'weight' => 3,
       ),
       'pdf' => array(
         'label' => 'above',
         'module' => 'commerce_customer',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'commerce_customer_profile_reference_display',
         'weight' => 6,
       ),
@@ -1186,7 +1956,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_order-commerce_order-commerce_line_items'
+  // 'commerce_order-commerce_order-commerce_line_items'.
   $field_instances['commerce_order-commerce_order-commerce_line_items'] = array(
     'bundle' => 'commerce_order',
     'deleted' => 0,
@@ -1196,6 +1966,17 @@ function lens_commerce_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'commerce_line_item',
         'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'view' => 'commerce_line_item_table|default',
         ),
         'type' => 'commerce_line_item_reference_view',
@@ -1205,15 +1986,37 @@ function lens_commerce_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'commerce_line_item',
         'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'view' => 'commerce_line_item_table|default',
         ),
         'type' => 'commerce_line_item_reference_view',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'customer' => array(
         'label' => 'hidden',
         'module' => 'commerce_line_item',
         'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'view' => 'commerce_line_item_table|default',
         ),
         'type' => 'commerce_line_item_reference_view',
@@ -1223,6 +2026,17 @@ function lens_commerce_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'commerce_line_item',
         'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'view' => 'commerce_line_item_table|default',
         ),
         'type' => 'commerce_line_item_reference_view',
@@ -1232,6 +2046,17 @@ function lens_commerce_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'commerce_line_item',
         'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'view' => 'commerce_line_item_table|default',
         ),
         'type' => 'commerce_line_item_reference_view',
@@ -1255,7 +2080,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_order-commerce_order-commerce_order_total'
+  // 'commerce_order-commerce_order-commerce_order_total'.
   $field_instances['commerce_order-commerce_order-commerce_order_total'] = array(
     'bundle' => 'commerce_order',
     'default_value' => NULL,
@@ -1267,6 +2092,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_components',
         'weight' => -8,
@@ -1276,15 +2112,37 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_components',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'customer' => array(
         'label' => 'hidden',
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_components',
         'weight' => -8,
@@ -1294,6 +2152,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_components',
         'weight' => 2,
@@ -1303,6 +2172,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_components',
         'weight' => -8,
@@ -1312,6 +2192,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_components',
         'weight' => 4,
@@ -1321,6 +2212,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_components',
         'weight' => -8,
@@ -1345,7 +2247,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_order-commerce_order-field_commerce_billy_cancel_date'
+  // 'commerce_order-commerce_order-field_commerce_billy_cancel_date'.
   $field_instances['commerce_order-commerce_order-field_commerce_billy_cancel_date'] = array(
     'bundle' => 'commerce_order',
     'deleted' => 0,
@@ -1357,12 +2259,24 @@ function lens_commerce_features_field_default_field_instances() {
         'settings' => array(
           'format_type' => 'long',
           'fromto' => 'both',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 10,
+        'weight' => 6,
       ),
       'default' => array(
         'label' => 'above',
@@ -1370,9 +2284,21 @@ function lens_commerce_features_field_default_field_instances() {
         'settings' => array(
           'format_type' => 'long',
           'fromto' => 'both',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 8,
@@ -1383,9 +2309,21 @@ function lens_commerce_features_field_default_field_instances() {
         'settings' => array(
           'format_type' => 'long',
           'fromto' => 'both',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 1,
@@ -1420,7 +2358,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_order-commerce_order-field_commerce_billy_i_date'
+  // 'commerce_order-commerce_order-field_commerce_billy_i_date'.
   $field_instances['commerce_order-commerce_order-field_commerce_billy_i_date'] = array(
     'bundle' => 'commerce_order',
     'deleted' => 0,
@@ -1432,12 +2370,24 @@ function lens_commerce_features_field_default_field_instances() {
         'settings' => array(
           'format_type' => 'long',
           'fromto' => 'both',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 9,
+        'weight' => 5,
       ),
       'default' => array(
         'label' => 'above',
@@ -1445,9 +2395,21 @@ function lens_commerce_features_field_default_field_instances() {
         'settings' => array(
           'format_type' => 'long',
           'fromto' => 'both',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 9,
@@ -1458,9 +2420,21 @@ function lens_commerce_features_field_default_field_instances() {
         'settings' => array(
           'format_type' => 'long',
           'fromto' => 'both',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 0,
@@ -1494,7 +2468,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-product-commerce_price'
+  // Exported field_instance: 'commerce_product-product-commerce_price'.
   $field_instances['commerce_product-product-commerce_price'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -1506,6 +2480,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => 'calculated_sell_price',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -1515,6 +2500,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => 'calculated_sell_price',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -1524,6 +2520,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => 'calculated_sell_price',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -1533,6 +2540,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => 'calculated_sell_price',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -1542,6 +2560,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => 'calculated_sell_price',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -1551,6 +2580,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => 'calculated_sell_price',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -1560,6 +2600,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => 'calculated_sell_price',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -1569,6 +2620,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => 'calculated_sell_price',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -1578,6 +2640,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => 'calculated_sell_price',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 0,
@@ -1601,7 +2674,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-contact_form-field_contact_type'
+  // Exported field_instance: 'entityform-contact_form-field_contact_type'.
   $field_instances['entityform-contact_form-field_contact_type'] = array(
     'bundle' => 'contact_form',
     'default_value' => NULL,
@@ -1611,7 +2684,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'list',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'list_default',
         'weight' => 2,
       ),
@@ -1633,7 +2718,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-contact_form-field_email_address'
+  // Exported field_instance: 'entityform-contact_form-field_email_address'.
   $field_instances['entityform-contact_form-field_email_address'] = array(
     'bundle' => 'contact_form',
     'default_value' => array(
@@ -1648,7 +2733,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'email',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'email_default',
         'weight' => 1,
       ),
@@ -1674,7 +2771,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-contact_form-field_message'
+  // Exported field_instance: 'entityform-contact_form-field_message'.
   $field_instances['entityform-contact_form-field_message'] = array(
     'bundle' => 'contact_form',
     'default_value' => NULL,
@@ -1684,7 +2781,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
@@ -1711,7 +2820,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityqueue_subqueue-banner_slides-eq_node'
+  // Exported field_instance: 'entityqueue_subqueue-banner_slides-eq_node'.
   $field_instances['entityqueue_subqueue-banner_slides-eq_node'] = array(
     'bundle' => 'banner_slides',
     'default_value' => NULL,
@@ -1723,6 +2832,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'entityreference_label',
         'weight' => 0,
@@ -1747,7 +2867,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityqueue_subqueue-lens_type_order-eq_node'
+  // Exported field_instance: 'entityqueue_subqueue-lens_type_order-eq_node'.
   $field_instances['entityqueue_subqueue-lens_type_order-eq_node'] = array(
     'bundle' => 'lens_type_order',
     'default_value' => NULL,
@@ -1759,6 +2879,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'link' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'entityreference_label',
         'weight' => 0,
@@ -1784,7 +2915,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_prescription-field_distance'
+  // 'field_collection_item-field_prescription-field_distance'.
   $field_instances['field_collection_item-field_prescription-field_distance'] = array(
     'bundle' => 'field_prescription',
     'default_value' => NULL,
@@ -1795,7 +2926,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'list',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'list_default',
         'weight' => 11,
       ),
@@ -1819,7 +2962,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_prescription-field_left_axis'
+  // 'field_collection_item-field_prescription-field_left_axis'.
   $field_instances['field_collection_item-field_prescription-field_left_axis'] = array(
     'bundle' => 'field_prescription',
     'default_value' => NULL,
@@ -1830,7 +2973,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'list',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'list_default',
         'weight' => 7,
       ),
@@ -1853,7 +3008,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_prescription-field_left_cylinder'
+  // 'field_collection_item-field_prescription-field_left_cylinder'.
   $field_instances['field_collection_item-field_prescription-field_left_cylinder'] = array(
     'bundle' => 'field_prescription',
     'default_value' => NULL,
@@ -1864,7 +3019,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'list',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'list_default',
         'weight' => 5,
       ),
@@ -1887,7 +3054,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_prescription-field_left_sphere'
+  // 'field_collection_item-field_prescription-field_left_sphere'.
   $field_instances['field_collection_item-field_prescription-field_left_sphere'] = array(
     'bundle' => 'field_prescription',
     'default_value' => NULL,
@@ -1898,7 +3065,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'list',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'list_default',
         'weight' => 3,
       ),
@@ -1922,7 +3101,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_prescription-field_other_row_empty_td'
+  // 'field_collection_item-field_prescription-field_other_row_empty_td'.
   $field_instances['field_collection_item-field_prescription-field_other_row_empty_td'] = array(
     'bundle' => 'field_prescription',
     'deleted' => 0,
@@ -1931,7 +3110,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'markup',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'markup_default',
         'weight' => 17,
       ),
@@ -1955,7 +3146,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_prescription-field_pd_label'
+  // 'field_collection_item-field_prescription-field_pd_label'.
   $field_instances['field_collection_item-field_prescription-field_pd_label'] = array(
     'bundle' => 'field_prescription',
     'deleted' => 0,
@@ -1964,7 +3155,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'markup',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'markup_default',
         'weight' => 13,
       ),
@@ -1988,7 +3191,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_prescription-field_prescription_attachment'
+  // 'field_collection_item-field_prescription-field_prescription_attachment'.
   $field_instances['field_collection_item-field_prescription-field_prescription_attachment'] = array(
     'bundle' => 'field_prescription',
     'deleted' => 0,
@@ -1997,7 +3200,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'file',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'file_default',
         'weight' => 0,
       ),
@@ -2026,7 +3241,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_prescription-field_prescription_left_label'
+  // 'field_collection_item-field_prescription-field_prescription_left_label'.
   $field_instances['field_collection_item-field_prescription-field_prescription_left_label'] = array(
     'bundle' => 'field_prescription',
     'deleted' => 0,
@@ -2035,7 +3250,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'markup',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'markup_default',
         'weight' => 16,
       ),
@@ -2059,7 +3286,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_prescription-field_prescription_right_label'
+  // 'field_collection_item-field_prescription-field_prescription_right_label'.
   $field_instances['field_collection_item-field_prescription-field_prescription_right_label'] = array(
     'bundle' => 'field_prescription',
     'deleted' => 0,
@@ -2068,7 +3295,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'markup',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'markup_default',
         'weight' => 15,
       ),
@@ -2092,7 +3331,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_prescription-field_prescription_thead_ths'
+  // 'field_collection_item-field_prescription-field_prescription_thead_ths'.
   $field_instances['field_collection_item-field_prescription-field_prescription_thead_ths'] = array(
     'bundle' => 'field_prescription',
     'deleted' => 0,
@@ -2101,7 +3340,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'markup',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'markup_default',
         'weight' => 14,
       ),
@@ -2125,7 +3376,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_prescription-field_right_axis'
+  // 'field_collection_item-field_prescription-field_right_axis'.
   $field_instances['field_collection_item-field_prescription-field_right_axis'] = array(
     'bundle' => 'field_prescription',
     'default_value' => NULL,
@@ -2136,7 +3387,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'list',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'list_default',
         'weight' => 8,
       ),
@@ -2159,7 +3422,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_prescription-field_right_cylinder'
+  // 'field_collection_item-field_prescription-field_right_cylinder'.
   $field_instances['field_collection_item-field_prescription-field_right_cylinder'] = array(
     'bundle' => 'field_prescription',
     'default_value' => NULL,
@@ -2170,7 +3433,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'list',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'list_default',
         'weight' => 6,
       ),
@@ -2193,7 +3468,7 @@ function lens_commerce_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_prescription-field_right_sphere'
+  // 'field_collection_item-field_prescription-field_right_sphere'.
   $field_instances['field_collection_item-field_prescription-field_right_sphere'] = array(
     'bundle' => 'field_prescription',
     'default_value' => NULL,
@@ -2204,7 +3479,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'inline',
         'module' => 'list',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'list_default',
         'weight' => 4,
       ),
@@ -2227,7 +3514,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-image-field_file_image_alt_text'
+  // Exported field_instance: 'file-image-field_file_image_alt_text'.
   $field_instances['file-image-field_file_image_alt_text'] = array(
     'bundle' => 'image',
     'default_value' => NULL,
@@ -2303,7 +3590,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'file-image-field_file_image_title_text'
+  // Exported field_instance: 'file-image-field_file_image_title_text'.
   $field_instances['file-image-field_file_image_title_text'] = array(
     'bundle' => 'image',
     'default_value' => NULL,
@@ -2379,7 +3666,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-body'
+  // Exported field_instance: 'node-article-body'.
   $field_instances['node-article-body'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -2389,7 +3676,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
@@ -2397,6 +3696,17 @@ function lens_commerce_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
@@ -2424,7 +3734,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_image'
+  // Exported field_instance: 'node-article-field_image'.
   $field_instances['node-article-field_image'] = array(
     'bundle' => 'article',
     'deleted' => 0,
@@ -2436,6 +3746,17 @@ function lens_commerce_features_field_default_field_instances() {
         'settings' => array(
           'image_link' => '',
           'image_style' => 'large',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'image',
         'weight' => -1,
@@ -2446,6 +3767,17 @@ function lens_commerce_features_field_default_field_instances() {
         'settings' => array(
           'image_link' => 'content',
           'image_style' => 'medium',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'image',
         'weight' => -1,
@@ -2478,7 +3810,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-article-field_tags'
+  // Exported field_instance: 'node-article-field_tags'.
   $field_instances['node-article-field_tags'] = array(
     'bundle' => 'article',
     'default_value' => NULL,
@@ -2488,14 +3820,38 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
         'module' => 'taxonomy',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 10,
       ),
@@ -2519,7 +3875,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-contact_form_display-body'
+  // Exported field_instance: 'node-contact_form_display-body'.
   $field_instances['node-contact_form_display-body'] = array(
     'bundle' => 'contact_form_display',
     'default_value' => NULL,
@@ -2529,7 +3885,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'text_default',
         'weight' => 8,
       ),
@@ -2537,6 +3905,17 @@ function lens_commerce_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
@@ -2564,7 +3943,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-contact_form_display-field_entityform'
+  // Exported field_instance: 'node-contact_form_display-field_entityform'.
   $field_instances['node-contact_form_display-field_entityform'] = array(
     'bundle' => 'contact_form_display',
     'default_value' => NULL,
@@ -2575,6 +3954,17 @@ function lens_commerce_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'links' => 0,
           'view_mode' => 'full',
         ),
@@ -2609,7 +3999,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-lens_type-body'
+  // Exported field_instance: 'node-lens_type-body'.
   $field_instances['node-lens_type-body'] = array(
     'bundle' => 'lens_type',
     'default_value' => NULL,
@@ -2631,7 +4021,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'text_default',
         'weight' => 3,
       ),
@@ -2639,6 +4041,17 @@ function lens_commerce_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
@@ -2666,7 +4079,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-lens_type-field_category'
+  // Exported field_instance: 'node-lens_type-field_category'.
   $field_instances['node-lens_type-field_category'] = array(
     'bundle' => 'lens_type',
     'default_value' => NULL,
@@ -2689,7 +4102,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 16,
       ),
@@ -2715,7 +4140,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-lens_type-field_gender'
+  // Exported field_instance: 'node-lens_type-field_gender'.
   $field_instances['node-lens_type-field_gender'] = array(
     'bundle' => 'lens_type',
     'default_value' => NULL,
@@ -2738,7 +4163,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 17,
       ),
@@ -2761,7 +4198,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-lens_type-field_media'
+  // Exported field_instance: 'node-lens_type-field_media'.
   $field_instances['node-lens_type-field_media'] = array(
     'bundle' => 'lens_type',
     'deleted' => 0,
@@ -2769,8 +4206,22 @@ function lens_commerce_features_field_default_field_instances() {
     'display' => array(
       'card_teaser' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'file_entity',
+        'settings' => array(
+          'file_view_mode' => 'card_teaser',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '[node:url]',
+            'linked' => 1,
+          ),
+        ),
+        'type' => 'file_rendered',
         'weight' => 1,
       ),
       'card_teaser_small' => array(
@@ -2778,6 +4229,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'file_entity',
         'settings' => array(
           'file_view_mode' => 'card_teaser',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '[node:url]',
+            'linked' => 1,
+          ),
         ),
         'type' => 'file_rendered',
         'weight' => 23,
@@ -2787,6 +4249,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'file_entity',
         'settings' => array(
           'file_view_mode' => 'full',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'file_rendered',
         'weight' => 1,
@@ -2825,7 +4298,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-lens_type-field_product'
+  // Exported field_instance: 'node-lens_type-field_product'.
   $field_instances['node-lens_type-field_product'] = array(
     'bundle' => 'lens_type',
     'default_value' => NULL,
@@ -2851,6 +4324,17 @@ function lens_commerce_features_field_default_field_instances() {
           'combine' => TRUE,
           'default_quantity' => 1,
           'line_item_type' => 'product',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'show_quantity' => FALSE,
           'show_single_product_attributes' => FALSE,
         ),
@@ -2879,7 +4363,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-lens_type-field_savings_price'
+  // Exported field_instance: 'node-lens_type-field_savings_price'.
   $field_instances['node-lens_type-field_savings_price'] = array(
     'bundle' => 'lens_type',
     'default_value' => NULL,
@@ -2903,6 +4387,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 6,
@@ -2928,7 +4423,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-lens_type-field_shop_price'
+  // Exported field_instance: 'node-lens_type-field_shop_price'.
   $field_instances['node-lens_type-field_shop_price'] = array(
     'bundle' => 'lens_type',
     'default_value' => NULL,
@@ -2952,6 +4447,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'commerce_price',
         'settings' => array(
           'calculation' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'commerce_price_formatted_amount',
         'weight' => 15,
@@ -2977,7 +4483,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-lens_type-field_social_icons'
+  // Exported field_instance: 'node-lens_type-field_social_icons'.
   $field_instances['node-lens_type-field_social_icons'] = array(
     'bundle' => 'lens_type',
     'default_value' => array(
@@ -3003,7 +4509,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'socialicon_field',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'social_icons_formatter',
         'weight' => 3,
       ),
@@ -3032,7 +4550,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-page-body'
+  // Exported field_instance: 'node-page-body'.
   $field_instances['node-page-body'] = array(
     'bundle' => 'page',
     'default_value' => NULL,
@@ -3042,7 +4560,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'text_default',
         'weight' => 0,
       ),
@@ -3050,6 +4580,17 @@ function lens_commerce_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
@@ -3077,7 +4618,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-slide-body'
+  // Exported field_instance: 'node-slide-body'.
   $field_instances['node-slide-body'] = array(
     'bundle' => 'slide',
     'default_value' => NULL,
@@ -3087,7 +4628,19 @@ function lens_commerce_features_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
+        'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
         'type' => 'text_default',
         'weight' => 21,
       ),
@@ -3095,6 +4648,17 @@ function lens_commerce_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
@@ -3122,7 +4686,7 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-slide-field_media'
+  // Exported field_instance: 'node-slide-field_media'.
   $field_instances['node-slide-field_media'] = array(
     'bundle' => 'slide',
     'deleted' => 0,
@@ -3133,6 +4697,17 @@ function lens_commerce_features_field_default_field_instances() {
         'module' => 'file_entity',
         'settings' => array(
           'file_view_mode' => 'media_adaptive',
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
         ),
         'type' => 'file_rendered',
         'weight' => 15,
@@ -3183,6 +4758,52 @@ function lens_commerce_features_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'user-user-field_earned_coupons'.
+  $field_instances['user-user-field_earned_coupons'] = array(
+    'bundle' => 'user',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+          'linked_field' => array(
+            'advanced' => array(
+              'class' => '',
+              'rel' => '',
+              'target' => '',
+              'text' => '',
+              'title' => '',
+            ),
+            'destination' => '',
+            'linked' => 0,
+          ),
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'user',
+    'field_name' => 'field_earned_coupons',
+    'label' => 'Earned Coupons',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 41,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Address');
@@ -3196,9 +4817,11 @@ function lens_commerce_features_field_default_field_instances() {
   t('Coupon Code');
   t('Display path');
   t('Distance');
+  t('Earned Coupons');
   t('Enter a comma-separated list of words to describe your content.');
   t('Entityform');
   t('Fixed Amount');
+  t('From order');
   t('Gender');
   t('Image');
   t('Internally set once the order is cancelled.');

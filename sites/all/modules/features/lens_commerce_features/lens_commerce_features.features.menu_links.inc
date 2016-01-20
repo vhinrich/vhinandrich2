@@ -10,20 +10,15 @@
 function lens_commerce_features_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu_about-us:node/7
+  // Exported menu link: main-menu_about-us:node/7.
   $menu_links['main-menu_about-us:node/7'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'node/7',
     'router_path' => 'node/%',
     'link_title' => 'About us',
     'options' => array(
-      'identifier' => 'main-menu_about-us:node/7',
       'attributes' => array(),
-      'item_attributes' => array(
-        'id' => '',
-        'class' => '',
-        'style' => '',
-      ),
+      'identifier' => 'main-menu_about-us:node/7',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -33,7 +28,7 @@ function lens_commerce_features_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_contact-us:node/8
+  // Exported menu link: main-menu_contact-us:node/8.
   $menu_links['main-menu_contact-us:node/8'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'node/8',
@@ -56,7 +51,7 @@ function lens_commerce_features_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 0,
   );
-  // Exported menu link: main-menu_home:<front>
+  // Exported menu link: main-menu_home:<front>.
   $menu_links['main-menu_home:<front>'] = array(
     'menu_name' => 'main-menu',
     'link_path' => '<front>',
@@ -73,7 +68,7 @@ function lens_commerce_features_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 1,
   );
-  // Exported menu link: menu-user-account-menu_edit:menutoken/55365aff5f8b7
+  // Exported menu link: menu-user-account-menu_edit:menutoken/55365aff5f8b7.
   $menu_links['menu-user-account-menu_edit:menutoken/55365aff5f8b7'] = array(
     'menu_name' => 'menu-user-account-menu',
     'link_path' => 'menutoken/55365aff5f8b7',
@@ -99,39 +94,10 @@ function lens_commerce_features_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-user-account-menu_my-address-book:user/1/addressbook
-  $menu_links['menu-user-account-menu_my-address-book:user/1/addressbook'] = array(
-    'menu_name' => 'menu-user-account-menu',
-    'link_path' => 'user/1/addressbook',
-    'router_path' => 'user/%/addressbook',
-    'link_title' => 'My address book',
-    'options' => array(
-      'menu_token_link_path' => 'user/[current-user:uid]/addressbook',
-      'menu_token_data' => array(),
-      'menu_token_options' => array(
-        'clear' => 0,
-      ),
-      'alter' => TRUE,
-      'attributes' => array(),
-      'item_attributes' => array(
-        'id' => '',
-        'class' => '',
-        'style' => '',
-      ),
-      'identifier' => 'menu-user-account-menu_my-address-book:user/1/addressbook',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
     'weight' => -49,
     'customized' => 1,
   );
-  // Exported menu link: menu-user-account-menu_my-orders:menutoken/55365ae8acb6e
+  // Exported menu link: menu-user-account-menu_my-orders:menutoken/55365ae8acb6e.
   $menu_links['menu-user-account-menu_my-orders:menutoken/55365ae8acb6e'] = array(
     'menu_name' => 'menu-user-account-menu',
     'link_path' => 'menutoken/55365ae8acb6e',
@@ -160,7 +126,7 @@ function lens_commerce_features_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 1,
   );
-  // Exported menu link: user-menu_create-new-account:user/register
+  // Exported menu link: user-menu_create-new-account:user/register.
   $menu_links['user-menu_create-new-account:user/register'] = array(
     'menu_name' => 'user-menu',
     'link_path' => 'user/register',
@@ -178,7 +144,7 @@ function lens_commerce_features_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'user-menu_my-account:user',
   );
-  // Exported menu link: user-menu_edit:menutoken/55365b4962c67
+  // Exported menu link: user-menu_edit:menutoken/55365b4962c67.
   $menu_links['user-menu_edit:menutoken/55365b4962c67'] = array(
     'menu_name' => 'user-menu',
     'link_path' => 'menutoken/55365b4962c67',
@@ -208,7 +174,7 @@ function lens_commerce_features_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'user-menu_my-account:user',
   );
-  // Exported menu link: user-menu_log-in:user/login
+  // Exported menu link: user-menu_log-in:user/login.
   $menu_links['user-menu_log-in:user/login'] = array(
     'menu_name' => 'user-menu',
     'link_path' => 'user/login',
@@ -226,7 +192,7 @@ function lens_commerce_features_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'user-menu_my-account:user',
   );
-  // Exported menu link: user-menu_log-out:user/logout
+  // Exported menu link: user-menu_log-out:user/logout.
   $menu_links['user-menu_log-out:user/logout'] = array(
     'menu_name' => 'user-menu',
     'link_path' => 'user/logout',
@@ -243,7 +209,7 @@ function lens_commerce_features_menu_default_menu_links() {
     'weight' => -47,
     'customized' => 1,
   );
-  // Exported menu link: user-menu_login:user/login
+  // Exported menu link: user-menu_login:user/login.
   $menu_links['user-menu_login:user/login'] = array(
     'menu_name' => 'user-menu',
     'link_path' => 'user/login',
@@ -266,7 +232,7 @@ function lens_commerce_features_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
   );
-  // Exported menu link: user-menu_my-orders:menutoken/55365b3d7199c
+  // Exported menu link: user-menu_my-orders:menutoken/55365b3d7199c.
   $menu_links['user-menu_my-orders:menutoken/55365b3d7199c'] = array(
     'menu_name' => 'user-menu',
     'link_path' => 'menutoken/55365b3d7199c',
@@ -296,7 +262,7 @@ function lens_commerce_features_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'user-menu_my-account:user',
   );
-  // Exported menu link: user-menu_register:user/register
+  // Exported menu link: user-menu_register:user/register.
   $menu_links['user-menu_register:user/register'] = array(
     'menu_name' => 'user-menu',
     'link_path' => 'user/register',
@@ -319,7 +285,7 @@ function lens_commerce_features_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 1,
   );
-  // Exported menu link: user-menu_request-new-password:user/password
+  // Exported menu link: user-menu_request-new-password:user/password.
   $menu_links['user-menu_request-new-password:user/password'] = array(
     'menu_name' => 'user-menu',
     'link_path' => 'user/password',
@@ -337,7 +303,7 @@ function lens_commerce_features_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'user-menu_my-account:user',
   );
-  // Exported menu link: user-menu_view:user
+  // Exported menu link: user-menu_view:user.
   $menu_links['user-menu_view:user'] = array(
     'menu_name' => 'user-menu',
     'link_path' => 'user',
@@ -372,7 +338,6 @@ function lens_commerce_features_menu_default_menu_links() {
   t('Log in');
   t('Log out');
   t('Login');
-  t('My address book');
   t('My orders');
   t('Register');
   t('Request new password');
