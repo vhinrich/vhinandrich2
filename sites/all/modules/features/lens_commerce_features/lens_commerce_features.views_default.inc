@@ -107,12 +107,8 @@ function lens_commerce_features_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['row_class'] = 'col-xs-6 col-sm-4 col-md-3';
+  $handler->display->display_options['style_options']['row_class'] = 'col-sm-6 col-md-4';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['view_mode'] = 'card_teaser';
   $handler->display->display_options['row_options']['links'] = FALSE;
@@ -121,8 +117,8 @@ function lens_commerce_features_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '<div class="container-fluid">
-<h2>Our Watches</h2>
-<h3>Helvetica seitan pickled, authentic VHS +1 aesthetic hoodie retro direct trade Vice. Thundercats banh mi fingerstache lomo. Cliche freegan quinoa, you probably haven\'t heard of them Carles McSweeney\'s post-ironic roof party.</h3>
+<h2>Our Lenses</h2>
+<h3>Our lenses correct <em>Myopia</em> (also known as short-sighted or near-sighted), <em>Hyperopia</em> and <em>Presbyopia</em> (old age yes having problems reading)</h3>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 </div>';
@@ -166,7 +162,6 @@ function lens_commerce_features_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'lens_type' => 'lens_type',
-    'watch' => 'watch',
   );
 
   /* Display: Content pane */
@@ -229,8 +224,8 @@ function lens_commerce_features_views_default_views() {
     t('next ›'),
     t('last »'),
     t('<div class="container-fluid">
-<h2>Our Watches</h2>
-<h3>Helvetica seitan pickled, authentic VHS +1 aesthetic hoodie retro direct trade Vice. Thundercats banh mi fingerstache lomo. Cliche freegan quinoa, you probably haven\'t heard of them Carles McSweeney\'s post-ironic roof party.</h3>
+<h2>Our Lenses</h2>
+<h3>Our lenses correct <em>Myopia</em> (also known as short-sighted or near-sighted), <em>Hyperopia</em> and <em>Presbyopia</em> (old age yes having problems reading)</h3>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 </div>'),
@@ -245,6 +240,347 @@ function lens_commerce_features_views_default_views() {
     t('Lens type list (others)'),
   );
   $export['lens_type_list'] = $view;
+
+  $view = new view();
+  $view->name = 'order_reward_coupon';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'commerce_coupon';
+  $view->human_name = 'Order reward coupon';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Order reward coupon';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'coupon_id' => 'coupon_id',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'coupon_id' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Field: Commerce Coupon: Coupon ID */
+  $handler->display->display_options['fields']['coupon_id']['id'] = 'coupon_id';
+  $handler->display->display_options['fields']['coupon_id']['table'] = 'commerce_coupon';
+  $handler->display->display_options['fields']['coupon_id']['field'] = 'coupon_id';
+  $handler->display->display_options['fields']['coupon_id']['exclude'] = TRUE;
+  /* Field: Commerce Coupon: Coupon Code */
+  $handler->display->display_options['fields']['commerce_coupon_code']['id'] = 'commerce_coupon_code';
+  $handler->display->display_options['fields']['commerce_coupon_code']['table'] = 'field_data_commerce_coupon_code';
+  $handler->display->display_options['fields']['commerce_coupon_code']['field'] = 'commerce_coupon_code';
+  $handler->display->display_options['fields']['commerce_coupon_code']['settings'] = array(
+    'linked_field' => array(
+      'linked' => 0,
+      'destination' => '',
+      'advanced' => array(
+        'title' => '',
+        'target' => '',
+        'class' => '',
+        'rel' => '',
+        'text' => '',
+      ),
+    ),
+  );
+  /* Field: Commerce Coupon: Granted amount */
+  $handler->display->display_options['fields']['granted_amount']['id'] = 'granted_amount';
+  $handler->display->display_options['fields']['granted_amount']['table'] = 'commerce_coupon';
+  $handler->display->display_options['fields']['granted_amount']['field'] = 'granted_amount';
+  /* Field: Commerce Coupon: Is active */
+  $handler->display->display_options['fields']['is_active']['id'] = 'is_active';
+  $handler->display->display_options['fields']['is_active']['table'] = 'commerce_coupon';
+  $handler->display->display_options['fields']['is_active']['field'] = 'is_active';
+  $handler->display->display_options['fields']['is_active']['not'] = 0;
+  /* Field: Commerce Coupon: Maximum number of Uses */
+  $handler->display->display_options['fields']['commerce_coupon_number_of_uses']['id'] = 'commerce_coupon_number_of_uses';
+  $handler->display->display_options['fields']['commerce_coupon_number_of_uses']['table'] = 'field_data_commerce_coupon_number_of_uses';
+  $handler->display->display_options['fields']['commerce_coupon_number_of_uses']['field'] = 'commerce_coupon_number_of_uses';
+  $handler->display->display_options['fields']['commerce_coupon_number_of_uses']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+    'linked_field' => array(
+      'linked' => 0,
+      'destination' => '',
+      'advanced' => array(
+        'title' => '',
+        'target' => '',
+        'class' => '',
+        'rel' => '',
+        'text' => '',
+      ),
+    ),
+  );
+  /* Field: Commerce Coupon: Operations */
+  $handler->display->display_options['fields']['operations']['id'] = 'operations';
+  $handler->display->display_options['fields']['operations']['table'] = 'commerce_coupon';
+  $handler->display->display_options['fields']['operations']['field'] = 'operations';
+  $handler->display->display_options['fields']['operations']['add_destination'] = 0;
+  /* Contextual filter: Commerce Coupon: From order (field_from_order) */
+  $handler->display->display_options['arguments']['field_from_order_target_id']['id'] = 'field_from_order_target_id';
+  $handler->display->display_options['arguments']['field_from_order_target_id']['table'] = 'field_data_field_from_order';
+  $handler->display->display_options['arguments']['field_from_order_target_id']['field'] = 'field_from_order_target_id';
+  $handler->display->display_options['arguments']['field_from_order_target_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_from_order_target_id']['default_argument_type'] = 'php';
+  $handler->display->display_options['arguments']['field_from_order_target_id']['default_argument_options']['code'] = 'return arg(2);';
+  $handler->display->display_options['arguments']['field_from_order_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_from_order_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_from_order_target_id']['summary_options']['items_per_page'] = '25';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+  $translatables['order_reward_coupon'] = array(
+    t('Master'),
+    t('Order reward coupon'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Coupon ID'),
+    t('.'),
+    t(','),
+    t('Coupon Code'),
+    t('Granted amount'),
+    t('Is active'),
+    t('Maximum number of Uses'),
+    t('Operations'),
+    t('All'),
+    t('Block'),
+  );
+  $export['order_reward_coupon'] = $view;
+
+  $view = new view();
+  $view->name = 'user_reward_coupon_list';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'commerce_coupon';
+  $view->human_name = 'User reward coupon list';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'coupon_id' => 'coupon_id',
+    'commerce_coupon_code' => 'commerce_coupon_code',
+    'field_from_order' => 'field_from_order',
+    'granted_amount' => 'granted_amount',
+    'commerce_coupon_number_of_uses' => 'commerce_coupon_number_of_uses',
+    'times_used' => 'times_used',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'coupon_id' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'commerce_coupon_code' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_from_order' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'granted_amount' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'commerce_coupon_number_of_uses' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'times_used' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<p>Earn coupons by purchasing!</p>';
+  $handler->display->display_options['footer']['area']['format'] = 'super_full_html';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>You have not earn any coupons yet.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'super_full_html';
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_earned_coupons_user']['id'] = 'reverse_field_earned_coupons_user';
+  $handler->display->display_options['relationships']['reverse_field_earned_coupons_user']['table'] = 'commerce_coupon';
+  $handler->display->display_options['relationships']['reverse_field_earned_coupons_user']['field'] = 'reverse_field_earned_coupons_user';
+  $handler->display->display_options['relationships']['reverse_field_earned_coupons_user']['required'] = TRUE;
+  /* Field: Commerce Coupon: Coupon ID */
+  $handler->display->display_options['fields']['coupon_id']['id'] = 'coupon_id';
+  $handler->display->display_options['fields']['coupon_id']['table'] = 'commerce_coupon';
+  $handler->display->display_options['fields']['coupon_id']['field'] = 'coupon_id';
+  $handler->display->display_options['fields']['coupon_id']['exclude'] = TRUE;
+  /* Field: Commerce Coupon: Coupon Code */
+  $handler->display->display_options['fields']['commerce_coupon_code']['id'] = 'commerce_coupon_code';
+  $handler->display->display_options['fields']['commerce_coupon_code']['table'] = 'field_data_commerce_coupon_code';
+  $handler->display->display_options['fields']['commerce_coupon_code']['field'] = 'commerce_coupon_code';
+  $handler->display->display_options['fields']['commerce_coupon_code']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['commerce_coupon_code']['element_class'] = 'text-info';
+  $handler->display->display_options['fields']['commerce_coupon_code']['settings'] = array(
+    'linked_field' => array(
+      'linked' => 0,
+      'destination' => '',
+      'advanced' => array(
+        'title' => '',
+        'target' => '',
+        'class' => '',
+        'rel' => '',
+        'text' => '',
+      ),
+    ),
+  );
+  /* Field: Commerce Coupon: From order */
+  $handler->display->display_options['fields']['field_from_order']['id'] = 'field_from_order';
+  $handler->display->display_options['fields']['field_from_order']['table'] = 'field_data_field_from_order';
+  $handler->display->display_options['fields']['field_from_order']['field'] = 'field_from_order';
+  $handler->display->display_options['fields']['field_from_order']['settings'] = array(
+    'link' => 0,
+    'linked_field' => array(
+      'linked' => 0,
+      'destination' => '',
+      'advanced' => array(
+        'title' => '',
+        'target' => '',
+        'class' => '',
+        'rel' => '',
+        'text' => '',
+      ),
+    ),
+  );
+  /* Field: Commerce Coupon: Granted amount */
+  $handler->display->display_options['fields']['granted_amount']['id'] = 'granted_amount';
+  $handler->display->display_options['fields']['granted_amount']['table'] = 'commerce_coupon';
+  $handler->display->display_options['fields']['granted_amount']['field'] = 'granted_amount';
+  /* Field: Commerce Coupon: Maximum number of Uses */
+  $handler->display->display_options['fields']['commerce_coupon_number_of_uses']['id'] = 'commerce_coupon_number_of_uses';
+  $handler->display->display_options['fields']['commerce_coupon_number_of_uses']['table'] = 'field_data_commerce_coupon_number_of_uses';
+  $handler->display->display_options['fields']['commerce_coupon_number_of_uses']['field'] = 'commerce_coupon_number_of_uses';
+  $handler->display->display_options['fields']['commerce_coupon_number_of_uses']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+    'linked_field' => array(
+      'linked' => 0,
+      'destination' => '',
+      'advanced' => array(
+        'title' => '',
+        'target' => '',
+        'class' => '',
+        'rel' => '',
+        'text' => '',
+      ),
+    ),
+  );
+  /* Field: Commerce Coupon: Times used */
+  $handler->display->display_options['fields']['times_used']['id'] = 'times_used';
+  $handler->display->display_options['fields']['times_used']['table'] = 'commerce_coupon';
+  $handler->display->display_options['fields']['times_used']['field'] = 'times_used';
+  /* Contextual filter: User: Uid */
+  $handler->display->display_options['arguments']['uid']['id'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['table'] = 'users';
+  $handler->display->display_options['arguments']['uid']['field'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['relationship'] = 'reverse_field_earned_coupons_user';
+  $handler->display->display_options['arguments']['uid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: Commerce Coupon: Is active */
+  $handler->display->display_options['filters']['is_active']['id'] = 'is_active';
+  $handler->display->display_options['filters']['is_active']['table'] = 'commerce_coupon';
+  $handler->display->display_options['filters']['is_active']['field'] = 'is_active';
+  $handler->display->display_options['filters']['is_active']['value'] = '1';
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['argument_input'] = array(
+    'uid' => array(
+      'type' => 'user',
+      'context' => 'entity:commerce_coupon.commerce-coupon-code',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'User: Uid',
+    ),
+  );
+  $translatables['user_reward_coupon_list'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('<p>Earn coupons by purchasing!</p>'),
+    t('<p>You have not earn any coupons yet.</p>'),
+    t('User referencing Commerce Coupon from field_earned_coupons'),
+    t('Coupon ID'),
+    t('.'),
+    t(','),
+    t('Coupon Code'),
+    t('From order'),
+    t('Granted amount'),
+    t('Maximum number of Uses'),
+    t('Times used'),
+    t('All'),
+    t('Content pane'),
+    t('View panes'),
+  );
+  $export['user_reward_coupon_list'] = $view;
 
   return $export;
 }
