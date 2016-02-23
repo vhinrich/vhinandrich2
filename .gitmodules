@@ -1,3 +1,3 @@
 [submodule "sites/all/modules/custom/fb_iasc"]
 	path = sites/all/modules/custom/fb_iasc
-	url = git@github.com:vhin0210/fb_iasc.git
+	url = https://github.com/vhin0210/fb_iasc.git
