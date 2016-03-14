@@ -26,11 +26,20 @@ function _services_basic_auth_authenticate_call($settings, $method, $args) {
   // PHP FastCGI doesn't support HTTP Basic Authentication out of the box so we
   // need this workaround. Requires a patch to .htaccess.
   // @see http://drupal.org/node/1864628.
-  if (isset($_SERVER['HTTP_AUTHORIZATION']) AND !empty($_SERVER['HTTP_AUTHORIZATION'])) {
-    list($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']) = explode(':', base64_decode(substr($_SERVER['HTTP_AUTHORIZATION'], 6)), 2);
+  $fastcgi_header = variable_get('services_basic_auth_fastcgi_header', 'HTTP_AUTHORIZATION');
+  if (isset($_SERVER[$fastcgi_header])
+      && !empty($_SERVER[$fastcgi_header])
+      && strtolower(substr($_SERVER[$fastcgi_header], 0, 5)) == 'basic') {
+
+    $credentials = base64_decode(substr($_SERVER[$fastcgi_header], 6));
+    if (empty($credentials)) {
+      // The string is too short or is not correctly Base64 encoded.
+      return 'Malformed HTTP Authorization header.';
+    }
+    list($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']) = explode(':', $credentials, 2);
   }
 
-  if (user_is_anonymous() && isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW'])) {
+  if (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW'])) {
     // Fake a user_login form submission.
     $form_state['values'] = array(
       'name' => $_SERVER['PHP_AUTH_USER'],
@@ -48,6 +57,7 @@ function _services_basic_auth_authenticate_call($settings, $method, $args) {
       if (isset($form_state['flood_control_user_identifier'])) {
         flood_register_event('failed_login_attempt_user', variable_get('user_failed_login_user_window', 21600), $form_state['flood_control_user_identifier']);
       }
+      return 'Invalid credentials.';
     }
     elseif (isset($form_state['flood_control_user_identifier'])) {
       // Clear past failures for this user so as not to block a user who might
@@ -58,6 +68,10 @@ function _services_basic_auth_authenticate_call($settings, $method, $args) {
       // log them in. @see user_login_submit().
       global $user;
       $user = user_load($form_state['uid']);
+    }
+    else {
+      // This situation *shouldn't* occur.
+      return 'An unknown error occurred.';
     }
   }
 }

@@ -908,6 +908,12 @@ function oauth2_server_start($server = NULL) {
     // v1.6 of the library. So this provides both.
     $settings['use_jwt_access_tokens'] = !empty($settings['use_crypto_tokens']) ?: FALSE;
 
+    // For JWT access tokens, this setting ensures that only the ID will be
+    // stored, not the entire token.
+    if ($settings['use_jwt_access_tokens']) {
+      $settings['store_encrypted_token_string'] = FALSE;
+    }
+
     // Initialize the server and add the scope util.
     $oauth2_server = new OAuth2\Server($storage, $settings);
     $scope_util = new Drupal\oauth2_server\Scope($server);
@@ -924,6 +930,10 @@ function oauth2_server_start($server = NULL) {
 
   // Initialize the enabled grant types.
   foreach ($enabled_grant_types as $grant_type_name) {
+    if (!isset($grant_types[$grant_type_name])) {
+      watchdog('oauth2_server', 'Invalid grant type: @name', array('@name' => $grant_type_name), WATCHDOG_ERROR);
+      continue;
+    }
     if ($grant_type_name == 'urn:ietf:params:oauth:grant-type:jwt-bearer') {
       $audience = url('oauth2/token', array('absolute' => TRUE));
       $grant_type = new $grant_types[$grant_type_name]['class']($storage, $audience);
@@ -1128,6 +1138,8 @@ function oauth2_server_grant_types() {
       'class' => 'OAuth2\GrantType\UserCredentials',
     ),
   );
+
+  drupal_alter(__FUNCTION__, $grant_types);
 
   return $grant_types;
 }
