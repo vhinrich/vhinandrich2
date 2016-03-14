@@ -360,13 +360,18 @@ function cpn_node_load($nodes, $types) {
   }
 
   if ($supported) {
-    $result = db_query('SELECT nid, css, js, noscript FROM {cpn} WHERE nid IN (:nids)', array(':nids' => array_keys($nodes)));
-    foreach ($result as $record) {
-      $nodes[$record->nid]->cpn = array(
-        'css' => $record->css,
-        'js' => $record->js,
-        'noscript' => $record->noscript,
-      );
+    try {
+      $result = db_query('SELECT nid, css, js, noscript FROM {cpn} WHERE nid IN (:nids)', array(':nids' => array_keys($nodes)));
+      foreach ($result as $record) {
+        $nodes[$record->nid]->cpn = array(
+          'css' => $record->css,
+          'js' => $record->js,
+          'noscript' => $record->noscript,
+        );
+      }
+    }
+    catch (Exception $e) {
+      watchdog('cpn', 'Error loading node records for CPN, were the database updates ran?');
     }
   }
 }
@@ -402,7 +407,6 @@ function cpn_ctools_render_alter(&$info, &$page, &$context) {
             'weight' => $weight[$type] - 1,
             'preprocess' => (bool) variable_get('cpn_aggregation_' . $type, FALSE),
           );
-          dpm($file);
           $function = 'drupal_add_' . $type;
           $function($file);
         }
@@ -552,10 +556,15 @@ function cpn_form_alter(&$form, $form_state, $form_id) {
       'noscript' => '',
     );
     if (!empty($form['delta']['#value'])) {
-      $cpn = db_query("SELECT css, js, noscript FROM {block} WHERE module = :module AND delta = :delta", array(
-        ':module' => $form['module']['#value'],
-        ':delta' => $form['delta']['#value'],
-      ))->fetchAssoc();
+      try {
+        $cpn = db_query("SELECT css, js, noscript FROM {block} WHERE module = :module AND delta = :delta", array(
+          ':module' => $form['module']['#value'],
+          ':delta' => $form['delta']['#value'],
+        ))->fetchAssoc();
+      }
+      catch (Exception $e) {
+        watchdog('cpn', 'Error loading block records for CPN, were the database updates ran?');
+      }
     }
 
     // CSS.
@@ -703,17 +712,22 @@ function cpn_preprocess_block(&$vars) {
   }
 
   // The noscript option has to be handled differently.
-  $noscript = db_query("SELECT noscript FROM {block} WHERE module = :module AND delta = :delta", array(
-    ':module' => $vars['block']->module,
-    ':delta' => $vars['block']->delta,
-  ))->fetchField();
-  if (!empty($noscript)) {
-    if (is_array($vars['content'])) {
-      $vars['content']['cpn']['#markup'] = cpn_output_noscript($noscript);
+  try {
+    $noscript = db_query("SELECT noscript FROM {block} WHERE module = :module AND delta = :delta", array(
+      ':module' => $vars['block']->module,
+      ':delta' => $vars['block']->delta,
+    ))->fetchField();
+    if (!empty($noscript)) {
+      if (is_array($vars['content'])) {
+        $vars['content']['cpn']['#markup'] = cpn_output_noscript($noscript);
+      }
+      else {
+        $vars['content'] .= cpn_output_noscript($noscript);
+      }
     }
-    else {
-      $vars['content'] .= cpn_output_noscript($noscript);
-    }
+  }
+  catch (Exception $e) {
+    watchdog('cpn', 'Error loading block records for CPN, were the database updates ran?');
   }
 }
 

@@ -409,10 +409,11 @@ function cpn_update_7105() {
       'size' => 'big',
     );
     db_add_field($table, $field, $spec);
-    drupal_set_message(t('Added the "noscript" field to the {cpn} table.'));
+
+    return t('Added the "noscript" field to the {cpn} table.');
   }
   else {
-    drupal_set_message(t('The "noscript" field already exists in the {cpn} table.'));
+    return t('The "noscript" field already exists in the {cpn} table.');
   }
 }
 
@@ -429,9 +430,10 @@ function cpn_update_7106() {
       'size' => 'big',
     );
     db_add_field($table, $field, $spec);
-    drupal_set_message(t('Added the "noscript" field to the {block} table.'));
+
+    return t('Added the "noscript" field to the {block} table.');
   }
   else {
-    drupal_set_message(t('The "noscript" field already exists in the {block} table.'));
+    return t('The "noscript" field already exists in the {block} table.');
   }
 }

@@ -1,3 +1,11 @@
+CPN 7.x-1.7, 2016-03-09
+-----------------------
+#2605854 by DamienMcKenna: Begone, vile dpm()!
+#2603506 by DamienMcKenna: Try to avoid taking down the site if the database
+  updates haven't ran yet.
+#2668372 by DamienMcKenna: Added some tests.
+
+
 CPN 7.x-1.6, 2015-10-25
 -----------------------
 #2292521 by DamienMcKenna: Support newer versions of CodeMirror.
