@@ -3,6 +3,7 @@ sites/*/*settings*.php
 
 # Ignore paths that contain generated content.
 cache/
+!**/ctools/**/cache/
 files/
 sites/*/files
 sites/*/private
@@ -51,4 +52,3 @@ sites/all/themes/mqcristobalawesome/.DS_Store
 sites/default/.DS_Store
 .DS_Store
 .DS_Store?
-github.php
