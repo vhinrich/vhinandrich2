@@ -1,7 +1,7 @@
 <?php
 /**
  * FBInstantArticleOAuth2Connector
- * Version 1.0
+ * Version 1.1
  */
 
 class FBInstantArticleOAuth2Connector {
@@ -31,7 +31,7 @@ class FBInstantArticleOAuth2Connector {
 			'response_type' => FBInstantArticleOAuth2Connector::RESPONSE_TYPE_CODE,
 			'client_id' => $this->client_id,
 			'redirect_uri' => $this->redirect_url,
-			'state' => REQUEST_TIME
+			'state' => time()
 		);
 
 		$forward_url = FBInstantArticleOAuth2Connector::OAUTH_ENDPOINT . FBInstantArticleOAuth2Connector::OAUTH_AUTHORIZATION;
@@ -66,7 +66,7 @@ class FBInstantArticleOAuth2Connector {
 		$request = $this->sendRequest($request_access_token_url, $options);
 
 		if (isset($request->status_message) && $request->status_message == 'OK') {
-			return json_decode($request->data);
+			return $request->data;
 		} else {
 			throw new Exception($request->error, $request->code);
 		}
@@ -107,7 +107,7 @@ class FBInstantArticleOAuth2Connector {
 		$request = $this->sendRequest($request_url, $options);
 
 		if (isset($request->status_message) && $request->status_message == 'OK') {
-			return json_decode($request->data);
+			return $request->data;
 		} else {
 			throw new Exception($request->error, $request->code);
 		}
@@ -121,7 +121,7 @@ class FBInstantArticleOAuth2Connector {
 
 		if (isset($options['headers']) && !empty($options['headers'])) {
 			$headers = $this->generateHeaders($options['headers']);
-			curl_setopt($ch, CURLOPT_HEADER, TRUE);
+			curl_setopt($curl, CURLOPT_HEADER, FALSE);
 			curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 		}
 
@@ -148,13 +148,14 @@ class FBInstantArticleOAuth2Connector {
 
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
 
-		$return = NULL;
+		$return = new stdClass;
 
 		try {
 			$return_str = curl_exec($curl);
 			$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+			curl_close($curl);
 			$return->status_message = 'OK';
-			$return->data = $return_str;
+			$return->data = json_decode($return_str);
 			if ($status >= 400) {
 				$return->status_message = 'NOT OK';
 				$return->code = $status;
@@ -169,8 +170,6 @@ class FBInstantArticleOAuth2Connector {
 			$return->code = 400;
 			$return->error = 'Unhandled error on request.';
 		}
-
-		curl_close($curl);
 
 		return $return;
 	}
