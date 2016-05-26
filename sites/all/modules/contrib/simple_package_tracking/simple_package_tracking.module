@@ -301,8 +301,15 @@ function simple_package_tracking_add_tracking_submit($form, &$form_state) {
   $carrier = $carriers[$form_state['values']['tracking_carrier']]['name'];
   $url = $carriers[$form_state['values']['tracking_carrier']]['url'];
 
+  $optional = array();
+
+  if(module_exists('commerce_shipping') && variable_get('simple_package_tracking_allow_all_shipping_fields', 0)) {
+    $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+    $optional = $order_wrapper->commerce_customer_shipping->commerce_customer_address->value();
+  }
+
   $tracking_id = simple_package_tracking_save_tracking(
-    $order_id, $number, $url, $carrier, $note
+    $order_id, $number, $url, $carrier, $note, NULL, $optional
   );
   if (!is_null($tracking_id)) {
     $comment = t(
@@ -342,6 +349,7 @@ function simple_package_tracking_carrier_edit_form($form, &$form_state, $carrier
     '#type' => 'textfield',
     '#title' => t('Carrier URL'),
     '#default_value' => isset($carrier) ? $carrier->carrier_url_default : '',
+    '#maxlength' => 255,
   );
   $form['allow_no_tracking'] = array(
     '#type' => 'checkbox',
@@ -376,11 +384,28 @@ function simple_package_tracking_carrier_submit($form, &$form_state) {
   $form_state['redirect'] = 'admin/commerce/config/tracking/carriers';
 }
 
+/**
+ * @param $order_id
+ * @param $number
+ * @param $url
+ * @param $carrier
+ * @param $note
+ * @param null $id
+ * @param $optional
+ *    Optional array with replacement patterns
+ * @return \DatabaseStatementInterface|int|null
+ * @throws \Exception
+ */
 function simple_package_tracking_save_tracking(
-  $order_id, $number, &$url, $carrier, $note, $id = NULL
+  $order_id, $number, &$url, $carrier, $note, $id = NULL, $optional=array()
 ) {
   $url = preg_replace('/\s+/', '', $url);
   $url = str_replace('@tracking_number', $number, $url);
+
+  foreach($optional as $token=>$value) {
+    $url = str_replace('@' . $token, $value, $url);
+  }
+
   if (!$id) {
     $query = db_insert('tracking_numbers')
       ->fields(array(
@@ -446,6 +471,19 @@ function simple_package_tracking_config_form($form, &$form_state) {
       )
     ),
   );
+
+  // Only supports commerce shipping.
+  if(module_exists('commerce_shipping')) {
+    $form['allow_all_shipping_fields'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Allow all shipping replacement fields'),
+      '#default_value' => variable_get('simple_package_tracking_allow_all_shipping_fields', ''),
+      '#description' => t(
+        'This will enable all shipping fields to be used as replacement pattern. For example "@postal_code" or "@country". Which might be needed for some carries'
+      ),
+    );
+  }
+
   $form['#submit'][] = 'simple_package_tracking_config_submit';
   $form['submit'] = array(
     '#type' => 'submit',
@@ -469,6 +507,12 @@ function simple_package_tracking_config_submit($form, &$form_state) {
   }
   else {
     drupal_set_message(t('Could not set the default note text.'));
+  }
+  if (isset($form_state['values']['allow_all_shipping_fields'])) {
+    variable_set(
+      'simple_package_tracking_allow_all_shipping_fields',
+      $form_state['values']['allow_all_shipping_fields']
+    );
   }
 }
 

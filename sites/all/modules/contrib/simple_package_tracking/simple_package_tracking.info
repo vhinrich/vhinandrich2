@@ -3,9 +3,9 @@ description = Provides a simplified interface for adding tracking information to
 package = "Commerce (contrib)"
 core = 7.x
 
-; Information added by Drupal.org packaging script on 2015-04-16
-version = "7.x-1.2"
+; Information added by Drupal.org packaging script on 2016-02-20
+version = "7.x-1.3"
 core = "7.x"
 project = "simple_package_tracking"
-datestamp = "1429158783"
+datestamp = "1455947351"
 
