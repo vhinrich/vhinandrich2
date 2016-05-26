@@ -26,7 +26,7 @@ CITYLINK          - http://www.city-link.co.uk/dynamic/track.php?parcel_ref_num=
 CITYSPRINT        - http://ijb.citysprint.co.uk/cs/quiktrak.php?CK=&wwhawb=@tracking_number
 COLISSIMO         - http://www.colissimo.fr/portail_colissimo/suivre.do?language=fr_FR&parcelnumber=@tracking_number
 COLLECTPLUS       - https://www.collectplus.co.uk/track/@tracking_number
-CORREIOS          - http://websro.correios.com.br/sro_bin/txect01$.Inexistente?P_LINGUA=001&P_TIPO=002&P_COD_LIS=@tracking_number
+CORREIOS          - http://websro.correios.com.br/sro_bin/txect01$.QueryList?P_COD_UNI=@tracking_number&P_LINGUA=001&P_TIPO=001
 CORREIOSCL        - http://www.correos.cl/SitePages/seguimiento/seguimiento.aspx?envio=@tracking_number
 CORREOARGENTINO   - http://www.correoargentino.com.ar/seguimiento_envios/consultar/ondnc/CP/@tracking_number/AR
 COURIERPOST       - http://trackandtrace.courierpost.co.nz/search/@tracking_number
@@ -84,6 +84,7 @@ PNCOURIER         - http://www.pos.com.my/emstrack/viewdetail.asp?parcelno=@trac
 POSMALAY          - http://www.pos.com.my/emstrack/viewdetail.asp?parcelno=@tracking_number
 POSTDAN           - http://www.postdanmark.dk/tracktrace/TrackTrace.do?i_lang=INE&i_stregkode=@tracking_number
 POSTINDIA         - http://services.ptcmysore.gov.in/Speednettracking/Track.aspx?articlenumber=@tracking_number
+POSTNL            - https://mijnpakket.postnl.nl/Claim?Barcode=@tracking_number&Postalcode=@postal_code&Foreign=False&ShowAnonymousLayover=False&CustomerServiceClaim=False
 POSTNLINTL        - https://mijnpakket.postnl.nl/Claim?Barcode=@tracking_number&Postalcode=&Foreign=True&ShowAnonymousLayover=False&CustomerServiceClaim=False
 POSTNORWAY        - http://sporing.posten.no/sporing.html?q=@tracking_number&lang=en
 POSTOUK           - http://www.postoffice.co.uk/track-trace?trackNumber=@tracking_number&page_type=rml-tracking-details

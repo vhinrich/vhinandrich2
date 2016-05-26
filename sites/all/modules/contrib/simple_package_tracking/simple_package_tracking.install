@@ -99,7 +99,8 @@ function simple_package_tracking_install() {
  * Implements hook_uninstall().
  */
 function simple_package_tracking_uninstall() {
-
+  variable_del('simple_package_tracking_default_note_text');
+  variable_del('simple_package_tracking_allow_all_shipping_fields');
 }
 
 /**

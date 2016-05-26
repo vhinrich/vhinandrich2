@@ -12,7 +12,7 @@ number of steps required to add tracking information to the order.
 Drupal Simple Package for download at
 https://www.drupal.org/project/simple_package_tracking
 
-Enable the module as normal.
+Enable the module in the usual way.
 
 
 --------
