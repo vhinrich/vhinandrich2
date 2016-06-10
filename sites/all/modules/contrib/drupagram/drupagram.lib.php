@@ -139,7 +139,7 @@ class Instagram {
     'post_like' => 'v1/media/%d/likes',
     'remove_like' => 'v1/media/%d/likes?access_token=!access_token',
     'tags' => 'v1/tags/%s?access_token=!access_token',
-    'tags_recent' => 'v1/tags/!tag_name/media/recent?max_id=%d&min_id=%d&access_token=!access_token',
+    'tags_recent' => 'v1/tags/!tag_name/media/recent?access_token=!access_token',
     'tags_search' => 'v1/tags/search?q=%s&access_token=!access_token',
     'locations' => 'v1/locations/%d?access_token=!access_token',
     'locations_recent' => 'v1/locations/%d/media/recent/?max_id=%d&min_id=%d&max_timestamp=%d&min_timestamp=%d&access_token=!access_token',
@@ -499,7 +499,7 @@ class InstagramOAuth extends Instagram {
    * @param string $response_type. Currently only 'code' is supported
    * @return string. Propertly formatted authorization url.
    */
-  public function get_authorize_url($redirect_uri = NULL, $scope = array('basic', 'comments', 'relationships', 'likes'), $response_type = 'code') {
+  public function get_authorize_url($redirect_uri = NULL, $scope = array('basic', 'comments', 'relationships', 'likes', 'public_content'), $response_type = 'code') {
 
     $url = $this->create_url('oauth/authorize', '');
     $url .= '?client_id=' . $this->client_id;

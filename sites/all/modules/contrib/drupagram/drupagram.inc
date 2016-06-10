@@ -47,6 +47,7 @@ function drupagram_account_save($drupagram_user, $save_auth = FALSE, $account = 
   $schema = drupal_get_schema('drupagram_account');
 
   foreach ($values as $k => $v) {
+    $values[$k] = drupagram_emoji($v);
     // Remove values that we don't have defined in our schema
     if (!isset($schema['fields'][$k])) {
       unset($values[$k]);

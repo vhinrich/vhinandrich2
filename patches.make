@@ -12,3 +12,6 @@ projects[ckeditor][subdir] = contrib
 
 projects[commerce_auto_product_display][patch][] = "https://www.drupal.org/files/issues/field_groups_fix-1992890-2_0.patch"
 projects[commerce_auto_product_display][subdir] = contrib
+
+projects[drupagram][patch][] = "https://www.drupal.org/files/issues/drupagram_7_x_1_2.patch"
+projects[drupagram][subdir] = contrib
