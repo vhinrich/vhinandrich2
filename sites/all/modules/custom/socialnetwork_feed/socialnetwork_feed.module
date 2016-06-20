@@ -84,20 +84,18 @@ function socialnetwork_feed_ig_pull_retrieve($var){
     $searches = explode(",", $search);
   }
 
+  $user = user_load(1);
+  $account = drupagram_account_load($user->drupagram_accounts[0]->id);
+  $instagram = drupagram_connect($account);
+
   $feeds = array();
   foreach($searches as $searchItem){
     $feed = null;
     if(strstr($searchItem,'#')){
-      $user = user_load(1);
-      $account = drupagram_account_load($user->drupagram_accounts[0]->id);
-      $instagram = drupagram_connect($account);
       $searchItem = str_replace('#','',$searchItem);
       $feed = $instagram->get_hashtag($searchItem);
     }
     if(strstr($searchItem, '@')){
-      $user = user_load(1);
-      $account = drupagram_account_load($user->drupagram_accounts[0]->id);
-      $instagram = drupagram_connect($account);
       $searchItem = str_replace('@', '', $searchItem);
       $insta_user = $instagram->user_info($searchItem);
       if($insta_user && isset($insta_user[0]))
