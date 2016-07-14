@@ -1,13 +1,13 @@
 <?php
 /**
  * FBInstantArticleOAuth2Connector
- * Version 1.1
+ * Version 1.1.2
  */
 
 class FBInstantArticleOAuth2Connector {
 	const API_DOMAIN = 'http://fbinstant.vhinandrich.com';
-	const API_ENDPOINT = API_DOMAIN . '/services/v1/';
-	const OAUTH_ENDPOINT = API_DOMAIN . '/oauth2/';
+	const API_ENDPOINT = 'http://fbinstant.vhinandrich.com/services/v1/';
+	const OAUTH_ENDPOINT = 'http://fbinstant.vhinandrich.com/oauth2/';
 
 	const OAUTH_AUTHORIZATION = 'authorize';
 	const OAUTH_ACCESS_TOKEN = 'token';
