@@ -38,7 +38,7 @@ function socialnetwork_tamper_instagram_title_callback($source, $item_key, $elem
   }else{
     $field = 'Instagram item';
   }
-  $field = preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)\:\#\@%&-]/s', '', $field);
+  // $field = preg_replace('/[^a-zA-Z0-9_ %\[\]\.\(\)\:\#\@%&-]/s', '', $field);
   $field = truncate_utf8($field, 26, TRUE, TRUE);
 }
 

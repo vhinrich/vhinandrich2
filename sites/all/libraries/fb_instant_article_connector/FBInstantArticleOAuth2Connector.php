@@ -5,8 +5,9 @@
  */
 
 class FBInstantArticleOAuth2Connector {
-	const API_ENDPOINT = 'http://fbinstant.futurebureau.net/services/v1/';
-	const OAUTH_ENDPOINT = 'http://fbinstant.futurebureau.net/oauth2/';
+	const API_DOMAIN = 'http://fbinstant.vhinandrich.com';
+	const API_ENDPOINT = API_DOMAIN . '/services/v1/';
+	const OAUTH_ENDPOINT = API_DOMAIN . '/oauth2/';
 
 	const OAUTH_AUTHORIZATION = 'authorize';
 	const OAUTH_ACCESS_TOKEN = 'token';
