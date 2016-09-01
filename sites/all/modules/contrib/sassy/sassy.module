@@ -169,8 +169,20 @@ function sassy_load_callback($file) {
     }
   }
   # check for modules or themes named $namespace and try directly finding a file.
-  if (!($path = drupal_get_path('module', $namespace))) {
-    $path = drupal_get_path('theme', $namespace);
+  if ($namespace != 'general' && $namespace != 'sprites' && $namespace != 'typography' && $namespace != 'links' && $namespace != 'lists' && $namespace != 'utilities' && $namespace != 'css' && $namespace != 'text' && $namespace != 'css3' && $namespace != 'tables' && $namespace != 'color' ) {
+    $module_exists_in_filesystem = (bool) drupal_get_filename('module', $namespace, NULL, FALSE);
+    if ($module_exists_in_filesystem) {
+      $path = drupal_get_path('theme', $namespace);
+    } else {
+      $theme_exists_in_filesystem = (bool) drupal_get_filename('theme', $namespace, NULL, FALSE);
+      if ($theme_exists_in_filesystem) {
+        $path = drupal_get_path('theme', $namespace);
+      } else {
+        $path = false;
+      }
+    }
+  } else {
+    $path = NULL;
   }
   if (!$path && $namespace == 'public') {
     $path = 'public:/';
