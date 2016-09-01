@@ -2,11 +2,11 @@
 
 /**
  * @file
- * Provide Views data and handlers for media.module
+ * Provide Views data and handlers for media.module.
  */
 
 /**
- * Implements hook_form_FORM_ID_alter() for views_exposed_form.
+ * Implements hook_form_FORM_ID_alter() for views_exposed_form().
  *
  * Convert the media_browser_plus uri filter for filtering by file scheme into
  * a select.
@@ -48,7 +48,7 @@ function media_browser_plus_views_plugins() {
 
   $path = drupal_get_path('module', 'media_browser_plus') . '/views';
 
-  // Always allow the actual file-table
+  // Always allow the actual file-table.
   $base = array('file_managed');
   if (module_exists('search_api')) {
     // If the Search API module exists, also allow indices of the file-entity
@@ -141,7 +141,6 @@ function template_preprocess_media_browser_plus_views_view_media_browser(&$vars)
 
   $view = $vars['view'];
   $display_handler = $vars['view']->display_handler;
-  $handler = $vars['view']->style_plugin;
 
   // If this is a media browser display add some more JS.
   // Re-uses vast parts of template_preprocess_media_views_view_media_browser().
