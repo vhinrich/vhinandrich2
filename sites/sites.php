@@ -64,3 +64,4 @@
 
  $sites['back.vhinandrich.com'] = 'default';
 
+  $sites['test.vhinandrich.com'] = 'eyesight.vhinandrich.com';
