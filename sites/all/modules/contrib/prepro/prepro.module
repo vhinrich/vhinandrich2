@@ -198,7 +198,7 @@ function prepro_preprocessor_cache_info() {
  * Callback 'Is cached' for the 'onload' cache method.
  */
 function prepro_is_cached_onload($file, $type) {
-  if (prepro_get_settings('show_warnings')) {
+  if (prepro_get_settings('show_warnings') && user_access('administer site configuration')) {
     $message = t('Prepro - your @type files are being processed on every page load, this may cause slowdown on production servers. !link',
       array(
         '@type' => drupal_strtoupper($file['extension']),

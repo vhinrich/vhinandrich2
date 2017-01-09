@@ -22,6 +22,26 @@ function prepro_schema() {
 function prepro_install() {
   $directory = 'public://prepro';
   file_prepare_directory($directory, FILE_MODIFY_PERMISSIONS ^ FILE_CREATE_DIRECTORY);
+
+  if (module_exists('sassy')) {
+    $settings = array(
+      'additional' => array('sassy' => array('errors' => 'watchdog', 'style' => 'nested')),
+      'filetypes' => array(
+        'sass' => array(
+          'compile_handler' => 'sassy/sassy',
+          'cache_handler' => 'prepro/cache',
+          'cache_path' => 'public://prepro',
+        ),
+        'scss' => array(
+          'compile_handler' => 'sassy/sassy',
+          'cache_handler' => 'prepro/cache',
+          'cache_path' => 'public://prepro',
+        ),
+      ),
+      'show_warnings' => TRUE,
+    );
+    variable_set('prepro', $settings);
+  }
 }
 
 /**
@@ -65,8 +85,8 @@ function prepro_update_7101() {
           'cache_handler' => 'prepro/cache',
           'cache_path' => 'public://prepro',
         ),
-        'show_warnings' => TRUE,
       ),
+      'show_warnings' => TRUE,
     );
     variable_set('prepro', $settings);
   }

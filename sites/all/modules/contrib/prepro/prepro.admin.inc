@@ -141,9 +141,11 @@ function prepro_admin_form($form, &$form_state, $buttons = TRUE) {
 function prepro_admin_form_save($form, &$form_state) {
   $settings = $form_state['values']['prepro'];
   // Make sure that we can write to all the cache locations.
-  foreach ($settings['filetypes'] as $ext => $type) {
-    if (!file_prepare_directory($type['cache_path'], FILE_MODIFY_PERMISSIONS ^ FILE_CREATE_DIRECTORY)) {
-      drupal_set_message(t('The cache location for :ext files (:dir) can either not be created or is not writable.', array(':ext' => $ext, ':dir' => $type['cache_path'])), 'warning');
+  if (isset($settings['filetypes'])) {
+    foreach ($settings['filetypes'] as $ext => $type) {
+      if (!file_prepare_directory($type['cache_path'], FILE_MODIFY_PERMISSIONS ^ FILE_CREATE_DIRECTORY)) {
+        drupal_set_message(t('The cache location for :ext files (:dir) can either not be created or is not writable.', array(':ext' => $ext, ':dir' => $type['cache_path'])), 'warning');
+      }
     }
   }
   variable_set('prepro', $settings);
