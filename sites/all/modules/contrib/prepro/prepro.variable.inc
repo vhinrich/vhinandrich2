@@ -1,5 +1,7 @@
 <?php
+
 /**
+ * @file
  * Variable module integration.
  */
 
