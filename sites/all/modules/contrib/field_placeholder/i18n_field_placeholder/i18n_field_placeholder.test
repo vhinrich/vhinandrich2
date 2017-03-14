@@ -5,6 +5,10 @@
  * File that holds multilingual tests for Field placeholder module.
  */
 
+if (!class_exists('Drupali18nTestCase')) {
+  return;
+}
+
 class I18nFieldPlaceholderTestCase extends Drupali18nTestCase {
 
   /**
