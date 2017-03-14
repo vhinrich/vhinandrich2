@@ -35,12 +35,38 @@ function field_placeholder_form_field_ui_field_edit_form_alter(&$form, &$form_st
       '#description' => t('Placeholder value for this field instance.'),
       '#default_value' => isset($settings['placeholder']) ? $settings['placeholder'] : '',
       '#parents' => array('instance', 'placeholder'),
+      '#maxlength' => 512,
       '#states' => array(
         'visible' => array(
           ':input[name="instance[use_title_as_placeholder]"]' => array('value' => 0),
         )
       )
     );
+
+    if (module_exists('token')) {
+      $form['instance']['placeholder_wrapper']['placeholder'] += array(
+        '#element_validate' => array('token_element_validate'),
+        '#after_build' => array('token_element_validate'),
+        '#token_types' => array(),
+      );
+      // Display the user documentation of placeholders supported by
+      // this module, as a description on the last pattern
+      $form['instance']['placeholder_wrapper']['token_help'] = array(
+        '#title' => t('Replacement patterns'),
+        '#type' => 'fieldset',
+        '#collapsible' => TRUE,
+        '#collapsed' => TRUE,
+        '#states' => array(
+          'visible' => array(
+            ':input[name="instance[use_title_as_placeholder]"]' => array('value' => 0),
+          )
+        )
+      );
+      $form['instance']['placeholder_wrapper']['token_help']['help'] = array(
+        '#theme' => 'token_tree',
+        '#token_types' => array(),
+      );
+    }
 
     $form['instance']['placeholder_wrapper']['info_use_label'] = array(
       '#type' => 'item',
@@ -69,7 +95,7 @@ function field_placeholder_field_widget_form_alter(&$element, &$form_state, $con
       $element[$placeholder]['#attributes']['placeholder'] = $instance['label'];
     }
     else {
-      $element[$placeholder]['#attributes']['placeholder'] = $instance['placeholder'];
+      $element[$placeholder]['#attributes']['placeholder'] = token_replace($instance['placeholder']);
     }
   }
 }
@@ -143,5 +169,6 @@ function field_placeholder_field_placeholder_info() {
     'text_textarea_with_summary' => 'summary',
     'number' => 'value',
     'email_textfield' => 'email',
+    'phone_textfield' => 'value',
   );
 }
