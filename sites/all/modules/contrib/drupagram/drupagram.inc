@@ -47,7 +47,6 @@ function drupagram_account_save($drupagram_user, $save_auth = FALSE, $account = 
   $schema = drupal_get_schema('drupagram_account');
 
   foreach ($values as $k => $v) {
-    $values[$k] = drupagram_emoji($v);
     // Remove values that we don't have defined in our schema
     if (!isset($schema['fields'][$k])) {
       unset($values[$k]);
@@ -62,6 +61,9 @@ function drupagram_account_save($drupagram_user, $save_auth = FALSE, $account = 
     ->key(array('drupagram_id' => $values['drupagram_id']))
     ->fields($values)
     ->execute();
+  if (module_exists('entitycache')) {
+    cache_clear_all($values['uid'], 'cache_entity_user');
+  }
 }
 
 /**
@@ -70,20 +72,54 @@ function drupagram_account_save($drupagram_user, $save_auth = FALSE, $account = 
  * @param $id
  *   Instagram UID
  *
- * @return
- *   InstagramUser object
- *
+ * @return object
+ *   The appropriate InstagramUser object.
  */
 function drupagram_account_load($id) {
-  if ($values = db_query("SELECT * FROM {drupagram_account} WHERE drupagram_id = :drupagram_id", array(':drupagram_id' => $id))->fetchAssoc()) {
-    $values['id'] = $values['drupagram_id'];
-    $account = new InstagramUser($values);
-    $account->set_auth($values);
-    $account->uid = $values['uid'];
-    $account->import = $values['import'];
-    $account->is_global = $values['is_global'];
-    return $account;
+  $accounts = &drupal_static(__FUNCTION__);
+
+  if (!isset($accounts[$id])) {
+    $all_accounts = drupagram_account_load_all();
+    if (isset($all_accounts[$id])) {
+      $values = (array) $all_accounts[$id];
+      $values['id'] = $values['drupagram_id'];
+      $account = new InstagramUser($values);
+      $account->set_auth($values);
+      $account->uid = $values['uid'];
+      $account->import = $values['import'];
+      $account->is_global = $values['is_global'];
+      $accounts[$id] = $account;
+    }
+    else {
+      $accounts[$id] = NULL;
+    }
   }
+
+  return $accounts[$id];
+}
+
+/**
+ * List all accounts.
+ *
+ * @return array
+ *   All of the records from the drupagram_accounts table. Note, each record
+ *   will need to be fully authenticated via drupagram_account_load().
+ */
+function drupagram_account_load_all() {
+  $accounts = &drupal_static(__FUNCTION__);
+
+  // If they were not loaded before, load all of the accounts.
+  if (is_null($accounts)) {
+    $accounts = array();
+    $results = db_query("SELECT * FROM {drupagram_account} ORDER BY username");
+    if (!empty($results)) {
+      foreach ($results as $account) {
+        $accounts[$account->drupagram_id] = $account;
+      }
+    }
+  }
+
+  return $accounts;
 }
 
 /**
@@ -208,19 +244,22 @@ function drupagram_account_delete($drupagram_id) {
 
   // Delete from {drupagram_account}.
   $query = db_delete('drupagram_account');
-  $query->conditions('drupagram_id', $drupagram_id);
+  $query->condition('drupagram_id', $drupagram_id);
   $query->execute();
 
   // Delete from {drupagram}.
   $query = db_delete('drupagram');
-  $query->conditions('username', $account->username);
+  $query->condition('username', $account->username);
   $query->execute();
 
   // Delete from {drupagram_account}.
   $query = db_delete('authmap');
-  $query->conditions('authname', $drupagram_id);
-  $query->conditions('module', 'drupagram');
+  $query->condition('authname', $drupagram_id);
+  $query->condition('module', 'drupagram');
   $query->execute();
+  if (module_exists('entitycache')) {
+    cache_clear_all($account->uid, 'cache_entity_user');
+  }
 }
 
 /**

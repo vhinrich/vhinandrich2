@@ -23,6 +23,38 @@ function theme_drupagram_likes($variables) {
 }
 
 /**
+ * Theme the caption
+ */
+function theme_drupagram_caption($variables) {
+  $output = '';
+  $output .= '<div class="drupagram-caption">';
+  $output .= '    <span class="drupagram-caption-id">' . t('ID') . ': ' . $variables['id'] . '</span>';
+  $output .= '    <span class="drupagram-caption-text">' . $variables['text'] . '</span>';
+  $output .= '    <span class="drupagram-caption-from">' . theme('drupagram_account', $variables['from']) . '</span>';
+  $output .= '    <span class="drupagram-caption-created-time">' . format_date($variables['created_time']) . '</span>';
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Theme the author.
+ */
+function theme_drupagram_account($variables) {
+
+  $output = '';
+  $output .= '<div class="drupagram-author">';
+  $output .= '    <span class="drupagram-author-id">' . $variables['id'] . '</span>';
+  $output .= '    <span class="drupagram-author-profile-picture">' . l(theme('image', array('path' => $variables['profile_picture'])), 'http://instagram.com/' . $variables['username'], array('html' => TRUE)) . '</span>';
+  $output .= '    <span class="drupagram-author-profile-linked-full-name">' . 
+  $output .= l($variables['full_name'], 'http://instagram.com/' . $variables['username']); 
+  $output .= '    </span>';
+  // $output .= '    <span class="drupagram-author-username">' . $variables['username'] . '</span>';
+  // $output .= '    <span class="drupagram-author-full-name">' . $variables['full_name'] . '</span>';
+  $output .= '</div>';
+  return $output;
+}
+
+/**
  * Theme the likes items only
  */
 function theme_drupagram_likes_data($variables) {

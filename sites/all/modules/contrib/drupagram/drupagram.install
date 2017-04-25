@@ -53,22 +53,26 @@ function drupagram_schema() {
         'description' => "The images available for the {drupagram} post. Serialied array.",
         'type' => 'text',
         'not null' => FALSE,
+        'serialize' => TRUE,
       ),
       'location' => array(
         'description' => "The location of the {drupagram} post.",
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
+        'serialize' => TRUE,
       ),
       'comments' => array(
         'description' => "The comments made on the {drupagram} post.",
         'type' => 'text',
         'not null' => FALSE,
+        'serialize' => TRUE,
       ),
       'caption' => array(
         'description' => "The caption of the {drupagram} post.",
         'type' => 'text',
-        'not null' => FALSE
+        'not null' => FALSE,
+        'serialize' => TRUE,
       ),
       'link' => array(
         'description' => "The link to the {drupagram} post.",
@@ -81,6 +85,7 @@ function drupagram_schema() {
         'description' => "The link to the {drupagram} post.",
         'type' => 'text',
         'not null' => FALSE,
+        'serialize' => TRUE,
       ),
       'filter' => array(
         'description' => "The filter used on this {drupagram} post.",
@@ -293,7 +298,7 @@ function drupagram_install() {
     ->execute();
 
   $drupagram_settings_link = l(st('here'), 'admin/config/services/drupagram');
-  drupal_set_message(st('The drupagram module has been enabled. You must enter your API information @drupagram_settings_link', array('@drupagram_settings_link' => $drupagram_settings_link)));
+  drupal_set_message(st('The drupagram module has been enabled. You must enter your API information !drupagram_settings_link', array('!drupagram_settings_link' => $drupagram_settings_link)));
 }
 
 /**
@@ -341,4 +346,12 @@ function drupagram_update_7100() {
   }
 
   return st('There was an error creating the Drupagram Local Image table');
+}
+
+/**
+ * Reload the schema changes.
+ */
+function drupagram_update_7101() {
+  cache_clear_all('schema:runtime:', 'cache', TRUE);
+  cache_clear_all('schema', 'cache');
 }

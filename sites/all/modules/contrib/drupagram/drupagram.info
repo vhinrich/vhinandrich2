@@ -4,12 +4,12 @@ core = 7.x
 dependencies[] = oauth_common
 files[] = drupagram.lib.php
 files[] = drupagram_views_field_handlers.inc
-configure = admin/config/services/instagram
+configure = admin/config/services/drupagram
 package = drupagram
 
-; Information added by drupal.org packaging script on 2012-11-26
-version = "7.x-1.2"
+; Information added by Drupal.org packaging script on 2017-04-13
+version = "7.x-1.3"
 core = "7.x"
 project = "drupagram"
-datestamp = "1353914810"
+datestamp = "1492120447"
 

@@ -16,7 +16,7 @@ Enabling the module
 
 Once you have taken care of the dependencies above, enable the drupagram module.
 You should get a nice confirmation message with instructions on where to go to
-fill out the variables required to connect to Tumblr API.
+fill out the variables required to connect to Instagram API.
 
 After enabling the module, a message will direct you to 
 http://instagram.com/developer/clients/manage/ where you need to register your
