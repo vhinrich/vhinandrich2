@@ -121,13 +121,14 @@ class Instagram {
     'authorize' => 'oauth/authorize/?client_id=!client_id&redirect_uri=!redirect_uri&response_type=!response_type',
     'access_token' => 'oauth/access_token',
     'user' => 'v1/users/!user_id/?access_token=!access_token',
-    'user_feed' => 'v1/users/self/feed?access_token=!access_token&min_id=!min_id',
+    'user_feed' => 'v1/users/self/feed?access_token=!access_token&min_id=!min_id&max_id=!max_id&count=!count',
     'user_recent' => 'v1/users/!user_id/media/recent/?access_token=!access_token&max_id=!max_id&min_id=!min_id&max_timestamp=!max_timestamp&min_timestamp=!min_timestamp',
     'user_search' => 'v1/users/search?q=!q&access_token=!access_token',
     'user_follows' => 'v1/users/!user_id/follows?access_token=!access_token',
     'user_followed_by' => 'v1/users/!user_id/followed-by?access_token=!access_token',
     'user_requested_by' => 'v1/users/self/requested-by?access_token=!access_token',
     'user_relationship' => 'v1/users/!user_id/relationship?access_token=!access_token',
+    'user_liked' => 'v1/users/self/media/liked?access_token=!access_token&max_like_id=!max_like_id&count=!count',
     'modify_user_relationship' => 'v1/users/!user_id/relationship?action=%s&access_token=!access_token',
     'media' => 'v1/media/!user_id?access_token=!access_token',
     'media_search' => 'v1/media/search?lat=%s&lng=%s&max_timestamp=%d&min_timestamp=%d&distance=%d&access_token=!access_token',
@@ -139,7 +140,7 @@ class Instagram {
     'post_like' => 'v1/media/%d/likes',
     'remove_like' => 'v1/media/%d/likes?access_token=!access_token',
     'tags' => 'v1/tags/%s?access_token=!access_token',
-    'tags_recent' => 'v1/tags/!tag_name/media/recent?access_token=!access_token',
+    'tags_recent' => 'v1/tags/%s/media/recent?max_id=%d&min_id=%d&access_token=!access_token',
     'tags_search' => 'v1/tags/search?q=%s&access_token=!access_token',
     'locations' => 'v1/locations/%d?access_token=!access_token',
     'locations_recent' => 'v1/locations/%d/media/recent/?max_id=%d&min_id=%d&max_timestamp=%d&min_timestamp=%d&access_token=!access_token',
@@ -163,13 +164,6 @@ class Instagram {
     $this->username = $username;
     $this->access_token = $access_token;
   }
-  
-  /**
-   * GET hashtags
-   */
-  public function get_hashtag($hashtag){
-    return $this->fetch('tags_recent', array('!tag_name' => $hashtag), TRUE);
-  }
 
   /**
    * Get an array of Instagram objects from an API endpoint
@@ -184,6 +178,7 @@ class Instagram {
       watchdog('drupagram', 'Endpoint key not found: !key', array('!key' => $key), WATCHDOG_ERROR);
       return FALSE;
     }
+
     $response = $this->call($path, $params, 'GET', $use_auth);
 
     // Determine the right class to use when returning the results for this key
@@ -229,6 +224,7 @@ class Instagram {
    */
   public function user_feed($id = 'self', $params = array(), $use_auth = TRUE) {
     $params['!user_id'] = $id;
+    $params['!count'] = 10;
     $result = $this->fetch('user_feed', $params, $use_auth);
 
     return $result;
@@ -238,10 +234,10 @@ class Instagram {
    * Get basic information about a user.
    */
   public function user_info($id = 'self', $params = array(), $use_auth = TRUE) {
-    if (is_numeric($id)) {
+    if (is_numeric($id) || $id == 'self') {
       $params['!user_id'] = $id;
     }
-    elseif ($id != 'self') {
+    elseif (is_string($id)) {
       return $this->user_lookup($id);
     }
     $result = $this->fetch('user', $params, $use_auth);
@@ -299,6 +295,9 @@ class Instagram {
       $account = $this->user_lookup($username);
       $params['!user_id'] = $account->id;
     }
+    $params['count'] = 10;
+    // @TODO: Implement a way to remember each user's last image id so we can
+    // just fetch the images older than that one, hopefully saving requests.
 
     return $this->fetch('user_recent', $params, $use_auth);
   }
@@ -319,7 +318,7 @@ class Instagram {
   public function self_liked($params = array(), $use_auth = TRUE) {
     $params['user-id'] = 'self';
 
-    return $this->fetch('users/{user-id}/media/recent', $params, $use_auth);
+    return $this->fetch('user_liked', $params, $use_auth);
   }
 
   /**
@@ -380,7 +379,7 @@ class Instagram {
    * @param bool $use_auth
    * @return type
    */
-  protected function request($url, $params = array(), $method = 'GET', $use_auth = FALSE) {
+  protected function request($url, $params = array(), $method = 'GET', $use_auth = FALSE, $headers = array()) {
     // @TODO: GET requests could potentially be cached.
     $data = '';
 
@@ -399,7 +398,9 @@ class Instagram {
       }
     }
 
-    $headers = array();
+    if (!is_array($headers)) {
+      $headers = (array) $headers;
+    }
     // @TODO: implement headers when $use_auth == TRUE
 
     $response = drupal_http_request($url, array(
@@ -499,7 +500,7 @@ class InstagramOAuth extends Instagram {
    * @param string $response_type. Currently only 'code' is supported
    * @return string. Propertly formatted authorization url.
    */
-  public function get_authorize_url($redirect_uri = NULL, $scope = array('basic', 'comments', 'relationships', 'likes', 'public_content'), $response_type = 'code') {
+  public function get_authorize_url($redirect_uri = NULL, $scope = array('basic', 'comments', 'relationships', 'likes'), $response_type = 'code') {
 
     $url = $this->create_url('oauth/authorize', '');
     $url .= '?client_id=' . $this->client_id;
@@ -548,7 +549,8 @@ class InstagramOAuth extends Instagram {
       'code' => $code,
     );
     try {
-      $response = $this->auth_request($url, $params, 'POST', FALSE);
+      $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
+      $response = $this->auth_request($url, $params, 'POST', FALSE, $headers);
     }
     catch (InstagramException $e) {
       watchdog('drupagram OAuth', '!message', array('!message' => $e->__toString()), WATCHDOG_ERROR);
@@ -563,8 +565,8 @@ class InstagramOAuth extends Instagram {
     return $token;
   }
 
-  public function auth_request($url, $params = array(), $method = 'POST', $use_auth = TRUE) {
-    return $this->request($url, $params, $method, $use_auth);
+  public function auth_request($url, $params = array(), $method = 'POST', $use_auth = TRUE, $headers = array()) {
+    return $this->request($url, $params, $method, $use_auth, $headers);
   }
 
 }

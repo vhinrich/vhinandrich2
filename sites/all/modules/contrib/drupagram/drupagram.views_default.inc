@@ -43,6 +43,8 @@ function drupagram_views_default_views() {
       'id' => 'caption',
       'table' => 'drupagram',
       'field' => 'caption',
+      'format' => 'key',
+      'text' => 'text',
       'relationship' => 'none',
       'hide_empty' => TRUE,
     ),
@@ -212,5 +214,5 @@ function drupagram_views_default_views() {
   ));
   $handler->override_option('block_description', 'User Instagrams');
 
-  return array('instagrams' => $view);
+  return array('Instagrams' => $view);
 }

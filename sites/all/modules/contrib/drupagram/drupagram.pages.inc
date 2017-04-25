@@ -111,7 +111,7 @@ function _drupagram_account_list_row($account) {
   );
 
   $form['visible_name'] = array(
-    '#markup' => l($account->username, 'http://web.stagram.com/user/' . $account->id, array('attributes' => array('target' => '_blank'))),
+    '#markup' => l($account->username, 'http://instagram.com/' . $account->username, array('attributes' => array('target' => '_blank'))),
   );
 
   $form['description'] = array(
