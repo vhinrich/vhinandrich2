@@ -7,12 +7,12 @@ function minify_help($path, $arg) {
   switch ($path) {
     case 'admin/config/development/performance/minifyjs':
       $output = '<p>' . t('This is a simple module that provides the mechanism to minify JavaScript files, ');
-      $output .= t('which ultimatly reduces the file size and load time.') . '</p>';
+      $output .= t('which ultimately reduces the file size and load time.') . '</p>';
       $output .= '<p>' . t('In <b>Operations</b> column,<br /><b>Minify</b> => Generate the minified version,<br />');
       $output .= t('<b>Refresh</b> => Refresh/regenerate the minified version,<br />');
-      $output .= t('<b>Revert</b> => Revert the changes and use the original file.') . '</p>';
+      $output .= t('<b>Revert</b> => Delete the minified file and use original file.') . '</p>';
       $output .= '<p>' . t('In <b>Status</b> column,<br />');
-      $output .= t('<span class="marker">Out of sync</span> => Original file is updated, click Refresh to update minified file.') . '</p>';
+      $output .= t('<span class="marker">Need to refresh</span> => Original file is updated, click Refresh to update minified file.') . '</p>';
     return $output;
   }
 }
@@ -72,27 +72,17 @@ function minify_permission() {
  */
 function minify_form_system_performance_settings_alter(&$form, &$form_state, $form_id) {
   if (user_access('administer minify')) {
-
     $m_cnt = 0;
     $cache = variable_get('minify_captured_js', array());
-    $status_flag = true;
     foreach ($cache as $key => $value) {
       if ($cache[$key]['status']) {
-        $status_flag = false;
         $m_cnt++;
       }
     }
-
-    if (!$status_flag) {
-      $description = t('Select <b>Minify JavaScript files</b> tab at top of the page or ')
-        . l('Click here', 'admin/config/development/performance/minifyjs')
-        . t(' to manage minified JavaScript files.')
-        . t('<br />Out of <b>@cnt</b> only <b>@m_cnt</b> JavaScript files are minified.', array('@cnt' => count($cache), '@m_cnt' => $m_cnt));
-    } else {
-      $description = t('Select <b>Minify JavaScript file</b> tab at top of the page or ')
-        . l('Click here', 'admin/config/development/performance/minifyjs')
-        . t(' to generate and manage minified JavaScript files. <br />This option is avaliable only if when minified JavaScript files are exist.');
-    }
+    $description = t('Select <b>Minify JavaScript files</b> tab at top of the page or ')
+      . l('Click here', 'admin/config/development/performance/minifyjs')
+      . t(' to manage minified JavaScript files.')
+      . t('<br />Out of <b>@cnt</b> only <b>@m_cnt</b> JavaScript files are minified.', array('@cnt' => count($cache), '@m_cnt' => $m_cnt));
 
     $form['bandwidth_optimization']['minify_html'] = array(
       '#type' => 'checkbox',
@@ -102,7 +92,6 @@ function minify_form_system_performance_settings_alter(&$form, &$form_state, $fo
     $form['bandwidth_optimization']['minify_js'] = array(
       '#type' => 'checkbox',
       '#title' => t('Use Minified JavaScript files.'),
-      '#disabled' => $status_flag,
       '#description' => $description,
       '#default_value' => intval(variable_get('minify_js', 0)),
     );
@@ -232,7 +221,7 @@ function _minify_html_script_callback($m) {
  */
 function _minify_html_style_callback($m) {
   $search = array(
-    '!/\*.*?\*/!s',   // remove multiline comment
+    '!/\*.*?\*/!s',   // remove multi-line comment
     '/^\\s+|\\s+$/m'  // trim each line
   );
   $replace = array('');
@@ -265,19 +254,14 @@ function minify_js_alter(&$scripts) {
         $cache[$file_path]['file_path'] = $file_path;
         $cache[$file_path]['file_name'] = drupal_basename($file_path);
         $cache[$file_path]['version'] = isset($file_details['version']) ? $file_details['version'] : '';
-        $cache[$file_path]['minified_file_path'] = '';
-        $cache[$file_path]['original_size'] = filesize(drupal_realpath($file_path));
+        $cache[$file_path]['minified_file_path'] = null;
         $cache[$file_path]['minified_size'] = 0;
         $cache[$file_path]['status'] = false;
         $cache[$file_path]['last_minify_at'] = 0;
-        $cache[$file_path]['error'] = 0;
-        $cache[$file_path]['error_msg'] = '';
-        $cache[$file_path]['skip'] = 0;
-      }
-      
-      if (!_minify_file_version_same($file_details, $cache[$file_path])) {
-        $updated = true;
-        $cache[$file_path]['version'] = isset($file_details['version']) ? $file_details['version'] : '';
+        $cache[$file_path]['error'] = false;
+        $cache[$file_path]['error_msg'] = null;
+        $cache[$file_path]['skip'] = false;
+        $cache[$file_path]['md5'] = md5_file(drupal_realpath($file_path));
       }
     }
   }
@@ -311,16 +295,6 @@ function _minify_javascript_exist($search_value, $cache) {
   return array_key_exists($search_value, $cache);
 }
 
-
-/**
- * Helper function to check file version is same
- */
-function _minify_file_version_same($file_details, $cache_details) {
-  return (isset($file_details['version']) && isset($cache_details['version']))
-    ? ( ($file_details['version'] == $cache_details['version']) ? true : false) 
-    : false;
-}
-
 /*
  * Helper function to change array key, without changing its order
  */
@@ -332,4 +306,12 @@ function _minify_replace_array_key($array, $old_key, $new_key) {
     $array = array_combine($keys, $array);
   }
   return $array;
+}
+
+/**
+ * Implements hook_cron().
+ */
+function minify_cron() {
+  module_load_include('inc', 'minify', 'minify.admin');
+  _minify_clear_invalid_cache();
 }
