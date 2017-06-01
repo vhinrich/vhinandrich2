@@ -21,6 +21,7 @@ class SassyCompassUnitTest extends SassyBaseUnitTest {
     $this->runTest('image-dimensions.scss');
     $this->runTest('inline-image.scss');
     $this->runTest('text-replacement.scss');
+    $this->runTest('url-helpers.scss');
   }
 
 }

@@ -15,7 +15,7 @@ function sassy_compass__image_height($file) {
 }
 
 function sassy_compass__image_info($file) {
-  if ($path = sassy_compass__resolve_path($file)) {
+  if ($path = sassy_compass__url($file, TRUE, FALSE)) {
     if ($info = getimagesize($path)) {
       return $info;
     }

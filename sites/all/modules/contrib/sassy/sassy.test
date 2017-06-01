@@ -146,7 +146,7 @@ class SassyBaseUnitTest extends DrupalWebTestCase {
       $this->fail(t('Exception occured when compiling file') . ': ' . ((string) $e));
     }
 
-    $compare = file_get_contents($output);
+    $compare = $this->loadOutputFile($output);
     if ($compare === FALSE) {
       $this->fail('Unable to load comparison file - ' . $compare);
     }
@@ -162,7 +162,7 @@ class SassyBaseUnitTest extends DrupalWebTestCase {
     }
 
     // Log the compiled result, which is very useful for debugging.
-    $this->verbose(format_string('Compiled output: <pre>@result</pre>', array('@result' => $result)));
+    $this->verbose(format_string('<div>Compiled output: <pre>@result</pre></div><div>Expected: <pre>@expected</pre></div>', array('@result' => $result, '@expected' => $compare)));
   }
 
   /**
@@ -185,6 +185,23 @@ class SassyBaseUnitTest extends DrupalWebTestCase {
     return $trim;
   }
 
+  function loadOutputFile($file) {
+    $output = file_get_contents($file);
+    $replacements = $this->getOutputFileReplacements();
+    $output = str_replace(array_keys($replacements), array_values($replacements), $output);
+    return $output;
+  }
+
+  function getOutputFileReplacements() {
+    $tokens = array();
+    $tokens['[[%base_path]]'] = base_path();
+    $tokens['[[%base_url]]'] = $GLOBALS['base_url'];
+    // Add replacements for the locations of all enabled modules.
+    foreach (module_list() as $name) {
+      $tokens['[[%drupal_get_path:' . $name . ']]'] = drupal_get_path('module', $name);
+    }
+    return $tokens;
+  }
 }
 
 class SassyUnitTest extends SassyBaseUnitTest {

@@ -5,9 +5,9 @@ core = 7.x
 dependencies[] = sassy
 dependencies[] = sassy_compass
 
-; Information added by Drupal.org packaging script on 2016-08-26
-version = "7.x-2.20"
+; Information added by Drupal.org packaging script on 2017-04-27
+version = "7.x-2.21"
 core = "7.x"
 project = "sassy"
-datestamp = "1472242441"
+datestamp = "1493315345"
 

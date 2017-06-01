@@ -22,8 +22,9 @@ function sassy_compass__url($path, $only_path = FALSE, $web_path = TRUE) {
 
 	$path = $path[0];
 	if ($web_path) {
-		$webroot = realpath($_SERVER['DOCUMENT_ROOT']);
-		$path = str_replace($webroot, '', $path);
+      $webroot = realpath(DRUPAL_ROOT) . '/';
+      $path = str_replace($webroot, '', $path);
+      $path = file_create_url($path);
 	}
 
 	if ($only_path) {
