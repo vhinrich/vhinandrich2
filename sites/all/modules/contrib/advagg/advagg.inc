@@ -7,7 +7,6 @@
  * These functions are needed for cache misses.
  */
 
-// Database operations.
 /**
  * Insert/Update data in advagg tables.
  *
@@ -410,7 +409,6 @@ function advagg_remove_js_comments(&$content) {
   );
 }
 
-// File operations.
 /**
  * Given a group of files calculate what the aggregate filename will be.
  *
@@ -782,7 +780,6 @@ function advagg_clearstatcache($filename = NULL) {
   }
 }
 
-// Modify CSS/JS arrays.
 /**
  * Group the CSS/JS into the biggest buckets possible.
  *
@@ -1612,7 +1609,17 @@ function advagg_load_css_stylesheet($file, $optimize = TRUE, array $aggregate_se
   // Replace the old base path with the one that was passed in.
   $pos = strpos($css_base_url, $old_base_path);
   if ($pos !== FALSE) {
-    $css_base_url = substr_replace($css_base_url, $GLOBALS['base_path'], $pos, strlen($old_base_path));
+    $parsed_url = parse_url($css_base_url);
+    if (!empty($parsed_url['path'])) {
+      // Make sure path starts with a slash.
+      $parsed_url['path'] = str_replace('//', '/', '/' . $parsed_url['path']);
+      // Get newly recalculated position.
+      $pos = strpos($parsed_url['path'], $old_base_path);
+
+      // Replace.
+      $parsed_url['path'] = substr_replace($parsed_url['path'], $GLOBALS['base_path'], $pos, strlen($old_base_path));
+      $css_base_url = advagg_glue_url($parsed_url);
+    }
   }
 
   _advagg_build_css_path(array(), $css_base_url . '/', $aggregate_settings);
@@ -1682,6 +1689,19 @@ function _advagg_build_css_path(array $matches, $base = '', array $aggregate_set
 
   // Prefix with base and remove '../' segments where possible.
   $url = $_base . $matches[1];
+  if (variable_get('advagg_skip_file_create_url_inside_css', ADVAGG_SKIP_FILE_CREATE_URL_INSIDE_CSS)) {
+    $new_base_path = $GLOBALS['base_path'];
+    if (isset($_aggregate_settings['variables']['base_path'])) {
+      $new_base_path = $_aggregate_settings['variables']['base_path'];
+    }
+    $pos = strpos($_base, $new_base_path);
+    if ($pos !== FALSE) {
+      $url = substr($_base, $pos) . $matches[1];
+    }
+    else {
+      $url = $new_base_path . $_base . $matches[1];
+    }
+  }
   $last = '';
   while ($url != $last) {
     $last = $url;
@@ -1703,19 +1723,9 @@ function _advagg_build_css_path(array $matches, $base = '', array $aggregate_set
   }
   $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
 
-  if (variable_get('advagg_skip_file_create_url_inside_css', ADVAGG_SKIP_FILE_CREATE_URL_INSIDE_CSS)) {
-    if (isset($_aggregate_settings['variables']['base_path'])) {
-      $url = $_aggregate_settings['variables']['base_path'] . $url;
-    }
-    else {
-      $url = $GLOBALS['base_path'] . $url;
-    }
-    $query = '';
-    $fragment = '';
-  }
-  else {
-    $url = advagg_file_create_url($base_url, $_aggregate_settings);
+  if (!variable_get('advagg_skip_file_create_url_inside_css', ADVAGG_SKIP_FILE_CREATE_URL_INSIDE_CSS)) {
+    $base_url = advagg_file_create_url($base_url, $_aggregate_settings);
   }
 
-  return 'url(' . $url . $query . $fragment . ')';
+  return 'url(' . $base_url . $query . $fragment . ')';
 }
