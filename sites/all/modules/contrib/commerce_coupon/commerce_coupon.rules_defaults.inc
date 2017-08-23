@@ -1,8 +1,7 @@
 <?php
-
-/*
+/**
  * @file
- * Default coupon rules.
+ * Default rules for Commerce Coupon.
  */
 
 /**
@@ -11,58 +10,63 @@
 function commerce_coupon_default_rules_configuration() {
   $rules = array();
 
-  // Add validation rule component to check the number of uses of a coupon
-  $rule = rule(array(
-    'commerce_coupon' => array(
-      'type' => 'commerce_coupon',
-      'label' => t('Coupon'),
-    ),
-    'number_of_redemptions' => array(
-      'type' => 'integer',
-      'label' => t('Number Of Redemptions'),
-    ),
-      ));
-  $rule->label = t('Coupon Validation: Set the coupon as invalid if number of uses is reached');
-  $rule
-    ->condition('entity_has_field', array('entity:select' => 'commerce_coupon', 'field' => 'commerce_coupon_number_of_uses'))
-    ->condition(rules_and()->condition(
-          rules_or()->condition('data_is', array('data:select' => 'commerce_coupon:commerce-coupon-number-of-uses', 'op' => '<', 'value:select' => 'number-of-redemptions'))
-          ->condition('data_is', array('data:select' => 'commerce_coupon:commerce-coupon-number-of-uses', 'value:select' => 'number-of-redemptions'))
-        )
-  );
-  $rule->action('drupal_message', array(
-    'message' => t('Sorry, the maximum number of redemptions for this coupon has been reached.'),
-    'type' => 'error',
-  ));
-  $rule->action('commerce_coupon_action_is_invalid_coupon', array());
-  $rules['commerce_coupon_validate_uses_of_coupon_component'] = $rule;
-
-  // Reaction on the validation event for check uses of coupons:
   $rule = rules_reaction_rule();
-  $rule->label = t('Coupon Validation: Check the number of redemptions');
-  $rule->active = TRUE;
+  $rule->label = t('Coupon applied to cart success message');
+  $rule->tags = array('Commerce Coupon');
 
   $rule
-    ->event('commerce_coupon_validate')
-    ->condition('entity_has_field', array('entity:select' => 'coupon', 'field' => 'commerce_coupon_number_of_uses'))
-    ->action('commerce_coupon_action_get_coupon_uses', array('commerce_coupon:select' => 'coupon'))
-    ->action('component_commerce_coupon_validate_uses_of_coupon_component', array(
-      'commerce_coupon:select' => 'coupon',
-      'number_of_redemptions:select' => 'number-of-uses'
+    ->event('commerce_coupon_applied_to_cart')
+    ->action('drupal_message', array(
+      'message' => t('Coupon code applied.'),
     ));
-  $rules['commerce_coupon_validate_uses_of_coupon'] = $rule;
 
-  // When removing a product from the cart, trigger deleting the coupon.
-  $rule = rules_reaction_rule();
-  $rule->label = t('Remove coupons from empty carts');
-  $rule->active = TRUE;
+  $rules['coupon_cart_sucess_message'] = $rule;
 
-  $rule
-    ->event('commerce_cart_product_remove')
-    ->condition('commerce_order_compare_total_product_quantity', array('entity:select' => 'commerce_order', 'operator' => '=', 'value' => 0))
-    ->action('commerce_coupon_action_remove_all_coupons_from_order', array('commerce_order:select' => 'commerce_order'));
+  foreach (commerce_coupon_get_types() as $machine_name => $type) {
+    $component_parameter = array(
+      'commerce_coupon' => array(
+        'type' => 'commerce_coupon',
+        'label' => t('Coupon'),
+        'wrapped' => TRUE,
+      ),
+      'commerce_order' => array(
+        'type' => 'commerce_order',
+        'label' => t('Order'),
+        'wrapped' => TRUE,
+      ),
+      'data' => array(
+        'type' => 'list<list>',
+        'label' => t('Data'),
+        'optional' => TRUE,
+      ),
+    );
 
-  $rules['commerce_coupon_remove_coupons_from_empty_carts'] = $rule;
+    $rule = rules_and($component_parameter);
+    $rule->label = t('Conditions for @type coupons', array('@type' => $type['label']));
+    $rule->tags = array('Commerce Coupon');
+
+    // Add default conditions to all coupon types.
+    $rule
+      // Coupon must be active.
+      ->condition('data_is', array(
+        'data:select' => 'commerce-coupon:status',
+        'op' => '==',
+        'value' => '1',
+      ))
+      // Inline conditions must pass.
+      ->condition('commerce_coupon_evaluate_coupon_inline_conditions_rule', array(
+        'commerce_coupon:select' => 'commerce_coupon',
+      ))
+      // Permissions for "redeeem" must pass.
+      ->condition('commerce_coupon_current_user_may_redeem', array(
+        'commerce_coupon:select' => 'commerce_coupon',
+      ));
+
+    // Allow other modules to alter the rule.
+    drupal_alter('commerce_coupon_condition_component', $rule, $machine_name);
+
+    $rules[commerce_coupon_conditions_component_name($machine_name)] = $rule;
+  }
 
   return $rules;
 }

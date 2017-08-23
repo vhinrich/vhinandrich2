@@ -10,29 +10,8 @@
  */
 function commerce_coupon_views_data_alter(&$data) {
   if (isset($data['commerce_coupon'])) {
-    $data['commerce_coupon']['operations'] = array(
-      'field' => array(
-        'title' => t('Operations'),
-        'help' => t('Display all the available operations links for the coupon.'),
-        'handler' => 'commerce_coupon_handler_field_coupon_operations',
-      ),
-    );
-    $data['commerce_coupon']['granted_amount'] = array(
-      'field' => array(
-        'title' => t('Granted amount'),
-        'help' => t('Display the granted amount of the coupon.'),
-        'handler' => 'commerce_coupon_handler_field_coupon_granted_amount',
-      ),
-    );
-    // Expose the number of times the coupon has been used.
-    $data['commerce_coupon']['times_used'] = array(
-      'title' => t('Times used'),
-      'help' => t('Number of times that the coupon has been used.'),
-      'field' => array(
-        'handler' => 'commerce_coupon_handler_field_times_used',
-        'click sortable' => TRUE,
-      ),
-    );
+    $data['commerce_coupon']['table']['base']['access query tag'] = 'commerce_coupon_access';
+
     $data['commerce_coupon']['remove_from_order'] = array(
       'field' => array(
         'title' => t('Remove from Order'),
@@ -40,5 +19,106 @@ function commerce_coupon_views_data_alter(&$data) {
         'handler' => 'commerce_coupon_handler_field_coupon_order_remove',
       ),
     );
+    $data['commerce_coupon']['discount_value_display'] = array(
+      'field' => array(
+        'title' => t('Discount value display'),
+        'help' => t('Display text describing value of the discount(s) linked to this coupon.'),
+        'handler' => 'commerce_coupon_handler_field_discount_value_display',
+      ),
+    );
+    $data['commerce_coupon']['delete'] = array(
+      'field' => array(
+        'title' => t('Delete coupon'),
+        'help' => t('Link to delete a coupon.'),
+        'handler' => 'commerce_coupon_handler_field_coupon_delete',
+      ),
+    );
+    $data['commerce_coupon']['edit'] = array(
+      'field' => array(
+        'title' => t('Edit coupon'),
+        'help' => t('Link to edit a coupon.'),
+        'handler' => 'commerce_coupon_handler_field_coupon_edit',
+      ),
+    );
+
+    // Uid relationship.
+    $data['commerce_coupon']['uid']['relationship'] = array(
+      'handler' => 'views_handler_relationship',
+      'base' => 'users',
+      'field' => 'uid',
+      'label' => t('Recipient'),
+    );
+
+    // Change created into a date field.
+    $data['commerce_coupon']['created'] = array(
+      'title' => t('Created date'),
+      'help' => t('The date the order was created.'),
+      'field' => array(
+        'handler' => 'views_handler_field_date',
+        'click sortable' => TRUE,
+      ),
+      'sort' => array(
+        'handler' => 'views_handler_sort_date',
+      ),
+      'filter' => array(
+        'handler' => 'views_handler_filter_date',
+      ),
+    );
+
+    // Add a special code argument handler.
+    $data['commerce_coupon']['code']['argument'] = array(
+      'handler' => 'commerce_coupon_handler_argument_coupon_code',
+    );
+
+    // Add a special coupon id argument handler.
+    $data['commerce_coupon']['coupon_id']['argument'] = array(
+      'handler' => 'commerce_coupon_handler_argument_coupon_id',
+    );
+
+    // Add coupon code handlers.
+    $data['commerce_coupon']['code'] = array(
+      'title' => t('Code'),
+      'help' => t('The coupon code.'),
+      'field' => array(
+        'handler' => 'views_handler_field',
+        'click sortable' => TRUE,
+      ),
+      'filter' => array(
+        'handler' => 'views_handler_filter_string',
+      ),
+    );
+
+    // Expose the coupon form on the cart form.
+    $data['commerce_order']['coupon_cart_form'] = array(
+      'title' => t('Coupon cart form'),
+      'help' => t('Coupon cart form'),
+      'area' => array(
+        'handler' => 'commerce_coupon_handler_area_cart_form',
+      ),
+    );
   }
+}
+
+/**
+ * Get the argument order if present.
+ *
+ * @param views_handler $handler
+ *   A views handler.
+ *
+ * @return bool|object
+ *   Either an order entity or FALSE.
+ */
+function _commerce_coupon_load_argument_order(views_handler $handler) {
+  // Determine if there is an order id argument. If multiple are present, use
+  // the first found.
+  if (isset($handler->view->argument)) {
+    foreach ($handler->view->argument as $alias => $argument) {
+      if ($argument instanceof commerce_order_handler_argument_order_order_id) {
+        $order_id = (int) $handler->view->argument[$alias]->value[0];
+        $order = commerce_order_load($order_id);
+      }
+    }
+  }
+
+  return isset($order) ? $order : FALSE;
 }
