@@ -1,111 +1,55 @@
 <?php
-
 /**
  * @file
- * Provides metadata for the coupon entity.
+ * Entity property info definitions for Commerce Coupon.
  */
 
 /**
- * Implements hook_entity_property_info() of entity module.
- * @see http://drupal.org/node/1021466
+ * Implements hook_entity_property_info_alter().
  */
-function commerce_coupon_entity_property_info() {
-  $info = array();
+function commerce_coupon_entity_property_info_alter(&$info) {
 
-  // Add meta-data about the basic commerce_coupon properties.
-  $properties = &$info['commerce_coupon']['properties'];
-
-  $properties['coupon_id'] = array(
-    'type' => 'integer',
-    'label' => t('Coupon ID', array(), array('context' => 'a drupal commerce coupon')),
-    'description' => t('The internal numeric ID of the coupon.'),
-    'schema field' => 'coupon_id',
-  );
-  $properties['is_active'] = array(
-    'label' => t('Is active'),
-    'description' => t('Boolean indicating whether the coupon is active or disabled.'),
-    'type' => 'boolean',
-    'setter callback' => 'entity_property_verbatim_set',
-    'schema field' => 'is_active',
-  );
-  $properties['price_component_name'] = array(
-    'label' => t('Price component name'),
-    'description' => t('Identifies the component name for each coupon'),
-    'type' => 'token',
-    'getter callback' => 'commerce_coupon_get_properties',
-    'schema field' => 'price_component_name',
-  );
-  $properties['type'] = array(
-    'type' => 'commerce_coupon_type',
-    'label' => t('Type'),
-    'description' => t('The human readable name of the coupon type.'),
-    'setter callback' => 'entity_property_verbatim_set',
-    'options list' => 'commerce_coupon_type_options_list',
-    'required' => FALSE,
-    'schema field' => 'type',
-  );
-  $properties['created'] = array(
-    'label' => t('Date created'),
-    'description' => t('The date the coupon was created.'),
-    'type' => 'date',
-    'setter callback' => 'entity_property_verbatim_set',
-    'schema field' => 'created',
-  );
-  $properties['changed'] = array(
-    'label' => t('Date updated'),
-    'description' => t('The date the coupon was most recently updated.'),
-    'type' => 'date',
-    'setter callback' => 'entity_property_verbatim_set',
-    'query callback' => 'entity_metadata_table_query',
-    'schema field' => 'changed',
-  );
-  $properties['times_used'] = array(
-    'type' => 'token',
-    'label' => t('Times used'),
-    'description' => t('Number of times that the coupon has been used.'),
-    'getter callback' => 'commerce_coupon_get_properties',
-  );
-
-  // Add metadata anpit coupon type properties.
-  $properties = &$info['commerce_coupon_type']['properties'];
-
-  $properties['type'] = array(
-    'type' => 'token',
-    'label' => t('Coupon type'),
-    'description' => t('The machine name of the coupon type.'),
-    'schema field' => 'type',
-  );
-
-  $properties['label'] = array(
-    'type' => 'text',
-    'label' => t('Coupon type label'),
-    'description' => t('The human readable name of the coupon type.'),
-    'schema field' => 'label',
-  );
-
-  $properties['status'] = array(
-    'type' => 'boolean',
-    'label' => t('Coupon type status'),
-    'description' => t('Status of the coupon type.'),
-    'schema field' => 'status',
-  );
-
-  return $info;
+  if (isset($info['commerce_discount'])) {
+    $info['commerce_discount']['properties']['coupons'] = array(
+      'type' => 'list<commerce_coupon>',
+      'label' => t('Coupons'),
+      'getter callback' => 'commerce_coupon_get_discount_properties',
+    );
+    $info['commerce_discount']['properties']['coupon_count'] = array(
+      'type' => 'integer',
+      'label' => t('Coupon count'),
+      'getter callback' => 'commerce_coupon_get_discount_properties',
+    );
+  }
 }
 
 /**
- * Implements hook_entity_property_info_alter() on top of the Product module.
+ * Extend the defaults meta data properties for Commerce coupon entity.
  */
-function commerce_coupon_entity_property_info_alter(&$info) {
-  if (!empty($info['commerce_coupon']['bundles'])) {
-    $properties = array();
+class CommerceCouponMetadataController extends EntityDefaultMetadataController {
 
-    foreach ($info['commerce_coupon']['bundles'] as $bundle => $bundle_info) {
-      $bundle_info += array('properties' => array());
-      $properties += $bundle_info['properties'];
+  /**
+   * Overrides parent::entityPropertyInfo().
+   */
+  public function entityPropertyInfo() {
+
+    $info = parent::entityPropertyInfo();
+    $properties = &$info[$this->type]['properties'];
+
+    $properties['status']['type'] = 'boolean';
+
+    $schema = drupal_get_schema('commerce_coupon');
+
+    foreach ($properties as $name => $property) {
+      if (isset($schema['fields'][$name])) {
+        $properties[$name] += array(
+          'setter callback' => 'entity_property_verbatim_set',
+          'getter callback' => 'entity_property_verbatim_get',
+        );
+      }
     }
 
-    $info['commerce_coupon']['properties']['commerce_coupon_code'] = $properties['commerce_coupon_code'];
-    $info['commerce_coupon']['properties']['commerce_coupon_number_of_uses'] = $properties['commerce_coupon_number_of_uses'];
+    return $info;
   }
+
 }
