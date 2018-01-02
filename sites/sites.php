@@ -55,13 +55,13 @@
  */
 
  // URL: http://localhost/example
- $sites['localhost.mqcristobal'] = 'mqcristobal.com';
+ // $sites['localhost.mqcristobal'] = 'mqcristobal.com';
  $sites['mqcristobal.vhinandrich.com'] = 'mqcristobal.com';
- $sites['back-mqcristobal.vhinandrich.com'] = 'mqcristobal.com';
- $sites['127.0.0.1.mqcristobal'] = 'mqcristobal.com';
+ // $sites['back-mqcristobal.vhinandrich.com'] = 'mqcristobal.com';
+ // $sites['127.0.0.1.mqcristobal'] = 'mqcristobal.com';
 
- $sites['mqcristobal.vhinandrich.local.com'] = 'mqcristobal.com';
+ // $sites['mqcristobal.vhinandrich.local.com'] = 'mqcristobal.com';
 
  $sites['back.vhinandrich.com'] = 'default';
 
-  $sites['test.vhinandrich.com'] = 'eyesight.vhinandrich.com';
+ // $sites['test.vhinandrich.com'] = 'eyesight.vhinandrich.com';
